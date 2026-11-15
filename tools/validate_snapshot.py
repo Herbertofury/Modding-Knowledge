@@ -23,6 +23,8 @@ def validate_contents(conn, bundle):
     require(conn.execute('pragma integrity_check').fetchall() == [('ok',)], 'Integrity check failed')
     require(conn.execute('pragma foreign_key_check').fetchall() == [], 'Foreign key check failed')
     require(conn.execute('pragma user_version').fetchone() == (1,), 'Unsupported schema version')
+    require(conn.execute('select count(*) from refresh_attempts').fetchone() == (0,),
+            'Unreviewed refresh attempts in public snapshot')
     games = dict(conn.execute('select id,name from games'))
     require(games == bundle['games'], 'Game manifest mismatch')
     entity_keys = ['id', 'game_id', 'kind', 'name']
