@@ -28,7 +28,9 @@ fn main() -> Result<()> {
             url.as_str().ok_or("source URL missing")?,
             true,
             true,
-            revision,
+            data["source_policy_revisions"][id]
+                .as_str()
+                .unwrap_or(revision),
         )?;
     }
     let entities = data["entities"].as_array().ok_or("entities missing")?;

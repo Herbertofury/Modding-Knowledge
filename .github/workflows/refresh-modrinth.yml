@@ -1,0 +1,48 @@
+name: Refresh bounded public Modrinth metadata
+on:
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: modrinth-public-refresh
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Refresh permitted bounded metadata
+        id: source
+        continue-on-error: true
+        run: python tools/refresh_modrinth.py
+      - if: steps.source.outcome == 'success'
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: '1.99.1'
+      - if: steps.source.outcome == 'success'
+        name: Build and validate actual native database
+        run: |
+          python tools/build_reviewed_bundle.py
+          cargo run --locked --example seed_reviewed_bundle -- refreshed.sqlite
+          python tools/package_snapshot.py refreshed.sqlite
+          cargo run --locked --example query -- refreshed.sqlite modrinth:project:AANobbMI
+      - name: Publish reviewed projection or sanitized failure receipt
+        env:
+          SOURCE_OUTCOME: ${{ steps.source.outcome }}
+        run: |
+          if [ "$SOURCE_OUTCOME" = "success" ]; then
+            git add data/live/modrinth-current.json data/live/modrinth-refresh.json data/reviewed-bundle.json artifacts/modding-knowledge-latest.sqlite.gz artifacts/latest-validation.json
+          else
+            git add data/live/modrinth-refresh.json
+          fi
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Refresh bounded public metadata and preserve source receipt'
+          git push origin HEAD:main

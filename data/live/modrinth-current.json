@@ -1,0 +1,187 @@
+{
+  "completeness": "partial",
+  "creator_memberships": [
+    {
+      "id": "DzLrfrbK",
+      "observed_at": "2026-11-15T00:10:12.949429+00:00",
+      "observed_unix": 1794701412,
+      "profile_url": "https://modrinth.com/user/DzLrfrbK",
+      "project_id": "AANobbMI",
+      "role": "Maintainer",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/4reLOAKe/members",
+      "team_id": "4reLOAKe",
+      "username": "IMS"
+    },
+    {
+      "id": "TEZXhE2U",
+      "observed_at": "2026-11-15T00:10:12.949429+00:00",
+      "observed_unix": 1794701412,
+      "profile_url": "https://modrinth.com/user/TEZXhE2U",
+      "project_id": "AANobbMI",
+      "role": "Project Lead",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/4reLOAKe/members",
+      "team_id": "4reLOAKe",
+      "username": "jellysquid3"
+    },
+    {
+      "id": "PSleyMoH",
+      "observed_at": "2026-11-15T00:10:12.949429+00:00",
+      "observed_unix": 1794701412,
+      "profile_url": "https://modrinth.com/user/PSleyMoH",
+      "project_id": "AANobbMI",
+      "role": "Maintainer",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/4reLOAKe/members",
+      "team_id": "4reLOAKe",
+      "username": "douira"
+    },
+    {
+      "id": "TEZXhE2U",
+      "observed_at": "2026-11-15T00:10:12.949429+00:00",
+      "observed_unix": 1794701412,
+      "profile_url": "https://modrinth.com/user/TEZXhE2U",
+      "project_id": "gvQqBUqZ",
+      "role": "Original Author",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/peSx5UYg/members",
+      "team_id": "peSx5UYg",
+      "username": "jellysquid3"
+    },
+    {
+      "id": "uhPSqlnd",
+      "observed_at": "2026-11-15T00:10:12.949429+00:00",
+      "observed_unix": 1794701412,
+      "profile_url": "https://modrinth.com/user/uhPSqlnd",
+      "project_id": "gvQqBUqZ",
+      "role": "Project Lead",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/peSx5UYg/members",
+      "team_id": "peSx5UYg",
+      "username": "2No2Name"
+    },
+    {
+      "id": "DzLrfrbK",
+      "observed_at": "2026-11-15T00:10:12.949429+00:00",
+      "observed_unix": 1794701412,
+      "profile_url": "https://modrinth.com/user/DzLrfrbK",
+      "project_id": "YL57xq9U",
+      "role": "Lead Developer",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/1HMZl6Mn/members",
+      "team_id": "1HMZl6Mn",
+      "username": "IMS"
+    },
+    {
+      "id": "v7k4QluE",
+      "observed_at": "2026-11-15T00:10:12.949429+00:00",
+      "observed_unix": 1794701412,
+      "profile_url": "https://modrinth.com/user/v7k4QluE",
+      "project_id": "YL57xq9U",
+      "role": "Owner",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/1HMZl6Mn/members",
+      "team_id": "1HMZl6Mn",
+      "username": "coderbot"
+    }
+  ],
+  "observed_at": "2026-11-15T00:10:12.949429+00:00",
+  "observed_creator_accounts": 5,
+  "policy_revision": "modrinth-public-project-team-metadata-2026-11-15",
+  "projects": [
+    {
+      "client_side": "required",
+      "id": "AANobbMI",
+      "issues_url": "https://github.com/CaffeineMC/sodium/issues",
+      "license": {
+        "id": "LicenseRef-Polyform-Shield-1.0.0",
+        "name": "",
+        "url": "https://github.com/CaffeineMC/sodium/blob/dev/LICENSE.md"
+      },
+      "loaders": [
+        "fabric",
+        "neoforge",
+        "quilt"
+      ],
+      "observed_at": "2026-11-15T00:10:12.949429+00:00",
+      "observed_unix": 1794701412,
+      "organization": "LjcZDkRW",
+      "project_type": "mod",
+      "published": "2021-01-03T00:53:34.185936Z",
+      "scope": "Targeted public project metadata; compatibility not verified; no full creator/project enumeration",
+      "server_side": "unsupported",
+      "slug": "sodium",
+      "source_url": "https://github.com/CaffeineMC/sodium",
+      "source_url_api": "https://api.modrinth.com/v2/project/AANobbMI",
+      "status": "approved",
+      "team": "4reLOAKe",
+      "title": "Sodium",
+      "updated": "2026-11-12T01:12:30.162066Z",
+      "wiki_url": "https://github.com/CaffeineMC/sodium/wiki"
+    },
+    {
+      "client_side": "optional",
+      "id": "gvQqBUqZ",
+      "issues_url": "https://github.com/caffeinemc/lithium-fabric/issues",
+      "license": {
+        "id": "LGPL-3.0-only",
+        "name": "GNU Lesser General Public License v3.0 only",
+        "url": null
+      },
+      "loaders": [
+        "fabric",
+        "neoforge",
+        "quilt"
+      ],
+      "observed_at": "2026-11-15T00:10:12.949429+00:00",
+      "observed_unix": 1794701412,
+      "organization": "LjcZDkRW",
+      "project_type": "mod",
+      "published": "2021-01-03T00:56:52.292581Z",
+      "scope": "Targeted public project metadata; compatibility not verified; no full creator/project enumeration",
+      "server_side": "optional",
+      "slug": "lithium",
+      "source_url": "https://github.com/caffeinemc/lithium-fabric",
+      "source_url_api": "https://api.modrinth.com/v2/project/gvQqBUqZ",
+      "status": "approved",
+      "team": "peSx5UYg",
+      "title": "Lithium",
+      "updated": "2026-10-28T22:31:14.530840Z",
+      "wiki_url": null
+    },
+    {
+      "client_side": "required",
+      "id": "YL57xq9U",
+      "issues_url": "https://github.com/IrisShaders/Iris/issues",
+      "license": {
+        "id": "LGPL-3.0-only",
+        "name": "GNU Lesser General Public License v3.0 only",
+        "url": null
+      },
+      "loaders": [
+        "fabric",
+        "neoforge",
+        "quilt"
+      ],
+      "observed_at": "2026-11-15T00:10:12.949429+00:00",
+      "observed_unix": 1794701412,
+      "organization": null,
+      "project_type": "mod",
+      "published": "2021-05-27T05:11:15.690120Z",
+      "scope": "Targeted public project metadata; compatibility not verified; no full creator/project enumeration",
+      "server_side": "unsupported",
+      "slug": "iris",
+      "source_url": "https://github.com/IrisShaders/Iris",
+      "source_url_api": "https://api.modrinth.com/v2/project/YL57xq9U",
+      "status": "approved",
+      "team": "1HMZl6Mn",
+      "title": "Iris Shaders",
+      "updated": "2026-09-30T02:58:24.095409Z",
+      "wiki_url": null
+    }
+  ],
+  "schema": 1,
+  "scope": "Unauthenticated public project and accepted team-member metadata only. No account email/name/bio/payouts, bodies, assets, files or private data. Team membership is not sole authorship or a complete creator catalog.",
+  "selected_project_count": 3
+}

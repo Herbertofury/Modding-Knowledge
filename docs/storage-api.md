@@ -42,3 +42,8 @@ This executable creates three actual source-attributed records (Sodium, Lithium,
 The checked-in, reviewed projection `data/modrinth-public-2026-11-14.json` contains real official API observations for Sodium, Lithium and Iris, fetched without authentication with an identifying User-Agent. The importer produced **3 project entities and 42 source-attributed observations**, independently reopened with integrity `ok`. It retains provider IDs, team/organization IDs when supplied, repository/issue/wiki links, license claims, publication/update timestamps and loader/client/server claims. Null fields remain absent; project-level loader claims are not per-release compatibility verification. Provider `approved` status is not an Athena safety verdict.
 
 Sodium's observed license identifier is `LicenseRef-Polyform-Shield-1.0.0`; do not label it unrestricted/permissively open source. The other two reported `LGPL-3.0-only`. These are provider claims requiring source-license review before code reuse. No descriptions, images, mod files, credentials or account details are copied. The importer does not poll and the frozen snapshot has no automatic freshness guarantee. Automatic permitted refresh and full consumer API remain follow-up work.
+
+
+## Consumer query and bounded live refresh
+
+`Store::open_read_only` cannot create/migrate databases; `cargo run --example query -- FILE ENTITY_ID` returns JSON with provenance and scope. Public team memberships now join the generated bundle as creator entities. Refresh metadata is explicitly partial, API-provided, and not complete authorship or compatibility. See `docs/refresh-modrinth.md`.

@@ -2,7 +2,7 @@
 
 **The central, public, app-consumable home for multi-game modding knowledge.** Athena and other tools can consume the same versioned records instead of keeping divergent private catalogs.
 
-## Actual data available now
+## Actual data: initial reviewed snapshot
 
 | Dataset | Real entities | Attributed observations | Meaning |
 |---|---:|---:|---|
@@ -11,9 +11,17 @@
 | Modrinth projects | 3 | 42 | Sodium, Lithium, Iris public project metadata |
 | **Combined** | **115** | **164** | Partial coverage, not 115 unique mods or completed game coverage |
 
-**[Download populated SQLite snapshot](artifacts/modding-knowledge-2026-11-14.sqlite.gz)** · [Structured records](data/reviewed-bundle.json) · [Verification](validation.json) · [Knowledge wiki](wiki/Home.md) · [Source inventory](SOURCES.md)
+**[Download original populated SQLite snapshot](artifacts/modding-knowledge-2026-11-14.sqlite.gz)** · [Structured records](data/reviewed-bundle.json) · [Verification](validation.json) · [Knowledge wiki](wiki/Home.md) · [Source inventory](SOURCES.md)
 
-The snapshot has eight game namespaces and eight source scopes. It is a dated, reviewed snapshot, not yet an automatically refreshed comprehensive catalog. Missing records never prove compatibility or safety. LOOT conditions remain unevaluated; do not present conditional warnings as unconditional bad-mod verdicts.
+## Live public creator/mod refresh
+
+[Latest populated database](artifacts/modding-knowledge-latest.sqlite.gz) · [Latest validation/counts](artifacts/latest-validation.json) · [Refresh success/failure receipt](data/live/modrinth-refresh.json) · [Live reviewed metadata](data/live/modrinth-current.json)
+
+The first real refresh added **5 public creator accounts and 7 project-team membership observations**, yielding **120 entities / 171 observations** on 2026-11-15. Future counts are authoritative in the linked validation receipt, not this historical count. Creator roles are provider-declared team memberships, not claims of sole authorship or full mod catalogs.
+
+The bounded official Modrinth refresh is configured hourly at minute 23 UTC for three explicitly selected project IDs. It fetches at most six anonymous API responses, excludes private/account fields, and preserves last-good data on failure. Source receipt distinguishes attempts from successful observation time. Scheduled execution can be delayed or disabled by GitHub; freshness must be checked, not assumed. Other providers are not automatically refreshed yet.
+
+The original snapshot has eight game namespaces and eight source scopes. It remains a dated reviewed snapshot; the separate latest artifact receives the bounded Modrinth refresh, not comprehensive multi-provider coverage. Missing records never prove compatibility or safety. LOOT conditions remain unevaluated; do not present conditional warnings as unconditional bad-mod verdicts.
 
 ## Use it
 

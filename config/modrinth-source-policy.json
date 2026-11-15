@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "source": "modrinth",
+  "enabled": true,
+  "public_metadata_only": true,
+  "allow_retain": true,
+  "allow_publish": true,
+  "revision": "modrinth-public-project-team-metadata-2026-11-15",
+  "api_origin": "https://api.modrinth.com/v2",
+  "project_ids": ["AANobbMI", "gvQqBUqZ", "YL57xq9U"],
+  "max_projects": 3,
+  "max_members_per_team": 100,
+  "max_response_bytes": 1048576,
+  "timeout_seconds": 20,
+  "policy_urls": ["https://docs.modrinth.com/api/", "https://docs.modrinth.com/api/operations/getteammembers/"],
+  "scope": "Unauthenticated public project and accepted team-member metadata only. No account email/name/bio/payouts, bodies, assets, files or private data. Team membership is not sole authorship or a complete creator catalog."
+}
