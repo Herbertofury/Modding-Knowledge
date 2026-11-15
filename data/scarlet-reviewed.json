@@ -1,0 +1,207 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "partial: first 10 of 7907 SFW rows; no NSFW/archive coverage; manually transcribed from live browser",
+  "games": {
+    "sims4": "The Sims 4"
+  },
+  "sources": {
+    "scarlet-public-sfw": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/"
+  },
+  "source_policy_revisions": {
+    "scarlet-public-sfw": "scarlet-user-reported-permission-factual-sample-v1"
+  },
+  "entities": [
+    {
+      "id": "scarlet:mod:a5afbf9861b8c48570e2c5743d18f025",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "100 Base Game Traits Pack v1"
+    },
+    {
+      "id": "scarlet:mod:f6e857de9b6beae6a205b390aaaa73b9",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "100 Base Game Traits Pack V2"
+    },
+    {
+      "id": "scarlet:mod:568d690deab8397864aa01a3fbb68b6e",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "100 Historical Titles"
+    },
+    {
+      "id": "scarlet:mod:d007f74d9d1652e70df910d54c4197f2",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "100 Million Simoleons"
+    },
+    {
+      "id": "scarlet:mod:79ab2c358ca54ada7f8eec6ae7c315e6",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "100 Social Interactions Mod"
+    },
+    {
+      "id": "scarlet:mod:06f56cfc887998730408fba7d07644e1",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "15 Clubs Per Sim"
+    },
+    {
+      "id": "scarlet:mod:2ac18f8051edc3692d93b7df333b6a80",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "15 Hour Active Career Day with better Wages"
+    },
+    {
+      "id": "scarlet:mod:8d6b4ff9f4fd763929c843355ca2924a",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "2014 CAS Sim Presets"
+    },
+    {
+      "id": "scarlet:mod:be07732b3c7fcc9efd53e0151de8ef47",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "21 Days Seasons instead of 28 Days"
+    },
+    {
+      "id": "scarlet:mod:818660eda8a6bcd96616917ae466e3fb",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "25 Vacation Days (School Mod)"
+    }
+  ],
+  "observations": [
+    {
+      "id": "scarlet:mod:a5afbf9861b8c48570e2c5743d18f025:2026-11-15",
+      "entity_id": "scarlet:mod:a5afbf9861b8c48570e2c5743d18f025",
+      "source_id": "scarlet-public-sfw",
+      "source_url": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+      "predicate": "provider_claim.mod_status",
+      "value": "{\"creator_display_label\":\"Vicky Sims (chingyu1023)\",\"distribution_url\":\"https://www.patreon.com/posts/41969378\",\"source_status\":\"Unknown\",\"source_note_qualifier\":null,\"last_known_update_label\":\"Sep 20, 2023\",\"last_status_change\":\"2025-08-31\",\"source_patch\":\"1.129\",\"source_total\":7907,\"captured_rows\":10,\"status_is_source_claim_not_game_test\":true,\"notes_not_reproduced\":true,\"interpretation\":\"Consult source notes before acting; Broken may apply only to optional components, Flagged/Removed are not malware verdicts; absence/Unknown is not safe.\"}",
+      "observed_unix": 1794700800,
+      "applicable_build": "1.129",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "scarlet-user-reported-permission-factual-sample-v1"
+    },
+    {
+      "id": "scarlet:mod:f6e857de9b6beae6a205b390aaaa73b9:2026-11-15",
+      "entity_id": "scarlet:mod:f6e857de9b6beae6a205b390aaaa73b9",
+      "source_id": "scarlet-public-sfw",
+      "source_url": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+      "predicate": "provider_claim.mod_status",
+      "value": "{\"creator_display_label\":\"Vicky Sims (chingyu1023)\",\"distribution_url\":\"https://www.patreon.com/posts/54477138\",\"source_status\":\"Broken\",\"source_note_qualifier\":\"Broken status specifically concerns optional CommonTraitsMenu.package; see linked source for remaining context.\",\"last_known_update_label\":\"Sep 20, 2023\",\"last_status_change\":\"2025-08-20\",\"source_patch\":\"1.129\",\"source_total\":7907,\"captured_rows\":10,\"status_is_source_claim_not_game_test\":true,\"notes_not_reproduced\":true,\"interpretation\":\"Consult source notes before acting; Broken may apply only to optional components, Flagged/Removed are not malware verdicts; absence/Unknown is not safe.\"}",
+      "observed_unix": 1794700800,
+      "applicable_build": "1.129",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "scarlet-user-reported-permission-factual-sample-v1"
+    },
+    {
+      "id": "scarlet:mod:568d690deab8397864aa01a3fbb68b6e:2026-11-15",
+      "entity_id": "scarlet:mod:568d690deab8397864aa01a3fbb68b6e",
+      "source_id": "scarlet-public-sfw",
+      "source_url": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+      "predicate": "provider_claim.mod_status",
+      "value": "{\"creator_display_label\":\"llazyneiph\",\"distribution_url\":\"https://www.patreon.com/posts/149551497\",\"source_status\":\"Unknown\",\"source_note_qualifier\":null,\"last_known_update_label\":\"Mar 23, 2026\",\"last_status_change\":\"2026-08-25\",\"source_patch\":\"1.129\",\"source_total\":7907,\"captured_rows\":10,\"status_is_source_claim_not_game_test\":true,\"notes_not_reproduced\":true,\"interpretation\":\"Consult source notes before acting; Broken may apply only to optional components, Flagged/Removed are not malware verdicts; absence/Unknown is not safe.\"}",
+      "observed_unix": 1794700800,
+      "applicable_build": "1.129",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "scarlet-user-reported-permission-factual-sample-v1"
+    },
+    {
+      "id": "scarlet:mod:d007f74d9d1652e70df910d54c4197f2:2026-11-15",
+      "entity_id": "scarlet:mod:d007f74d9d1652e70df910d54c4197f2",
+      "source_id": "scarlet-public-sfw",
+      "source_url": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+      "predicate": "provider_claim.mod_status",
+      "value": "{\"creator_display_label\":\"Nemesims\",\"distribution_url\":\"https://www.curseforge.com/sims4/mods/mod-100-millions-de-simflouz\",\"source_status\":\"Unknown\",\"source_note_qualifier\":null,\"last_known_update_label\":\"Mar 5, 2025\",\"last_status_change\":\"2025-07-10\",\"source_patch\":\"1.129\",\"source_total\":7907,\"captured_rows\":10,\"status_is_source_claim_not_game_test\":true,\"notes_not_reproduced\":true,\"interpretation\":\"Consult source notes before acting; Broken may apply only to optional components, Flagged/Removed are not malware verdicts; absence/Unknown is not safe.\"}",
+      "observed_unix": 1794700800,
+      "applicable_build": "1.129",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "scarlet-user-reported-permission-factual-sample-v1"
+    },
+    {
+      "id": "scarlet:mod:79ab2c358ca54ada7f8eec6ae7c315e6:2026-11-15",
+      "entity_id": "scarlet:mod:79ab2c358ca54ada7f8eec6ae7c315e6",
+      "source_id": "scarlet-public-sfw",
+      "source_url": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+      "predicate": "provider_claim.mod_status",
+      "value": "{\"creator_display_label\":\"maplebell\",\"distribution_url\":\"https://maplebellmods.com/mods/retired/\",\"source_status\":\"Obsolete\",\"source_note_qualifier\":null,\"last_known_update_label\":null,\"last_status_change\":\"2026-11-13\",\"source_patch\":\"1.129\",\"source_total\":7907,\"captured_rows\":10,\"status_is_source_claim_not_game_test\":true,\"notes_not_reproduced\":true,\"interpretation\":\"Consult source notes before acting; Broken may apply only to optional components, Flagged/Removed are not malware verdicts; absence/Unknown is not safe.\"}",
+      "observed_unix": 1794700800,
+      "applicable_build": "1.129",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "scarlet-user-reported-permission-factual-sample-v1"
+    },
+    {
+      "id": "scarlet:mod:06f56cfc887998730408fba7d07644e1:2026-11-15",
+      "entity_id": "scarlet:mod:06f56cfc887998730408fba7d07644e1",
+      "source_id": "scarlet-public-sfw",
+      "source_url": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+      "predicate": "provider_claim.mod_status",
+      "value": "{\"creator_display_label\":\"King Zace\",\"distribution_url\":\"https://www.patreon.com/posts/15-clubs-per-sim-68630075\",\"source_status\":\"Updated\",\"source_note_qualifier\":null,\"last_known_update_label\":\"Nov 7, 2026\",\"last_status_change\":\"2026-11-09\",\"source_patch\":\"1.129\",\"source_total\":7907,\"captured_rows\":10,\"status_is_source_claim_not_game_test\":true,\"notes_not_reproduced\":true,\"interpretation\":\"Consult source notes before acting; Broken may apply only to optional components, Flagged/Removed are not malware verdicts; absence/Unknown is not safe.\"}",
+      "observed_unix": 1794700800,
+      "applicable_build": "1.129",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "scarlet-user-reported-permission-factual-sample-v1"
+    },
+    {
+      "id": "scarlet:mod:2ac18f8051edc3692d93b7df333b6a80:2026-11-15",
+      "entity_id": "scarlet:mod:2ac18f8051edc3692d93b7df333b6a80",
+      "source_id": "scarlet-public-sfw",
+      "source_url": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+      "predicate": "provider_claim.mod_status",
+      "value": "{\"creator_display_label\":\"mummy_001\",\"distribution_url\":\"https://modthesims.info/d/569844/\",\"source_status\":\"Unknown\",\"source_note_qualifier\":null,\"last_known_update_label\":null,\"last_status_change\":null,\"source_patch\":\"1.129\",\"source_total\":7907,\"captured_rows\":10,\"status_is_source_claim_not_game_test\":true,\"notes_not_reproduced\":true,\"interpretation\":\"Consult source notes before acting; Broken may apply only to optional components, Flagged/Removed are not malware verdicts; absence/Unknown is not safe.\"}",
+      "observed_unix": 1794700800,
+      "applicable_build": "1.129",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "scarlet-user-reported-permission-factual-sample-v1"
+    },
+    {
+      "id": "scarlet:mod:8d6b4ff9f4fd763929c843355ca2924a:2026-11-15",
+      "entity_id": "scarlet:mod:8d6b4ff9f4fd763929c843355ca2924a",
+      "source_id": "scarlet-public-sfw",
+      "source_url": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+      "predicate": "provider_claim.mod_status",
+      "value": "{\"creator_display_label\":\"Raseca\",\"distribution_url\":\"https://modthesims.info/d/692001/2014-cas-sim-presets.html\",\"source_status\":\"Unknown\",\"source_note_qualifier\":null,\"last_known_update_label\":null,\"last_status_change\":null,\"source_patch\":\"1.129\",\"source_total\":7907,\"captured_rows\":10,\"status_is_source_claim_not_game_test\":true,\"notes_not_reproduced\":true,\"interpretation\":\"Consult source notes before acting; Broken may apply only to optional components, Flagged/Removed are not malware verdicts; absence/Unknown is not safe.\"}",
+      "observed_unix": 1794700800,
+      "applicable_build": "1.129",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "scarlet-user-reported-permission-factual-sample-v1"
+    },
+    {
+      "id": "scarlet:mod:be07732b3c7fcc9efd53e0151de8ef47:2026-11-15",
+      "entity_id": "scarlet:mod:be07732b3c7fcc9efd53e0151de8ef47",
+      "source_id": "scarlet-public-sfw",
+      "source_url": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+      "predicate": "provider_claim.mod_status",
+      "value": "{\"creator_display_label\":\"LittleMsSam\",\"distribution_url\":\"https://lms-mods.com/#gameplay\",\"source_status\":\"No Known Issues\",\"source_note_qualifier\":null,\"last_known_update_label\":null,\"last_status_change\":\"2026-10-27\",\"source_patch\":\"1.129\",\"source_total\":7907,\"captured_rows\":10,\"status_is_source_claim_not_game_test\":true,\"notes_not_reproduced\":true,\"interpretation\":\"Consult source notes before acting; Broken may apply only to optional components, Flagged/Removed are not malware verdicts; absence/Unknown is not safe.\"}",
+      "observed_unix": 1794700800,
+      "applicable_build": "1.129",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "scarlet-user-reported-permission-factual-sample-v1"
+    },
+    {
+      "id": "scarlet:mod:818660eda8a6bcd96616917ae466e3fb:2026-11-15",
+      "entity_id": "scarlet:mod:818660eda8a6bcd96616917ae466e3fb",
+      "source_id": "scarlet-public-sfw",
+      "source_url": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+      "predicate": "provider_claim.mod_status",
+      "value": "{\"creator_display_label\":\"FrequentlyBasic / MSQSIMS\",\"distribution_url\":\"https://www.patreon.com/posts/status-for-mods-133496466\",\"source_status\":\"No Known Issues\",\"source_note_qualifier\":null,\"last_known_update_label\":\"Feb 4, 2026\",\"last_status_change\":\"2026-11-02\",\"source_patch\":\"1.129\",\"source_total\":7907,\"captured_rows\":10,\"status_is_source_claim_not_game_test\":true,\"notes_not_reproduced\":true,\"interpretation\":\"Consult source notes before acting; Broken may apply only to optional components, Flagged/Removed are not malware verdicts; absence/Unknown is not safe.\"}",
+      "observed_unix": 1794700800,
+      "applicable_build": "1.129",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "scarlet-user-reported-permission-factual-sample-v1"
+    }
+  ]
+}

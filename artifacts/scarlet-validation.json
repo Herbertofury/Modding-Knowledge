@@ -1,0 +1,14 @@
+{
+  "source": "https://scarletsrealm.com/the-mod-list-sfw-only-edition/",
+  "coverage": "10 of 7907 SFW visible source rows; partial",
+  "observed_date": "2026-11-15",
+  "observed_time_precision": "day",
+  "entities": 10,
+  "observations": 10,
+  "integrity_check": "ok",
+  "foreign_key_violations": [],
+  "native_replay_reopen_exact_equality": true,
+  "projection_tests_passed": 6,
+  "sha256_gzip": "2e8516dc11060c556a796826767706a88316c965df9399beef56230443cc77b6",
+  "combined_latest_contains_sample": false
+}
