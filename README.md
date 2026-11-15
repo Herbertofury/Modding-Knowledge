@@ -32,7 +32,7 @@ python tools/validate_snapshot.py new-snapshot.sqlite
 cargo run --locked --example query -- new-snapshot.sqlite modrinth:project:AANobbMI
 ```
 
-Or decompress the supplied `.sqlite.gz`, verify its SHA256 against `validation.json`, and query SQLite. Rust consumers can use the library API described in [Storage/API](docs/storage-api.md). The Rust package retains its original `athena-mod-knowledge` name for continuity. There is no hosted HTTP API yet.
+Or decompress the supplied `.sqlite.gz`, verify its SHA256 against `validation.json` for the original dated artifact or `artifacts/latest-validation.json` for the latest artifact, and query SQLite. Rust consumers can use the library API described in [Storage/API](docs/storage-api.md). The Rust package retains its original `athena-mod-knowledge` name for continuity. There is no hosted HTTP API yet.
 
 ```sql
 SELECT e.name,o.predicate,o.value,o.source_url,o.observed_unix,
@@ -56,7 +56,7 @@ ORDER BY e.name,o.observed_unix DESC,o.id;
 
 ## Verification and limits
 
-Actual Rust imports, exact replay/reopen equality, independent SQLite integrity/FK checks and six tests passed locally. Existing-output refusal preserved the original database hash. Windows/Linux CI is included; inspect its exact commit result before claiming hosted acceptance. No native game tests, automatic refresh, full creator inventory, or complete mod corpus is claimed.
+Actual Rust imports, exact replay/reopen equality, independent SQLite integrity/FK checks and six tests passed locally. Existing-output refusal preserved the original database hash. Windows/Linux CI is included; inspect its exact commit result before claiming hosted acceptance. Automatic refresh is implemented only for the bounded Modrinth scope described above; other providers are not automatically refreshed. No native game tests, full creator inventory, or complete mod corpus is claimed.
 
 ## Provenance and licensing
 
