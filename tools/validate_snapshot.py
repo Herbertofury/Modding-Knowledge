@@ -30,7 +30,9 @@ def validate_contents(conn, bundle):
     entity_keys = ['id', 'game_id', 'kind', 'name']
     entities = [dict(zip(entity_keys, row)) for row in conn.execute(
         'select id,game_id,kind,name from entities order by id')]
-    require(entities == sorted(bundle['entities'], key=lambda r: r['id']), 'Entity manifest mismatch')
+    # Manifest entities may carry provenance metadata not persisted by the native seeder.
+    expected_entities = [{key: row[key] for key in entity_keys} for row in bundle['entities']]
+    require(entities == sorted(expected_entities, key=lambda r: r['id']), 'Entity manifest mismatch')
     revisions = bundle.get('source_policy_revisions', {})
     sources = conn.execute(
         'select id,policy_url,can_retain,can_publish,policy_revision from sources order by id'
