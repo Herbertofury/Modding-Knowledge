@@ -1,0 +1,10 @@
+{
+  "source_commit": "b3ffc84f6d730f6efb5083448d78611df16e8d78",
+  "source_blob": "8c613acedf019890b950e4c4b2450151cead1025",
+  "source_sha256": "6719a5a390e83b9dc33780597231a0f6945f090ae69079e70fdb7ef4cd30b83c",
+  "observed_unix": 1794703875,
+  "upstream_plugin_rows": 4745,
+  "imported_plugin_rows": 4745,
+  "scope": "All rows of this pinned document only; conditions unevaluated; not all mods or verified compatibility",
+  "license": "CC0-1.0"
+}

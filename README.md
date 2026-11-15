@@ -23,6 +23,10 @@ The bounded official Modrinth refresh is configured hourly at minute 23 UTC for 
 
 The original snapshot has eight game namespaces and eight source scopes. It remains a dated reviewed snapshot; the separate latest artifact receives the bounded Modrinth refresh, not comprehensive multi-provider coverage. Missing records never prove compatibility or safety. LOOT conditions remain unevaluated; do not present conditional warnings as unconditional bad-mod verdicts.
 
+## Complete pinned LOOT source tranche
+
+The latest snapshot now includes all **4,745 plugin metadata rows** from the reviewed LOOT Oblivion source commit `b3ffc84f6d730f6efb5083448d78611df16e8d78`, plus top-level context. This replaces the 100-row sample in the latest projection, not its preserved original artifact. Total current counts are in the latest validation manifest. This is complete coverage of that single source document, **not every mod or evaluated compatibility**. [Importer, provenance and limits](docs/loot-import.md). LOOT is not automatically refreshed yet.
+
 ## Use it
 
 ```sh

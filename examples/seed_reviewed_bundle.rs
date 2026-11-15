@@ -56,8 +56,13 @@ fn main() -> Result<()> {
             policy_revision: s(r, "policy_revision")?.into(),
         });
     }
-    store.import(&rows)?;
-    store.import(&rows)?; // byte-identical replay must not add duplicates
+    // Each transaction stays bounded; incomplete staging is never published.
+    for chunk in rows.chunks(500) {
+        store.import(chunk)?;
+    }
+    for chunk in rows.chunks(500) {
+        store.import(chunk)?; // byte-identical replay must not add duplicates
+    }
     drop(store);
     let reopened = Store::open(&stage)?;
     let mut found = 0;
