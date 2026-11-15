@@ -61,7 +61,12 @@ def fetch(endpoint):
     except urllib.error.HTTPError as error:
         if error.code==429:
             retry=error.headers.get('Retry-After','3600')
-            seconds=int(retry) if retry.isdigit() else 3600
+            if retry.isdigit(): seconds=int(retry)
+            else:
+                try:
+                    until=dt.datetime.strptime(retry,'%a, %d %b %Y %H:%M:%S GMT').replace(tzinfo=dt.timezone.utc)
+                    seconds=max(60,int((until-dt.datetime.now(dt.timezone.utc)).total_seconds()))
+                except ValueError: seconds=86400
             raise RateLimited(max(seconds,60)) from None
         raise
 
@@ -83,6 +88,13 @@ def project_projection(raw,expected,at):
     lic=selected['license']
     if not isinstance(lic,dict): raise ValueError('Missing license claim')
     selected['license']={k:lic.get(k) for k in ['id','name','url']}
+    for key in ['organization','status','client_side','server_side']:
+        if selected[key] is not None and (not isinstance(selected[key],str) or len(selected[key])>100):
+            raise ValueError('Invalid metadata scalar')
+    for key,value in selected['license'].items():
+        if value is not None and (not isinstance(value,str) or len(value)>2048):
+            raise ValueError('Invalid license scalar')
+
     for key in ['source_url','issues_url','wiki_url']:
         link=selected[key]
         if link is not None:

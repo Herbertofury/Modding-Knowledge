@@ -21,4 +21,4 @@ Policy withdrawal disables new reads/import builds. Previously published data re
 
 ## Tests and real evidence
 
-Five offline tests cover denied policy/no request, whitelist redaction, partial/mismatched batch rejection, exact last-good preservation and rate-limit backoff. Real anonymous fetching and native creator querying were executed separately; mocked tests alone are not claimed as live acceptance. Current integration has six Rust tests plus these five Python tests.
+Six offline tests cover denied policy/no request, whitelist redaction, partial/mismatched batch rejection, exact last-good preservation and rate-limit backoff. Real anonymous fetching and native creator querying were executed separately; mocked tests alone are not claimed as live acceptance. Current integration has six Rust tests plus these six Python tests.

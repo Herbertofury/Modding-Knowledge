@@ -19,6 +19,9 @@ class RefreshTests(unittest.TestCase):
   return [{'team_id':'4reLOAKe','accepted':True,'role':'Maintainer','permissions':123,'user':{'id':'DzLrfrbK','username':'test_creator','email':'private-test-sentinel','name':'private-test-sentinel','bio':'private-test-sentinel'}}]
  def test_projection_redacts_unrequested_fields(self):
   self.assertTrue(m.refresh(self.root,self.fetch,NOW));p=self.root/'data/live/modrinth-current.json';raw=p.read_text();self.assertNotIn('private-test-sentinel',raw);self.assertNotIn('must-not-publish',raw);data=json.loads(raw);self.assertEqual(data['observed_creator_accounts'],1);self.assertEqual(data['completeness'],'partial')
+ def test_nested_unexpected_metadata_is_rejected(self):
+  raw=self.fetch('project/AANobbMI');raw['organization']={'email':'private-test-sentinel'}
+  with self.assertRaises(ValueError):m.project_projection(raw,'AANobbMI',NOW)
  def test_failure_preserves_exact_last_good(self):
   m.refresh(self.root,self.fetch,NOW);p=self.root/'data/live/modrinth-current.json';before=p.read_bytes()
   def failing(_):raise ValueError('failure body must never be retained')
