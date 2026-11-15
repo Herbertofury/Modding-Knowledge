@@ -41,6 +41,10 @@ context=json.loads((data/'loot-source-context.json').read_text(encoding='utf-8')
 template=b['observations'][0]
 bundle['entities'].append({'id':context_id,'game_id':b['entities'][0]['game_id'],'kind':'guide','name':'LOOT source context, unevaluated'})
 bundle['observations'].append({**template,'id':context_id+':'+str(template['observed_unix']),'entity_id':context_id,'predicate':'unevaluated_source_context','value':json.dumps(context,ensure_ascii=False,separators=(',',':'))})
+health=json.loads((data/'github-health-reviewed.json').read_text(encoding='utf-8'))
+bundle['sources']['github-reviewed-public-facts']='https://docs.github.com/en/site-policy/github-terms/github-terms-of-service'
+bundle['source_policy_revisions']['github-reviewed-public-facts']=health['source_policy_revision']
+bundle['observations'].extend(health['observations'])
 for section in ('entities','observations'):
     rows=bundle[section]
     assert len({r['id'] for r in rows})==len(rows), 'Duplicate identities'

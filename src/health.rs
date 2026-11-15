@@ -137,7 +137,7 @@ impl Store {
         Ok(
             json!({"entity_id":entity,"game_build":build,"mod_version":version,"context":context,
             "as_of_unix":now,"max_age_seconds":max_age,"state":state,"compatibility_verdict":"not_determined",
-            "independent_lineages":lineage.len(),"invalid_claims":invalid,"claims":claims,
+            "distinct_report_lineages":lineage.len(),"invalid_claims":invalid,"claims":claims,
             "coverage":"source_bounded_not_exhaustive","authority_note":"Official release authority is not proof of compatibility; lineages are adapter-reviewed, not votes."}),
         )
     }

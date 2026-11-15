@@ -56,6 +56,11 @@ fn main() -> Result<()> {
             policy_revision: s(r, "policy_revision")?.into(),
         });
     }
+    for row in &rows {
+        if row.predicate == "health_claim_v1" {
+            athena_mod_knowledge::health::validate_claim(row)?;
+        }
+    }
     // Each transaction stays bounded; incomplete staging is never published.
     for chunk in rows.chunks(500) {
         store.import(chunk)?;

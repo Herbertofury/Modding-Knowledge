@@ -25,7 +25,7 @@ fn unknown_conflict_scope_and_lineage() {
         .health_report("mod", "1.2", "1.0", "runtime:test;loader:test", 3, 5)
         .unwrap();
     assert_eq!(r["state"], "conflicting");
-    assert_eq!(r["independent_lineages"], 1);
+    assert_eq!(r["distinct_report_lineages"], 1);
     assert_eq!(r["claims"].as_array().unwrap().len(), 2);
     assert_eq!(
         s.health_report("mod", "remastered", "1.0", "runtime:test;loader:test", 3, 5)
