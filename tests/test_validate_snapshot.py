@@ -49,6 +49,7 @@ class SnapshotValidation(unittest.TestCase):
             "insert into entities values ('extra','game','guide','Extra')",
             "insert into sources values ('extra','https://example.org',1,1,'reviewed-test')",
             "pragma user_version=2",
+            "insert into refresh_attempts values (1,\'source\',1,\'failed\',\'unreviewed response body\')",
         ]:
             with self.subTest(statement=statement):
                 self.conn.execute('savepoint mutation')
