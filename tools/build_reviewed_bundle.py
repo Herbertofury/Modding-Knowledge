@@ -45,5 +45,5 @@ for section in ('entities','observations'):
     rows=bundle[section]
     assert len({r['id'] for r in rows})==len(rows), 'Duplicate identities'
     rows.sort(key=lambda x:x['id'])
-(data/'reviewed-bundle.json').write_text(json.dumps(bundle,indent=2,ensure_ascii=False)+'\n')
+(data/'reviewed-bundle.json').write_text(json.dumps(bundle,indent=2,ensure_ascii=False)+'\n',encoding='utf-8',newline='\n')
 print({k:len(bundle[k]) for k in ('games','sources','entities','observations')})
