@@ -3,7 +3,7 @@ import hashlib,json,sqlite3,sys
 from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 p=Path(sys.argv[1]).resolve()
-bundle=json.loads((root/'data/reviewed-bundle.json').read_text())
+bundle=json.loads((root/'data/reviewed-bundle.json').read_text(encoding='utf-8'))
 conn=sqlite3.connect(p.as_uri()+'?mode=ro',uri=True)
 assert conn.execute('pragma integrity_check').fetchall()==[('ok',)]
 assert conn.execute('pragma foreign_key_check').fetchall()==[]
