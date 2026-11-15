@@ -1,0 +1,92 @@
+[
+  {
+    "id": "AANobbMI",
+    "slug": "sodium",
+    "title": "Sodium",
+    "project_type": "mod",
+    "team": "4reLOAKe",
+    "organization": "LjcZDkRW",
+    "source_url": "https://github.com/CaffeineMC/sodium",
+    "issues_url": "https://github.com/CaffeineMC/sodium/issues",
+    "wiki_url": "https://github.com/CaffeineMC/sodium/wiki",
+    "license": {
+      "id": "LicenseRef-Polyform-Shield-1.0.0",
+      "name": "",
+      "url": "https://github.com/CaffeineMC/sodium/blob/dev/LICENSE.md"
+    },
+    "published": "2021-01-03T00:53:34.185936Z",
+    "updated": "2026-11-12T01:12:30.162066Z",
+    "status": "approved",
+    "loaders": [
+      "fabric",
+      "neoforge",
+      "quilt"
+    ],
+    "client_side": "required",
+    "server_side": "unsupported",
+    "source_url_api": "https://api.modrinth.com/v2/project/sodium",
+    "observed_at": "2026-11-14T23:11:42.686757+00:00",
+    "scope": "Public project metadata; not compatibility verification; no bodies/images/files copied",
+    "observed_unix": 1794697902
+  },
+  {
+    "id": "gvQqBUqZ",
+    "slug": "lithium",
+    "title": "Lithium",
+    "project_type": "mod",
+    "team": "peSx5UYg",
+    "organization": "LjcZDkRW",
+    "source_url": "https://github.com/caffeinemc/lithium-fabric",
+    "issues_url": "https://github.com/caffeinemc/lithium-fabric/issues",
+    "wiki_url": null,
+    "license": {
+      "id": "LGPL-3.0-only",
+      "name": "GNU Lesser General Public License v3.0 only",
+      "url": null
+    },
+    "published": "2021-01-03T00:56:52.292581Z",
+    "updated": "2026-10-28T22:31:14.530840Z",
+    "status": "approved",
+    "loaders": [
+      "fabric",
+      "neoforge",
+      "quilt"
+    ],
+    "client_side": "optional",
+    "server_side": "optional",
+    "source_url_api": "https://api.modrinth.com/v2/project/lithium",
+    "observed_at": "2026-11-14T23:11:44.636244+00:00",
+    "scope": "Public project metadata; not compatibility verification; no bodies/images/files copied",
+    "observed_unix": 1794697904
+  },
+  {
+    "id": "YL57xq9U",
+    "slug": "iris",
+    "title": "Iris Shaders",
+    "project_type": "mod",
+    "team": "1HMZl6Mn",
+    "organization": null,
+    "source_url": "https://github.com/IrisShaders/Iris",
+    "issues_url": "https://github.com/IrisShaders/Iris/issues",
+    "wiki_url": null,
+    "license": {
+      "id": "LGPL-3.0-only",
+      "name": "GNU Lesser General Public License v3.0 only",
+      "url": null
+    },
+    "published": "2021-05-27T05:11:15.690120Z",
+    "updated": "2026-09-30T02:58:24.095409Z",
+    "status": "approved",
+    "loaders": [
+      "fabric",
+      "neoforge",
+      "quilt"
+    ],
+    "client_side": "required",
+    "server_side": "unsupported",
+    "source_url_api": "https://api.modrinth.com/v2/project/iris",
+    "observed_at": "2026-11-14T23:11:48.109346+00:00",
+    "scope": "Public project metadata; not compatibility verification; no bodies/images/files copied",
+    "observed_unix": 1794697908
+  }
+]

@@ -1,0 +1,374 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Small factual sample; not full creator/mod inventories; provider declarations, not game-tested results.",
+  "games": {
+    "fallout4": "Fallout 4",
+    "fallout4-vr": "Fallout 4 VR",
+    "skyrim-se": "Skyrim Special Edition",
+    "skyrim-vr": "Skyrim VR",
+    "oblivion": "Oblivion",
+    "oblivion-remastered": "Oblivion Remastered"
+  },
+  "sources": {
+    "f4se": "https://f4se.silverlock.org/",
+    "skse": "https://skse.silverlock.org/",
+    "xobse": "https://github.com/llde/xOBSE",
+    "obse": "https://obse.silverlock.org/",
+    "obse64": "https://github.com/ianpatt/obse64",
+    "loot": "https://loot.readthedocs.io/en/0.29.1/app/usage/main.html"
+  },
+  "entities": [
+    {
+      "id": "github:ianpatt/f4se",
+      "game_id": "fallout4",
+      "kind": "tool",
+      "name": "F4SE",
+      "source_id": "f4se"
+    },
+    {
+      "id": "silverlock:f4se-vr",
+      "game_id": "fallout4-vr",
+      "kind": "tool",
+      "name": "F4SE VR",
+      "source_id": "f4se"
+    },
+    {
+      "id": "github:ianpatt/skse64",
+      "game_id": "skyrim-se",
+      "kind": "tool",
+      "name": "SKSE64",
+      "source_id": "skse"
+    },
+    {
+      "id": "silverlock:skse-vr",
+      "game_id": "skyrim-vr",
+      "kind": "tool",
+      "name": "SKSE VR",
+      "source_id": "skse"
+    },
+    {
+      "id": "github:llde/xOBSE",
+      "game_id": "oblivion",
+      "kind": "tool",
+      "name": "xOBSE",
+      "source_id": "xobse"
+    },
+    {
+      "id": "silverlock:obse",
+      "game_id": "oblivion",
+      "kind": "tool",
+      "name": "Original OBSE",
+      "source_id": "obse"
+    },
+    {
+      "id": "github:ianpatt/obse64",
+      "game_id": "oblivion-remastered",
+      "kind": "tool",
+      "name": "OBSE64",
+      "source_id": "obse64"
+    },
+    {
+      "id": "github:loot/loot:skyrim-se",
+      "game_id": "skyrim-se",
+      "kind": "tool",
+      "name": "LOOT",
+      "source_id": "loot"
+    },
+    {
+      "id": "github:loot/loot:fallout4",
+      "game_id": "fallout4",
+      "kind": "tool",
+      "name": "LOOT",
+      "source_id": "loot"
+    },
+    {
+      "id": "github:loot/loot:oblivion",
+      "game_id": "oblivion",
+      "kind": "tool",
+      "name": "LOOT",
+      "source_id": "loot"
+    },
+    {
+      "id": "github:loot/loot:oblivion-remastered",
+      "game_id": "oblivion-remastered",
+      "kind": "tool",
+      "name": "LOOT",
+      "source_id": "loot"
+    }
+  ],
+  "observations": [
+    {
+      "id": "github:ianpatt/f4se:bethesda-2026-11-14:1",
+      "entity_id": "github:ianpatt/f4se",
+      "source_id": "f4se",
+      "source_url": "https://f4se.silverlock.org/",
+      "predicate": "provider_declared_runtime",
+      "value": "Official download mapping: Fallout 4 1.11.240 to F4SE 0.7.9. Not an independently tested compatibility result.",
+      "observed_unix": 1794698519,
+      "applicable_build": "1.11.240",
+      "mod_version": "0.7.9",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:ianpatt/f4se:bethesda-2026-11-14:2",
+      "entity_id": "github:ianpatt/f4se",
+      "source_id": "f4se",
+      "source_url": "https://f4se.silverlock.org/",
+      "predicate": "provider_declared_runtime",
+      "value": "Official download mapping: Fallout 4 1.10.984 to F4SE 0.7.2. Not an independently tested compatibility result.",
+      "observed_unix": 1794698519,
+      "applicable_build": "1.10.984",
+      "mod_version": "0.7.2",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:ianpatt/f4se:bethesda-2026-11-14:3",
+      "entity_id": "github:ianpatt/f4se",
+      "source_id": "f4se",
+      "source_url": "https://f4se.silverlock.org/",
+      "predicate": "provider_declared_runtime",
+      "value": "Official download mapping: Fallout 4 1.10.163 to F4SE 0.6.23. Not an independently tested compatibility result.",
+      "observed_unix": 1794698519,
+      "applicable_build": "1.10.163",
+      "mod_version": "0.6.23",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:ianpatt/f4se:bethesda-2026-11-14:4",
+      "entity_id": "github:ianpatt/f4se",
+      "source_id": "f4se",
+      "source_url": "https://f4se.silverlock.org/",
+      "predicate": "unsupported_storefront",
+      "value": "Provider excludes Windows Store builds; Steam and GOG may have different runtimes.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "silverlock:f4se-vr:bethesda-2026-11-14:5",
+      "entity_id": "silverlock:f4se-vr",
+      "source_id": "f4se",
+      "source_url": "https://f4se.silverlock.org/",
+      "predicate": "provider_declared_runtime",
+      "value": "VR-only download mapping; do not use as a desktop Fallout 4 build.",
+      "observed_unix": 1794698519,
+      "applicable_build": "1.2.72",
+      "mod_version": "0.6.21",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:ianpatt/skse64:bethesda-2026-11-14:6",
+      "entity_id": "github:ianpatt/skse64",
+      "source_id": "skse",
+      "source_url": "https://skse.silverlock.org/",
+      "predicate": "provider_declared_runtime",
+      "value": "Official mapping for Steam AE; verify installed executable version before choosing.",
+      "observed_unix": 1794698519,
+      "applicable_build": "1.7.104",
+      "mod_version": "2.3.1",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:ianpatt/skse64:bethesda-2026-11-14:7",
+      "entity_id": "github:ianpatt/skse64",
+      "source_id": "skse",
+      "source_url": "https://skse.silverlock.org/",
+      "predicate": "provider_declared_runtime",
+      "value": "Official mapping for GOG AE; verify installed executable version before choosing.",
+      "observed_unix": 1794698519,
+      "applicable_build": "1.6.1179",
+      "mod_version": "2.2.6",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:ianpatt/skse64:bethesda-2026-11-14:8",
+      "entity_id": "github:ianpatt/skse64",
+      "source_id": "skse",
+      "source_url": "https://skse.silverlock.org/",
+      "predicate": "provider_declared_runtime",
+      "value": "Official mapping for older SE; verify installed executable version before choosing.",
+      "observed_unix": 1794698519,
+      "applicable_build": "1.5.97",
+      "mod_version": "2.0.20",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:ianpatt/skse64:bethesda-2026-11-14:9",
+      "entity_id": "github:ianpatt/skse64",
+      "source_id": "skse",
+      "source_url": "https://skse.silverlock.org/",
+      "predicate": "unsupported_storefront",
+      "value": "Provider excludes Windows Store/Game Pass and Epic releases.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:ianpatt/skse64:bethesda-2026-11-14:10",
+      "entity_id": "github:ianpatt/skse64",
+      "source_id": "skse",
+      "source_url": "https://skse.silverlock.org/",
+      "predicate": "startup_diagnostic",
+      "value": "After a patch, native SKSE plugins may need updates. Provider recommends checking game startup without SKSE and isolating Data/SKSE/Plugins. Athena safety addition: preserve files and saves; use a reversible test profile, not deletion.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "silverlock:skse-vr:bethesda-2026-11-14:11",
+      "entity_id": "silverlock:skse-vr",
+      "source_id": "skse",
+      "source_url": "https://skse.silverlock.org/",
+      "predicate": "provider_declared_runtime",
+      "value": "VR download mapping; not a Skyrim SE runtime mapping.",
+      "observed_unix": 1794698519,
+      "applicable_build": "1.4.15",
+      "mod_version": "2.0.12",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:llde/xOBSE:bethesda-2026-11-14:12",
+      "entity_id": "github:llde/xOBSE",
+      "source_id": "xobse",
+      "source_url": "https://github.com/llde/xOBSE",
+      "predicate": "catalog_description",
+      "value": "Community-maintained classic Oblivion Script Extender fork. No Remastered compatibility claim.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:llde/xOBSE:bethesda-2026-11-14:13",
+      "entity_id": "github:llde/xOBSE",
+      "source_id": "xobse",
+      "source_url": "https://github.com/llde/xOBSE",
+      "predicate": "startup_diagnostic",
+      "value": "If loader startup fails, verify files are beside Oblivion.exe and inspect obse_loader.log. Steam, retail and MO2 launch instructions differ; follow the matching official instructions.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:llde/xOBSE:bethesda-2026-11-14:14",
+      "entity_id": "github:llde/xOBSE",
+      "source_id": "xobse",
+      "source_url": "https://github.com/llde/xOBSE",
+      "predicate": "mod_manager_guide",
+      "value": "https://github.com/ModOrganizer2/modorganizer/wiki/Running-Oblivion-OBSE-with-MO2",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "silverlock:obse:bethesda-2026-11-14:15",
+      "entity_id": "silverlock:obse",
+      "source_id": "obse",
+      "source_url": "https://obse.silverlock.org/",
+      "predicate": "provider_declared_runtime",
+      "value": "Original OBSE lists classic Oblivion/Shivering Isles, Steam and GOG build 1.2.0.416; GOG requires its linked loader. Do not transfer this mapping to Remastered.",
+      "observed_unix": 1794698519,
+      "applicable_build": "1.2.0.416",
+      "mod_version": "0021",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:ianpatt/obse64:bethesda-2026-11-14:16",
+      "entity_id": "github:ianpatt/obse64",
+      "source_id": "obse64",
+      "source_url": "https://github.com/ianpatt/obse64",
+      "predicate": "provider_declared_storefront",
+      "value": "Official README supports current Steam Oblivion Remastered; exact runtime/build not established in this pass.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:ianpatt/obse64:bethesda-2026-11-14:17",
+      "entity_id": "github:ianpatt/obse64",
+      "source_id": "obse64",
+      "source_url": "https://github.com/ianpatt/obse64",
+      "predicate": "unsupported_storefront",
+      "value": "MS Store/Game Pass is not supported by this project; exposing installed files does not change support.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:loot/loot:skyrim-se:bethesda-2026-11-14:18",
+      "entity_id": "github:loot/loot:skyrim-se",
+      "source_id": "loot",
+      "source_url": "https://loot.readthedocs.io/en/0.29.1/app/usage/main.html",
+      "predicate": "reversible_load_order_workflow",
+      "value": "LOOT backs up before applying a sort or restoring an order. It retains ten automatic backups; manual backups are not automatically deleted. Sorting can fail on dependency cycles. Documentation scope is LOOT 0.29.1, not a promise to fix all crashes.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "0.29.1",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:loot/loot:fallout4:bethesda-2026-11-14:19",
+      "entity_id": "github:loot/loot:fallout4",
+      "source_id": "loot",
+      "source_url": "https://loot.readthedocs.io/en/0.29.1/app/usage/main.html",
+      "predicate": "reversible_load_order_workflow",
+      "value": "LOOT backs up before applying a sort or restoring an order. It retains ten automatic backups; manual backups are not automatically deleted. Sorting can fail on dependency cycles. Documentation scope is LOOT 0.29.1, not a promise to fix all crashes.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "0.29.1",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:loot/loot:oblivion:bethesda-2026-11-14:20",
+      "entity_id": "github:loot/loot:oblivion",
+      "source_id": "loot",
+      "source_url": "https://loot.readthedocs.io/en/0.29.1/app/usage/main.html",
+      "predicate": "reversible_load_order_workflow",
+      "value": "LOOT backs up before applying a sort or restoring an order. It retains ten automatic backups; manual backups are not automatically deleted. Sorting can fail on dependency cycles. Documentation scope is LOOT 0.29.1, not a promise to fix all crashes.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "0.29.1",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:loot/loot:oblivion-remastered:bethesda-2026-11-14:21",
+      "entity_id": "github:loot/loot:oblivion-remastered",
+      "source_id": "loot",
+      "source_url": "https://loot.readthedocs.io/en/0.29.1/app/usage/main.html",
+      "predicate": "reversible_load_order_workflow",
+      "value": "LOOT backs up before applying a sort or restoring an order. It retains ten automatic backups; manual backups are not automatically deleted. Sorting can fail on dependency cycles. Documentation scope is LOOT 0.29.1, not a promise to fix all crashes.",
+      "observed_unix": 1794698519,
+      "applicable_build": "unverified",
+      "mod_version": "0.29.1",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    }
+  ]
+}

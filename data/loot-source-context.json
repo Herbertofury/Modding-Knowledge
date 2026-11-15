@@ -1,0 +1,1167 @@
+{
+  "prelude": {
+    "common": [
+      {
+        "type": "error",
+        "content": "Delete. Already included in {0}."
+      },
+      {
+        "type": "error",
+        "content": "Delete. Already included or otherwise fixed in {0}."
+      },
+      {
+        "type": "say",
+        "content": "It's highly recommended that you also use {0}."
+      },
+      {
+        "type": "say",
+        "content": "This plugin has compatibility issues with {0}. For more information, read this mod's compatibility notes."
+      },
+      {
+        "type": "say",
+        "content": "It is recommended that you read this mod's [Compatibility Notes]({0})."
+      },
+      {
+        "type": "say",
+        "content": "It is recommended that you check the following compatibility patch compilation for this mod: {0}"
+      },
+      {
+        "type": "say",
+        "content": "It is recommended that you check the following compatibility patch compilation for {0}: {1}"
+      },
+      {
+        "type": "warn",
+        "content": "This file is corrupt and should not be used."
+      },
+      {
+        "type": "say",
+        "content": "Deactivate and/or uninstall this mod after character creation."
+      },
+      {
+        "type": "error",
+        "content": "Delete or deactivate. {0}",
+        "subs": [
+          ""
+        ]
+      },
+      {
+        "type": "warn",
+        "content": "When using **{0}**, it's recommended that you deactivate or delete this ESP file but keep the resources (e.g. meshes, textures) installed with this mod."
+      },
+      {
+        "type": "warn",
+        "content": "This file is deprecated and should no longer be used."
+      },
+      {
+        "type": "say",
+        "content": "This plugin may be disabled after generating **{0}** with **{1}**."
+      },
+      {
+        "type": "say",
+        "content": "Do not clean. TES4Edit does not support OBME and may remove records containing OBME data when cleaning."
+      },
+      {
+        "type": "warn",
+        "content": "Another mod seems to be overwriting one of this mod's essential files. Please ensure you're using this mod's version of {0} or a compatible version if available."
+      },
+      {
+        "type": "say",
+        "content": "{0} is included with this mod."
+      },
+      {
+        "type": "say",
+        "content": "Language: {0}"
+      },
+      {
+        "type": "say",
+        "content": "Only use this plugin once the main quest of the game has been completed."
+      },
+      {
+        "type": "say",
+        "content": "The **{0}** master must be reassigned to **{1}**."
+      },
+      {
+        "type": "warn",
+        "content": "It appears you have installed **{1}**, but some of its requirements seem to be missing. Please ensure you have correctly installed **{0}**."
+      },
+      {
+        "type": "warn",
+        "content": "Some of this plugin's requirements seem to be missing. Please ensure you have correctly installed **{0}**."
+      },
+      {
+        "type": "error",
+        "content": "This plugin is a modding resource and should not be used in-game."
+      },
+      {
+        "type": "say",
+        "content": "Move {0} from {1} to {2}."
+      },
+      {
+        "type": "warn",
+        "content": "Obsolete. Update to the latest version. {0}",
+        "subs": [
+          ""
+        ]
+      },
+      {
+        "type": "say",
+        "content": "This plugin is optional."
+      },
+      {
+        "type": "say",
+        "content": "You seem to be using **{0}**, but you have not enabled a compatibility patch for this mod. A third party patch is available here: {1}"
+      },
+      {
+        "type": "say",
+        "content": "{0} patcher script available here: {1}"
+      },
+      {
+        "type": "say",
+        "content": "You seem to be using **{0}**, but you have not enabled a compatibility patch for this mod. A compatibility patch is included with this plugin's installer."
+      },
+      {
+        "type": "warn",
+        "content": "This patch is outdated and may not be compatible with the latest version of the patched mod."
+      },
+      {
+        "type": "say",
+        "content": "You seem to be using **{0}**, but you have not enabled a compatibility patch for this mod. A compatibility patch is provided on this plugin's mod page."
+      },
+      {
+        "type": "warn",
+        "content": "A patch is required to make this mod fully compatible with {0}. None is currently available for download."
+      },
+      {
+        "type": "say",
+        "content": "Update Patch available: {0}"
+      },
+      {
+        "type": "say",
+        "content": "Rename this file to {0}."
+      },
+      {
+        "type": "warn",
+        "content": "You need to rename {0} to {1} or this mod won't work."
+      },
+      {
+        "type": "warn",
+        "content": "Requires resources (e.g. meshes, textures; not plugins) from {0}."
+      },
+      {
+        "type": "warn",
+        "content": "Requires: {0}"
+      },
+      {
+        "type": "say",
+        "content": "It appears you have **{0}** installed. Remember to run **{1}** every time you have installed or uninstalled {2}, or a {2}-based mod."
+      },
+      {
+        "type": "say",
+        "content": "A Bashed Patch tweak can be used instead of this plugin. {0}",
+        "subs": [
+          ""
+        ],
+        "condition": "file(\"Bashed Patch.*\\.esp\")"
+      },
+      {
+        "type": "say",
+        "content": "An INI tweak can be used instead of this plugin. {0}",
+        "subs": [
+          ""
+        ]
+      },
+      {
+        "type": "warn",
+        "content": "Use {0} instead."
+      },
+      {
+        "type": "error",
+        "content": "Use only one {0}."
+      },
+      {
+        "type": "error",
+        "content": "Use {0} version."
+      },
+      {
+        "type": "error",
+        "content": "Use non-{0} version."
+      },
+      {
+        "type": "say",
+        "content": "It appears you do not have the latest version of {0}. Some mods may require functionality added in the latest version of {0} to work."
+      },
+      {
+        "type": "error",
+        "content": "Delete {0} from {1}. {2}'s version must take precedence."
+      },
+      {
+        "type": "say",
+        "content": "Your {0} is up-to-date."
+      },
+      {
+        "type": "error",
+        "content": "Your installed version of {0} is not compatible with your version of {1}."
+      },
+      {
+        "type": "error",
+        "content": "Requires version **{0}** or greater of **{1}**."
+      },
+      {
+        "type": "warn",
+        "content": "This plugin contains [wild edits](https://tes5edit.github.io/docs/7-mod-cleaning-and-error-checking.html#WildEdits) and may require additional manual cleaning to not interfere with other mods. {0}",
+        "subs": [
+          ""
+        ]
+      },
+      {
+        "util": "[TES4Edit](https://www.nexusmods.com/oblivion/mods/11536/)",
+        "detail": "A guide to cleaning plugins using xEdit can be found [here](https://tes5edit.github.io/docs/7-mod-cleaning-and-error-checking.html#ThreeEasyStepstocleanMods)."
+      },
+      {
+        "util": "[TES4Edit](https://www.nexusmods.com/oblivion/mods/11536/)",
+        "detail": "It is strongly recommended not to use mods that contain **deleted navmeshes** as they're known to cause crashes. **Deleted navmeshes** must be corrected manually (a complex process that should be done by the mod author). More information on **deleted navmeshes** is provided [here](https://www.creationkit.com/index.php?title=Fixing_Navmesh_Deletion_Tutorial)."
+      },
+      {
+        "type": "error",
+        "content": "{0} is incompatible with {1}, but both are present."
+      },
+      {
+        "type": "say",
+        "content": "[Latest LOOT thread]({0}).",
+        "subs": [
+          "https://loot.github.io/latest-thread/"
+        ]
+      },
+      {
+        "type": "warn",
+        "content": "NVAC is installed under **NVSE/Plugins** but needs to be moved to **{0}/Plugins** for {0} to pick it up for {1}.",
+        "subs": [
+          "OBSE",
+          "Oblivion"
+        ],
+        "condition": "file(\"NVSE/Plugins/nvac.dll\")"
+      },
+      {
+        "type": "error",
+        "content": "You have installed an {0} plugin but {0} was not found! See {0} download page: {1}.",
+        "subs": [
+          "OBSE",
+          "[OBSE](https://obse.silverlock.org)"
+        ],
+        "condition": "file(\"OBSE/Plugins/([^\\.]+\\.dll)\") and not file(\"../obse_1_2_416.dll\")"
+      },
+      {
+        "type": "warn",
+        "content": "You seem to be using **{0}**, but it has been superseded. It is recommended that you use **{1}** instead."
+      }
+    ]
+  },
+  "common": [
+    "active(\"Oscuro's_Oblivion_Overhaul.esm\")",
+    "active(\"FCOM_Convergence.esm\")",
+    "not (\n  file(\"../../../../Binaries/Win64/OblivionRemastered-Win64-Shipping.exe\") or\n  file(\"../../../../Binaries/WinGDK/OblivionRemastered-WinGDK-Shipping.exe\")\n) and not file(\"../NehrimLauncher.exe\")",
+    "file(\"../../../../Binaries/Win64/OblivionRemastered-Win64-Shipping.exe\") or file(\"../../../../Binaries/WinGDK/OblivionRemastered-WinGDK-Shipping.exe\")",
+    "active(\"Nehrim.esm\")",
+    "active(\"Oblivion.esm\")",
+    {
+      "name": "../obse_1_2_416.dll",
+      "display": "[OBSE](https://obse.silverlock.org)"
+    },
+    {
+      "name": "../../../../Binaries/Win64/obse64_0_411_140.dll",
+      "display": "[OBSE64](https://www.nexusmods.com/oblivionremastered/mods/282/)"
+    },
+    {
+      "name": "OBSE/Plugins/AddActorValues.dll",
+      "display": "[AddActorValues](https://www.nexusmods.com/oblivion/mods/33248/)"
+    },
+    {
+      "name": "OBSE/Plugins/Blockhead.dll",
+      "display": "[Blockhead](https://www.nexusmods.com/oblivion/mods/43752/)"
+    },
+    {
+      "name": "OBSE/Plugins/EnhancedMusicControl.dll",
+      "display": "[Enhanced Music & Control](https://www.nexusmods.com/oblivion/mods/19772)"
+    },
+    {
+      "name": "OBSE/Plugins/OBME.dll",
+      "display": "[Oblivion Magic Extender](https://www.nexusmods.com/oblivion/mods/31981)"
+    },
+    {
+      "name": "OBSE/Plugins/MenuQue.dll",
+      "display": "[MenuQue](https://www.nexusmods.com/oblivion/mods/32200)"
+    },
+    {
+      "name": "obse/plugins/NifSE.dll",
+      "display": "[NifSE](https://www.nexusmods.com/oblivion/mods/21292)"
+    },
+    {
+      "name": "OBSE/Plugins/OBSE_Elys_Pluggy.dll",
+      "display": "[Pluggy](https://www.nexusmods.com/oblivion/mods/23979)"
+    },
+    {
+      "name": "OBSE/Plugins/Elys_USV.dll",
+      "display": "[Elys Universal Silent Voice](https://www.nexusmods.com/oblivion/mods/16622), [Let People Speak - Voice Management Overhaul System](https://www.nexusmods.com/oblivion/mods/53348/) or [VoiceFile Redirector OBSE](https://github.com/ponyrider0/voicefile-redirector/releases)",
+      "condition": "not file(\"OBSE/Plugins/VoiceManagementOverhaul.dll\") and not file(\"OBSE/Plugins/voicefile_redirector.dll\")"
+    },
+    {
+      "name": "OBSE/Plugins/SoundCommands.dll",
+      "display": "[SoundCommands 4.0](https://www.nexusmods.com/oblivion/mods/16288)"
+    },
+    {
+      "name": "Better Cities Resources.esm",
+      "display": "[Better Cities](https://www.nexusmods.com/oblivion/mods/16513)"
+    },
+    {
+      "name": "Cobl Main.esm",
+      "display": "[Common Oblivion (Cobl)](https://www.nexusmods.com/oblivion/mods/21104/)"
+    },
+    {
+      "type": "error",
+      "content": "Delete. Already included in {0}.",
+      "subs": [
+        "Mart's Monster Mod"
+      ],
+      "condition": "active(\"Mart's Monster Mod.esm\") and not active(\"FCOM_Convergence.esm\")"
+    },
+    {
+      "type": "error",
+      "content": "Delete. Already included in {0}.",
+      "subs": [
+        "Oscuro's Oblivion Overhaul"
+      ],
+      "condition": "active(\"Oscuro's_Oblivion_Overhaul.esm\")"
+    },
+    {
+      "type": "say",
+      "content": "Delete. Already included in {0}.",
+      "subs": [
+        "Oscuro's Oblivion Overhaul FULL"
+      ],
+      "condition": "active(\"Oscuro's_Oblivion_Overhaul.esm\")"
+    },
+    {
+      "type": "error",
+      "content": "Delete. Already included in {0}.",
+      "subs": [
+        "FCOM Convergence"
+      ],
+      "condition": "active(\"FCOM_Convergence.esm\")"
+    },
+    {
+      "type": "error",
+      "content": "Delete. Already included in {0}.",
+      "subs": [
+        "Weapon Expansion Pack for Oblivion Nthusiasts"
+      ],
+      "condition": "file(\"Weapon Expansion Pack for Oblivion Nthusiasts.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Delete. Already included or otherwise fixed in {0}.",
+      "subs": [
+        "Unofficial Oblivion Patch"
+      ],
+      "condition": "active(\"Unofficial Oblivion Patch.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Delete. Already included or otherwise fixed in {0}.",
+      "subs": [
+        "Unofficial Shivering Isles Patch"
+      ],
+      "condition": "active(\"Unofficial Shivering Isles Patch.esp\")"
+    },
+    {
+      "type": "say",
+      "content": "It's highly recommended that you also use {0}.",
+      "subs": [
+        "[**EngineBugFixes**](https://www.nexusmods.com/oblivion/mods/47085/)"
+      ],
+      "condition": "not file(\"OBSE/Plugins/EngineBugFixes.dll\")"
+    },
+    {
+      "type": "say",
+      "content": "It's highly recommended that you also use {0}.",
+      "subs": [
+        "[**Elys Universal Silent Voice**](https://www.nexusmods.com/oblivion/mods/16622/), [**Let People Speak - Voice Management Overhaul System**](https://www.nexusmods.com/oblivion/mods/53348/) or [**VoiceFile Redirector**](https://github.com/ponyrider0/voicefile-redirector/releases/)"
+      ],
+      "condition": "not file(\"OBSE/Plugins/Elys_USV.dll\") and not file(\"OBSE/Plugins/VoiceManagementOverhaul.dll\") and not file(\"OBSE/Plugins/voicefile_redirector.dll\")"
+    },
+    {
+      "type": "error",
+      "content": "Delete or deactivate. {0}",
+      "subs": [
+        "This plugin should not be used. Reinstall Fran's and select \"Separate Files\" when the option is presented."
+      ],
+      "condition": "active(\"FCOM_Convergence.esm\")"
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "English (**en**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Bulgarian (**bg**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Czech (**cs**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Danish (**da**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "German (**de**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Spanish (**es**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Finnish (**fi**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "French (**fr**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Italian (**it**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Japanese (**ja**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Korean (**ko**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Polish (**pl**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Brazilian Portuguese (**pt_BR**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Portuguese (**pt_PT**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Russian (**ru**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Swedish (**sv**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Ukrainian (**uk_UA**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "Language: {0}",
+      "subs": [
+        "Simplified Chinese (**zh_CN**)"
+      ]
+    },
+    {
+      "type": "say",
+      "content": "The **{0}** master must be reassigned to **{1}**.",
+      "subs": [
+        "Oblivion.esm",
+        "Nehrim.esm"
+      ],
+      "condition": "active(\"Nehrim.esm\")"
+    },
+    {
+      "type": "warn",
+      "content": "Obsolete. Update to the latest version. {0}",
+      "subs": [
+        "[FCOM Convergence](https://www.nexusmods.com/oblivion/mods/12249)"
+      ]
+    },
+    {
+      "type": "error",
+      "content": "Requires: {0}",
+      "subs": [
+        "[Wrye Bash](https://www.nexusmods.com/site/mods/591/) Bashed Patch"
+      ],
+      "condition": "not file(\"Bashed Patch.*\\.esp\")"
+    },
+    {
+      "type": "say",
+      "content": "Requires: {0}",
+      "subs": [
+        "INI setting [bBorderRegionsEnabled=0](https://wiki.nexusmods.com/index.php/Removing_In-Game_Borders)"
+      ],
+      "condition": "not file(\"Borderless Cyrodiil-3578.esp\")"
+    },
+    {
+      "type": "warn",
+      "content": "Use {0} instead.",
+      "subs": [
+        "[Unofficial Oblivion Patch](https://www.nexusmods.com/oblivion/mods/5296)"
+      ],
+      "condition": "not file(\"Unofficial Oblivion Patch.esp\")"
+    },
+    {
+      "type": "warn",
+      "content": "Use {0} instead.",
+      "subs": [
+        "**FCOM_RealSwords.esp**"
+      ],
+      "condition": "active(\"FCOM_Convergence.esm\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "HorseArmor"
+      ],
+      "condition": "active(\"DLCHorseArmor.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "Orrery"
+      ],
+      "condition": "active(\"DLCOrrery.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "Frostcrag"
+      ],
+      "condition": "active(\"DLCFrostcrag.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "ThievesDen"
+      ],
+      "condition": "active(\"DLCThievesDen.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "MehrunesRazor"
+      ],
+      "condition": "active(\"DLCMehrunesRazor.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "VileLair"
+      ],
+      "condition": "active(\"DLCVileLair.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "SpellTomes"
+      ],
+      "condition": "active(\"DLCSpellTomes.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "Knights"
+      ],
+      "condition": "active(\"Knights.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "ShiveringIsles"
+      ],
+      "condition": "active(\"DLCShiveringIsles.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "BattlehornCastle"
+      ],
+      "condition": "active(\"DLCBattlehornCastle.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use {0} version.",
+      "subs": [
+        "Nehrim"
+      ],
+      "condition": "active(\"Nehrim.esm\")"
+    },
+    {
+      "type": "warn",
+      "content": "Use {0} version.",
+      "subs": [
+        "FCOM"
+      ],
+      "condition": "active(\"FCOM_Convergence.esm\")"
+    },
+    {
+      "type": "warn",
+      "content": "Use {0} version.",
+      "subs": [
+        "Oscuro's Oblivion Overhaul"
+      ],
+      "condition": "active(\"Oscuro's_Oblivion_Overhaul.esm\")"
+    },
+    {
+      "type": "error",
+      "content": "Use non-{0} version.",
+      "subs": [
+        "HorseArmor"
+      ],
+      "condition": "not active(\"DLCHorseArmor.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use non-{0} version.",
+      "subs": [
+        "Orrery"
+      ],
+      "condition": "not active(\"DLCOrrery.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use non-{0} version.",
+      "subs": [
+        "Frostcrag"
+      ],
+      "condition": "not active(\"DLCFrostcrag.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use non-{0} version.",
+      "subs": [
+        "ThievesDen"
+      ],
+      "condition": "not active(\"DLCThievesDen.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use non-{0} version.",
+      "subs": [
+        "MehrunesRazor"
+      ],
+      "condition": "not active(\"DLCMehrunesRazor.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use non-{0} version.",
+      "subs": [
+        "VileLair"
+      ],
+      "condition": "not active(\"DLCVileLair.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use non-{0} version.",
+      "subs": [
+        "SpellTomes"
+      ],
+      "condition": "not active(\"DLCSpellTomes.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use non-{0} version.",
+      "subs": [
+        "Knights"
+      ],
+      "condition": "not active(\"Knights.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use non-{0} version.",
+      "subs": [
+        "ShiveringIsles"
+      ],
+      "condition": "not active(\"DLCShiveringIsles.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Use non-{0} version.",
+      "subs": [
+        "BattlehornCastle"
+      ],
+      "condition": "not active(\"DLCBattlehornCastle.esp\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0010",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.10.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0011",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.11.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0012",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.12.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0013",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.13.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0014",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.14.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0015",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.15.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0016",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.16.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0017",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.17.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0018",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.18.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0019",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.19.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0020",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.20.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "0021",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.21.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "21.8",
+        "[xOBSE](https://github.com/llde/xOBSE/)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.21.8\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "22.1",
+        "[xOBSE](https://github.com/llde/xOBSE/)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.0.22.3\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "22.6",
+        "[xOBSE](https://github.com/llde/xOBSE/)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.22.6.0\")"
+    },
+    {
+      "type": "error",
+      "content": "Requires version **{0}** or greater of **{1}**.",
+      "subs": [
+        "22.8",
+        "[xOBSE](https://github.com/llde/xOBSE/)"
+      ],
+      "condition": "file(\"../Oblivion.exe\") and not version(\"../obse_1_2_416.dll\", >=, \"0.22.8.0\")"
+    },
+    {
+      "type": "warn",
+      "content": "This plugin contains [wild edits](https://tes5edit.github.io/docs/7-mod-cleaning-and-error-checking.html#WildEdits) and may require additional manual cleaning to not interfere with other mods. {0}",
+      "subs": [
+        "Unnecessarily renames records, use the TES4Edit script **Restore record names from master** to fix them."
+      ]
+    }
+  ],
+  "bash_tags": [
+    "Actors.ACBS",
+    "Actors.AIData",
+    "Actors.AIPackages",
+    "Actors.AIPackagesForceAdd",
+    "Actors.Anims",
+    "Actors.CombatStyle",
+    "Actors.DeathItem",
+    "Actors.Factions",
+    "Actors.RecordFlags",
+    "Actors.Skeleton",
+    "Actors.Spells",
+    "Actors.SpellsForceAdd",
+    "Actors.Stats",
+    "C.Climate",
+    "C.Light",
+    "C.MiscFlags",
+    "C.Music",
+    "C.Name",
+    "C.Owner",
+    "C.RecordFlags",
+    "C.Regions",
+    "C.Water",
+    "Creatures.Blood",
+    "Creatures.Type",
+    "Deactivate",
+    "Delev",
+    "EffectStats",
+    "Enchantments",
+    "EnchantmentStats",
+    "Filter",
+    "Graphics",
+    "IIM",
+    "Invent.Add",
+    "Invent.Change",
+    "Invent.Remove",
+    "MustBeActiveIfImported",
+    "Names",
+    "NoMerge",
+    "NPC.Class",
+    "NPC.Eyes",
+    "NPC.FaceGen",
+    "NPC.Hair",
+    "NPC.Race",
+    "NpcFacesForceFullImport",
+    "R.AddSpells",
+    "R.Attributes-F",
+    "R.Attributes-M",
+    "R.Body-F",
+    "R.Body-M",
+    "R.Body-Size-F",
+    "R.Body-Size-M",
+    "R.ChangeSpells",
+    "R.Description",
+    "R.Ears",
+    "R.Eyes",
+    "R.Hair",
+    "R.Head",
+    "R.Mouth",
+    "R.Relations.Add",
+    "R.Relations.Change",
+    "R.Relations.Remove",
+    "R.Skills",
+    "R.Teeth",
+    "R.Voice-F",
+    "R.Voice-M",
+    "Relations.Add",
+    "Relations.Change",
+    "Relations.Remove",
+    "Relev",
+    "Roads",
+    "Scripts",
+    "Sound",
+    "SpellStats",
+    "Stats",
+    "Text"
+  ],
+  "globals": [
+    {
+      "type": "say",
+      "content": "[Latest LOOT thread]({0}).",
+      "subs": [
+        "https://loot.github.io/latest-thread/"
+      ]
+    },
+    {
+      "type": "error",
+      "content": "You have installed an {0} plugin but {0} was not found! See {0} download page: {1}.",
+      "subs": [
+        "OBSE",
+        "[OBSE](https://obse.silverlock.org)"
+      ],
+      "condition": "file(\"OBSE/Plugins/([^\\.]+\\.dll)\") and not file(\"../obse_1_2_416.dll\")"
+    },
+    {
+      "type": "warn",
+      "content": "NVAC is installed under **NVSE/Plugins** but needs to be moved to **{0}/Plugins** for {0} to pick it up for {1}.",
+      "subs": [
+        "OBSE",
+        "Oblivion"
+      ],
+      "condition": "file(\"NVSE/Plugins/nvac.dll\")"
+    }
+  ],
+  "groups": [
+    {
+      "name": "Main Game Master"
+    },
+    {
+      "name": "Very Early Loaders",
+      "description": "A group for modules that should load early before the DLC and Unofficial patches.",
+      "after": [
+        "Main Game Master"
+      ]
+    },
+    {
+      "name": "Pre DLC Patches"
+    },
+    {
+      "name": "DLC",
+      "after": [
+        "Very Early Loaders",
+        "Pre DLC Patches"
+      ]
+    },
+    {
+      "name": "Post DLC Patches",
+      "after": [
+        "DLC"
+      ]
+    },
+    {
+      "name": "Underrides",
+      "after": [
+        "Very Early Loaders"
+      ]
+    },
+    {
+      "name": "Early Loaders",
+      "description": "A group for modules that should load early just after the DLC and Unofficial patches.",
+      "after": [
+        "Post DLC Patches"
+      ]
+    },
+    {
+      "name": "default",
+      "after": [
+        "Early Loaders",
+        "Underrides"
+      ]
+    },
+    {
+      "name": "Low Priority Overrides",
+      "description": "A group for modules that must load after most other mods.",
+      "after": [
+        "default"
+      ]
+    },
+    {
+      "name": "Medium Priority Overrides",
+      "after": [
+        "Low Priority Overrides"
+      ]
+    },
+    {
+      "name": "Core Mods",
+      "after": [
+        "Medium Priority Overrides"
+      ]
+    },
+    {
+      "name": "Unique Landscapes",
+      "description": "A group for Unique Landscape main files.",
+      "after": [
+        "Core Mods"
+      ]
+    },
+    {
+      "name": "Open Cities",
+      "description": "A group for Open Cities.",
+      "after": [
+        "Unique Landscapes"
+      ]
+    },
+    {
+      "name": "Better Cities",
+      "description": "A group for Better Cities Full & separate city modules.",
+      "after": [
+        "Open Cities"
+      ]
+    },
+    {
+      "name": "High Priority Overrides",
+      "after": [
+        "Better Cities"
+      ]
+    },
+    {
+      "name": "Better Cities Imperial City",
+      "description": "A group for Better Cities Imperial City, loads late due to WRLD changes.",
+      "after": [
+        "High Priority Overrides"
+      ]
+    },
+    {
+      "name": "Late Loaders",
+      "after": [
+        "Better Cities Imperial City"
+      ]
+    },
+    {
+      "name": "Late Patches",
+      "after": [
+        "Late Loaders"
+      ]
+    },
+    {
+      "name": "Bash Filter Patches",
+      "after": [
+        "Late Patches"
+      ]
+    },
+    {
+      "name": "Worldspace Settings",
+      "description": "A group for modules that need to be loaded late to preserve worldspace settings.",
+      "after": [
+        "Bash Filter Patches"
+      ]
+    },
+    {
+      "name": "Conflict Resolution Patches",
+      "description": "A group for patches that resolve conflicts.",
+      "after": [
+        "Worldspace Settings"
+      ]
+    },
+    {
+      "name": "Dynamic Patches",
+      "description": "A group for patches that are dynamically generated by modding tools.",
+      "after": [
+        "Conflict Resolution Patches"
+      ]
+    },
+    {
+      "name": "Late Fixes & Changes",
+      "description": "A group for modules that need to be placed after dynamic patches such as Bashed Patch.",
+      "after": [
+        "Dynamic Patches"
+      ]
+    },
+    {
+      "name": "LOD Toggler",
+      "description": "A group for modules that add or alter LOD.",
+      "after": [
+        "Late Fixes & Changes"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "sqlite_version": "3.53.1",
+  "snapshot_sha256": "dfa137b209d6210970b17794e4afb3009400db7d04c8cd9863ea37c933f804df",
+  "source_manifest_sha256": "3eda03777f3fbeac600eb61bb2231b9a2794f0329a28cfcd271f70614d55a064",
+  "entities": 115,
+  "observations": 164,
+  "source_scopes": 8,
+  "game_namespaces": 8,
+  "exact_manifest_equality": true,
+  "integrity": "ok",
+  "foreign_key_violations": 0,
+  "scope": "Actual native Store-generated file; no native game/provider condition evaluation"
+}
