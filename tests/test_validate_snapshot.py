@@ -59,6 +59,10 @@ class SnapshotValidation(unittest.TestCase):
                 self.conn.execute('rollback to mutation')
                 self.conn.execute('release mutation')
 
+    def test_entity_manifest_provenance_is_not_a_storage_column(self):
+        self.bundle['entities'][0]['source_id'] = 'source'
+        validator.validate_contents(self.conn, self.bundle)
+
     def test_default_source_revision(self):
         bundle = copy.deepcopy(self.bundle)
         bundle.pop('source_policy_revisions')
