@@ -36,6 +36,15 @@ fn public_url(raw: &str) -> Result<()> {
     Ok(())
 }
 impl Store {
+    /// Consumer access cannot create or migrate a database.
+    pub fn open_read_only(path: impl AsRef<Path>) -> Result<Self> {
+        let db = Connection::open_with_flags(path, rusqlite::OpenFlags::SQLITE_OPEN_READ_ONLY)?;
+        let version: i64 = db.pragma_query_value(None, "user_version", |r| r.get(0))?;
+        if version != 1 {
+            return Err("Unsupported consumer schema".into());
+        }
+        Ok(Self { db })
+    }
     pub fn open(path: impl AsRef<Path>) -> Result<Self> {
         let db = Connection::open(path)?;
         db.busy_timeout(Duration::from_secs(5))?;
@@ -224,6 +233,8 @@ mod tests {
                 .unwrap()
                 .as_nanos()
         ));
+        assert!(Store::open_read_only(&path).is_err());
+        assert!(!path.exists());
         {
             let mut s = Store::open(&path).unwrap();
             s.register_game("sims4", "Sims").unwrap();
@@ -234,6 +245,9 @@ mod tests {
             s.import(&[row("durable", "unknown")]).unwrap();
         }
         {
+            let ro = Store::open_read_only(&path).unwrap();
+            assert!(ro.db.execute("DELETE FROM observations", []).is_err());
+            drop(ro);
             let s = Store::open(&path).unwrap();
             assert_eq!(s.observations("fixture:mod:1").unwrap()[0].value, "unknown");
             assert!(s.observations_page("fixture:mod:1", 1).unwrap().is_empty());

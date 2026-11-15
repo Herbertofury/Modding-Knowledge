@@ -73,7 +73,12 @@ fn main() -> Result<()> {
     }
     assert_eq!(found, rows.len());
     drop(reopened);
-    std::fs::File::open(&stage)?.sync_all()?;
+    // Windows FlushFileBuffers requires a writable handle; this is our own staging file.
+    std::fs::OpenOptions::new()
+        .read(true)
+        .write(true)
+        .open(&stage)?
+        .sync_all()?;
     std::fs::hard_link(&stage, &args[1])?;
     std::fs::remove_file(&stage)?;
     println!(

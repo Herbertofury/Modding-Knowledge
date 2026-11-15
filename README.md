@@ -21,6 +21,7 @@ The snapshot has eight game namespaces and eight source scopes. It is a dated, r
 cargo test --locked --all-targets
 cargo run --locked --example seed_reviewed_bundle -- new-snapshot.sqlite
 python tools/validate_snapshot.py new-snapshot.sqlite
+cargo run --locked --example query -- new-snapshot.sqlite modrinth:project:AANobbMI
 ```
 
 Or decompress the supplied `.sqlite.gz`, verify its SHA256 against `validation.json`, and query SQLite. Rust consumers can use the library API described in [Storage/API](docs/storage-api.md). The Rust package retains its original `athena-mod-knowledge` name for continuity. There is no hosted HTTP API yet.

@@ -28,6 +28,7 @@ jobs:
       - run: git diff --exit-code -- data/reviewed-bundle.json
       - run: cargo run --locked --example seed_reviewed_bundle -- verified.sqlite
       - run: python tools/validate_snapshot.py verified.sqlite
+      - run: cargo run --locked --example query -- verified.sqlite modrinth:project:AANobbMI
       - uses: actions/upload-artifact@v4
         with:
           name: knowledge-${{ matrix.os }}
