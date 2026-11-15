@@ -1,9 +1,7 @@
 {
-  "creator_accounts": 5,
-  "dataset_sha256": "457c851a418037fb235a6de21c6f6e008e7dc0956acecc35d4cb0dddc72d16e1",
-  "last_attempt_at": "2026-11-15T00:17:36.370785+00:00",
+  "error_type": "URLError",
+  "last_attempt_at": "2026-11-15T00:41:50.308884+00:00",
+  "last_good_retained": true,
   "last_success_at": "2026-11-15T00:17:36.370785+00:00",
-  "outcome": "success",
-  "project_count": 3,
-  "requests": 6
+  "outcome": "failed"
 }

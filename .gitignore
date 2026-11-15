@@ -1,3 +1,4 @@
 /target/
 *.sqlite
 *.pending-*
+__pycache__/

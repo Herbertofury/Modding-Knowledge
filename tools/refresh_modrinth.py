@@ -41,8 +41,9 @@ def check_policy(policy):
         raise ValueError('Policy prohibits refresh')
     if policy.get('api_origin') != ORIGIN: raise ValueError('Unexpected API origin')
     ids = policy.get('project_ids')
-    if not isinstance(ids,list) or not 1 <= len(ids) <= 3 or len(set(ids)) != len(ids) or not all(isinstance(x,str) and ID.fullmatch(x) for x in ids):
+    if not isinstance(ids,list) or not 1 <= len(ids) <= 7 or len(set(ids)) != len(ids) or not all(isinstance(x,str) and ID.fullmatch(x) for x in ids):
         raise ValueError('Invalid bounded project scope')
+    if policy.get('max_projects') != 7: raise ValueError('Unexpected project bound')
     if not isinstance(policy.get('revision'),str) or not policy['revision']: raise ValueError('Missing policy revision')
     return ids
 

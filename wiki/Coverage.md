@@ -1,6 +1,6 @@
 # Coverage and priorities
 
-**Populated:** small Bethesda tools/runtime/troubleshooting facts, a 100-record conditional LOOT sample with retained context, and three Modrinth project metadata records. See root table for exact counts; all coverage remains partial.
+**Populated:** small Bethesda tools/runtime/troubleshooting facts, a 100-record conditional LOOT sample with retained context, and targeted Modrinth project/creator metadata. The scheduled scope is seven selected projects; the last successful receipt and latest validation manifest give actual populated counts. A failed expansion does not replace the last-good dataset. All coverage remains partial.
 
 **Requested coverage:** The Sims 4; Skyrim original/SE/AE runtimes/VR; Fallout 4/VR; Starfield; Oblivion original and Remastered; Morrowind, Daggerfall, Arena and other Elder Scrolls discovery tracks; Minecraft editions/loaders; Hytale; Cyberpunk 2077; additional games recovered from the user's existing projects.
 

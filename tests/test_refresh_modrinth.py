@@ -34,6 +34,11 @@ class RefreshTests(unittest.TestCase):
   self.policy['allow_publish']=False;self.save()
   def forbidden(_):self.fail('Fetch must not run')
   self.assertFalse(m.refresh(self.root,forbidden,NOW))
+ def test_explicit_bound_and_overflow(self):
+  self.policy['project_ids']=['0000000'+str(i) for i in range(8)];self.save()
+  self.assertFalse(m.refresh(self.root,lambda _: self.fail('oversized scope fetched'),NOW))
+  self.policy['project_ids']=['AANobbMI'];self.policy['max_projects']=100;self.save()
+  self.assertFalse(m.refresh(self.root,lambda _: self.fail('unexpected bound fetched'),NOW))
  def test_identity_and_partial_batch_fail_closed(self):
   m.refresh(self.root,self.fetch,NOW);p=self.root/'data/live/modrinth-current.json';before=p.read_bytes();self.policy['project_ids']=['AANobbMI','gvQqBUqZ'];self.save()
   def bad(endpoint):
