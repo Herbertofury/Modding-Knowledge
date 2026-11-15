@@ -3,8 +3,8 @@
   "creator_memberships": [
     {
       "id": "DzLrfrbK",
-      "observed_at": "2026-11-15T00:17:36.370785+00:00",
-      "observed_unix": 1794701856,
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
       "profile_url": "https://modrinth.com/user/DzLrfrbK",
       "project_id": "AANobbMI",
       "role": "Maintainer",
@@ -15,8 +15,8 @@
     },
     {
       "id": "TEZXhE2U",
-      "observed_at": "2026-11-15T00:17:36.370785+00:00",
-      "observed_unix": 1794701856,
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
       "profile_url": "https://modrinth.com/user/TEZXhE2U",
       "project_id": "AANobbMI",
       "role": "Project Lead",
@@ -27,8 +27,8 @@
     },
     {
       "id": "PSleyMoH",
-      "observed_at": "2026-11-15T00:17:36.370785+00:00",
-      "observed_unix": 1794701856,
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
       "profile_url": "https://modrinth.com/user/PSleyMoH",
       "project_id": "AANobbMI",
       "role": "Maintainer",
@@ -39,8 +39,8 @@
     },
     {
       "id": "TEZXhE2U",
-      "observed_at": "2026-11-15T00:17:36.370785+00:00",
-      "observed_unix": 1794701856,
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
       "profile_url": "https://modrinth.com/user/TEZXhE2U",
       "project_id": "gvQqBUqZ",
       "role": "Original Author",
@@ -51,8 +51,8 @@
     },
     {
       "id": "uhPSqlnd",
-      "observed_at": "2026-11-15T00:17:36.370785+00:00",
-      "observed_unix": 1794701856,
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
       "profile_url": "https://modrinth.com/user/uhPSqlnd",
       "project_id": "gvQqBUqZ",
       "role": "Project Lead",
@@ -63,8 +63,8 @@
     },
     {
       "id": "DzLrfrbK",
-      "observed_at": "2026-11-15T00:17:36.370785+00:00",
-      "observed_unix": 1794701856,
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
       "profile_url": "https://modrinth.com/user/DzLrfrbK",
       "project_id": "YL57xq9U",
       "role": "Lead Developer",
@@ -75,8 +75,8 @@
     },
     {
       "id": "v7k4QluE",
-      "observed_at": "2026-11-15T00:17:36.370785+00:00",
-      "observed_unix": 1794701856,
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
       "profile_url": "https://modrinth.com/user/v7k4QluE",
       "project_id": "YL57xq9U",
       "role": "Owner",
@@ -84,10 +84,82 @@
       "source_url_api": "https://api.modrinth.com/v2/team/1HMZl6Mn/members",
       "team_id": "1HMZl6Mn",
       "username": "coderbot"
+    },
+    {
+      "id": "cXzLZ8YY",
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
+      "profile_url": "https://modrinth.com/user/cXzLZ8YY",
+      "project_id": "uXXizFIs",
+      "role": "Owner",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/2JhABx1f/members",
+      "team_id": "2JhABx1f",
+      "username": "malte0811"
+    },
+    {
+      "id": "6bGskxLV",
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
+      "profile_url": "https://modrinth.com/user/6bGskxLV",
+      "project_id": "nmDcB62a",
+      "role": "Owner",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/xw684WUq/members",
+      "team_id": "xw684WUq",
+      "username": "embeddedt"
+    },
+    {
+      "id": "poie5Iwy",
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
+      "profile_url": "https://modrinth.com/user/poie5Iwy",
+      "project_id": "NNAgCjsB",
+      "role": "Beta 1.7.3 ports",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/hLPrl6Gq/members",
+      "team_id": "hLPrl6Gq",
+      "username": "vicisacat"
+    },
+    {
+      "id": "swMW6i3Q",
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
+      "profile_url": "https://modrinth.com/user/swMW6i3Q",
+      "project_id": "NNAgCjsB",
+      "role": "1.7.10 port",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/hLPrl6Gq/members",
+      "team_id": "hLPrl6Gq",
+      "username": "Pelotrio"
+    },
+    {
+      "id": "Qnt13hO8",
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
+      "profile_url": "https://modrinth.com/user/Qnt13hO8",
+      "project_id": "NNAgCjsB",
+      "role": "Owner",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/hLPrl6Gq/members",
+      "team_id": "hLPrl6Gq",
+      "username": "tr7zw"
+    },
+    {
+      "id": "XEedK03N",
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
+      "profile_url": "https://modrinth.com/user/XEedK03N",
+      "project_id": "5ZwdcRci",
+      "role": "Owner",
+      "scope": "Accepted public team membership for a selected project; not sole authorship or complete creator inventory",
+      "source_url_api": "https://api.modrinth.com/v2/team/wkdnKsNZ/members",
+      "team_id": "wkdnKsNZ",
+      "username": "RaphiMC"
     }
   ],
-  "observed_at": "2026-11-15T00:17:36.370785+00:00",
-  "observed_creator_accounts": 5,
+  "observed_at": "2026-11-15T00:44:09.490187+00:00",
+  "observed_creator_accounts": 11,
   "policy_revision": "modrinth-public-project-team-metadata-2026-11-15",
   "projects": [
     {
@@ -104,8 +176,8 @@
         "neoforge",
         "quilt"
       ],
-      "observed_at": "2026-11-15T00:17:36.370785+00:00",
-      "observed_unix": 1794701856,
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
       "organization": "LjcZDkRW",
       "project_type": "mod",
       "published": "2021-01-03T00:53:34.185936Z",
@@ -134,8 +206,8 @@
         "neoforge",
         "quilt"
       ],
-      "observed_at": "2026-11-15T00:17:36.370785+00:00",
-      "observed_unix": 1794701856,
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
       "organization": "LjcZDkRW",
       "project_type": "mod",
       "published": "2021-01-03T00:56:52.292581Z",
@@ -164,8 +236,8 @@
         "neoforge",
         "quilt"
       ],
-      "observed_at": "2026-11-15T00:17:36.370785+00:00",
-      "observed_unix": 1794701856,
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
       "organization": null,
       "project_type": "mod",
       "published": "2021-05-27T05:11:15.690120Z",
@@ -179,9 +251,133 @@
       "title": "Iris Shaders",
       "updated": "2026-09-30T02:58:24.095409Z",
       "wiki_url": null
+    },
+    {
+      "client_side": "optional",
+      "id": "uXXizFIs",
+      "issues_url": "https://github.com/malte0811/FerriteCore/issues",
+      "license": {
+        "id": "MIT",
+        "name": "MIT License",
+        "url": null
+      },
+      "loaders": [
+        "fabric",
+        "forge",
+        "neoforge",
+        "quilt"
+      ],
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
+      "organization": null,
+      "project_type": "mod",
+      "published": "2021-04-03T07:04:43.971189Z",
+      "scope": "Targeted public project metadata; compatibility not verified; no full creator/project enumeration",
+      "server_side": "optional",
+      "slug": "ferrite-core",
+      "source_url": "https://github.com/malte0811/FerriteCore",
+      "source_url_api": "https://api.modrinth.com/v2/project/uXXizFIs",
+      "status": "approved",
+      "team": "2JhABx1f",
+      "title": "FerriteCore",
+      "updated": "2026-03-24T18:31:50.491773Z",
+      "wiki_url": null
+    },
+    {
+      "client_side": "optional",
+      "id": "nmDcB62a",
+      "issues_url": "https://github.com/embeddedt/ModernFix/issues",
+      "license": {
+        "id": "LGPL-3.0-only",
+        "name": "GNU Lesser General Public License v3.0 only",
+        "url": null
+      },
+      "loaders": [
+        "fabric",
+        "forge",
+        "neoforge"
+      ],
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
+      "organization": null,
+      "project_type": "mod",
+      "published": "2023-04-16T20:56:18.092938Z",
+      "scope": "Targeted public project metadata; compatibility not verified; no full creator/project enumeration",
+      "server_side": "optional",
+      "slug": "modernfix",
+      "source_url": "https://github.com/embeddedt/ModernFix",
+      "source_url_api": "https://api.modrinth.com/v2/project/nmDcB62a",
+      "status": "approved",
+      "team": "xw684WUq",
+      "title": "ModernFix",
+      "updated": "2026-11-13T19:40:06.449476Z",
+      "wiki_url": "https://github.com/embeddedt/ModernFix/wiki"
+    },
+    {
+      "client_side": "required",
+      "id": "NNAgCjsB",
+      "issues_url": "https://github.com/tr7zw/EntityCulling/issues",
+      "license": {
+        "id": "LicenseRef-tr7zw-Protective-License",
+        "name": "",
+        "url": "https://github.com/tr7zw/EntityCulling/blob/1.18/LICENSE-EntityCulling"
+      },
+      "loaders": [
+        "babric",
+        "fabric",
+        "forge",
+        "neoforge",
+        "quilt"
+      ],
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
+      "organization": null,
+      "project_type": "mod",
+      "published": "2022-05-25T10:09:09.784330Z",
+      "scope": "Targeted public project metadata; compatibility not verified; no full creator/project enumeration",
+      "server_side": "unsupported",
+      "slug": "entityculling",
+      "source_url": "https://github.com/tr7zw/EntityCulling",
+      "source_url_api": "https://api.modrinth.com/v2/project/NNAgCjsB",
+      "status": "approved",
+      "team": "hLPrl6Gq",
+      "title": "Entity Culling",
+      "updated": "2026-11-13T16:12:09.722794Z",
+      "wiki_url": null
+    },
+    {
+      "client_side": "required",
+      "id": "5ZwdcRci",
+      "issues_url": "https://github.com/RaphiMC/ImmediatelyFast/issues",
+      "license": {
+        "id": "LGPL-3.0-or-later",
+        "name": "GNU Lesser General Public License v3.0 or later",
+        "url": null
+      },
+      "loaders": [
+        "fabric",
+        "forge",
+        "neoforge",
+        "quilt"
+      ],
+      "observed_at": "2026-11-15T00:44:09.490187+00:00",
+      "observed_unix": 1794703449,
+      "organization": null,
+      "project_type": "mod",
+      "published": "2022-10-01T16:19:12.500476Z",
+      "scope": "Targeted public project metadata; compatibility not verified; no full creator/project enumeration",
+      "server_side": "unsupported",
+      "slug": "immediatelyfast",
+      "source_url": "https://github.com/RaphiMC/ImmediatelyFast",
+      "source_url_api": "https://api.modrinth.com/v2/project/5ZwdcRci",
+      "status": "approved",
+      "team": "wkdnKsNZ",
+      "title": "ImmediatelyFast",
+      "updated": "2026-10-13T19:56:39.171283Z",
+      "wiki_url": null
     }
   ],
   "schema": 1,
   "scope": "Unauthenticated public project and accepted team-member metadata only. No account email/name/bio/payouts, bodies, assets, files or private data. Team membership is not sole authorship or a complete creator catalog.",
-  "selected_project_count": 3
+  "selected_project_count": 7
 }
