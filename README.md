@@ -27,6 +27,10 @@ The original snapshot has eight game namespaces and eight source scopes. It rema
 
 The latest snapshot now includes all **4,745 plugin metadata rows** from the reviewed LOOT Oblivion source commit `b3ffc84f6d730f6efb5083448d78611df16e8d78`, plus top-level context. This replaces the 100-row sample in the latest projection, not its preserved original artifact. Total current counts are in the latest validation manifest. This is complete coverage of that single source document, **not every mod or evaluated compatibility**. [Importer, provenance and limits](docs/loot-import.md). LOOT is not automatically refreshed yet.
 
+## Scoped Mod Health evidence
+
+The latest central database includes four source-attributed community warnings and two separate official release reports from six reviewed public GitHub documents. Claims retain exact version/build/runtime context, report and observation dates, provenance, authority type and uncertainty. The shared Rust query and read-only JSON CLI expose unknown, stale, partial and conflicting evidence without inventing compatibility or independent corroboration. [Contract, consumer example and limits](docs/mod-health-query.md) · [Reviewed source records](data/github-health-reviewed.json). This issue/release tranche is manually reviewed, not automatically refreshed or independently game-tested.
+
 ## Use it
 
 ```sh
@@ -60,7 +64,7 @@ ORDER BY e.name,o.observed_unix DESC,o.id;
 
 ## Verification and limits
 
-Actual Rust imports, exact replay/reopen equality, independent SQLite integrity/FK checks and six tests passed locally. Existing-output refusal preserved the original database hash. Windows/Linux CI is included; inspect its exact commit result before claiming hosted acceptance. Automatic refresh is implemented only for the bounded Modrinth scope described above; other providers are not automatically refreshed. No native game tests, full creator inventory, or complete mod corpus is claimed.
+Actual Rust imports, exact replay/reopen equality, independent SQLite integrity/FK checks and regression tests passed locally. Existing-output refusal preserved the original database hash. Windows/Linux CI is included; inspect its exact commit result before claiming hosted acceptance. Automatic refresh is implemented only for the bounded Modrinth scope described above; other providers are not automatically refreshed. No native game tests, full creator inventory, or complete mod corpus is claimed.
 
 ## Provenance and licensing
 
