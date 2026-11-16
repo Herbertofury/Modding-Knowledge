@@ -12,3 +12,7 @@ Requested 2026-11-16: Modding-Knowledge should serve massive creator/project cat
 - [ ] Benchmark advisory selection against large scoped datasets before native integration. The current Python advisory helper is an in-memory reference implementation, not a demonstrated high-volume database query engine.
 
 No catalog-size, speed or compression target is claimed achieved by this roadmap. Existing snapshot receipts remain authoritative. Planned optimizations must be validated on realistic data before reporting progress as performance improvement.
+
+## Expanded creator and project coverage
+
+[Universal catalog model and refresh backlog](creator-project-catalog.md) specifies verified identities, all-work discovery with honest coverage, posting communities, provider/time-scoped download counts, activity, dependencies, compatibility, access/price, changelog/license and source movement. A bounded tested refresh-plan helper exists; native ingestion, scheduling and consumer views remain open.
