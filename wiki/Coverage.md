@@ -7,3 +7,11 @@
 Keep editions, runtimes, storefronts and loaders separate. A game appearing in this roadmap is not a claim of working adapters or a populated database.
 
 For each game organize creators/sites, mods/releases, tools, practices, how-tos, crash diagnosis, maintenance and scoped warning evidence. Next work is reviewed migration of existing inventories, reversible identity mapping, authorized refresh adapters and consumer query/export contracts. Existing remembered WCIF/Scarlet workflows require review of permissions, completeness and private/public boundaries before moving data.
+
+## Update-specific risk information
+
+[Pre-update advisory backlog](../docs/update-advisories.md): every mod/project manager should show attributable crash/freeze/bug reports before an update while leaving the decision to the user. Shared contract and deterministic tests exist; native ingestion, real records and consumer UI/end-to-end acceptance remain open.
+
+## Massive catalogs and measurable self-improvement
+
+[Catalog scale roadmap](../docs/catalog-scale-roadmap.md): grow creator/project coverage while improving compact storage, speed, organization and easy access through benchmarked, evidence-preserving changes with regression gates and rollback. Goals and acceptance backlog recorded; no unmeasured speed/size gains claimed.
