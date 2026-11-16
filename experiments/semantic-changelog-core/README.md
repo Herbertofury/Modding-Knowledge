@@ -158,3 +158,31 @@ failure and use an explicit new checkpoint path. No automatic deletion occurs.
 Large histories fail rather than truncate; durable snapshot bytes, atomic catalog
 rotation, retention/export UI, recovery indexing and real-app integration remain
 open. Load validates structure, not origin or the truth of writer evidence.
+
+### Configuration/INI settings evidence
+
+`ini` parses immutable UTF8 (optional BOM) or BOM-tagged UTF16LE/BE with explicit
+4MiB input,100k lines,64KiB line and16MiB estimated projection budgets. Repeated
+sections and keys retain positional occurrence identities and source line numbers;
+empty sections and source-order changes remain visible. Only ASCII space/tab
+around names/values is normalized. Full-line `;`/`#` comments are ignored; inline
+markers stay literal. Malformed assignments/sections, unsupported encodings/NULs
+and cancellation refuse analysis instead of silently dropping content.
+
+This is a conservative lexical projection, not a universal INI grammar or Bethesda
+engine precedence evaluator. Case is preserved, duplicates are not collapsed to
+last-wins, no interpolation/numeric coercion occurs. Inserting a duplicate can
+shift positional identities: the report does not assert stable semantic matching
+of duplicate instances. Whitespace-sensitive dialects, continuation/quote-specific
+semantics and non-INI settings require their own adapters. Formatting-only changes
+can have no setting deltas while the outer revision hashes still show byte changes.
+
+Default reports omit all values, not merely keys matching a secret-name heuristic;
+Document Debug is value-redacted. `Entry::value()` permits explicit local UI reveal
+from retained in-memory parsed data. Section/key labels and caller provenance can
+also be private; do not upload reports automatically. `edit_analysis::ini_edit`
+binds both exact recorded snapshots before comparison and preserves attribution.
+No file rewriting, normalization save, settings installation or original-file
+mutation occurs. Dedicated MO2R/manager settings tabs, profile/mod ownership,
+conflict precedence, watcher integration, all other config formats and safe
+preview/backup/apply/rollback workflows remain required application work.

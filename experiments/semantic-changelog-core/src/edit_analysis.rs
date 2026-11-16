@@ -12,6 +12,7 @@ pub enum Evidence {
     SkyrimFields(Report),
     /// Resource payload comparison only, not CAS/swatches/tuning field semantics.
     Sims4Resources(Vec<dbpf::Change>),
+    IniSettings(crate::ini::Report),
 }
 #[derive(Debug)]
 pub struct AnalyzedEdit {
@@ -261,5 +262,56 @@ mod sims_binding_tests {
             panic!()
         };
         assert!(matches!(changes.as_slice(), [dbpf::Change::NotCompared(_)]));
+    }
+}
+
+/// Hash-bound lexical INI comparison. Values omitted from returned report.
+pub fn ini_edit(
+    edit: &Edit,
+    before: &[u8],
+    after: &[u8],
+    cancel: impl Fn() -> bool,
+) -> Result<AnalyzedEdit, String> {
+    verify_pair(edit, before, after, &cancel)?;
+    let a = crate::ini::parse(before, &cancel)?;
+    let b = crate::ini::parse(after, &cancel)?;
+    let report = crate::ini::compare(&a, &b);
+    if cancel() {
+        return Err("cancelled".into());
+    }
+    Ok(AnalyzedEdit{edit:edit.clone(),parser:"ini-lexical-occurrences-v1",evidence:Evidence::IniSettings(report),limitations:vec!["Lexical UTF8/BOM UTF16 INI projection, positional duplicate identity; not engine precedence, all config formats, whitespace-sensitive dialects or runtime effects. Values redacted; section/key labels may be private.".into()]})
+}
+
+#[cfg(test)]
+mod ini_binding_tests {
+    use super::*;
+    use crate::history::{Attribution, History};
+    #[test]
+    fn bound_settings_report_is_private_and_tier_preserving() {
+        let (a, b) = (
+            b"[Display]\niSize W=1280\npassword=secret-A",
+            b"[Display]\niSize W=1920\npassword=secret-B",
+        );
+        let mut h = History::new("opaque-config".into(), 2).unwrap();
+        h.set_enabled(true);
+        h.observe(a, 1, Attribution::Unknown, None).unwrap();
+        h.observe(
+            b,
+            2,
+            Attribution::UserReported {
+                tool: "INI editor".into(),
+            },
+            None,
+        )
+        .unwrap();
+        let e = h.query(None, 0, 3).next().unwrap();
+        let r = ini_edit(e, a, b, || false).unwrap();
+        assert_eq!(r.edit.attribution, e.attribution);
+        assert!(!format!("{r:?}").contains("secret-"));
+        let Evidence::IniSettings(report) = r.evidence else {
+            panic!()
+        };
+        assert_eq!(report.changes.len(), 2);
+        assert!(ini_edit(e, b, a, || false).is_err());
     }
 }

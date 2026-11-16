@@ -248,3 +248,5 @@ pub mod history;
 pub mod edit_analysis;
 
 pub mod checkpoint;
+
+pub mod ini;
