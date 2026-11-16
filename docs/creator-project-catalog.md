@@ -48,3 +48,10 @@ Backlog:
 - [ ] Consumer integration preserving local installation state/preferences independently of shared public evidence and source refresh.
 
 These are explicit acceptance requirements, not a claim that a database browser or query engine has already been implemented by the refresh-plan helper.
+
+### Per-project reported bug/issue counts and availability
+
+- [ ] Store and display reported bug/issue counts per project with provider/source URL, metric definition, covered releases/context, state (open/closed/total where available), collection time and access/coverage limitations. Bug reports are a subset of issues only when the provider supplies that classification; feature requests and questions are not automatically bugs.
+- [ ] Keep counts site-specific unless exact duplicate lineage and compatible scope are established. Reposts are not independent reports; one report may contain multiple symptoms. Counts are information, not confirmed defects, affected-user counts or proof an update will fail.
+- [ ] Explicitly represent available, unavailable, access-restricted, unsupported and unknown counts. Store null/unknown for a failed fetch or unavailable metric, never fabricated zero. Preserve last-good counts with stale/time labels when refresh fails.
+- [ ] Expose count, source and availability as database fields and app columns/details/filter/sort options alongside linked issue evidence and update advisories. Test unknown-vs-zero, stale fallback, open/closed semantics and mixed-provider exclusion before claiming integration complete.
