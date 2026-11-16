@@ -55,3 +55,7 @@ These are explicit acceptance requirements, not a claim that a database browser 
 - [ ] Keep counts site-specific unless exact duplicate lineage and compatible scope are established. Reposts are not independent reports; one report may contain multiple symptoms. Counts are information, not confirmed defects, affected-user counts or proof an update will fail.
 - [ ] Explicitly represent available, unavailable, access-restricted, unsupported and unknown counts. Store null/unknown for a failed fetch or unavailable metric, never fabricated zero. Preserve last-good counts with stale/time labels when refresh fails.
 - [ ] Expose count, source and availability as database fields and app columns/details/filter/sort options alongside linked issue evidence and update advisories. Test unknown-vs-zero, stale fallback, open/closed semantics and mixed-provider exclusion before claiming integration complete.
+
+## Organization, visual identity and operation feedback
+
+[Applied organization research and acceptance](organization-implementation.md) adds the deep-black visual default, retained media/image columns, independent Content/Category semantics, premium workbench organization, truthful progress and a tested saved-view presentation contract. [Source-linked research](organization-research.md) retains official sources and pinned MO2 code findings. Native app/UI work remains separately owned and not claimed complete.
