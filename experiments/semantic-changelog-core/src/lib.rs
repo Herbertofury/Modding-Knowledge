@@ -241,3 +241,5 @@ mod tests {
 }
 
 pub mod dbpf;
+
+pub mod history;

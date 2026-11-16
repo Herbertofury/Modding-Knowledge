@@ -70,3 +70,32 @@ records; resource-specific Sims4 schemas; structured serialization and rich visu
 before/after UI. Never turn an unread/unsupported field into unchanged or claim a
 runtime effect from a changed numeric value. Preserve author notes separately and
 present missing-changelog comparison as generated evidence.
+
+## Local edit provenance foundation (not a deployed monitor)
+
+`history` accepts explicitly supplied stable-read artifact bytes only after opt-in.
+It detects equal-size content changes with SHA256, ignores metadata-only touches,
+retains before/after observation times and content hashes, and filters by detection
+time/tool. `ObservedWrite`, `Inferred`, `UserReported` and `Unknown` remain distinct.
+An observed-write claim requires a trusted host event binding process and artifact;
+this library does not create or independently authenticate that event. A launched
+xEdit/DynDOLOD/Sims4Studio process or a timestamp match is only correlation.
+
+Pause/resume rebases explicitly rather than assigning unobserved edits to a tool.
+Bounded history rejects overflow instead of silently discarding edits. No automatic path/process-argument collection, file-content retention, network
+upload or background watcher occurs here. Host-supplied labels/evidence IDs can
+contain private strings; the host must sanitize them or use opaque identifiers.
+Persistent continuity status stays incomplete after pause, overflow or an explicit
+host-reported gap and must accompany query/export results.
+The core is in-memory: durable local history, scoped directory watch UI, stable
+read/race protection, replacement/rename identity, snapshot store, consent and
+retention controls remain integration work. A missing observation, restart or
+watcher overflow must invalidate continuity. SHA hashes are not file backups.
+
+Semantic reports must be computed from the exact bytes matching each revision,
+with parser/version and existing partial/unknown limitations retained. This module
+does not yet attach reports or prove tool identity. Sims4 swatch-specific decoding,
+DynDOLOD generated-output ownership and complete xEdit schema coverage remain open.
+MO2 MCP `run_executable` (inspected supplied Python source, lines1642–1676) reports
+launch PID/exit status; it provides no per-file writer telemetry. Never promote
+that response to directly observed edit attribution.
