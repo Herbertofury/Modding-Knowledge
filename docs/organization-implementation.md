@@ -40,3 +40,8 @@ Exact official sources and MO2 commit/file paths are preserved in the research d
 - [x] Saved-view structure, privacy allowlist, no mutation, visual default, hidden-column search independence, stable-sort requirement, explicit unknowns and bounded filter tests.
 - [ ] Native query/domain implementation, typed field operators, collections/separators, progress protocol, real media retention/rendering and accessible app workflows.
 - [ ] Desktop benchmarks, exact-source runtime comparisons and end-to-end acceptance. Shared Python validators are reference contracts, not an optimized native renderer or database query engine.
+
+## Evidence-based health visuals and on-card media
+
+- [ ] Mod/project health bars and damaged visual treatments communicate explicit underlying states, not invented numeric quality scores. Distinguish update available, stale evidence, reported issue, reproduced failure and unknown; outdated alone is not broken. Offer source/details and accessible text equivalents. Warnings remain informative and never block the user's update decision.
+- [ ] On-card multi-image navigation and video controls preserve user preferences, focus and selected item. Respect media/source access, reduced motion and performance budgets; lazy-load and cancel stale requests. No autoplay/audio surprises or bypassed access requirements. Unsupported/missing media states remain explicit.

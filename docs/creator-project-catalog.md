@@ -59,3 +59,12 @@ These are explicit acceptance requirements, not a claim that a database browser 
 ## Organization, visual identity and operation feedback
 
 [Applied organization research and acceptance](organization-implementation.md) adds the deep-black visual default, retained media/image columns, independent Content/Category semantics, premium workbench organization, truthful progress and a tested saved-view presentation contract. [Source-linked research](organization-research.md) retains official sources and pinned MO2 code findings. Native app/UI work remains separately owned and not claimed complete.
+
+## Generated semantic changelog fallback
+
+- [ ] When upstream changelogs are absent, retain that absence and offer a separately labeled generated comparison. Preserve exact old/new release IDs, artifact checksums/source, parser/tool versions, timestamps, comparison coverage and originals; never replace or impersonate an author's changelog.
+- [ ] Bethesda comparisons require record/field-level interpretation comparable in depth to xEdit inspection, with game/schema and FormID/master context. Sims package comparisons require resource-level identity and supported decoded field differences; apply appropriate parsers to other formats. A byte diff or renamed archive is not a semantic gameplay changelog.
+- [ ] Separate observed added/removed/changed records/resources/fields from inferred gameplay effects. Show unsupported/encrypted/failed parsing, uncertain references and incomplete coverage. Preserve evidence for each claim; do not invent gameplay meaning from a field name or claim parser/runtime validation not performed.
+- [ ] Test known unchanged/added/removed/modified fixtures, schema variation and parser failures before integration. No automatic installation, format rewrite or modification of original artifacts is authorized by generating a comparison.
+
+Provider-specific [identity and issue-count safeguards](provider-evidence-safeguards.md) now have tested reference helpers; native ingestion and UI remain pending.
