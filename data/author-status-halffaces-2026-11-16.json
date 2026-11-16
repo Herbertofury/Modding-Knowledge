@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "id": "nexusmods:70429528:status:2026-11-16",
+  "creator_id": "nexusmods:70429528",
+  "source_account": "https://www.nexusmods.com/users/70429528",
+  "status": "banned",
+  "status_evidence": [
+    {
+      "url": "https://forums.nexusmods.com/topic/13531996-halffaces-banned/",
+      "kind": "provider_notice",
+      "observed_unix": 1794858035
+    }
+  ],
+  "destination_account": null,
+  "identity_evidence": [],
+  "project_mappings": [],
+  "observed_unix": 1794858035,
+  "review_after_unix": 1794944435,
+  "lifecycle": "active"
+}

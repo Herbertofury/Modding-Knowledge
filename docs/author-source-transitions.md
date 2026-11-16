@@ -6,7 +6,7 @@ Requested 2026-11-16 for Noxviola, MO2R and Mod Hunter premium features. Modding
 
 Warn users about source disruption and retain update continuity through verified additional sources. Separate **site account status**, **creator identity linkage**, and **each mod's source mapping**. Never infer a ban from HTTP 403/404, removal, a timeout or an absent listing. A creator statement remains creator-reported, not a provider-confirmed verdict. Do not speculate on motives or repeat unsupported accusations. Preserve contradictory/retracted observations rather than replacing history.
 
-`tools/author_transitions.py` validates schema v1 records and returns a non-mutating decision. Canonical HTTPS evidence URLs, observation and review deadlines, source accounts, stable creator ID, evidence authority, lifecycle, game and explicit per-project mappings are required. See `tests/test_author_transitions.py` for synthetic fixtures only. No real author enforcement claim is seeded in this change. Validation checks structure, not the truth of a remote page: reviewed adapters must establish content, authorship and identity before supplying evidence.
+`tools/author_transitions.py` validates schema v1 records and returns a non-mutating decision. Canonical HTTPS evidence URLs, observation and review deadlines, source accounts, stable creator ID, evidence authority, lifecycle, game and explicit per-project mappings are required. See `tests/test_author_transitions.py` for synthetic fixtures and the sourced Halffaces observation below. Validation checks structure, not the truth of a remote page: reviewed adapters must establish content, authorship and identity before supplying evidence.
 
 - Status vocabulary: unknown, unavailable, removed, suspended, banned, active.
 - Lifecycle: active, retracted, superseded. Retain each observation under a unique ID; consumers must resolve conflicting active observations conservatively before execution.
@@ -29,3 +29,9 @@ Warn users about source disruption and retain update continuity through verified
 - [ ] Native lifecycle, accessibility and live end-to-end tests. Premium entitlement wiring is not implemented here.
 
 Run `python -m unittest discover -s tests -p 'test_*.py'`. Existing Rust database verification remains `cargo test --locked --all-targets`.
+
+## Reviewed status example: Halffaces
+
+Observed 2026-11-16 UTC: [Nexus Mods staff notice](https://forums.nexusmods.com/topic/13531996-halffaces-banned/) explicitly reports the Halffaces account banned and links [account 70429528](https://www.nexusmods.com/users/70429528). `data/author-status-halffaces-2026-11-16.json` records provider-notice authority, the observation time and a one-day review deadline. This is a dated observation, not a permanent assertion or a live account check. The notice displays March 5; its publication timestamp is not substituted for retrieval time. Direct profile retrieval returned 403 and is not used as ban evidence.
+
+An earlier reversed Donation Points restriction concerns a different historical event: it does not negate the later account-ban notice. Retain each event separately with its own evidence and time; never collapse payout restrictions, reversals and full account bans into one status. No ban reason or judgment of fairness is copied into the record. No destination identity or mod mappings have been verified here, so this example cannot trigger migration or additional-source tracking.

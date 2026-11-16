@@ -1,3 +1,5 @@
+import json
+from pathlib import Path
 import copy
 import unittest
 from tools.author_transitions import validate, decision
@@ -14,6 +16,15 @@ def fixture():
 
 
 class Transitions(unittest.TestCase):
+    def test_reviewed_halffaces_status_does_not_invent_destination(self):
+        r = json.loads((Path(__file__).resolve().parents[1] / 'data/author-status-halffaces-2026-11-16.json').read_text())
+        d = decision(r, r['observed_unix'], True, True)
+        self.assertEqual(d['status'], 'banned')
+        self.assertEqual(d['status_authorities'], ['provider_notice'])
+        self.assertEqual(d['action'], 'review_required')
+        self.assertEqual(d['projects_to_track'], [])
+        self.assertFalse(decision(r, r['review_after_unix'], True, True)['fresh'])
+
     def test_ready_adds_not_replaces(self):
         r = fixture(); before = copy.deepcopy(r)
         d = decision(r, 150, True, True)
