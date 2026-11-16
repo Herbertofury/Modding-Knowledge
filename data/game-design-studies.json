@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-16",
+  "scope": "Bounded design-study layer, not a ranking or complete games catalog. No copied media or source.",
+  "catalog": {
+    "repository": "Herbertofury/Games",
+    "commit": "80655b444de57b83bdead142ecd655cbb8261fe7",
+    "path": "data/catalog.json",
+    "catalog_id": "herbertofury-games"
+  },
+  "additional_sources": [
+    "https://github.com/OpenRA/OpenRA/blob/bleed/COPYING",
+    "https://github.com/0ad/0ad",
+    "https://gitea.wildfiregames.com/"
+  ],
+  "records": [
+    {
+      "id": "foundation:0ad",
+      "name": "0 A.D. / Pyrogenesis",
+      "kind": "foundation_candidate",
+      "catalog_ref": "external:0-ad",
+      "source_url": "https://play0ad.com/game-info/project-overview/",
+      "review_basis": "official overview/license reviewed 2026-11-16; no downloaded code or performance tests",
+      "study_question": "Evaluate economy, formations and ancient-warfare RTS systems; engine extraction and combat latency are untested.",
+      "reuse": "Upstream overview specifies GPL; exact version and file scope require pinned source audit",
+      "asset_rights": "Art/sound have CC BY-SA terms according to overview; individual files and attribution still require review.",
+      "windows": "target-platform verification required before adoption",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "steam:2922410",
+      "name": "Achilles: Survivor",
+      "kind": "inspiration",
+      "catalog_ref": "steam:2922410",
+      "source_url": "https://store.steampowered.com/app/2922410/",
+      "review_basis": "existing Games identity snapshot; study question is editorial, not a verified mechanic or playtest",
+      "study_question": "How do destructible structures alter horde routing and build priorities?",
+      "reuse": "No source, character, art, music or asset reuse granted by this record.",
+      "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "steam:813780",
+      "name": "Age of Empires II: Definitive Edition",
+      "kind": "inspiration",
+      "catalog_ref": "steam:813780",
+      "source_url": "https://store.steampowered.com/app/813780/",
+      "review_basis": "existing Games identity snapshot; study question is editorial, not a verified mechanic or playtest",
+      "study_question": "How do economy, counter-units and technology transitions sustain full RTS depth?",
+      "reuse": "No source, character, art, music or asset reuse granted by this record.",
+      "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "steam:1934680",
+      "name": "Age of Mythology: Retold",
+      "kind": "inspiration",
+      "catalog_ref": "steam:1934680",
+      "source_url": "https://store.steampowered.com/app/1934680/",
+      "review_basis": "existing Games identity snapshot; study question is editorial, not a verified mechanic or playtest",
+      "study_question": "How do gods, myth units and mortal economies interact without removing counterplay?",
+      "reuse": "No source, character, art, music or asset reuse granted by this record.",
+      "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "steam:3238670",
+      "name": "Conquest Dark",
+      "kind": "inspiration",
+      "catalog_ref": "steam:3238670",
+      "source_url": "https://store.steampowered.com/app/3238670/",
+      "review_basis": "existing Games identity snapshot; study question is editorial, not a verified mechanic or playtest",
+      "study_question": "How does action combat remain legible as enemies and build effects scale?",
+      "reuse": "No source, character, art, music or asset reuse granted by this record.",
+      "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "steam:2334730",
+      "name": "Death Must Die",
+      "kind": "inspiration",
+      "catalog_ref": "steam:2334730",
+      "source_url": "https://store.steampowered.com/app/2334730/",
+      "review_basis": "existing Games identity snapshot; study question is editorial, not a verified mechanic or playtest",
+      "study_question": "How do blessing choices change a run and communicate build identity?",
+      "reuse": "No source, character, art, music or asset reuse granted by this record.",
+      "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "foundation:godot",
+      "name": "Godot Engine",
+      "kind": "foundation_candidate",
+      "catalog_ref": null,
+      "source_url": "https://godotengine.org/license/",
+      "review_basis": "official overview/license reviewed 2026-11-16; no downloaded code or performance tests",
+      "study_question": "Benchmark shared 2D/3D combat and RTS simulation on target hardware before selecting.",
+      "reuse": "MIT; retain copyright/license notices and audit third-party components",
+      "asset_rights": "Original game assets require their own rights; engine license does not grant third-party game IP.",
+      "windows": "target-platform verification required before adoption",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "steam:2218400",
+      "name": "Greedland",
+      "kind": "inspiration",
+      "catalog_ref": "steam:2218400",
+      "source_url": "https://store.steampowered.com/app/2218400/",
+      "review_basis": "existing Games identity snapshot; study question is editorial, not a verified mechanic or playtest",
+      "study_question": "How do weapon and upgrade choices create distinct horde-combat roles?",
+      "reuse": "No source, character, art, music or asset reuse granted by this record.",
+      "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "steam:2218750",
+      "name": "Halls of Torment",
+      "kind": "inspiration",
+      "catalog_ref": "steam:2218750",
+      "source_url": "https://store.steampowered.com/app/2218750/",
+      "review_basis": "existing Games identity snapshot; study question is editorial, not a verified mechanic or playtest",
+      "study_question": "How do equipment and character progression complement run decisions?",
+      "reuse": "No source, character, art, music or asset reuse granted by this record.",
+      "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "steam:2420510",
+      "name": "HoloCure - Save the Fans!",
+      "kind": "inspiration",
+      "catalog_ref": "steam:2420510",
+      "source_url": "https://store.steampowered.com/app/2420510/",
+      "review_basis": "existing Games identity snapshot; study question is editorial, not a verified mechanic or playtest",
+      "study_question": "How do distinct character kits and auxiliary activities support replay variety?",
+      "reuse": "No source, character, art, music or asset reuse granted by this record.",
+      "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "steam:2820820",
+      "name": "Jotunnslayer: Hordes of Hel",
+      "kind": "inspiration",
+      "catalog_ref": "steam:2820820",
+      "source_url": "https://store.steampowered.com/app/2820820/",
+      "review_basis": "existing Games identity snapshot; study question is editorial, not a verified mechanic or playtest",
+      "study_question": "How does mythology distinguish playable combat identities?",
+      "reuse": "No source, character, art, music or asset reuse granted by this record.",
+      "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "foundation:openra",
+      "name": "OpenRA",
+      "kind": "foundation_candidate",
+      "catalog_ref": null,
+      "source_url": "https://www.openra.net/about/",
+      "review_basis": "official overview/license reviewed 2026-11-16; no downloaded code or performance tests",
+      "study_question": "Evaluate production queues, orders, replays and multiplayer; 2D/2.5D RTS fit is not proof of action-roguelite fit.",
+      "reuse": "GPL version 3 text in upstream COPYING; inspect file headers and dependencies before adoption",
+      "asset_rights": "Engine license does not license the original C&C/Dune assets. Do not copy those assets.",
+      "windows": "target-platform verification required before adoption",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "steam:1794680",
+      "name": "Vampire Survivors",
+      "kind": "inspiration",
+      "catalog_ref": "steam:1794680",
+      "source_url": "https://store.steampowered.com/app/1794680/",
+      "review_basis": "existing Games identity snapshot; study question is editorial, not a verified mechanic or playtest",
+      "study_question": "How do escalating enemy density and upgrade combinations create readable power growth?",
+      "reuse": "No source, character, art, music or asset reuse granted by this record.",
+      "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    }
+  ]
+}

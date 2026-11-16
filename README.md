@@ -71,3 +71,7 @@ Actual Rust imports, exact replay/reopen equality, independent SQLite integrity/
 The clean-room foundation originated in [Athena PR #174](https://github.com/Herbertofury/Athena/pull/174), exact reviewed head `8fdb9e45f469035a00722192281f0eb675b9852b`. That source remains preserved. No private GameSync source/data, credentials, memberships or paid content was copied.
 
 LOOT's included metadata retains [CC0 license text](data/loot-CC0-LICENSE). Other included records are small attributed factual projections, not copied repository source, artwork or complete provider databases. Provider license claims refer to their projects, not this entire repository. A repository-wide code license has not yet been assigned; public visibility alone is not a blanket reuse license.
+
+## Cross-project game design research
+
+[Shared RTS/roguelite study layer](docs/game-design-studies.md) references the existing Games catalog by stable identity, with separate foundation-license screening and explicit untested status.
