@@ -11,7 +11,9 @@
   "additional_sources": [
     "https://github.com/OpenRA/OpenRA/blob/bleed/COPYING",
     "https://github.com/0ad/0ad",
-    "https://gitea.wildfiregames.com/"
+    "https://gitea.wildfiregames.com/",
+    "https://github.com/beyond-all-reason/Beyond-All-Reason/blob/a53c676b160cf2ad9c194f5edc8bafac72e673be/LICENSE.md",
+    "https://github.com/beyond-all-reason/RecoilEngine/blob/084d53c4e8f387a1daf2ca567dacb650b5f71e72/LICENSE"
   ],
   "records": [
     {
@@ -64,6 +66,23 @@
       "evaluation": "not_tested"
     },
     {
+      "id": "foundation:bar-recoil",
+      "name": "Beyond All Reason / Recoil",
+      "kind": "foundation_candidate",
+      "catalog_ref": null,
+      "source_url": "https://github.com/beyond-all-reason/Beyond-All-Reason/blob/a53c676b160cf2ad9c194f5edc8bafac72e673be/README.md",
+      "source_revisions": {
+        "beyond-all-reason/Beyond-All-Reason": "a53c676b160cf2ad9c194f5edc8bafac72e673be",
+        "beyond-all-reason/RecoilEngine": "084d53c4e8f387a1daf2ca567dacb650b5f71e72"
+      },
+      "review_basis": "Pinned game README, current LICENSE.md and separate engine LICENSE reviewed 2026-11-16; no installation, source execution or benchmark.",
+      "study_question": "Study separation of launcher, RTS game and engine, plus headless testing, before judging suitability for Athena. Browser integration and horde-scale performance are untested.",
+      "reuse": "BAR code defaults to GPL-2.0-or-later with file exceptions; Recoil separately specifies GPL-2.0-or-later and third-party notices. Not a permissive drop-in foundation.",
+      "asset_rights": "Current LICENSE.md points to per-file assignments/manifests: restrictive BAR Project License, CC-BY-SA and other grants, plus awaiting-license files. No blanket art clearance. Purchased material is separate; no rights inferred or assets copied.",
+      "windows": "Pinned README documents Windows development paths and tooling; not tested here. Browser delivery not established.",
+      "evaluation": "not_tested"
+    },
+    {
       "id": "steam:3238670",
       "name": "Conquest Dark",
       "kind": "inspiration",
@@ -110,6 +129,22 @@
       "study_question": "How do weapon and upgrade choices create distinct horde-combat roles?",
       "reuse": "No source, character, art, music or asset reuse granted by this record.",
       "windows": "consult referenced Games/store record; not tested here",
+      "evaluation": "not_tested"
+    },
+    {
+      "id": "foundation:hackweek-survivor",
+      "name": "Hackweek Survivor",
+      "kind": "foundation_candidate",
+      "catalog_ref": null,
+      "source_url": "https://github.com/jcronenberg/hackweek-survivor/blob/e6f4c621502800aa4dc47377189694f65c752327/README.md",
+      "source_revisions": {
+        "jcronenberg/hackweek-survivor": "e6f4c621502800aa4dc47377189694f65c752327"
+      },
+      "review_basis": "Pinned upstream README reviewed 2026-11-16; small SUSE Hackweek survivors game requiring Godot 4; no source execution or playtest.",
+      "study_question": "Can this bounded survival-loop reference help prototype one readable arena before adding gods and long-form progression? This is a study hypothesis, not demonstrated fit.",
+      "reuse": "README assigns MIT to src/ only; check notices and dependencies before incorporation.",
+      "asset_rights": "README assigns CC0 to assets/ only; verify each chosen file and provenance before reuse. No assets copied.",
+      "windows": "Godot 4 build requirement documented; Windows export and native performance untested.",
       "evaluation": "not_tested"
     },
     {
