@@ -118,3 +118,8 @@ media loads. DOM checks against 50 real catalog records cover no-match filtering
 restoration, group separators and sort direction. Native rendered-browser/playback
 QA is blocked in this executor: Chromium exits with `socket() failed: Operation
 not permitted`. DOM validation is not a screenshot or successful media playback.
+
+Default visual design is OLED black with neutral panels, readable high-contrast
+text and blue links/feedback, not dominant purple or green. A theme selector
+provides neutral slate and light alternatives; changing it does not reload data
+or media. Theme selection is local to the open export and is not persisted yet.
