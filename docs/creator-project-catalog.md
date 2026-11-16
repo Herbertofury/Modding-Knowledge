@@ -27,3 +27,24 @@ The following describes required future native records; it is not an implemented
 - [ ] Benchmark at realistic creator/catalog sizes using the [scale roadmap](catalog-scale-roadmap.md), with retained provenance and correctness baselines.
 
 Current helper consumes an in-memory reviewed graph. It does not discover real accounts, scrape communities, provide a database service or prove production-scale performance. No factual creator/catalog/count claim is introduced by its synthetic tests.
+
+## Searchable records and selectable views
+
+Additional request 2026-11-16: every retained creator/project field must be available to search, filter, sort and optional display columns, rather than hidden in an opaque detail blob. Type-aware query semantics are required: numeric/range/time filters, enumerated facets, full-text fields and explicit unknown/missing states. Unknown is not zero, false, free or abandoned. Stable sorting must define null placement and a stable identity tie-breaker; pagination must preserve it. Public APIs must allowlist fields and validate types/operations, not concatenate untrusted query text.
+
+Required fields include the model above plus:
+
+- Endorsements and other site rewards, retaining provider-specific metric names, definitions, measurement times and scope. Do not add incomparable reward schemes or treat them as universal quality scores.
+- Per-project compatibility, dependencies, access/price/currency/recurrence, changelog and license; release/update channel and game/edition/build/loader.
+- Installation state and local file size; source-declared download size must remain distinct from installed bytes and unknown size. Per-device installed state is private consumer data, not a public shared-catalog observation.
+- Creator and source facets; download metrics, source-linked issue/crash/freeze/bug reports and alerts with severity/evidence labels, scope, lifecycle and user dismiss preferences.
+- Separately named `last_checked`, `last_downloaded`, `last_updated` and `last_modified` times with source/meaning/timezone. An HTTP check does not change publication/modification dates; a local download is not a provider release. Local download/install history and alert preferences stay in the user's private application store.
+- Activity/maintenance state with evidence and age. Unknown, no recent observed activity, explicitly archived and creator-confirmed abandonment are different states; inactivity alone must not become abandoned.
+
+Backlog:
+- [ ] Native typed field registry and versioned field capability metadata covering the full model; privacy-aware public/private projections.
+- [ ] Search, sort, filter, saved views and selectable/reorderable columns across creator/project/release tables with keyboard/accessibility support.
+- [ ] Index and pagination benchmarks for realistic combinations; tests for unknown vs zero, site metric isolation, timezone boundaries, stable pagination and private-field exclusion.
+- [ ] Consumer integration preserving local installation state/preferences independently of shared public evidence and source refresh.
+
+These are explicit acceptance requirements, not a claim that a database browser or query engine has already been implemented by the refresh-plan helper.
