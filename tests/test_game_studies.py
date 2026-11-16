@@ -9,9 +9,9 @@ class GameStudiesTests(unittest.TestCase):
         self.data = json.loads(DEFAULT.read_text(encoding='utf-8'))
 
     def test_real_manifest_and_filter(self):
-        self.assertEqual(len(validate(self.data)), 13)
+        self.assertEqual(len(validate(self.data)), 15)
         self.assertEqual(len(query(self.data, 'inspiration')), 10)
-        self.assertEqual(len(query(self.data, 'foundation_candidate')), 3)
+        self.assertEqual(len(query(self.data, 'foundation_candidate')), 5)
 
     def test_missing_reference_not_guessed(self):
         catalog = {'catalogId': self.data['catalog']['catalog_id'], 'items': []}
@@ -38,3 +38,12 @@ class GameStudiesTests(unittest.TestCase):
         self.data['schema_version'] = 1
         catalog = {'catalogId': self.data['catalog']['catalog_id'], 'items': [{'id': 'same'}, {'id': 'same'}]}
         with self.assertRaises(ValueError): query(self.data, catalog=catalog)
+
+    def test_new_foundations_pin_each_component_without_catalog_guess(self):
+        for identity in ('foundation:hackweek-survivor', 'foundation:bar-recoil'):
+            row = next(row for row in query(self.data) if row['id'] == identity)
+            self.assertIsNone(row['catalog_ref'])
+            self.assertTrue(row['asset_rights'])
+            for revision in row['source_revisions'].values():
+                self.assertRegex(revision, r'^[0-9a-f]{40}$')
+            self.assertEqual(row['evaluation'], 'not_tested')

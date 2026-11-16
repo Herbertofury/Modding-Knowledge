@@ -2,7 +2,7 @@
 
 [Structured study layer](../data/game-design-studies.json) · [Canonical Games collection](https://github.com/Herbertofury/Games) · [RTS](https://github.com/Herbertofury/Games/wiki/Real-Time-Strategy) · [Roguelites](https://github.com/Herbertofury/Games/wiki/Roguelites)
 
-Games already owns a broad canonical collection. This shared database adds **10 stable game references and 3 foundation candidates**, not a duplicate catalog or a claim to list the objectively best games. It is a separate JSON dataset, not yet imported into the mod-compatibility SQLite artifact. Athena, GameSync and other apps can consume it without rebuilding discovery metadata. No app has been wired to it in this change.
+Games already owns a broad canonical collection. This shared database adds **10 stable game references and 5 foundation candidates**, not a duplicate catalog or a claim to list the objectively best games. It is a separate JSON dataset, not yet imported into the mod-compatibility SQLite artifact. Athena, GameSync and other apps can consume it without rebuilding discovery metadata. No app has been wired to it in this change.
 
 ## Read-only consumption
 
@@ -19,7 +19,7 @@ Stable IDs join against Games `items[].id`, never fuzzy names. The manifest reco
 
 Game identities and source URLs were checked against the existing pinned Games snapshot. Individual gameplay study questions are **editorial hypotheses**, not claims of measured mechanics, hours, quality, or hands-on tests. Follow their official store links before deeper comparison. Existing ratings do not prove design suitability. No ratings, trailers, screenshots or copyrighted descriptions are copied here.
 
-The three foundation overview/license sources were read on 2026-11-16. Godot's engine is MIT; OpenRA provides GPL v3 text; 0 A.D. states GPL code and CC BY-SA art/sound. These are screening facts, **not blanket clearance**. Pin a candidate source revision, check file-level licenses/dependencies and separately audit assets before incorporating anything. OpenRA's original commercial-game assets are not licensed by its engine license. 0 A.D.'s old GitHub mirror is archived; current development moved to Wildfire Games Gitea. No code, assets, engines or games were installed or benchmarked. The shared repository's own unassigned overall code license remains unchanged.
+The initial three foundation overview/license sources were read on 2026-11-16. Godot's engine is MIT; OpenRA provides GPL v3 text; 0 A.D. states GPL code and CC BY-SA art/sound. These are screening facts, **not blanket clearance**. Pin a candidate source revision, check file-level licenses/dependencies and separately audit assets before incorporating anything. OpenRA's original commercial-game assets are not licensed by its engine license. 0 A.D.'s old GitHub mirror is archived; current development moved to Wildfire Games Gitea. No code, assets, engines or games were installed or benchmarked. The shared repository's own unassigned overall code license remains unchanged.
 
 ## Athena / GameSync design target, not delivered gameplay
 
@@ -33,3 +33,11 @@ The three foundation overview/license sources were read on 2026-11-16. Godot's e
 ## Expansion and acceptance
 
 Keep broad discovery in Games. Add shared study rows by exact identity, source/review date, purpose and explicit uncertainty. New engine candidates need code/asset license separation and target-platform checks. No engine wins from stars, popularity or microbenchmarks alone. Retain raw runs, hardware/settings, frame-time distributions, memory, entity counts, pathfinding/AI load, save/reload and soak results from a representative combined prototype before recommending a foundation. Future empirical records need an evidence schema rather than changing `not_tested` to a marketing label.
+
+## Pinned additional screening, 2026-11-16
+
+Hackweek Survivor is a small Godot 4 loop-study candidate, not a long-form game template. Its [pinned README](https://github.com/jcronenberg/hackweek-survivor/blob/e6f4c621502800aa4dc47377189694f65c752327/README.md) separates MIT `src/` from CC0 `assets/`. File provenance still needs review before reuse.
+
+BAR is a separate game/launcher/engine architecture reference. The [current pinned game license](https://github.com/beyond-all-reason/Beyond-All-Reason/blob/a53c676b160cf2ad9c194f5edc8bafac72e673be/LICENSE.md) replaces the old `license_general.txt` reference: code defaults to GPL-2.0-or-later, while art/audio require per-file assignments. Restrictive BAR-only grants and awaiting-license assets must not be treated as freely reusable. [Recoil's separately pinned license](https://github.com/beyond-all-reason/RecoilEngine/blob/084d53c4e8f387a1daf2ca567dacb650b5f71e72/LICENSE) is GPL-2.0-or-later with third-party notices. No engine or art was copied.
+
+Both rows retain exact source revisions and null catalog references rather than inventing canonical Games identities. These are untested candidates: no browser fit, Windows acceptance, performance gain, campaign hours or final foundation selection is claimed.
