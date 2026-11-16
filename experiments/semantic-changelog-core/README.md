@@ -1,0 +1,72 @@
+# Read-only semantic changelog foundation
+
+Experimental, independent Rust parser/comparison slice for MO2R, ModHunter,
+Noxviola and shared Modding-Knowledge. Not yet integrated into any app or premium
+entitlement. Not a replacement for author release notes, xEdit or Sims4 Studio.
+
+## What actually works
+
+- Skyrim SE plugin bytes: bounded TES4/GRUP/record/subrecord traversal, canonical
+  master-resolved FormIDs, EDID, and WEAP DATA Value/Weight/Damage. An equal-length
+  damage change is a numeric field delta. TES4 flags are compared, header and
+  record metadata are retained as opaque evidence. Unknown payload differences
+  are labeled opaque, never interpreted as a bug fix or compatibility change.
+- Sims4 DBPF2/index3: resource TGI enumeration with shared type/group/high-instance
+  index fields, bounded uncompressed and recognized zlib resource decoding,
+  added/removed/payload-changed resource classification. Repacking or compression
+  changes with identical decoded payload produce no resource delta. Unsupported
+  compression yields NotCompared, even when stored bytes match.
+- Immutable byte-slice APIs and a read-only CLI; CLI labels reports generated,
+  prints SHA256 of both compared snapshots and never installs or edits inputs.
+- Malformed lengths, duplicate identities, ambiguous masters, bounded expansion,
+  parser-version mismatch and incomplete-side absence are handled explicitly.
+
+## Run
+
+```
+cargo run --locked -- skyrim old.esp new.esp CanonicalName.esp
+cargo run --locked -- sims4 old.package new.package
+cargo test --locked
+cargo test --locked --release
+cargo clippy --locked --all-targets -- -D warnings
+```
+
+## Important limits
+
+Skyrim comparison is a **narrow field projection**, always marked incomplete at
+whole-plugin semantic scope. It does not interpret compressed record bodies,
+localized strings, all record fields, group ownership/context, reference graphs,
+Papyrus or effective load-order/runtime behavior. Uninterpreted header/body bytes
+are not author intent. Tests use synthetic fixtures, not qualified game files.
+HEDR shape is checked; no complete plugin validity or game compatibility claim.
+
+DBPF comparison is **resource-level payload evidence**, not field-level CAS,
+tuning, mesh, animation or texture interpretation. RefPack and nonrecognized
+compression remain unknown. Certain nonstandard/extended index representations
+are rejected. DBPF2 is not intrinsically a Sims4-only file identification, so
+caller must supply the game context. Changes to compression/package layout are
+not gameplay changes. `.ts4script` bytecode analysis is not implemented.
+
+Inputs are limited to 64 MiB; decoded resource budget is 64 MiB/16 MiB each; 100k records,
+100k total Bethesda subrecords and 32 group nesting. Oversized inputs refuse rather
+than silently truncating. This is a configurable-budget design follow-up, not a
+claim every real mod fits. API cancellation is cooperative; CLI uses normal OS
+termination, not a product job UI. Binding to installed/downloaded release lineage,
+source versions, parser cache, signed entitlement and UI remains application work.
+
+## Research and reuse
+
+- [TES5Edit WEAP schema](https://github.com/TES5Edit/TES5Edit/blob/dev-4.1.5/Core/wbDefinitionsTES5.pas): WEAP DATA binary fields verified from the primary implementation. No xEdit code vendored.
+- [Sims4Tools DBPF specification](https://github.com/Kuree/Sims4Tools/wiki/DBPF-Format) and [compression](https://github.com/Kuree/Sims4Tools/wiki/Compression): index/compression format facts. Decoder sniffs recognized zlib framing; compression marker alone does not prove algorithm.
+- [houseCARL v2.1.2 FieldsDiff](https://github.com/Avick3110/houseCARL/blob/v2.1.2/src/housecarl-core/FieldsDiff.cs) and RecordPoles provide a strong broad adapter candidate: deep content diff, list order, unavailable/absent/null, and winner/previous/named poles. Those are load-order comparisons, not automatically two release-file versions. GPL3/Mutagen license and two-version isolation require review before integration. No houseCARL code copied.
+- Existing ModHunter plugin_analysis scans header/record facts, not full field diff.
+  MO2R sims4.rs/sims4_install.rs handle archive/signature/routing, not DBPF resources.
+
+## Next acceptance
+
+Integrate exact release identities and hashes, parser/versioned evidence contracts,
+full xEdit-level record schema adapters, localized strings and compressed Bethesda
+records; resource-specific Sims4 schemas; structured serialization and rich visual
+before/after UI. Never turn an unread/unsupported field into unchanged or claim a
+runtime effect from a changed numeric value. Preserve author notes separately and
+present missing-changelog comparison as generated evidence.

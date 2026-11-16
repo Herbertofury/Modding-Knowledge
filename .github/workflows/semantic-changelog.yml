@@ -1,0 +1,28 @@
+name: Verify experimental semantic changelog
+on:
+  pull_request:
+    paths:
+      - 'experiments/semantic-changelog-core/**'
+      - '.github/workflows/semantic-changelog.yml'
+  push:
+    paths:
+      - 'experiments/semantic-changelog-core/**'
+      - '.github/workflows/semantic-changelog.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: '1.99.1'
+          components: clippy,rustfmt
+      - run: cargo fmt --manifest-path experiments/semantic-changelog-core/Cargo.toml --check
+      - run: cargo test --locked --manifest-path experiments/semantic-changelog-core/Cargo.toml
+      - run: cargo test --locked --release --manifest-path experiments/semantic-changelog-core/Cargo.toml
+      - run: cargo clippy --locked --manifest-path experiments/semantic-changelog-core/Cargo.toml --all-targets -- -D warnings
