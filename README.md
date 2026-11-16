@@ -75,3 +75,10 @@ LOOT's included metadata retains [CC0 license text](data/loot-CC0-LICENSE). Othe
 ## Cross-project game design research
 
 [Shared RTS/roguelite study layer](docs/game-design-studies.md) references the existing Games catalog by stable identity, with separate foundation-license screening and explicit untested status.
+
+## Rust catalog management app
+
+The initial native [`knowledge-manager`](docs/database-manager.md) provides
+read-only catalog browsing, duplicate-review candidates, storage metrics and
+integrity checks against real SQLite snapshots. It is a working CLI foundation,
+not yet the graphical management application or an automatic optimizer.
