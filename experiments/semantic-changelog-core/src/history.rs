@@ -93,6 +93,8 @@ impl History {
             continuity_lost: false,
         })
     }
+    /// Whether supplied observations have no known continuity gap. This never
+    /// guarantees every intermediate edit was captured (notifications coalesce).
     /// False permanently after a pause/overflow. Exports and UI must retain this
     /// status; a later rebase does not restore evidence of missed observations.
     pub fn continuity_preserved(&self) -> bool {
@@ -338,5 +340,50 @@ mod first_gap_tests {
         );
         assert!(!h.continuity_preserved());
         assert_eq!(h.query(None, 0, 9).count(), 1);
+    }
+}
+
+#[cfg(test)]
+mod watcher_recovery_contract_tests {
+    use super::*;
+    // Platform adapters must map known notification loss to mark_gap BEFORE
+    // reconciliation. These are contract tests, not actual OS watcher tests.
+    #[test]
+    fn unchanged_rescan_cannot_restore_lost_intermediate_history() {
+        let mut h = History::new("artifact".into(), 4).unwrap();
+        h.set_enabled(true);
+        h.observe(b"A", 1, Attribution::Unknown, None).unwrap();
+        // The file might have changed A -> B -> A while notifications were lost.
+        h.mark_gap();
+        assert_eq!(
+            h.observe(b"A", 10, Attribution::Unknown, None),
+            Ok(Observation::RebasedAfterGap)
+        );
+        assert!(!h.continuity_preserved());
+        assert_eq!(h.query(None, 0, 10).count(), 0);
+        assert_eq!(
+            h.observe(b"C", 11, Attribution::Unknown, None),
+            Ok(Observation::Changed)
+        );
+        assert!(!h.continuity_preserved());
+        assert_eq!(
+            h.query(None, 0, 11).next().unwrap().attribution,
+            Attribution::Unknown
+        );
+    }
+    #[test]
+    fn repeated_loss_and_rescans_never_invent_a_writer_or_edits() {
+        let mut h = History::new("artifact".into(), 4).unwrap();
+        h.set_enabled(true);
+        h.observe(b"A", 1, Attribution::Unknown, None).unwrap();
+        for (t, bytes) in [(2, b"B"), (3, b"C"), (4, b"D")] {
+            h.mark_gap();
+            assert_eq!(
+                h.observe(bytes, t, Attribution::Unknown, None),
+                Ok(Observation::RebasedAfterGap)
+            );
+        }
+        assert!(!h.continuity_preserved());
+        assert_eq!(h.query(None, 0, 10).count(), 0);
     }
 }

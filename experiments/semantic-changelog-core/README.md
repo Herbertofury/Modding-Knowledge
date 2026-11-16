@@ -93,9 +93,46 @@ retention controls remain integration work. A missing observation, restart or
 watcher overflow must invalidate continuity. SHA hashes are not file backups.
 
 Semantic reports must be computed from the exact bytes matching each revision,
-with parser/version and existing partial/unknown limitations retained. This module
-does not yet attach reports or prove tool identity. Sims4 swatch-specific decoding,
+with parser/version and existing partial/unknown limitations retained. The history module alone does not attach reports or prove tool identity.
+`edit_analysis` now verifies both revision hashes and lengths against supplied
+immutable bytes before returning the supported Skyrim-field/DBPF-resource report
+alongside unchanged attribution. Wrong/reversed snapshots fail before parsing.
+Hash verification does not authenticate host provenance or make partial decoding
+complete. Artifact identity and known-gap status must still accompany UI/export separately;
+`AnalyzedEdit` alone does not carry either. Sims4 swatch-specific decoding,
 DynDOLOD generated-output ownership and complete xEdit schema coverage remain open.
 MO2 MCP `run_executable` (inspected supplied Python source, lines1642–1676) reports
 launch PID/exit status; it provides no per-file writer telemetry. Never promote
 that response to directly observed edit attribution.
+
+### Real watcher integration acceptance (still unimplemented)
+
+- Windows: treat successful completed notifications with zero transferred bytes
+  and `ERROR_NOTIFY_ENUM_DIR` as loss, call `mark_gap` on every affected history
+  before reconciliation, then rescan the selected scope. For asynchronous calls,
+  use completion byte counts, not the undefined immediate `lpBytesReturned`.
+- Linux: `IN_Q_OVERFLOW` invalidates the whole watch instance's affected scope.
+  Rebuild watches/reconcile directory state, including new nested directories;
+  inotify is nonrecursive. Invalidated/unmounted watches and read failures need
+  explicit gap handling. Neither event counts nor writer identity can be derived
+  reliably from coalesced notifications; inotify supplies no writer PID.
+- A rescan recovers current state, not lost intermediate changes. Even an identical
+  hash after rescan cannot prove nothing changed. Keep known-gap status in every
+  UI/export. `continuity_preserved` only means no known gap among supplied
+  observations, never a guarantee of complete edit capture between snapshots.
+- Scope opt-in, pause/resume, rename/replacement identities, race-safe stable reads,
+  bounded recursive registration/queues, dropped-event recovery, cancellation and
+  synthetic overflow plus real-platform tests are required before app integration.
+  Notification-derived observations default to Unknown attribution. Process launch
+  correlation is only inferred; direct writer proof requires separate evidence.
+
+Primary contracts: [Microsoft ReadDirectoryChangesW](https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)
+and [Linux inotify manual](https://man7.org/linux/man-pages/man7/inotify.7.html).
+The recovery tests here exercise the ledger contract, not a working OS watcher.
+
+
+`edit_analysis::skyrim_edit` and `sims4_edit` connect the ledger to real parsers
+without retaining snapshots or writing files. Hashing checks cooperative
+cancellation per64KiB; malformed matching bytes still fail parser validation.
+Read-only byte binding is implemented; durable snapshot storage and user-facing
+report attachment remain application work.

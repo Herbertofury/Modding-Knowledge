@@ -243,3 +243,5 @@ mod tests {
 pub mod dbpf;
 
 pub mod history;
+
+pub mod edit_analysis;
