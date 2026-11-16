@@ -186,3 +186,35 @@ No file rewriting, normalization save, settings installation or original-file
 mutation occurs. Dedicated MO2R/manager settings tabs, profile/mod ownership,
 conflict precedence, watcher integration, all other config formats and safe
 preview/backup/apply/rollback workflows remain required application work.
+
+### Explicit foreground settings monitoring
+
+```
+cargo run --locked -- poll-ini /private/path/settings.ini 20 1000
+cargo run --locked -- ini old.ini new.ini
+```
+
+The first command actually samples the selected single file20 times at1000ms
+intervals, displays progress and counts changed settings. It is an explicit
+foreground opt-in, not an installed service/background daemon. Ctrl+C terminates;
+no original files or checkpoints are written by this command. Values, section/key
+labels and source paths are omitted from polling output. Writer is always unknown.
+The two-file `ini` command prints a value-redacted structural report; its labels
+may be private, so retain that output locally.
+
+Polling uses a bounded regular-file double read, refuses detected instability and
+unsupported INI, and records persistent gaps on failures. The next valid sample
+rebases rather than inventing changes across missing evidence. Any sample failure
+makes the command exit nonzero after reporting progress. Original-file content
+is retained only in process memory for the previous valid sample. Poll count is
+1..1000, interval250..60000ms, with at most one hour of scheduled intervals; this
+is not a hard I/O deadline, especially on network-mounted storage.
+
+A double read is not a transactional snapshot; same-size concurrent writes can
+escape detection. Polling can miss intermediate A→B→A edits, has no process-writer
+telemetry, and does not implement recursive native OS notifications. A rename or
+replacement may be observed on a later sample. Use only an explicitly selected
+file under trusted parent directories. Persistent monitoring jobs, directory
+watchers, private app integration, ownership resolution and dedicated settings
+page/tab remain open. Synthetic real-file command smoke observed two changed
+settings, no secret values printed, and no monitor modification of the input.
