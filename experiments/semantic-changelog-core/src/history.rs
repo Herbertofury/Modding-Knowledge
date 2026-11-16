@@ -1,8 +1,10 @@
 //! Opt-in, in-memory history of explicitly supplied artifact observations.
 //! No watcher, process inspection, file writes, or inferred authorship.
+use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub enum Attribution {
     Unknown,
     /// A launch/time correlation is NOT evidence that this tool wrote the file.
@@ -28,7 +30,7 @@ impl Attribution {
             | Self::UserReported { tool } => Some(tool),
         }
     }
-    fn valid(&self) -> bool {
+    pub(crate) fn valid(&self) -> bool {
         let valid =
             |s: &str| !s.trim().is_empty() && s.len() <= 256 && !s.chars().any(char::is_control);
         match self {
@@ -40,14 +42,16 @@ impl Attribution {
         }
     }
 }
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Revision {
     pub sha256: [u8; 32],
     pub length: u64,
     /// Host observation time, NOT a claimed exact edit time or filesystem mtime.
     pub observed_at_ms: u64,
 }
-#[derive(Clone, Debug, PartialEq, Eq)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
 pub struct Edit {
     pub before: Revision,
     pub after: Revision,
@@ -55,17 +59,22 @@ pub struct Edit {
     pub workflow: Option<String>,
 }
 /// One artifact's explicit, stable identity; no file bytes retained.
+/// Restore only through the validated checkpoint API, never raw deserialization.
+/// ```compile_fail
+/// let _: semantic_changelog_core::history::History = serde_json::from_str("{}").unwrap();
+/// ```
 /// Host must use opaque IDs/sanitized labels: arbitrary strings can contain paths.
 /// Supply snapshots only after stable-read/race checks. Bounded and fails closed:
 /// full history requires explicit export/retention policy, never silent eviction.
+#[derive(Serialize)]
 pub struct History {
-    artifact: String,
-    current: Option<Revision>,
-    edits: Vec<Edit>,
-    capacity: usize,
-    enabled: bool,
-    gap: bool,
-    continuity_lost: bool,
+    pub(crate) artifact: String,
+    pub(crate) current: Option<Revision>,
+    pub(crate) edits: Vec<Edit>,
+    pub(crate) capacity: usize,
+    pub(crate) enabled: bool,
+    pub(crate) gap: bool,
+    pub(crate) continuity_lost: bool,
 }
 #[derive(Debug, PartialEq, Eq)]
 pub enum Observation {

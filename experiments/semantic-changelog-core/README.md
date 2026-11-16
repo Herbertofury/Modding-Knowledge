@@ -136,3 +136,25 @@ without retaining snapshots or writing files. Hashing checks cooperative
 cancellation per64KiB; malformed matching bytes still fail parser validation.
 Read-only byte binding is implemented; durable snapshot storage and user-facing
 report attachment remain application work.
+
+### Explicit local metadata checkpoint storage
+
+`checkpoint::save_new(path, &history)` creates a new JSON checkpoint, syncs its
+file contents, and refuses any existing destination. `checkpoint::load(path)`
+checks bounded input, version, schema, capacities and timeline consistency, then
+restores history **disabled with a persistent known gap**. A restart cannot prove
+no changes occurred while the app was away. Original file contents and semantic
+payloads are not stored, only hashes, observations and caller-supplied labels.
+
+This is local checkpoint persistence, not an automatic watcher/database, encrypted
+vault, crash-proof directory transaction or authenticated audit log. Caller must
+select a private, non-synced directory not writable by untrusted processes and
+sanitize IDs/labels. Unix new files request0600; Windows inherits directory ACLs,
+which the application must establish before use. Final symlink/nonregular entries are refused; Unix open additionally uses
+no-follow/nonblocking flags, and Windows opens the final reparse point rather
+than following it. Ancestor-directory trust is still a host precondition. A write failure can
+leave an incomplete new file. Never retry by truncating/replacing it: report the
+failure and use an explicit new checkpoint path. No automatic deletion occurs.
+Large histories fail rather than truncate; durable snapshot bytes, atomic catalog
+rotation, retention/export UI, recovery indexing and real-app integration remain
+open. Load validates structure, not origin or the truth of writer evidence.

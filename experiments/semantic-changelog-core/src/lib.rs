@@ -1,4 +1,5 @@
-//! Read-only, bounded semantic evidence. No filesystem writes or plugin execution.
+//! Bounded semantic evidence; analysis never edits original artifacts or executes plugins.
+//! Explicit checkpoint module separately creates local metadata files.
 use std::collections::{BTreeMap, BTreeSet};
 pub mod skyrim;
 
@@ -245,3 +246,5 @@ pub mod dbpf;
 pub mod history;
 
 pub mod edit_analysis;
+
+pub mod checkpoint;
