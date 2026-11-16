@@ -1,0 +1,23 @@
+{
+  "id": 203,
+  "name": "Followers vs Followers",
+  "version": "1.0.1",
+  "game": "skyrim-se",
+  "page": "https://modholdmods.com/g/skyrim-se/mods/203/followers-vs-followers",
+  "updated": "2026-11-15 22:20:44",
+  "published": "2026-11-10 21:22:37",
+  "access": "free",
+  "files": [
+    {
+      "id": 759,
+      "kind": "main",
+      "name": "Followers vs Followers 1.0.1.zip",
+      "version": "1.0.1",
+      "size": 19940724,
+      "sha256": "63374b7ccf84a97d528ee0f6553ce1b7dd773b6de99b04232e8b94131bf1b846"
+    }
+  ],
+  "observed_at": "2026-11-16",
+  "source_url": "https://modholdmods.com/api/v1/mods/203",
+  "scope": "Public metadata; no archive downloaded; timestamps timezone unspecified; description/gallery not complete"
+}
