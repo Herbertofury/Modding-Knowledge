@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "provider": "modhold",
+  "documentation": "https://modholdmods.com/developers",
+  "reviewed_at": "2026-11-16",
+  "public_metadata_endpoint": "https://modholdmods.com/api/v1/mods/{positive_integer_id}",
+  "identity_fields": [
+    "id",
+    "game"
+  ],
+  "page_pattern": "https://modholdmods.com/g/{game}/mods/{id}/{slug}",
+  "source_key": "modhold:mod:{id}",
+  "files_key": "modhold:file:{id}",
+  "download_support": "not enabled; player grant required",
+  "polling": "user-triggered; existing 15-minute success cache, conditional revalidation and provider cooldown",
+  "timestamp_policy": "timezone absent; retain original string without inventing UTC",
+  "release_comparison_gate": [
+    "matching mod ID",
+    "matching page identity and game",
+    "matching profile game",
+    "main file corroborates version",
+    "fresh valid observation"
+  ],
+  "unsupported_completeness": [
+    "full gallery",
+    "playable media",
+    "native account downloads",
+    "full MO2R app integration"
+  ],
+  "retention": "small attributed public factual projection; no copied descriptions, artwork, accounts or credentials",
+  "code_license": "site API access does not license mod code or assets"
+}
