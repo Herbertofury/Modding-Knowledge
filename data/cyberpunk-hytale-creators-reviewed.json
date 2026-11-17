@@ -1,0 +1,273 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Five public creator/project/release source checks. Partial attribution and release metadata; no current-build, media playback or cross-site personal identity acceptance.",
+  "games": {
+    "cyberpunk2077": "Cyberpunk 2077",
+    "hytale": "Hytale"
+  },
+  "sources": {
+    "cyberpunk-hytale-reviewed-creator-facts": "https://hytale.com/news/2026/5/hytale-new-worlds-modding-contest-retrospective"
+  },
+  "source_policy_revisions": {
+    "cyberpunk-hytale-reviewed-creator-facts": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+  },
+  "entities": [
+    {
+      "id": "curseforge:creator:ginco",
+      "game_id": "hytale",
+      "kind": "creator",
+      "name": "ginco"
+    },
+    {
+      "id": "curseforge:hytale:mod:1527157",
+      "game_id": "hytale",
+      "kind": "mod",
+      "name": "Byte Crashers: Jungle Jam"
+    },
+    {
+      "id": "curseforge:creator:zenkuro",
+      "game_id": "hytale",
+      "kind": "creator",
+      "name": "zenkuro"
+    },
+    {
+      "id": "curseforge:hytale:mod:1484256",
+      "game_id": "hytale",
+      "kind": "mod",
+      "name": "[Zen's] Arcanum"
+    },
+    {
+      "id": "curseforge:creator:pseudo_elephant",
+      "game_id": "hytale",
+      "kind": "creator",
+      "name": "Pseudo_Elephant"
+    },
+    {
+      "id": "curseforge:hytale:mod:1457930",
+      "game_id": "hytale",
+      "kind": "mod",
+      "name": "Arcane Relay"
+    },
+    {
+      "id": "github:creator:psiberx",
+      "game_id": "cyberpunk2077",
+      "kind": "creator",
+      "name": "psiberx"
+    },
+    {
+      "id": "github:psiberx/cp2077-codeware",
+      "game_id": "cyberpunk2077",
+      "kind": "mod",
+      "name": "Codeware"
+    },
+    {
+      "id": "github:creator:jac3km4",
+      "game_id": "cyberpunk2077",
+      "kind": "creator",
+      "name": "jac3km4"
+    },
+    {
+      "id": "github:jac3km4/redscript",
+      "game_id": "cyberpunk2077",
+      "kind": "mod",
+      "name": "redscript"
+    }
+  ],
+  "observations": [
+    {
+      "id": "curseforge:creator:ginco:20261117:reviewed.creator_identity",
+      "entity_id": "curseforge:creator:ginco",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/byte-crashers-jungle-jam",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profile_url\":\"https://www.curseforge.com/members/ginco/projects\",\"numeric_id\":null,\"id_scope\":\"Platform username locator, not immutable account ID or legal-person identity\",\"evidence\":\"Project links creator profile; profile lists project as Owner. Official Hytale contest article independently names GINCo and links exact project. No other social identity merged.\",\"gaps\":[\"numeric creator ID\",\"cross-site creator profiles\",\"current build compatibility\",\"media publication date and reuse rights\"]}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:hytale:mod:1527157:20261117:reviewed.project_attribution",
+      "entity_id": "curseforge:hytale:mod:1527157",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/byte-crashers-jungle-jam",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"curseforge:creator:ginco\",\"project\":{\"game\":\"Hytale\",\"creator\":\"ginco\",\"creator_profile\":\"https://www.curseforge.com/members/ginco/projects\",\"creator_numeric_id\":null,\"project\":\"Byte Crashers: Jungle Jam\",\"source_project_id\":\"1527157\",\"project_url\":\"https://www.curseforge.com/hytale/mods/byte-crashers-jungle-jam\",\"release\":\"0.3\",\"source_file_id\":\"8237195\",\"release_date\":\"2026-06-12\",\"release_url\":\"https://www.curseforge.com/hytale/mods/byte-crashers-jungle-jam/files/8237195\",\"game_version_declared\":\"0.5\",\"license_listing\":\"All Rights Reserved\",\"distribution\":[\"CurseForge\"],\"identity_evidence\":\"Project links creator profile; profile lists project as Owner. Official Hytale contest article independently names GINCo and links exact project. No other social identity merged.\",\"corroborating_source\":\"https://hytale.com/news/2026/5/hytale-new-worlds-modding-contest-retrospective\",\"media\":[{\"url\":\"https://www.youtube.com/embed/LTBt31lSGtY?wmode=transparent\",\"context\":\"Project-page gameplay explainer embed\",\"published_at\":null,\"verification\":\"Source link observed; video fetch throttled, playback/content/date not verified\",\"reuse_permission\":\"unknown; no media copied\"}],\"unknowns\":[\"numeric creator ID\",\"cross-site creator profiles\",\"current build compatibility\",\"media publication date and reuse rights\"]},\"scope\":\"Reviewed public metadata only; no binary download, runtime test, asset reuse or automatic cross-site account merge.\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:creator:ginco:20261117:reviewed.project_link",
+      "entity_id": "curseforge:creator:ginco",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/byte-crashers-jungle-jam",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"curseforge:hytale:mod:1527157\",\"relationship\":\"source-declared owner/project association; not exclusive authorship proof\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:creator:zenkuro:20261117:reviewed.creator_identity",
+      "entity_id": "curseforge:creator:zenkuro",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/zens-arcanum",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profile_url\":\"https://www.curseforge.com/members/zenkuro/projects\",\"numeric_id\":null,\"id_scope\":\"Platform username locator, not immutable account ID or legal-person identity\",\"evidence\":\"CurseForge project explicitly links z3nkuro/Arcanum-Docs as Wiki. This proves project-documentation association, not a fully corroborated person/account merge. Profile search snapshot is seven months old.\",\"gaps\":[\"numeric creator ID\",\"reciprocal creator identity\",\"current release after cached file page\",\"media date and reuse rights\"]}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:hytale:mod:1484256:20261117:reviewed.project_attribution",
+      "entity_id": "curseforge:hytale:mod:1484256",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/zens-arcanum",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"curseforge:creator:zenkuro\",\"project\":{\"game\":\"Hytale\",\"creator\":\"zenkuro\",\"creator_profile\":\"https://www.curseforge.com/members/zenkuro/projects\",\"creator_numeric_id\":null,\"project\":\"[Zen's] Arcanum\",\"source_project_id\":\"1484256\",\"project_url\":\"https://www.curseforge.com/hytale/mods/zens-arcanum\",\"release\":\"0.6.3\",\"source_file_id\":\"9148878\",\"release_date\":\"2026-10-12\",\"release_url\":\"https://www.curseforge.com/hytale/mods/zens-arcanum/files/9148878\",\"game_version_declared\":\">=0.7.0 <0.8.0\",\"license_listing\":\"All Rights Reserved\",\"distribution\":[\"CurseForge\"],\"linked_documentation\":\"https://github.com/z3nkuro/Arcanum-Docs\",\"identity_evidence\":\"CurseForge project explicitly links z3nkuro/Arcanum-Docs as Wiki. This proves project-documentation association, not a fully corroborated person/account merge. Profile search snapshot is seven months old.\",\"media\":[{\"url\":\"https://www.youtube.com/embed/valM-R1iNfY\",\"context\":\"Official Hytale May 11, 2026 winner spotlight embed\",\"published_at\":null,\"verification\":\"Embed link observed; video fetch throttled\",\"reuse_permission\":\"unknown\"}],\"unknowns\":[\"numeric creator ID\",\"reciprocal creator identity\",\"current release after cached file page\",\"media date and reuse rights\"],\"freshness_note\":\"File page crawled four weeks before review; project page current in search service. Not a live API check.\"},\"scope\":\"Reviewed public metadata only; no binary download, runtime test, asset reuse or automatic cross-site account merge.\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:creator:zenkuro:20261117:reviewed.project_link",
+      "entity_id": "curseforge:creator:zenkuro",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/zens-arcanum",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"curseforge:hytale:mod:1484256\",\"relationship\":\"source-declared owner/project association; not exclusive authorship proof\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:creator:pseudo_elephant:20261117:reviewed.creator_identity",
+      "entity_id": "curseforge:creator:pseudo_elephant",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/arcane-relay",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profile_url\":\"https://www.curseforge.com/members/pseudo_elephant/projects\",\"numeric_id\":null,\"id_scope\":\"Platform username locator, not immutable account ID or legal-person identity\",\"evidence\":\"Project explicitly links GitHub source repository and CurseForge creator. Repository describes Arcane Relay; no reciprocal CurseForge link found in retrieved text. Retain source association without asserting a fully proven cross-site personal identity.\",\"gaps\":[\"numeric creator ID\",\"reciprocal account proof\",\"actual binary compatibility\",\"media date and license\"]}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:hytale:mod:1457930:20261117:reviewed.project_attribution",
+      "entity_id": "curseforge:hytale:mod:1457930",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/arcane-relay",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"curseforge:creator:pseudo_elephant\",\"project\":{\"game\":\"Hytale\",\"creator\":\"Pseudo_Elephant\",\"creator_profile\":\"https://www.curseforge.com/members/pseudo_elephant/projects\",\"creator_numeric_id\":null,\"project\":\"Arcane Relay\",\"source_project_id\":\"1457930\",\"project_url\":\"https://www.curseforge.com/hytale/mods/arcane-relay\",\"release\":\"1.3.6\",\"source_file_id\":\"9147232\",\"release_date\":\"2026-10-12\",\"release_url\":\"https://www.curseforge.com/hytale/mods/arcane-relay/files/9147232\",\"game_version_declared\":\"0.7.0\",\"license_listing\":\"MIT License\",\"distribution\":[\"CurseForge\"],\"linked_source\":\"https://github.com/PseudoElephant/ArcaneRelay\",\"identity_evidence\":\"Project explicitly links GitHub source repository and CurseForge creator. Repository describes Arcane Relay; no reciprocal CurseForge link found in retrieved text. Retain source association without asserting a fully proven cross-site personal identity.\",\"media\":[{\"url\":\"https://www.youtube.com/embed/bX4Qf17K7zI\",\"context\":\"Official Hytale May 11, 2026 winner spotlight embed\",\"published_at\":null,\"verification\":\"Embed link observed; video fetch throttled\",\"reuse_permission\":\"unknown; code license not assumed to cover promotional media\"}],\"unknowns\":[\"numeric creator ID\",\"reciprocal account proof\",\"actual binary compatibility\",\"media date and license\"]},\"scope\":\"Reviewed public metadata only; no binary download, runtime test, asset reuse or automatic cross-site account merge.\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:creator:pseudo_elephant:20261117:reviewed.project_link",
+      "entity_id": "curseforge:creator:pseudo_elephant",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/arcane-relay",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"curseforge:hytale:mod:1457930\",\"relationship\":\"source-declared owner/project association; not exclusive authorship proof\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:psiberx:20261117:reviewed.creator_identity",
+      "entity_id": "github:creator:psiberx",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/psiberx/cp2077-codeware",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profile_url\":\"https://github.com/psiberx\",\"numeric_id\":null,\"id_scope\":\"Platform username locator, not immutable account ID or legal-person identity\",\"evidence\":\"Repository owner path and release publisher psiberx observed. No Nexus/social account automatically merged.\",\"gaps\":[\"numeric account/repository/release IDs\",\"full ISO release timestamp\",\"asset hashes and license\",\"media\",\"runtime compatibility\",\"other publishing locations\"]}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:psiberx/cp2077-codeware:20261117:reviewed.project_attribution",
+      "entity_id": "github:psiberx/cp2077-codeware",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/psiberx/cp2077-codeware",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:psiberx\",\"project\":{\"game\":\"Cyberpunk 2077\",\"creator\":\"psiberx\",\"creator_profile\":\"https://github.com/psiberx\",\"creator_numeric_id\":null,\"project\":\"Codeware\",\"source_project_id\":\"github:psiberx/cp2077-codeware (name-based locator, numeric repository ID unverified)\",\"project_url\":\"https://github.com/psiberx/cp2077-codeware\",\"release\":\"v1.21.4\",\"release_date_displayed\":\"13 Nov 08:58\",\"release_date_iso\":null,\"release_url\":\"https://github.com/psiberx/cp2077-codeware/releases/tag/v1.21.4\",\"release_channel\":\"Latest stable label; v1.21.5-rc.1 shown separately as prerelease dated 14 Nov 14:25\",\"compatibility_source\":\"https://github.com/psiberx/cp2077-codeware/blob/main/README.md\",\"compatibility_documented\":[\"Cyberpunk 2077 2.5\",\"redscript 0.5.32+\",\"Cyber Engine Tweaks 1.38.0+\",\"RED4ext 1.31.0+\"],\"distribution\":[\"GitHub Releases\"],\"media\":[],\"identity_evidence\":\"Repository owner path and release publisher psiberx observed. No Nexus/social account automatically merged.\",\"unknowns\":[\"numeric account/repository/release IDs\",\"full ISO release timestamp\",\"asset hashes and license\",\"media\",\"runtime compatibility\",\"other publishing locations\"]},\"scope\":\"Reviewed public metadata only; no binary download, runtime test, asset reuse or automatic cross-site account merge.\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:psiberx:20261117:reviewed.project_link",
+      "entity_id": "github:creator:psiberx",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/psiberx/cp2077-codeware",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:psiberx/cp2077-codeware\",\"relationship\":\"source-declared owner/project association; not exclusive authorship proof\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:jac3km4:20261117:reviewed.creator_identity",
+      "entity_id": "github:creator:jac3km4",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/jac3km4/redscript",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profile_url\":\"https://github.com/jac3km4\",\"numeric_id\":null,\"id_scope\":\"Platform username locator, not immutable account ID or legal-person identity\",\"evidence\":\"GitHub repository ownership observed. Nexus search excerpt points to jac3km4 release tags but owner profile and reciprocal link not fully reviewed, so candidate remains unmerged.\",\"gaps\":[\"numeric creator/repository/release IDs\",\"full ISO release timestamp\",\"cross-site creator proof\",\"media dates/rights\",\"current binary compatibility\"]}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:jac3km4/redscript:20261117:reviewed.project_attribution",
+      "entity_id": "github:jac3km4/redscript",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/jac3km4/redscript",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:jac3km4\",\"project\":{\"game\":\"Cyberpunk 2077\",\"creator\":\"jac3km4\",\"creator_profile\":\"https://github.com/jac3km4\",\"creator_numeric_id\":null,\"project\":\"redscript\",\"source_project_id\":\"github:jac3km4/redscript (name-based locator, numeric repository ID unverified)\",\"project_url\":\"https://github.com/jac3km4/redscript\",\"release\":\"v1.0.1\",\"release_date_displayed\":\"15 Nov 21:23\",\"release_date_iso\":null,\"release_url\":\"https://github.com/jac3km4/redscript/releases/tag/v1.0.1\",\"release_publisher\":\"github-actions (automation, not creator identity)\",\"license_listing\":\"MIT\",\"distribution\":[\"GitHub Releases\"],\"candidate_distribution\":\"https://www.nexusmods.com/cyberpunk2077/mods/1511?tab=files\",\"identity_evidence\":\"GitHub repository ownership observed. Nexus search excerpt points to jac3km4 release tags but owner profile and reciprocal link not fully reviewed, so candidate remains unmerged.\",\"media\":[],\"unknowns\":[\"numeric creator/repository/release IDs\",\"full ISO release timestamp\",\"cross-site creator proof\",\"media dates/rights\",\"current binary compatibility\"],\"source_note\":\"Repository documents Windows and non-Wine macOS installation; no install performed and no security-setting instructions executed.\"},\"scope\":\"Reviewed public metadata only; no binary download, runtime test, asset reuse or automatic cross-site account merge.\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:jac3km4:20261117:reviewed.project_link",
+      "entity_id": "github:creator:jac3km4",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/jac3km4/redscript",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:jac3km4/redscript\",\"relationship\":\"source-declared owner/project association; not exclusive authorship proof\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    }
+  ]
+}

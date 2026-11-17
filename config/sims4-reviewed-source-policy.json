@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "revision": "sims4-official-factual-links-2026-11-17",
+  "enabled": true,
+  "allow_retain": true,
+  "allow_publish": true,
+  "source_ids": [
+    "sims4-twistedmexi-official",
+    "sims4-deaderpool-official",
+    "sims4-scumbumbo-official"
+  ],
+  "scope": "Manually curated factual identity, title, version, date and hyperlink observations only. No copied articles, media, files, private content or implied asset license; no network refresh authority.",
+  "basis": "User-requested public factual research; this policy does not grant reuse of source text or media."
+}

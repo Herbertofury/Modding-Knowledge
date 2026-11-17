@@ -1,0 +1,7 @@
+{
+  "enabled": true,
+  "allow_retain": true,
+  "allow_publish": true,
+  "revision": "reviewed-public-facts-2026-11-17",
+  "scope": "Ten manually reviewed small factual observations from four public project repository pages; excludes source code/media/private data and does not authorize network refresh"
+}

@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "enabled": true,
+  "allow_retain": true,
+  "allow_publish": true,
+  "revision": "bethesda-public-creator-facts-2026-11-17",
+  "scope": "Manually checked bounded public factual metadata only; no biographies, private details, assets, source text or automatic Pro ingestion."
+}
