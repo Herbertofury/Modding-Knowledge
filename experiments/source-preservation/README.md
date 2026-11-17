@@ -57,3 +57,7 @@ Dependencies are pinned to versions available and tested in the execution enviro
 Fixture regression tests cover streamed multi-chunk bytes/reopen equality, source preservation, dedup, quota rollback, cancellation rollback, explicit missing media, discovery uncertainty, canonical URL validation, immutable capture IDs, retention pins, original installer hash-bound choice evidence, corruption detection and overwrite refusal. CLI offline-preview/source-deletion fixtures are additional checks, not real browser/native acceptance. No download or installation of a user's mod is performed by these tests.
 
 Local validation: 14 Rust regression tests passed; synthetic CLI smoke passed original FOMOD archive byte round-trip, preserved playable MP4 decoding after all source input files were removed, no-clobber restore, private Unix modes and inert source-script handling. FFmpeg decoded the saved video, but no actual browser/native visual playback test was run. `cargo clippy` could not run because the toolchain component is absent.
+
+## Choice review follow-up
+
+The additive `choice_review` library module distinguishes declared recorded interactions from file inference and unknown imports. It emits attended-review decisions only, never executes or authorizes replay. See [pinned source study](../../docs/fomod-choice-evidence-study.md) for provenance, licenses, tests and host obligations. Existing raw choice logs are not upgraded to recorded evidence automatically.
