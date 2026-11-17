@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "scope": "Eight bounded source-reviewed design references; not exhaustive, ranked, code-audited or playtested. Canonical discovery remains Herbertofury/Games.",
+  "catalog_repository": "https://github.com/Herbertofury/Games",
+  "records": [
+    {
+      "id": "steam:2732960",
+      "name": "Command & Conquer Generals Zero Hour",
+      "genre": "rts",
+      "release_status": "released",
+      "source_url": "https://www.ea.com/games/command-and-conquer/news/steam-workshop-support",
+      "checked_on": "2026-11-17",
+      "review_due": "2026-12-01",
+      "evidence_scope": "EA announcement February 27, 2025; source availability, not code audit",
+      "observations": [
+        "EA released Generals and Zero Hour source under GPL.",
+        "EA describes community tournaments and modding support."
+      ],
+      "design_interpretation": "Study actual source for simulation, command handling and extensibility separately; do not mistake source availability for modern portability or asset rights.",
+      "acceptance": [
+        "Pin source revision and audit licenses before reuse.",
+        "Evaluate RTS economy, scouting, counters, production, pathfinding and replay determinism, not survivor timers."
+      ],
+      "playtest": "not_performed",
+      "media": {
+        "source_page": "https://www.ea.com/games/command-and-conquer/news/steam-workshop-support",
+        "retained_files": []
+      },
+      "reuse": "Original analysis only; no code or media reuse permission inferred."
+    },
+    {
+      "id": "steam:2321470",
+      "name": "Deep Rock Galactic: Survivor",
+      "genre": "survivors_like",
+      "release_status": "released",
+      "source_url": "https://store.steampowered.com/app/2321470/Deep_Rock_Galactic_Survivor/",
+      "checked_on": "2026-11-17",
+      "review_due": "2026-12-01",
+      "evidence_scope": "Official store lists release September 17, 2025; do not label current game Early Access",
+      "observations": [
+        "Mining changes movement opportunities while automatic weapons handle firing.",
+        "Procedural caves, mission objectives and timed extraction structure encounters."
+      ],
+      "design_interpretation": "Resource POIs should make route decisions under pressure, not be stationary loot buttons.",
+      "acceptance": [
+        "Test routes remain navigable after mining.",
+        "Measure objective completion and extraction readability under peak enemy load."
+      ],
+      "playtest": "not_performed",
+      "media": {
+        "source_page": "https://store.steampowered.com/app/2321470/Deep_Rock_Galactic_Survivor/",
+        "retained_files": []
+      },
+      "reuse": "Original analysis only; no code or media reuse permission inferred."
+    },
+    {
+      "id": "reference:diablo3-paragon-2.0.1",
+      "name": "Diablo III Paragon 2.0.1",
+      "genre": "action_rpg",
+      "release_status": "historical_reference",
+      "source_url": "https://news.blizzard.com/en-us/article/12671560/patch-2-0-1-now-live",
+      "checked_on": "2026-11-17",
+      "review_due": "2026-12-01",
+      "evidence_scope": "Historical patch v2.0.1.22044, not every subsequent season",
+      "observations": [
+        "This patch removes the Paragon-level cap.",
+        "Levels are account-wide with Hardcore and Normal tracked separately."
+      ],
+      "design_interpretation": "An uncapped account progression track is a valid design inspiration; isolate incompatible progression realms.",
+      "acceptance": [
+        "Test high-level numeric limits, save migrations and XP rollover.",
+        "Separate prestige display from unbounded combat-stat inflation."
+      ],
+      "playtest": "not_performed",
+      "media": {
+        "source_page": "https://news.blizzard.com/en-us/article/12671560/patch-2-0-1-now-live",
+        "retained_files": []
+      },
+      "reuse": "Original analysis only; no code or media reuse permission inferred."
+    },
+    {
+      "id": "reference:diablo4-paragon-2.0",
+      "name": "Diablo IV Paragon 2.0",
+      "genre": "action_rpg",
+      "release_status": "historical_reference",
+      "source_url": "https://news.blizzard.com/en-us/article/24140808/diablo-iv-patch-notes-2-0",
+      "checked_on": "2026-11-17",
+      "review_due": "2026-12-01",
+      "evidence_scope": "Historical 2.0 patch series, not current season claim",
+      "observations": [
+        "Patch specifies maximum Paragon level 300 and five boards including starting board.",
+        "Glyph experience moves to the Pit."
+      ],
+      "design_interpretation": "Diablo IV is not evidence of uncapped Paragon in this version. Preserve user uncapped target as our own design requirement, not a borrowed factual claim.",
+      "acceptance": [
+        "Mark patch scope in comparison views.",
+        "Do not automatically convert capped progression into uncapped claims."
+      ],
+      "playtest": "not_performed",
+      "media": {
+        "source_page": "https://news.blizzard.com/en-us/article/24140808/diablo-iv-patch-notes-2-0",
+        "retained_files": []
+      },
+      "reuse": "Original analysis only; no code or media reuse permission inferred."
+    },
+    {
+      "id": "steam:2218750",
+      "name": "Halls of Torment",
+      "genre": "survivors_like",
+      "release_status": "released",
+      "source_url": "https://store.steampowered.com/app/2218750/Halls_of_Torment/",
+      "checked_on": "2026-11-17",
+      "review_due": "2026-12-01",
+      "evidence_scope": "Official store feature list, not hands-on validation",
+      "observations": [
+        "Developer specifies 30-minute runs and quest-driven metaprogression.",
+        "Items can be extracted to customize later runs; class marks enable combining class powers.",
+        "Late-game Shrine of Torment and rare item variants are described."
+      ],
+      "design_interpretation": "Combine run builds, extraction and longer-term goals instead of making longer timers the whole endgame.",
+      "acceptance": [
+        "Separate run XP, retained equipment and account unlocks.",
+        "Verify failure/extraction/reload reward integrity."
+      ],
+      "playtest": "not_performed",
+      "media": {
+        "source_page": "https://store.steampowered.com/app/2218750/Halls_of_Torment/",
+        "retained_files": []
+      },
+      "reuse": "Original analysis only; no code or media reuse permission inferred."
+    },
+    {
+      "id": "steam:2694490",
+      "name": "Path of Exile 2",
+      "genre": "action_rpg",
+      "release_status": "early_access",
+      "source_url": "https://store.steampowered.com/app/2694490/Path_of_Exile_2/",
+      "checked_on": "2026-11-17",
+      "review_due": "2026-12-01",
+      "evidence_scope": "Observed store Early Access tag; review status again before release decisions",
+      "observations": [
+        "Developer describes endgame biomes, crafting, bosses and special encounters.",
+        "Endgame passive trees alter mechanics and rewards alongside difficulty."
+      ],
+      "design_interpretation": "Offer player-directed endgame specialization and visible risk/reward; retain exact observed build before numerical balancing.",
+      "acceptance": [
+        "Keep live vs announced features separate.",
+        "Test multiple viable routes and publish limitations rather than assert equal scope."
+      ],
+      "playtest": "not_performed",
+      "media": {
+        "source_page": "https://store.steampowered.com/app/2694490/Path_of_Exile_2/",
+        "retained_files": []
+      },
+      "reuse": "Original analysis only; no code or media reuse permission inferred."
+    },
+    {
+      "id": "reference:poe-siege-atlas",
+      "name": "Path of Exile Siege of the Atlas",
+      "genre": "action_rpg",
+      "release_status": "historical_reference",
+      "source_url": "https://www.pathofexile.com/siege",
+      "checked_on": "2026-11-17",
+      "review_due": "2026-12-01",
+      "evidence_scope": "Historical expansion design, not current league rules",
+      "observations": [
+        "Atlas specialization, pinnacle bosses and endgame crafting are presented as connected systems.",
+        "Boss progression leads through influenced maps and subordinate encounters."
+      ],
+      "design_interpretation": "Endgame depth comes from meaningful specialization, progression routes and build-testing bosses, not time inflation.",
+      "acceptance": [
+        "Track distinct encounter families, viable builds and reward routes.",
+        "Do not label a timer extension as PoE-level endgame."
+      ],
+      "playtest": "not_performed",
+      "media": {
+        "source_page": "https://www.pathofexile.com/siege",
+        "retained_files": []
+      },
+      "reuse": "Original analysis only; no code or media reuse permission inferred."
+    },
+    {
+      "id": "steam:1794680",
+      "name": "Vampire Survivors",
+      "genre": "survivors_like",
+      "release_status": "released",
+      "source_url": "https://store.steampowered.com/app/1794680/Vampire_Survivors/",
+      "checked_on": "2026-11-17",
+      "review_due": "2026-12-01",
+      "evidence_scope": "Official store description reviewed; no patch-level mechanics audit",
+      "observations": [
+        "Gold earned during a run purchases upgrades for later survivors.",
+        "Power-up refunds are free according to the developer tips."
+      ],
+      "design_interpretation": "Make persistent growth understandable and experimentation reversible. This does not prove every mode has unlimited progression.",
+      "acceptance": [
+        "Show next unlock, refund preview and post-run gains.",
+        "Test refund/rebuy cannot duplicate currency."
+      ],
+      "playtest": "not_performed",
+      "media": {
+        "source_page": "https://store.steampowered.com/app/1794680/Vampire_Survivors/",
+        "retained_files": []
+      },
+      "reuse": "Original analysis only; no code or media reuse permission inferred."
+    }
+  ],
+  "coverage_queue": [
+    {
+      "genre": "survivors_like",
+      "task": "Expand released and upcoming discovery from official developer news; review Brotato, Soulstone Survivors, 20 Minutes Till Dawn, Death Must Die and Rogue: Genesia without assuming current status.",
+      "status": "pending"
+    },
+    {
+      "genre": "rts",
+      "task": "Compare Zero Hour, Age of Empires, Beyond All Reason and upcoming RTS releases; inspect pinned code when available.",
+      "status": "pending"
+    },
+    {
+      "genre": "action_rpg",
+      "task": "Track Diablo and PoE releases plus Last Epoch and Grim Dawn; separate expansions, early access and announced releases.",
+      "status": "pending"
+    }
+  ]
+}

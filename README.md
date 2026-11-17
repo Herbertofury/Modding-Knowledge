@@ -75,3 +75,7 @@ LOOT's included metadata retains [CC0 license text](data/loot-CC0-LICENSE). Othe
 ## Cross-project game design research
 
 [Shared RTS/roguelite study layer](docs/game-design-studies.md) references the existing Games catalog by stable identity, with separate foundation-license screening and explicit untested status.
+
+## Genre-aware progression evidence
+
+[Eight reviewed game-design references and endgame pillar](docs/game-progression-pillar.md) add filterable, dated evidence for survivors-like games, RTS and action RPGs. Includes a local due-for-review query, not automatic collection or shipped gameplay.
