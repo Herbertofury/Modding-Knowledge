@@ -1,0 +1,14 @@
+{
+  "id": "capture-1", "project_id": "provider:project:123", "version": "1.2",
+  "page_url": "https://example.org/mods/123", "captured_unix": 1794888000,
+  "adapter": "manual-local-capture/1", "policy_reference": "authorized-personal-retention",
+  "authorized_to_retain": true, "private_only": true,
+  "discovery_finished": false, "discovery_scope": "supplied page and installer; media discovery pending",
+  "pinned": true, "retain_until_unix": null, "lifecycle_observation_ids": [],
+  "installer_choices": null,
+  "assets": [
+    {"id":"page","source_url":"https://example.org/mods/123","kind":"page","media_type":"text/html","path":"./page.html","missing_reason":null},
+    {"id":"installer","source_url":"https://example.org/mods/123/files","kind":"installer","media_type":"application/zip","path":"./original-mod.zip","missing_reason":null},
+    {"id":"video","source_url":"https://example.org/mods/123/video","kind":"video","media_type":"video/mp4","path":null,"missing_reason":"Not captured yet"}
+  ]
+}
