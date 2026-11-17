@@ -1,0 +1,100 @@
+{
+  "schema": "minecraft-creator-review-intake-v1",
+  "status": "source-reviewed staging, not imported into runtime database",
+  "records": [
+    {
+      "id": "github:Creators-of-Create/Create",
+      "name": "Create",
+      "creator_scope": "Creators-of-Create organization; individual identities not established in this pass",
+      "source_url": "https://github.com/Creators-of-Create/Create",
+      "publishing_urls": [
+        "https://www.curseforge.com/minecraft/mc-mods/create",
+        "https://modrinth.com/mod/create"
+      ],
+      "related_repository": "https://github.com/Fabricators-of-Create/Create",
+      "evidence": "Repository explicitly links CurseForge, Modrinth and separate Fabric port. Do not collapse port releases into upstream.",
+      "category": "building and automation",
+      "releases": [
+        {
+          "version": "6.0.10",
+          "game_version": "1.21.1",
+          "loader": "NeoForge",
+          "date": "2026-04-21",
+          "source_url": "https://www.curseforge.com/minecraft/mc-mods/create/files/all",
+          "status": "provider-listed historical release; not asserted latest"
+        }
+      ],
+      "observed_date": "2026-11-17",
+      "edition": "Java",
+      "stable_numeric_author_ids": null,
+      "media_asset_urls": [],
+      "media_status": "Not captured or licensed; do not substitute generated illustrations",
+      "coverage": "partial",
+      "identity_status": "project-to-repository cross-link only; no global person merge",
+      "relocation_or_ban_status": "unknown"
+    },
+    {
+      "id": "github:CaffeineMC/sodium",
+      "name": "Sodium",
+      "creator_scope": "CaffeineMC organization; repository license attribution JellySquid is not full team roster",
+      "source_url": "https://github.com/CaffeineMC/sodium",
+      "publishing_urls": [
+        "https://modrinth.com/mod/sodium"
+      ],
+      "evidence": "Modrinth View source links this repository. Repository identifies official Modrinth and CurseForge stable distribution and distinguishes nightly builds.",
+      "category": "rendering performance",
+      "releases": [],
+      "observed_date": "2026-11-17",
+      "edition": "Java",
+      "stable_numeric_author_ids": null,
+      "media_asset_urls": [],
+      "media_status": "Not captured or licensed; do not substitute generated illustrations",
+      "coverage": "partial",
+      "identity_status": "project-to-repository cross-link only; no global person merge",
+      "relocation_or_ban_status": "unknown"
+    },
+    {
+      "id": "github:IrisShaders/Iris",
+      "name": "Iris Shaders",
+      "creator_scope": "IrisShaders repository namespace; no individual identity merge",
+      "source_url": "https://modrinth.com/mod/iris",
+      "publishing_urls": [
+        "https://modrinth.com/mod/iris"
+      ],
+      "related_repository": "https://github.com/IrisShaders/Iris",
+      "official_site": "https://irisshaders.dev",
+      "evidence": "Modrinth View source links repository; description explicitly links official website for downloads/screenshots.",
+      "category": "shaders",
+      "releases": [],
+      "observed_date": "2026-11-17",
+      "edition": "Java",
+      "stable_numeric_author_ids": null,
+      "media_asset_urls": [],
+      "media_status": "Not captured or licensed; do not substitute generated illustrations",
+      "coverage": "partial",
+      "identity_status": "project-to-repository cross-link only; no global person merge",
+      "relocation_or_ban_status": "unknown"
+    },
+    {
+      "id": "github:Apollounknowndev/RegionsUnexplored",
+      "name": "Regions Unexplored",
+      "creator_scope": "Repository declares Apollo current owner/developer, UHQ_Games former owner/developer, KirboSoftware contributor",
+      "source_url": "https://github.com/Apollounknowndev/RegionsUnexplored",
+      "publishing_urls": [
+        "https://modrinth.com/mod/regions-unexplored"
+      ],
+      "evidence": "Modrinth View source links Apollounknowndev repository, which identifies its upstream fork and developer roles.",
+      "category": "world generation",
+      "releases": [],
+      "review_correction": "Reject unverified attribution to Team Resourceful from generated discovery output; observed primary sources identify a different repository and explicit roles.",
+      "observed_date": "2026-11-17",
+      "edition": "Java",
+      "stable_numeric_author_ids": null,
+      "media_asset_urls": [],
+      "media_status": "Not captured or licensed; do not substitute generated illustrations",
+      "coverage": "partial",
+      "identity_status": "project-to-repository cross-link only; no global person merge",
+      "relocation_or_ban_status": "unknown"
+    }
+  ]
+}
