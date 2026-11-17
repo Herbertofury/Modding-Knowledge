@@ -45,6 +45,8 @@ health=json.loads((data/'github-health-reviewed.json').read_text(encoding='utf-8
 bundle['sources']['github-reviewed-public-facts']='https://docs.github.com/en/site-policy/github-terms/github-terms-of-service'
 bundle['source_policy_revisions']['github-reviewed-public-facts']=health['source_policy_revision']
 bundle['observations'].extend(health['observations'])
+from reviewed_tranches import load_reviewed_tranches
+load_reviewed_tranches(bundle, root)
 for section in ('entities','observations'):
     rows=bundle[section]
     assert len({r['id'] for r in rows})==len(rows), 'Duplicate identities'

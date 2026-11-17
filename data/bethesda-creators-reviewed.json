@@ -1,0 +1,138 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Three public source-scoped creator records and two projects; partial source-linked facts, no full inventory or current release verification.",
+  "games": {
+    "skyrim-se": "Skyrim Special Edition"
+  },
+  "sources": {
+    "bethesda-reviewed-creator-facts": "https://www.patreon.com/josephrussellauthor/about"
+  },
+  "source_policy_revisions": {
+    "bethesda-reviewed-creator-facts": "bethesda-public-creator-facts-2026-11-17"
+  },
+  "entities": [
+    {
+      "id": "patreon:creator:josephrussellauthor",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "Joseph Russell"
+    },
+    {
+      "id": "nexus:skyrimspecialedition:mod:20035",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Lucien"
+    },
+    {
+      "id": "patreon:creator:Mentha",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "Mentha101"
+    },
+    {
+      "id": "github:creator:powerof3",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "powerof3"
+    },
+    {
+      "id": "github:powerof3/po3-Tweaks",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "powerofthree's Tweaks"
+    }
+  ],
+  "observations": [
+    {
+      "id": "patreon:creator:josephrussellauthor:20261117:reviewed.creator_identity",
+      "entity_id": "patreon:creator:josephrussellauthor",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://www.patreon.com/josephrussellauthor/about",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[\"Treacleman\",\"Mythicia77\"],\"evidence\":{\"url\":\"https://www.patreon.com/josephrussellauthor/about\",\"kind\":\"creator-explicit-alias-declaration\",\"summary\":\"Creator declares both aliases and identifies himself as creator and voice of Lucien.\"},\"profiles\":[{\"url\":\"https://www.nexusmods.com/skyrimspecialedition/users/4958252\",\"status\":\"creator-linked; destination returned HTTP 403\"}],\"gaps\":[\"Current release metadata and full project inventory not verified.\",\"Media retention/rehosting permission unknown.\"]}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "nexus:skyrimspecialedition:mod:20035:20261117:reviewed.project_attribution",
+      "entity_id": "nexus:skyrimspecialedition:mod:20035",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://www.patreon.com/josephrussellauthor/about",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"patreon:creator:josephrussellauthor\",\"project\":{\"name\":\"Lucien\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/20035\",\"attribution\":\"creator-explicit\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"media\":[{\"url\":\"https://www.youtube.com/JosephRussell\",\"kind\":\"creator-video-channel\",\"status\":\"creator-linked; destination exceeded fetch size\"}]},\"scope\":\"Attribution/project link only; version and release freshness unknown; not game-tested.\"}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "patreon:creator:josephrussellauthor:20261117:reviewed.project_link",
+      "entity_id": "patreon:creator:josephrussellauthor",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://www.patreon.com/josephrussellauthor/about",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"nexus:skyrimspecialedition:mod:20035\",\"relationship\":\"source-declared creator/project association\"}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "patreon:creator:Mentha:20261117:reviewed.creator_identity",
+      "entity_id": "patreon:creator:Mentha",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://www.patreon.com/Mentha/about",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[],\"evidence\":{\"url\":\"https://www.patreon.com/Mentha/about\",\"kind\":\"creator-explicit-profile-link\",\"summary\":\"Public creator page links Nexus user 827421 and Bethesda author listing, and states Skyrim/SSE/Fallout 4 work.\"},\"profiles\":[{\"url\":\"https://www.nexusmods.com/users/827421\",\"status\":\"creator-linked; destination not inspected\"},{\"url\":\"https://mods.bethesda.net/en/skyrim?author_username=Mentha101&number_results=20&order=desc&page=1&product=skyrim\",\"status\":\"creator-linked legacy URL redirected here; empty extraction\"}],\"gaps\":[\"Project-specific records, releases and media not independently checked.\",\"Patreon extraction crawl reported seven months old; statement is not fresh activity proof.\"]}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:powerof3:20261117:reviewed.creator_identity",
+      "entity_id": "github:creator:powerof3",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://github.com/powerof3/po3-Tweaks",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[],\"evidence\":{\"url\":\"https://github.com/powerof3/po3-Tweaks\",\"kind\":\"project-explicit-distribution-link\",\"summary\":\"Repository README names powerofthree's Tweaks and directly links its SSE/AE Nexus project. This establishes a project link, not legal-person identity.\"},\"profiles\":[],\"gaps\":[\"Nexus destination returned HTTP 403.\",\"Pro claim of version 1.18.0 on November 15, 2026 not independently verified and deliberately excluded.\",\"Project media and current releases not checked.\"]}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:powerof3/po3-Tweaks:20261117:reviewed.project_attribution",
+      "entity_id": "github:powerof3/po3-Tweaks",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://github.com/powerof3/po3-Tweaks",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:powerof3\",\"project\":{\"name\":\"powerofthree's Tweaks\",\"game\":\"Skyrim Special Edition/AE/VR\",\"url\":\"https://github.com/powerof3/po3-Tweaks\",\"distribution_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/51073\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"media\":[],\"license_evidence\":{\"url\":\"https://github.com/powerof3/po3-Tweaks/blob/master/LICENSE\",\"observed\":\"LICENSE contains GPL version 3 text; README link label says MIT. Treat metadata conflict explicitly; do not infer whole-distribution permissions.\"}},\"scope\":\"Attribution/project link only; version and release freshness unknown; not game-tested.\"}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:powerof3:20261117:reviewed.project_link",
+      "entity_id": "github:creator:powerof3",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://github.com/powerof3/po3-Tweaks",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:powerof3/po3-Tweaks\",\"relationship\":\"source-declared creator/project association\"}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    }
+  ]
+}

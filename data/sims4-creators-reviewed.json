@@ -1,0 +1,219 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Seven source-scoped Sims 4 entities; selected public factual links only, no exhaustive inventory or independent game tests.",
+  "games": {
+    "sims4": "The Sims 4"
+  },
+  "sources": {
+    "sims4-twistedmexi-official": "https://www.twistedmexi.com/Mods/",
+    "sims4-deaderpool-official": "https://deaderpool-mccc.com/downloads.html",
+    "sims4-scumbumbo-official": "https://scumbumbomods.com/teleport-any-sim/"
+  },
+  "source_policy_revisions": {
+    "sims4-twistedmexi-official": "sims4-official-factual-links-2026-11-17",
+    "sims4-deaderpool-official": "sims4-official-factual-links-2026-11-17",
+    "sims4-scumbumbo-official": "sims4-official-factual-links-2026-11-17"
+  },
+  "entities": [
+    {
+      "id": "twistedmexi:creator",
+      "game_id": "sims4",
+      "kind": "creator",
+      "name": "TwistedMexi"
+    },
+    {
+      "id": "deaderpool:creator",
+      "game_id": "sims4",
+      "kind": "creator",
+      "name": "Deaderpool"
+    },
+    {
+      "id": "scumbumbomods:creator:scumbumbo",
+      "game_id": "sims4",
+      "kind": "creator",
+      "name": "Scumbumbo"
+    },
+    {
+      "id": "scumbumbomods:maintainer:andrew",
+      "game_id": "sims4",
+      "kind": "creator",
+      "name": "Andrew (source-attributed maintainer)"
+    },
+    {
+      "id": "twistedmexi:project:better-exceptions",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Better Exceptions"
+    },
+    {
+      "id": "deaderpool:project:mccc",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "MC Command Center"
+    },
+    {
+      "id": "scumbumbomods:project:teleport-any-sim",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Teleport Any Sim"
+    }
+  ],
+  "observations": [
+    {
+      "id": "twistedmexi:creator:20261117:publishing_link",
+      "entity_id": "twistedmexi:creator",
+      "source_id": "sims4-twistedmexi-official",
+      "source_url": "https://www.twistedmexi.com/Mods/",
+      "predicate": "provider_claim.publishing_link",
+      "value": "{\"url\":\"https://patreon.com/TwistedMexi\",\"basis\":\"Explicit outgoing link on official Mods page; destination profile fetch unavailable.\",\"identity_scope\":\"One-way official-site cross-link, not account authentication.\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "twistedmexi:project:better-exceptions:20261117:creator",
+      "entity_id": "twistedmexi:project:better-exceptions",
+      "source_id": "sims4-twistedmexi-official",
+      "source_url": "https://www.twistedmexi.com/Mods/",
+      "predicate": "provider_claim.creator",
+      "value": "{\"entity_id\":\"twistedmexi:creator\",\"basis\":\"Official author mod directory lists this project.\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "twistedmexi:project:better-exceptions:20261117:release_listing",
+      "entity_id": "twistedmexi:project:better-exceptions",
+      "source_id": "sims4-twistedmexi-official",
+      "source_url": "https://www.patreon.com/TwistedMexi/posts/better-v3-17-mod-130049745",
+      "predicate": "provider_claim.release_listing",
+      "value": "{\"version\":\"3.17\",\"post_url\":\"https://www.patreon.com/TwistedMexi/posts/better-v3-17-mod-130049745\",\"displayed_date\":\"June 19\",\"release_date\":null,\"date_gap\":\"Year not displayed in retrieved post; do not infer it.\",\"channel_caveat\":\"Directory says Release Candidate; linked post includes public-release text. Availability not independently tested.\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "3.17",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "twistedmexi:project:better-exceptions:20261117:media_location",
+      "entity_id": "twistedmexi:project:better-exceptions",
+      "source_id": "sims4-twistedmexi-official",
+      "source_url": "https://www.twistedmexi.com/Mods/",
+      "predicate": "provider_claim.media_location",
+      "value": "{\"url\":\"https://www.twistedmexi.com/Mods/\",\"type\":\"Project image linked beside Better Exceptions entry\",\"asset_url\":null,\"reuse_permission\":\"unknown; no media downloaded or copied\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "deaderpool:creator:20261117:publishing_locations",
+      "entity_id": "deaderpool:creator",
+      "source_id": "sims4-deaderpool-official",
+      "source_url": "https://deaderpool-mccc.com/downloads.html",
+      "predicate": "provider_claim.publishing_locations",
+      "value": "{\"official_downloads\":\"https://deaderpool-mccc.com/downloads.html\",\"other_channels\":[\"Patreon\",\"support Discord\",\"MediaFire mirror\"],\"basis\":\"Channels explicitly linked by official downloads page; no inferred profile merges.\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "deaderpool:project:mccc:20261117:public_release",
+      "entity_id": "deaderpool:project:mccc",
+      "source_id": "sims4-deaderpool-official",
+      "source_url": "https://deaderpool-mccc.com/downloads.html",
+      "predicate": "provider_claim.public_release",
+      "value": "{\"version\":\"2026.6.0\",\"release_date\":null,\"date_gap\":\"Download table does not supply a release date; game-patch date is not mod release date.\",\"change_log\":\"https://deaderpool-mccc.com/changelogs/mccc2026_6_0.html\",\"creator_entity_id\":\"deaderpool:creator\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "2026.6.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "deaderpool:project:mccc:20261117:compatibility",
+      "entity_id": "deaderpool:project:mccc",
+      "source_id": "sims4-deaderpool-official",
+      "source_url": "https://deaderpool-mccc.com/downloads.html",
+      "predicate": "provider_claim.compatibility",
+      "value": "{\"authority\":\"publisher_declared\",\"patch_date\":\"2026-10-27\",\"pc\":\"1.129.39.1030\",\"mac\":\"1.129.39.1230\",\"independently_tested\":false,\"future_patch_compatibility\":\"unverified\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "PC 1.129.39.1030; Mac 1.129.39.1230",
+      "mod_version": "2026.6.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "deaderpool:project:mccc:20261117:legacy_edition_boundary",
+      "entity_id": "deaderpool:project:mccc",
+      "source_id": "sims4-deaderpool-official",
+      "source_url": "https://deaderpool-mccc.com/downloads.html",
+      "predicate": "provider_claim.legacy_edition_boundary",
+      "value": "{\"legacy_edition_version\":\"6.6.0\",\"current_listed_version\":\"2026.6.0\",\"interchangeable\":false}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "2026.6.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "scumbumbomods:creator:scumbumbo:20261117:attribution",
+      "entity_id": "scumbumbomods:creator:scumbumbo",
+      "source_id": "sims4-scumbumbo-official",
+      "source_url": "https://scumbumbomods.com/teleport-any-sim/",
+      "predicate": "provider_claim.attribution",
+      "value": "{\"project_entity_id\":\"scumbumbomods:project:teleport-any-sim\",\"role\":\"original_author\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "scumbumbomods:maintainer:andrew:20261117:attribution",
+      "entity_id": "scumbumbomods:maintainer:andrew",
+      "source_id": "sims4-scumbumbo-official",
+      "source_url": "https://scumbumbomods.com/teleport-any-sim/",
+      "predicate": "provider_claim.attribution",
+      "value": "{\"project_entity_id\":\"scumbumbomods:project:teleport-any-sim\",\"role\":\"update_maintainer\",\"profile_identity\":\"unknown; source-scoped identity only\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "scumbumbomods:project:teleport-any-sim:20261117:maintenance_handoff",
+      "entity_id": "scumbumbomods:project:teleport-any-sim",
+      "source_id": "sims4-scumbumbo-official",
+      "source_url": "https://scumbumbomods.com/teleport-any-sim/",
+      "predicate": "provider_claim.maintenance_handoff",
+      "value": "{\"original_author\":\"scumbumbomods:creator:scumbumbo\",\"maintainer\":\"scumbumbomods:maintainer:andrew\",\"listed_update_date\":\"2024-03-01\",\"latest_update_claim\":false,\"download_landing_url\":\"https://sims4studio.com/post/72734\",\"destination_check\":\"timeout; official outgoing link observed, destination content unverified\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "scumbumbomods:project:teleport-any-sim:20261117:media_location",
+      "entity_id": "scumbumbomods:project:teleport-any-sim",
+      "source_id": "sims4-scumbumbo-official",
+      "source_url": "https://scumbumbomods.com/teleport-any-sim/",
+      "predicate": "provider_claim.media_location",
+      "value": "{\"url\":\"https://scumbumbomods.com/teleport-any-sim/\",\"type\":\"Project screenshot present\",\"asset_url\":null,\"reuse_permission\":\"unknown; no media downloaded or copied\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    }
+  ]
+}

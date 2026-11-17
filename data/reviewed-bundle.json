@@ -9,7 +9,10 @@
     "oblivion": "Oblivion",
     "oblivion-remastered": "Oblivion Remastered",
     "oblivion-family": "Oblivion family (conditional source metadata; not cross-edition compatibility)",
-    "minecraft-java": "Minecraft Java Edition"
+    "minecraft-java": "Minecraft Java Edition",
+    "sims4": "The Sims 4",
+    "cyberpunk2077": "Cyberpunk 2077",
+    "hytale": "Hytale"
   },
   "sources": {
     "f4se": "https://f4se.silverlock.org/",
@@ -20,9 +23,93 @@
     "loot": "https://loot.readthedocs.io/en/0.29.1/app/usage/main.html",
     "loot-oblivion": "https://github.com/loot/oblivion/blob/b3ffc84f6d730f6efb5083448d78611df16e8d78/masterlist.yaml",
     "modrinth-public-metadata": "https://docs.modrinth.com/api/",
-    "github-reviewed-public-facts": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service"
+    "github-reviewed-public-facts": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "bethesda-reviewed-creator-facts": "https://www.patreon.com/josephrussellauthor/about",
+    "minecraft-reviewed-public-facts": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+    "sims4-twistedmexi-official": "https://www.twistedmexi.com/Mods/",
+    "sims4-deaderpool-official": "https://deaderpool-mccc.com/downloads.html",
+    "sims4-scumbumbo-official": "https://scumbumbomods.com/teleport-any-sim/",
+    "cyberpunk-hytale-reviewed-creator-facts": "https://hytale.com/news/2026/5/hytale-new-worlds-modding-contest-retrospective"
   },
   "entities": [
+    {
+      "id": "curseforge:creator:ginco",
+      "game_id": "hytale",
+      "kind": "creator",
+      "name": "ginco"
+    },
+    {
+      "id": "curseforge:creator:pseudo_elephant",
+      "game_id": "hytale",
+      "kind": "creator",
+      "name": "Pseudo_Elephant"
+    },
+    {
+      "id": "curseforge:creator:zenkuro",
+      "game_id": "hytale",
+      "kind": "creator",
+      "name": "zenkuro"
+    },
+    {
+      "id": "curseforge:hytale:mod:1457930",
+      "game_id": "hytale",
+      "kind": "mod",
+      "name": "Arcane Relay"
+    },
+    {
+      "id": "curseforge:hytale:mod:1484256",
+      "game_id": "hytale",
+      "kind": "mod",
+      "name": "[Zen's] Arcanum"
+    },
+    {
+      "id": "curseforge:hytale:mod:1527157",
+      "game_id": "hytale",
+      "kind": "mod",
+      "name": "Byte Crashers: Jungle Jam"
+    },
+    {
+      "id": "deaderpool:creator",
+      "game_id": "sims4",
+      "kind": "creator",
+      "name": "Deaderpool"
+    },
+    {
+      "id": "deaderpool:project:mccc",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "MC Command Center"
+    },
+    {
+      "id": "github:Apollounknowndev/RegionsUnexplored",
+      "game_id": "minecraft-java",
+      "kind": "mod",
+      "name": "Regions Unexplored"
+    },
+    {
+      "id": "github:Creators-of-Create/Create",
+      "game_id": "minecraft-java",
+      "kind": "mod",
+      "name": "Create"
+    },
+    {
+      "id": "github:creator:jac3km4",
+      "game_id": "cyberpunk2077",
+      "kind": "creator",
+      "name": "jac3km4"
+    },
+    {
+      "id": "github:creator:powerof3",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "powerof3"
+    },
+    {
+      "id": "github:creator:psiberx",
+      "game_id": "cyberpunk2077",
+      "kind": "creator",
+      "name": "psiberx"
+    },
     {
       "id": "github:ianpatt/f4se",
       "game_id": "fallout4",
@@ -43,6 +130,12 @@
       "kind": "tool",
       "name": "SKSE64",
       "source_id": "skse"
+    },
+    {
+      "id": "github:jac3km4/redscript",
+      "game_id": "cyberpunk2077",
+      "kind": "mod",
+      "name": "redscript"
     },
     {
       "id": "github:llde/xOBSE",
@@ -78,6 +171,18 @@
       "kind": "tool",
       "name": "LOOT",
       "source_id": "loot"
+    },
+    {
+      "id": "github:powerof3/po3-Tweaks",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "powerofthree's Tweaks"
+    },
+    {
+      "id": "github:psiberx/cp2077-codeware",
+      "game_id": "cyberpunk2077",
+      "kind": "mod",
+      "name": "Codeware"
     },
     {
       "id": "loot:oblivion:plugin-metadata:00005d6f7008346dd21c",
@@ -28658,6 +28763,42 @@
       "name": "FerriteCore"
     },
     {
+      "id": "nexus:skyrimspecialedition:mod:20035",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Lucien"
+    },
+    {
+      "id": "patreon:creator:Mentha",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "Mentha101"
+    },
+    {
+      "id": "patreon:creator:josephrussellauthor",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "Joseph Russell"
+    },
+    {
+      "id": "scumbumbomods:creator:scumbumbo",
+      "game_id": "sims4",
+      "kind": "creator",
+      "name": "Scumbumbo"
+    },
+    {
+      "id": "scumbumbomods:maintainer:andrew",
+      "game_id": "sims4",
+      "kind": "creator",
+      "name": "Andrew (source-attributed maintainer)"
+    },
+    {
+      "id": "scumbumbomods:project:teleport-any-sim",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Teleport Any Sim"
+    },
+    {
       "id": "silverlock:f4se-vr",
       "game_id": "fallout4-vr",
       "kind": "tool",
@@ -28677,9 +28818,346 @@
       "kind": "tool",
       "name": "SKSE VR",
       "source_id": "skse"
+    },
+    {
+      "id": "twistedmexi:creator",
+      "game_id": "sims4",
+      "kind": "creator",
+      "name": "TwistedMexi"
+    },
+    {
+      "id": "twistedmexi:project:better-exceptions",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Better Exceptions"
     }
   ],
   "observations": [
+    {
+      "id": "curseforge:creator:ginco:20261117:reviewed.creator_identity",
+      "entity_id": "curseforge:creator:ginco",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/byte-crashers-jungle-jam",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profile_url\":\"https://www.curseforge.com/members/ginco/projects\",\"numeric_id\":null,\"id_scope\":\"Platform username locator, not immutable account ID or legal-person identity\",\"evidence\":\"Project links creator profile; profile lists project as Owner. Official Hytale contest article independently names GINCo and links exact project. No other social identity merged.\",\"gaps\":[\"numeric creator ID\",\"cross-site creator profiles\",\"current build compatibility\",\"media publication date and reuse rights\"]}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:creator:ginco:20261117:reviewed.project_link",
+      "entity_id": "curseforge:creator:ginco",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/byte-crashers-jungle-jam",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"curseforge:hytale:mod:1527157\",\"relationship\":\"source-declared owner/project association; not exclusive authorship proof\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:creator:pseudo_elephant:20261117:reviewed.creator_identity",
+      "entity_id": "curseforge:creator:pseudo_elephant",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/arcane-relay",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profile_url\":\"https://www.curseforge.com/members/pseudo_elephant/projects\",\"numeric_id\":null,\"id_scope\":\"Platform username locator, not immutable account ID or legal-person identity\",\"evidence\":\"Project explicitly links GitHub source repository and CurseForge creator. Repository describes Arcane Relay; no reciprocal CurseForge link found in retrieved text. Retain source association without asserting a fully proven cross-site personal identity.\",\"gaps\":[\"numeric creator ID\",\"reciprocal account proof\",\"actual binary compatibility\",\"media date and license\"]}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:creator:pseudo_elephant:20261117:reviewed.project_link",
+      "entity_id": "curseforge:creator:pseudo_elephant",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/arcane-relay",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"curseforge:hytale:mod:1457930\",\"relationship\":\"source-declared owner/project association; not exclusive authorship proof\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:creator:zenkuro:20261117:reviewed.creator_identity",
+      "entity_id": "curseforge:creator:zenkuro",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/zens-arcanum",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profile_url\":\"https://www.curseforge.com/members/zenkuro/projects\",\"numeric_id\":null,\"id_scope\":\"Platform username locator, not immutable account ID or legal-person identity\",\"evidence\":\"CurseForge project explicitly links z3nkuro/Arcanum-Docs as Wiki. This proves project-documentation association, not a fully corroborated person/account merge. Profile search snapshot is seven months old.\",\"gaps\":[\"numeric creator ID\",\"reciprocal creator identity\",\"current release after cached file page\",\"media date and reuse rights\"]}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:creator:zenkuro:20261117:reviewed.project_link",
+      "entity_id": "curseforge:creator:zenkuro",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/zens-arcanum",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"curseforge:hytale:mod:1484256\",\"relationship\":\"source-declared owner/project association; not exclusive authorship proof\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:hytale:mod:1457930:20261117:reviewed.project_attribution",
+      "entity_id": "curseforge:hytale:mod:1457930",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/arcane-relay",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"curseforge:creator:pseudo_elephant\",\"project\":{\"game\":\"Hytale\",\"creator\":\"Pseudo_Elephant\",\"creator_profile\":\"https://www.curseforge.com/members/pseudo_elephant/projects\",\"creator_numeric_id\":null,\"project\":\"Arcane Relay\",\"source_project_id\":\"1457930\",\"project_url\":\"https://www.curseforge.com/hytale/mods/arcane-relay\",\"release\":\"1.3.6\",\"source_file_id\":\"9147232\",\"release_date\":\"2026-10-12\",\"release_url\":\"https://www.curseforge.com/hytale/mods/arcane-relay/files/9147232\",\"game_version_declared\":\"0.7.0\",\"license_listing\":\"MIT License\",\"distribution\":[\"CurseForge\"],\"linked_source\":\"https://github.com/PseudoElephant/ArcaneRelay\",\"identity_evidence\":\"Project explicitly links GitHub source repository and CurseForge creator. Repository describes Arcane Relay; no reciprocal CurseForge link found in retrieved text. Retain source association without asserting a fully proven cross-site personal identity.\",\"media\":[{\"url\":\"https://www.youtube.com/embed/bX4Qf17K7zI\",\"context\":\"Official Hytale May 11, 2026 winner spotlight embed\",\"published_at\":null,\"verification\":\"Embed link observed; video fetch throttled\",\"reuse_permission\":\"unknown; code license not assumed to cover promotional media\"}],\"unknowns\":[\"numeric creator ID\",\"reciprocal account proof\",\"actual binary compatibility\",\"media date and license\"]},\"scope\":\"Reviewed public metadata only; no binary download, runtime test, asset reuse or automatic cross-site account merge.\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:hytale:mod:1484256:20261117:reviewed.project_attribution",
+      "entity_id": "curseforge:hytale:mod:1484256",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/zens-arcanum",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"curseforge:creator:zenkuro\",\"project\":{\"game\":\"Hytale\",\"creator\":\"zenkuro\",\"creator_profile\":\"https://www.curseforge.com/members/zenkuro/projects\",\"creator_numeric_id\":null,\"project\":\"[Zen's] Arcanum\",\"source_project_id\":\"1484256\",\"project_url\":\"https://www.curseforge.com/hytale/mods/zens-arcanum\",\"release\":\"0.6.3\",\"source_file_id\":\"9148878\",\"release_date\":\"2026-10-12\",\"release_url\":\"https://www.curseforge.com/hytale/mods/zens-arcanum/files/9148878\",\"game_version_declared\":\">=0.7.0 <0.8.0\",\"license_listing\":\"All Rights Reserved\",\"distribution\":[\"CurseForge\"],\"linked_documentation\":\"https://github.com/z3nkuro/Arcanum-Docs\",\"identity_evidence\":\"CurseForge project explicitly links z3nkuro/Arcanum-Docs as Wiki. This proves project-documentation association, not a fully corroborated person/account merge. Profile search snapshot is seven months old.\",\"media\":[{\"url\":\"https://www.youtube.com/embed/valM-R1iNfY\",\"context\":\"Official Hytale May 11, 2026 winner spotlight embed\",\"published_at\":null,\"verification\":\"Embed link observed; video fetch throttled\",\"reuse_permission\":\"unknown\"}],\"unknowns\":[\"numeric creator ID\",\"reciprocal creator identity\",\"current release after cached file page\",\"media date and reuse rights\"],\"freshness_note\":\"File page crawled four weeks before review; project page current in search service. Not a live API check.\"},\"scope\":\"Reviewed public metadata only; no binary download, runtime test, asset reuse or automatic cross-site account merge.\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "curseforge:hytale:mod:1527157:20261117:reviewed.project_attribution",
+      "entity_id": "curseforge:hytale:mod:1527157",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://www.curseforge.com/hytale/mods/byte-crashers-jungle-jam",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"curseforge:creator:ginco\",\"project\":{\"game\":\"Hytale\",\"creator\":\"ginco\",\"creator_profile\":\"https://www.curseforge.com/members/ginco/projects\",\"creator_numeric_id\":null,\"project\":\"Byte Crashers: Jungle Jam\",\"source_project_id\":\"1527157\",\"project_url\":\"https://www.curseforge.com/hytale/mods/byte-crashers-jungle-jam\",\"release\":\"0.3\",\"source_file_id\":\"8237195\",\"release_date\":\"2026-06-12\",\"release_url\":\"https://www.curseforge.com/hytale/mods/byte-crashers-jungle-jam/files/8237195\",\"game_version_declared\":\"0.5\",\"license_listing\":\"All Rights Reserved\",\"distribution\":[\"CurseForge\"],\"identity_evidence\":\"Project links creator profile; profile lists project as Owner. Official Hytale contest article independently names GINCo and links exact project. No other social identity merged.\",\"corroborating_source\":\"https://hytale.com/news/2026/5/hytale-new-worlds-modding-contest-retrospective\",\"media\":[{\"url\":\"https://www.youtube.com/embed/LTBt31lSGtY?wmode=transparent\",\"context\":\"Project-page gameplay explainer embed\",\"published_at\":null,\"verification\":\"Source link observed; video fetch throttled, playback/content/date not verified\",\"reuse_permission\":\"unknown; no media copied\"}],\"unknowns\":[\"numeric creator ID\",\"cross-site creator profiles\",\"current build compatibility\",\"media publication date and reuse rights\"]},\"scope\":\"Reviewed public metadata only; no binary download, runtime test, asset reuse or automatic cross-site account merge.\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "deaderpool:creator:20261117:publishing_locations",
+      "entity_id": "deaderpool:creator",
+      "source_id": "sims4-deaderpool-official",
+      "source_url": "https://deaderpool-mccc.com/downloads.html",
+      "predicate": "provider_claim.publishing_locations",
+      "value": "{\"official_downloads\":\"https://deaderpool-mccc.com/downloads.html\",\"other_channels\":[\"Patreon\",\"support Discord\",\"MediaFire mirror\"],\"basis\":\"Channels explicitly linked by official downloads page; no inferred profile merges.\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "deaderpool:project:mccc:20261117:compatibility",
+      "entity_id": "deaderpool:project:mccc",
+      "source_id": "sims4-deaderpool-official",
+      "source_url": "https://deaderpool-mccc.com/downloads.html",
+      "predicate": "provider_claim.compatibility",
+      "value": "{\"authority\":\"publisher_declared\",\"patch_date\":\"2026-10-27\",\"pc\":\"1.129.39.1030\",\"mac\":\"1.129.39.1230\",\"independently_tested\":false,\"future_patch_compatibility\":\"unverified\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "PC 1.129.39.1030; Mac 1.129.39.1230",
+      "mod_version": "2026.6.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "deaderpool:project:mccc:20261117:legacy_edition_boundary",
+      "entity_id": "deaderpool:project:mccc",
+      "source_id": "sims4-deaderpool-official",
+      "source_url": "https://deaderpool-mccc.com/downloads.html",
+      "predicate": "provider_claim.legacy_edition_boundary",
+      "value": "{\"legacy_edition_version\":\"6.6.0\",\"current_listed_version\":\"2026.6.0\",\"interchangeable\":false}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "2026.6.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "deaderpool:project:mccc:20261117:public_release",
+      "entity_id": "deaderpool:project:mccc",
+      "source_id": "sims4-deaderpool-official",
+      "source_url": "https://deaderpool-mccc.com/downloads.html",
+      "predicate": "provider_claim.public_release",
+      "value": "{\"version\":\"2026.6.0\",\"release_date\":null,\"date_gap\":\"Download table does not supply a release date; game-patch date is not mod release date.\",\"change_log\":\"https://deaderpool-mccc.com/changelogs/mccc2026_6_0.html\",\"creator_entity_id\":\"deaderpool:creator\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "2026.6.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "github:Apollounknowndev/RegionsUnexplored:creator-sourcecheck-20261117:developer_roles",
+      "entity_id": "github:Apollounknowndev/RegionsUnexplored",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Apollounknowndev/RegionsUnexplored",
+      "predicate": "provider_claim.developer_roles",
+      "value": "{\"current_owner_developer\":\"Apollo\",\"former_owner_developer\":\"UHQ_Games\",\"contributor\":\"KirboSoftware\"}",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:Apollounknowndev/RegionsUnexplored:creator-sourcecheck-20261117:fork_upstream",
+      "entity_id": "github:Apollounknowndev/RegionsUnexplored",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Apollounknowndev/RegionsUnexplored",
+      "predicate": "provider_claim.fork_upstream",
+      "value": "\"https://github.com/UHQ-GAMES-MODS/RegionsUnexplored\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:Apollounknowndev/RegionsUnexplored:creator-sourcecheck-20261117:source_repository",
+      "entity_id": "github:Apollounknowndev/RegionsUnexplored",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Apollounknowndev/RegionsUnexplored",
+      "predicate": "provider_claim.source_repository",
+      "value": "\"https://github.com/Apollounknowndev/RegionsUnexplored\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:Creators-of-Create/Create:creator-sourcecheck-20261117:distinct_fabric_port",
+      "entity_id": "github:Creators-of-Create/Create",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Creators-of-Create/Create",
+      "predicate": "provider_claim.distinct_fabric_port",
+      "value": "\"https://github.com/Fabricators-of-Create/Create\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:Creators-of-Create/Create:creator-sourcecheck-20261117:official_publishing_links",
+      "entity_id": "github:Creators-of-Create/Create",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Creators-of-Create/Create",
+      "predicate": "provider_claim.official_publishing_links",
+      "value": "[\"https://www.curseforge.com/minecraft/mc-mods/create\",\"https://modrinth.com/mod/create\"]",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:Creators-of-Create/Create:creator-sourcecheck-20261117:source_repository",
+      "entity_id": "github:Creators-of-Create/Create",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Creators-of-Create/Create",
+      "predicate": "provider_claim.source_repository",
+      "value": "\"https://github.com/Creators-of-Create/Create\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:jac3km4:20261117:reviewed.creator_identity",
+      "entity_id": "github:creator:jac3km4",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/jac3km4/redscript",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profile_url\":\"https://github.com/jac3km4\",\"numeric_id\":null,\"id_scope\":\"Platform username locator, not immutable account ID or legal-person identity\",\"evidence\":\"GitHub repository ownership observed. Nexus search excerpt points to jac3km4 release tags but owner profile and reciprocal link not fully reviewed, so candidate remains unmerged.\",\"gaps\":[\"numeric creator/repository/release IDs\",\"full ISO release timestamp\",\"cross-site creator proof\",\"media dates/rights\",\"current binary compatibility\"]}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:jac3km4:20261117:reviewed.project_link",
+      "entity_id": "github:creator:jac3km4",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/jac3km4/redscript",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:jac3km4/redscript\",\"relationship\":\"source-declared owner/project association; not exclusive authorship proof\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:powerof3:20261117:reviewed.creator_identity",
+      "entity_id": "github:creator:powerof3",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://github.com/powerof3/po3-Tweaks",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[],\"evidence\":{\"url\":\"https://github.com/powerof3/po3-Tweaks\",\"kind\":\"project-explicit-distribution-link\",\"summary\":\"Repository README names powerofthree's Tweaks and directly links its SSE/AE Nexus project. This establishes a project link, not legal-person identity.\"},\"profiles\":[],\"gaps\":[\"Nexus destination returned HTTP 403.\",\"Pro claim of version 1.18.0 on November 15, 2026 not independently verified and deliberately excluded.\",\"Project media and current releases not checked.\"]}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:powerof3:20261117:reviewed.project_link",
+      "entity_id": "github:creator:powerof3",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://github.com/powerof3/po3-Tweaks",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:powerof3/po3-Tweaks\",\"relationship\":\"source-declared creator/project association\"}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:psiberx:20261117:reviewed.creator_identity",
+      "entity_id": "github:creator:psiberx",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/psiberx/cp2077-codeware",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profile_url\":\"https://github.com/psiberx\",\"numeric_id\":null,\"id_scope\":\"Platform username locator, not immutable account ID or legal-person identity\",\"evidence\":\"Repository owner path and release publisher psiberx observed. No Nexus/social account automatically merged.\",\"gaps\":[\"numeric account/repository/release IDs\",\"full ISO release timestamp\",\"asset hashes and license\",\"media\",\"runtime compatibility\",\"other publishing locations\"]}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:creator:psiberx:20261117:reviewed.project_link",
+      "entity_id": "github:creator:psiberx",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/psiberx/cp2077-codeware",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:psiberx/cp2077-codeware\",\"relationship\":\"source-declared owner/project association; not exclusive authorship proof\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
     {
       "id": "github:ianpatt/f4se:bethesda-2026-11-14:1",
       "entity_id": "github:ianpatt/f4se",
@@ -28824,6 +29302,19 @@
       "policy_revision": "reviewed-public-facts-2026-11-14"
     },
     {
+      "id": "github:jac3km4/redscript:20261117:reviewed.project_attribution",
+      "entity_id": "github:jac3km4/redscript",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/jac3km4/redscript",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:jac3km4\",\"project\":{\"game\":\"Cyberpunk 2077\",\"creator\":\"jac3km4\",\"creator_profile\":\"https://github.com/jac3km4\",\"creator_numeric_id\":null,\"project\":\"redscript\",\"source_project_id\":\"github:jac3km4/redscript (name-based locator, numeric repository ID unverified)\",\"project_url\":\"https://github.com/jac3km4/redscript\",\"release\":\"v1.0.1\",\"release_date_displayed\":\"15 Nov 21:23\",\"release_date_iso\":null,\"release_url\":\"https://github.com/jac3km4/redscript/releases/tag/v1.0.1\",\"release_publisher\":\"github-actions (automation, not creator identity)\",\"license_listing\":\"MIT\",\"distribution\":[\"GitHub Releases\"],\"candidate_distribution\":\"https://www.nexusmods.com/cyberpunk2077/mods/1511?tab=files\",\"identity_evidence\":\"GitHub repository ownership observed. Nexus search excerpt points to jac3km4 release tags but owner profile and reciprocal link not fully reviewed, so candidate remains unmerged.\",\"media\":[],\"unknowns\":[\"numeric creator/repository/release IDs\",\"full ISO release timestamp\",\"cross-site creator proof\",\"media dates/rights\",\"current binary compatibility\"],\"source_note\":\"Repository documents Windows and non-Wine macOS installation; no install performed and no security-setting instructions executed.\"},\"scope\":\"Reviewed public metadata only; no binary download, runtime test, asset reuse or automatic cross-site account merge.\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
+    },
+    {
       "id": "github:llde/xOBSE:bethesda-2026-11-14:12",
       "entity_id": "github:llde/xOBSE",
       "source_id": "xobse",
@@ -28913,6 +29404,32 @@
       "mod_version": "0.29.1",
       "completeness": "partial",
       "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "github:powerof3/po3-Tweaks:20261117:reviewed.project_attribution",
+      "entity_id": "github:powerof3/po3-Tweaks",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://github.com/powerof3/po3-Tweaks",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:powerof3\",\"project\":{\"name\":\"powerofthree's Tweaks\",\"game\":\"Skyrim Special Edition/AE/VR\",\"url\":\"https://github.com/powerof3/po3-Tweaks\",\"distribution_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/51073\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"media\":[],\"license_evidence\":{\"url\":\"https://github.com/powerof3/po3-Tweaks/blob/master/LICENSE\",\"observed\":\"LICENSE contains GPL version 3 text; README link label says MIT. Treat metadata conflict explicitly; do not infer whole-distribution permissions.\"}},\"scope\":\"Attribution/project link only; version and release freshness unknown; not game-tested.\"}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "github:psiberx/cp2077-codeware:20261117:reviewed.project_attribution",
+      "entity_id": "github:psiberx/cp2077-codeware",
+      "source_id": "cyberpunk-hytale-reviewed-creator-facts",
+      "source_url": "https://github.com/psiberx/cp2077-codeware",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:psiberx\",\"project\":{\"game\":\"Cyberpunk 2077\",\"creator\":\"psiberx\",\"creator_profile\":\"https://github.com/psiberx\",\"creator_numeric_id\":null,\"project\":\"Codeware\",\"source_project_id\":\"github:psiberx/cp2077-codeware (name-based locator, numeric repository ID unverified)\",\"project_url\":\"https://github.com/psiberx/cp2077-codeware\",\"release\":\"v1.21.4\",\"release_date_displayed\":\"13 Nov 08:58\",\"release_date_iso\":null,\"release_url\":\"https://github.com/psiberx/cp2077-codeware/releases/tag/v1.21.4\",\"release_channel\":\"Latest stable label; v1.21.5-rc.1 shown separately as prerelease dated 14 Nov 14:25\",\"compatibility_source\":\"https://github.com/psiberx/cp2077-codeware/blob/main/README.md\",\"compatibility_documented\":[\"Cyberpunk 2077 2.5\",\"redscript 0.5.32+\",\"Cyber Engine Tweaks 1.38.0+\",\"RED4ext 1.31.0+\"],\"distribution\":[\"GitHub Releases\"],\"media\":[],\"identity_evidence\":\"Repository owner path and release publisher psiberx observed. No Nexus/social account automatically merged.\",\"unknowns\":[\"numeric account/repository/release IDs\",\"full ISO release timestamp\",\"asset hashes and license\",\"media\",\"runtime compatibility\",\"other publishing locations\"]},\"scope\":\"Reviewed public metadata only; no binary download, runtime test, asset reuse or automatic cross-site account merge.\"}",
+      "observed_unix": 1794952939,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "cyberpunk-hytale-public-creator-facts-2026-11-17"
     },
     {
       "id": "https://github.com/CaffeineMC/lithium/issues/800:1794704930:community_issue_context",
@@ -91237,6 +91754,45 @@
       "policy_revision": "modrinth-public-project-team-metadata-2026-11-15"
     },
     {
+      "id": "modrinth:project:AANobbMI:creator-sourcecheck-20261117:distribution_scope",
+      "entity_id": "modrinth:project:AANobbMI",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/CaffeineMC/sodium",
+      "predicate": "provider_claim.distribution_scope",
+      "value": "\"Official Modrinth and CurseForge stable builds; nightly builds separate\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "modrinth:project:AANobbMI:creator-sourcecheck-20261117:license_attribution",
+      "entity_id": "modrinth:project:AANobbMI",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/CaffeineMC/sodium",
+      "predicate": "provider_claim.license_attribution",
+      "value": "\"Repository attributes license to JellySquid; this is not a full author roster\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "modrinth:project:AANobbMI:creator-sourcecheck-20261117:source_repository",
+      "entity_id": "modrinth:project:AANobbMI",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/CaffeineMC/sodium",
+      "predicate": "provider_claim.source_repository",
+      "value": "\"https://github.com/CaffeineMC/sodium\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
       "id": "modrinth:project:NNAgCjsB:1794950689:client_side",
       "entity_id": "modrinth:project:NNAgCjsB",
       "source_id": "modrinth-public-metadata",
@@ -91573,6 +92129,19 @@
       "mod_version": "unverified",
       "completeness": "partial",
       "policy_revision": "modrinth-public-project-team-metadata-2026-11-15"
+    },
+    {
+      "id": "modrinth:project:YL57xq9U:creator-sourcecheck-20261117:source_repository",
+      "entity_id": "modrinth:project:YL57xq9U",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/IrisShaders/Iris",
+      "predicate": "provider_claim.source_repository",
+      "value": "\"https://github.com/IrisShaders/Iris\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
     },
     {
       "id": "modrinth:project:gvQqBUqZ:1794950689:client_side",
@@ -92108,6 +92677,110 @@
       "policy_revision": "modrinth-public-project-team-metadata-2026-11-15"
     },
     {
+      "id": "nexus:skyrimspecialedition:mod:20035:20261117:reviewed.project_attribution",
+      "entity_id": "nexus:skyrimspecialedition:mod:20035",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://www.patreon.com/josephrussellauthor/about",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"patreon:creator:josephrussellauthor\",\"project\":{\"name\":\"Lucien\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/20035\",\"attribution\":\"creator-explicit\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"media\":[{\"url\":\"https://www.youtube.com/JosephRussell\",\"kind\":\"creator-video-channel\",\"status\":\"creator-linked; destination exceeded fetch size\"}]},\"scope\":\"Attribution/project link only; version and release freshness unknown; not game-tested.\"}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "patreon:creator:Mentha:20261117:reviewed.creator_identity",
+      "entity_id": "patreon:creator:Mentha",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://www.patreon.com/Mentha/about",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[],\"evidence\":{\"url\":\"https://www.patreon.com/Mentha/about\",\"kind\":\"creator-explicit-profile-link\",\"summary\":\"Public creator page links Nexus user 827421 and Bethesda author listing, and states Skyrim/SSE/Fallout 4 work.\"},\"profiles\":[{\"url\":\"https://www.nexusmods.com/users/827421\",\"status\":\"creator-linked; destination not inspected\"},{\"url\":\"https://mods.bethesda.net/en/skyrim?author_username=Mentha101&number_results=20&order=desc&page=1&product=skyrim\",\"status\":\"creator-linked legacy URL redirected here; empty extraction\"}],\"gaps\":[\"Project-specific records, releases and media not independently checked.\",\"Patreon extraction crawl reported seven months old; statement is not fresh activity proof.\"]}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "patreon:creator:josephrussellauthor:20261117:reviewed.creator_identity",
+      "entity_id": "patreon:creator:josephrussellauthor",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://www.patreon.com/josephrussellauthor/about",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[\"Treacleman\",\"Mythicia77\"],\"evidence\":{\"url\":\"https://www.patreon.com/josephrussellauthor/about\",\"kind\":\"creator-explicit-alias-declaration\",\"summary\":\"Creator declares both aliases and identifies himself as creator and voice of Lucien.\"},\"profiles\":[{\"url\":\"https://www.nexusmods.com/skyrimspecialedition/users/4958252\",\"status\":\"creator-linked; destination returned HTTP 403\"}],\"gaps\":[\"Current release metadata and full project inventory not verified.\",\"Media retention/rehosting permission unknown.\"]}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "patreon:creator:josephrussellauthor:20261117:reviewed.project_link",
+      "entity_id": "patreon:creator:josephrussellauthor",
+      "source_id": "bethesda-reviewed-creator-facts",
+      "source_url": "https://www.patreon.com/josephrussellauthor/about",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"nexus:skyrimspecialedition:mod:20035\",\"relationship\":\"source-declared creator/project association\"}",
+      "observed_unix": 1794952901,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "bethesda-public-creator-facts-2026-11-17"
+    },
+    {
+      "id": "scumbumbomods:creator:scumbumbo:20261117:attribution",
+      "entity_id": "scumbumbomods:creator:scumbumbo",
+      "source_id": "sims4-scumbumbo-official",
+      "source_url": "https://scumbumbomods.com/teleport-any-sim/",
+      "predicate": "provider_claim.attribution",
+      "value": "{\"project_entity_id\":\"scumbumbomods:project:teleport-any-sim\",\"role\":\"original_author\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "scumbumbomods:maintainer:andrew:20261117:attribution",
+      "entity_id": "scumbumbomods:maintainer:andrew",
+      "source_id": "sims4-scumbumbo-official",
+      "source_url": "https://scumbumbomods.com/teleport-any-sim/",
+      "predicate": "provider_claim.attribution",
+      "value": "{\"project_entity_id\":\"scumbumbomods:project:teleport-any-sim\",\"role\":\"update_maintainer\",\"profile_identity\":\"unknown; source-scoped identity only\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "scumbumbomods:project:teleport-any-sim:20261117:maintenance_handoff",
+      "entity_id": "scumbumbomods:project:teleport-any-sim",
+      "source_id": "sims4-scumbumbo-official",
+      "source_url": "https://scumbumbomods.com/teleport-any-sim/",
+      "predicate": "provider_claim.maintenance_handoff",
+      "value": "{\"original_author\":\"scumbumbomods:creator:scumbumbo\",\"maintainer\":\"scumbumbomods:maintainer:andrew\",\"listed_update_date\":\"2024-03-01\",\"latest_update_claim\":false,\"download_landing_url\":\"https://sims4studio.com/post/72734\",\"destination_check\":\"timeout; official outgoing link observed, destination content unverified\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "scumbumbomods:project:teleport-any-sim:20261117:media_location",
+      "entity_id": "scumbumbomods:project:teleport-any-sim",
+      "source_id": "sims4-scumbumbo-official",
+      "source_url": "https://scumbumbomods.com/teleport-any-sim/",
+      "predicate": "provider_claim.media_location",
+      "value": "{\"url\":\"https://scumbumbomods.com/teleport-any-sim/\",\"type\":\"Project screenshot present\",\"asset_url\":null,\"reuse_permission\":\"unknown; no media downloaded or copied\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
       "id": "silverlock:f4se-vr:bethesda-2026-11-14:5",
       "entity_id": "silverlock:f4se-vr",
       "source_id": "f4se",
@@ -92145,10 +92818,68 @@
       "mod_version": "2.0.12",
       "completeness": "partial",
       "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "twistedmexi:creator:20261117:publishing_link",
+      "entity_id": "twistedmexi:creator",
+      "source_id": "sims4-twistedmexi-official",
+      "source_url": "https://www.twistedmexi.com/Mods/",
+      "predicate": "provider_claim.publishing_link",
+      "value": "{\"url\":\"https://patreon.com/TwistedMexi\",\"basis\":\"Explicit outgoing link on official Mods page; destination profile fetch unavailable.\",\"identity_scope\":\"One-way official-site cross-link, not account authentication.\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "twistedmexi:project:better-exceptions:20261117:creator",
+      "entity_id": "twistedmexi:project:better-exceptions",
+      "source_id": "sims4-twistedmexi-official",
+      "source_url": "https://www.twistedmexi.com/Mods/",
+      "predicate": "provider_claim.creator",
+      "value": "{\"entity_id\":\"twistedmexi:creator\",\"basis\":\"Official author mod directory lists this project.\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "twistedmexi:project:better-exceptions:20261117:media_location",
+      "entity_id": "twistedmexi:project:better-exceptions",
+      "source_id": "sims4-twistedmexi-official",
+      "source_url": "https://www.twistedmexi.com/Mods/",
+      "predicate": "provider_claim.media_location",
+      "value": "{\"url\":\"https://www.twistedmexi.com/Mods/\",\"type\":\"Project image linked beside Better Exceptions entry\",\"asset_url\":null,\"reuse_permission\":\"unknown; no media downloaded or copied\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
+    },
+    {
+      "id": "twistedmexi:project:better-exceptions:20261117:release_listing",
+      "entity_id": "twistedmexi:project:better-exceptions",
+      "source_id": "sims4-twistedmexi-official",
+      "source_url": "https://www.patreon.com/TwistedMexi/posts/better-v3-17-mod-130049745",
+      "predicate": "provider_claim.release_listing",
+      "value": "{\"version\":\"3.17\",\"post_url\":\"https://www.patreon.com/TwistedMexi/posts/better-v3-17-mod-130049745\",\"displayed_date\":\"June 19\",\"release_date\":null,\"date_gap\":\"Year not displayed in retrieved post; do not infer it.\",\"channel_caveat\":\"Directory says Release Candidate; linked post includes public-release text. Availability not independently tested.\"}",
+      "observed_unix": 1794952800,
+      "applicable_build": "unverified",
+      "mod_version": "3.17",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-17"
     }
   ],
   "source_policy_revisions": {
     "modrinth-public-metadata": "modrinth-public-project-team-metadata-2026-11-15",
-    "github-reviewed-public-facts": "reviewed-github-public-facts-2026-11-15"
+    "github-reviewed-public-facts": "reviewed-github-public-facts-2026-11-15",
+    "bethesda-reviewed-creator-facts": "bethesda-public-creator-facts-2026-11-17",
+    "minecraft-reviewed-public-facts": "reviewed-public-facts-2026-11-17",
+    "sims4-twistedmexi-official": "sims4-official-factual-links-2026-11-17",
+    "sims4-deaderpool-official": "sims4-official-factual-links-2026-11-17",
+    "sims4-scumbumbo-official": "sims4-official-factual-links-2026-11-17",
+    "cyberpunk-hytale-reviewed-creator-facts": "cyberpunk-hytale-public-creator-facts-2026-11-17"
   }
 }

@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "enabled": true,
+  "allow_retain": true,
+  "allow_publish": true,
+  "revision": "cyberpunk-hytale-public-creator-facts-2026-11-17",
+  "scope": "Manually checked bounded public attribution, release and publishing-link metadata only; no private data, biographies, copied media, binaries or automatic Pro response ingestion."
+}
