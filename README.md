@@ -75,3 +75,11 @@ LOOT's included metadata retains [CC0 license text](data/loot-CC0-LICENSE). Othe
 ## Cross-project game design research
 
 [Shared RTS/roguelite study layer](docs/game-design-studies.md) references the existing Games catalog by stable identity, with separate foundation-license screening and explicit untested status.
+
+## Experimental generated changelog evidence
+
+[Read-only Rust comparison foundation](experiments/semantic-changelog-core/README.md)
+compares a narrow set of Skyrim weapon record fields and Sims4 DBPF resource
+payloads, with explicit unsupported coverage and input hashes. This is not full
+xEdit/Sims schema coverage or a shipped premium app feature. Original artifacts
+are never modified; author release notes remain distinct from generated evidence.
