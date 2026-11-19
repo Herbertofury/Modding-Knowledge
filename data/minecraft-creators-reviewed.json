@@ -1,0 +1,171 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Four bounded Minecraft project source/attribution records; no complete creator catalogs or personal identity merges",
+  "games": {
+    "minecraft-java": "Minecraft Java Edition"
+  },
+  "sources": {
+    "minecraft-reviewed-public-facts": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service"
+  },
+  "source_policy_revisions": {
+    "minecraft-reviewed-public-facts": "reviewed-public-facts-2026-11-17"
+  },
+  "entities": [
+    {
+      "id": "github:Creators-of-Create/Create",
+      "game_id": "minecraft-java",
+      "kind": "mod",
+      "name": "Create"
+    },
+    {
+      "id": "modrinth:project:AANobbMI",
+      "game_id": "minecraft-java",
+      "kind": "mod",
+      "name": "Sodium"
+    },
+    {
+      "id": "modrinth:project:YL57xq9U",
+      "game_id": "minecraft-java",
+      "kind": "mod",
+      "name": "Iris Shaders"
+    },
+    {
+      "id": "github:Apollounknowndev/RegionsUnexplored",
+      "game_id": "minecraft-java",
+      "kind": "mod",
+      "name": "Regions Unexplored"
+    }
+  ],
+  "observations": [
+    {
+      "id": "github:Creators-of-Create/Create:creator-sourcecheck-20261117:source_repository",
+      "entity_id": "github:Creators-of-Create/Create",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Creators-of-Create/Create",
+      "predicate": "provider_claim.source_repository",
+      "value": "\"https://github.com/Creators-of-Create/Create\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:Creators-of-Create/Create:creator-sourcecheck-20261117:official_publishing_links",
+      "entity_id": "github:Creators-of-Create/Create",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Creators-of-Create/Create",
+      "predicate": "provider_claim.official_publishing_links",
+      "value": "[\"https://www.curseforge.com/minecraft/mc-mods/create\",\"https://modrinth.com/mod/create\"]",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:Creators-of-Create/Create:creator-sourcecheck-20261117:distinct_fabric_port",
+      "entity_id": "github:Creators-of-Create/Create",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Creators-of-Create/Create",
+      "predicate": "provider_claim.distinct_fabric_port",
+      "value": "\"https://github.com/Fabricators-of-Create/Create\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "modrinth:project:AANobbMI:creator-sourcecheck-20261117:source_repository",
+      "entity_id": "modrinth:project:AANobbMI",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/CaffeineMC/sodium",
+      "predicate": "provider_claim.source_repository",
+      "value": "\"https://github.com/CaffeineMC/sodium\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "modrinth:project:AANobbMI:creator-sourcecheck-20261117:distribution_scope",
+      "entity_id": "modrinth:project:AANobbMI",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/CaffeineMC/sodium",
+      "predicate": "provider_claim.distribution_scope",
+      "value": "\"Official Modrinth and CurseForge stable builds; nightly builds separate\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "modrinth:project:AANobbMI:creator-sourcecheck-20261117:license_attribution",
+      "entity_id": "modrinth:project:AANobbMI",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/CaffeineMC/sodium",
+      "predicate": "provider_claim.license_attribution",
+      "value": "\"Repository attributes license to JellySquid; this is not a full author roster\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "modrinth:project:YL57xq9U:creator-sourcecheck-20261117:source_repository",
+      "entity_id": "modrinth:project:YL57xq9U",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/IrisShaders/Iris",
+      "predicate": "provider_claim.source_repository",
+      "value": "\"https://github.com/IrisShaders/Iris\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:Apollounknowndev/RegionsUnexplored:creator-sourcecheck-20261117:source_repository",
+      "entity_id": "github:Apollounknowndev/RegionsUnexplored",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Apollounknowndev/RegionsUnexplored",
+      "predicate": "provider_claim.source_repository",
+      "value": "\"https://github.com/Apollounknowndev/RegionsUnexplored\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:Apollounknowndev/RegionsUnexplored:creator-sourcecheck-20261117:developer_roles",
+      "entity_id": "github:Apollounknowndev/RegionsUnexplored",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Apollounknowndev/RegionsUnexplored",
+      "predicate": "provider_claim.developer_roles",
+      "value": "{\"current_owner_developer\":\"Apollo\",\"former_owner_developer\":\"UHQ_Games\",\"contributor\":\"KirboSoftware\"}",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    },
+    {
+      "id": "github:Apollounknowndev/RegionsUnexplored:creator-sourcecheck-20261117:fork_upstream",
+      "entity_id": "github:Apollounknowndev/RegionsUnexplored",
+      "source_id": "minecraft-reviewed-public-facts",
+      "source_url": "https://github.com/Apollounknowndev/RegionsUnexplored",
+      "predicate": "provider_claim.fork_upstream",
+      "value": "\"https://github.com/UHQ-GAMES-MODS/RegionsUnexplored\"",
+      "observed_unix": 1794952861,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-17"
+    }
+  ]
+}
