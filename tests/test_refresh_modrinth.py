@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 spec=importlib.util.spec_from_file_location('refresh',Path(__file__).resolve().parents[1]/'tools/refresh_modrinth.py')
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
 NOW=dt.datetime(2026,11,15,tzinfo=dt.timezone.utc)
@@ -75,5 +76,42 @@ class RefreshTests(unittest.TestCase):
   self.assertEqual(result['observed_creator_accounts'],1)
   self.assertEqual({r['project_id'] for r in result['creator_memberships']},set(self.policy['project_ids']))
   self.assertEqual(calls.count('team/4reLOAKe/members'),1)
+ def test_actual_fetch_rejects_ambiguous_json_and_preserves_last_good(self):
+  self.assertTrue(m.refresh(self.root,self.fetch,NOW))
+  output=self.root/'data/live/modrinth-current.json';before=output.read_bytes()
+  class Response:
+   status=200
+   def __init__(self,raw):self.raw=raw
+   def __enter__(self):return self
+   def __exit__(self,*_):pass
+   def read(self,n):return self.raw[:n]
+  project=json.dumps(self.fetch('project/AANobbMI')).encode()
+  members=json.dumps(self.fetch('team/4reLOAKe/members')).encode()
+  variants=[
+   project.replace(b'"id": "AANobbMI"',b'"id":"wrong", "id":"AANobbMI"'),
+   members.replace(b'"id": "DzLrfrbK"',b'"id":"wrong", "\\u0069d":"DzLrfrbK"'),
+   project[:-1]+b',"ignored":NaN}',
+   project[:-1]+b',"ignored":Infinity}',
+   project[:-1]+b',"ignored":-Infinity}',
+   project[:-1]+b',"ignored":1e999}',
+   project[:-1]+b',"ignored":-1e999}',
+  ]
+  for raw in variants:
+   with self.subTest(raw=raw):
+    def open_response(request,timeout):
+     is_project='/project/' in request.full_url
+     if raw.startswith(b'['):return Response(project if is_project else raw)
+     return Response(raw if is_project else members)
+    with patch.object(m.urllib.request,'build_opener') as factory:
+     factory.return_value.open.side_effect=open_response
+     self.assertFalse(m.refresh(self.root,m.fetch,NOW))
+     self.assertGreater(factory.return_value.open.call_count,0)
+    self.assertEqual(output.read_bytes(),before)
+    state=json.loads((self.root/'data/live/modrinth-refresh.json').read_text())
+    self.assertEqual(state['error_type'],'ValueError')
+    self.assertTrue(state['last_good_retained'])
+ def test_json_decoder_preserves_valid_structures(self):
+  raw=b'{"a":{"id":"first"},"b":{"id":"second"},"n":1.5,"array":[true,null]}'
+  self.assertEqual(m.decode_response(raw),json.loads(raw))
 if __name__=='__main__':unittest.main()
 
