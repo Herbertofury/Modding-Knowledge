@@ -115,6 +115,7 @@ def project_projection(raw,expected,at):
 def member_projection(raw,team,project,at):
     if not isinstance(raw,list) or len(raw)>100: raise ValueError('Team response too large or malformed')
     members=[]
+    accepted_ids=set()
     for m in raw:
         if not isinstance(m,dict): raise ValueError('Malformed team member')
         if m.get('accepted') is not True: continue
@@ -123,6 +124,10 @@ def member_projection(raw,team,project,at):
         if not isinstance(user,dict): raise ValueError('Missing public account')
         uid=required_string(user,'id',8)
         if not ID.fullmatch(uid): raise ValueError('Invalid account ID')
+        # Duplicate accepted identities make the provider response ambiguous.
+        # Reject the batch rather than select one role/name or inflate memberships.
+        if uid in accepted_ids: raise ValueError('Duplicate accepted account identity')
+        accepted_ids.add(uid)
         username=required_string(user,'username',100)
         if not re.fullmatch(r'[A-Za-z0-9_-]+',username): raise ValueError('Unsupported public username')
         role=required_string(m,'role',100)

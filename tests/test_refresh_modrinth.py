@@ -46,4 +46,34 @@ class RefreshTests(unittest.TestCase):
    if endpoint=='project/gvQqBUqZ':x['id']='bad'
    return x
   self.assertFalse(m.refresh(self.root,bad,NOW));self.assertEqual(before,p.read_bytes())
+ def test_duplicate_accepted_identity_preserves_last_good(self):
+  self.assertTrue(m.refresh(self.root,self.fetch,NOW))
+  output=self.root/'data/live/modrinth-current.json';before=output.read_bytes()
+  for conflicting in [False,True]:
+   with self.subTest(conflicting=conflicting):
+    def duplicate(endpoint):
+     rows=self.fetch(endpoint)
+     if endpoint.startswith('team/'):
+      second=json.loads(json.dumps(rows[0]))
+      if conflicting:second['role']='Owner';second['user']['username']='different_name'
+      return rows+[second]
+     return rows
+    self.assertFalse(m.refresh(self.root,duplicate,NOW))
+    self.assertEqual(output.read_bytes(),before)
+    state=json.loads((self.root/'data/live/modrinth-refresh.json').read_text())
+    self.assertEqual(state['outcome'],'failed');self.assertEqual(state['error_type'],'ValueError')
+    self.assertTrue(state['last_good_retained'])
+ def test_unaccepted_duplicate_is_not_published(self):
+  rows=self.fetch('team/4reLOAKe/members');pending=json.loads(json.dumps(rows[0]));pending['accepted']=False
+  self.assertEqual(m.member_projection(rows+[pending],'4reLOAKe','AANobbMI',NOW),m.member_projection(rows,'4reLOAKe','AANobbMI',NOW))
+ def test_shared_team_remains_project_scoped_and_fetched_once(self):
+  self.policy['project_ids']=['AANobbMI','gvQqBUqZ'];self.save();calls=[]
+  def tracked(endpoint):calls.append(endpoint);return self.fetch(endpoint)
+  self.assertTrue(m.refresh(self.root,tracked,NOW))
+  result=json.loads((self.root/'data/live/modrinth-current.json').read_text())
+  self.assertEqual(len(result['creator_memberships']),2)
+  self.assertEqual(result['observed_creator_accounts'],1)
+  self.assertEqual({r['project_id'] for r in result['creator_memberships']},set(self.policy['project_ids']))
+  self.assertEqual(calls.count('team/4reLOAKe/members'),1)
 if __name__=='__main__':unittest.main()
+
