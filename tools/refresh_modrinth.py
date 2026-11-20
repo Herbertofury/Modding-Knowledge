@@ -2,6 +2,7 @@
 import datetime as dt
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -48,6 +49,26 @@ def check_policy(policy):
     return ids
 
 
+def decode_response(raw):
+    # Reject ambiguous provider JSON before projecting identities or replacing data.
+    def unique_object(pairs):
+        result = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError('Duplicate response key')
+            result[key] = value
+        return result
+    def reject_constant(_):
+        raise ValueError('Nonfinite response number')
+    def finite_float(value):
+        number = float(value)
+        if not math.isfinite(number):
+            raise ValueError('Nonfinite response number')
+        return number
+    return json.loads(raw, object_pairs_hook=unique_object,
+                      parse_constant=reject_constant, parse_float=finite_float)
+
+
 def fetch(endpoint):
     # Only two documented, immutable-ID route shapes. No authentication/redirects.
     if not re.fullmatch(r'(project/[A-Za-z0-9]{8}|team/[A-Za-z0-9]{8}/members)', endpoint):
@@ -58,7 +79,7 @@ def fetch(endpoint):
             if response.status != 200: raise ValueError('Unexpected HTTP status')
             raw = response.read(1048577)
             if len(raw)>1048576: raise ValueError('Response too large')
-            return json.loads(raw)
+            return decode_response(raw)
     except urllib.error.HTTPError as error:
         if error.code==429:
             retry=error.headers.get('Retry-After','3600')
