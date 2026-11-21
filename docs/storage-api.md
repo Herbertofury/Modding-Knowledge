@@ -15,7 +15,7 @@ A clean-room Rust library for public, attributed multi-game knowledge. This is a
 
 ## API
 
-`Store::open`, `register_game`, `set_source_policy`, `register_entity`, `import`, `observations`, `observations_page`, and `record_refresh`.
+`Store::open`, `register_game`, `set_source_policy`, `register_entity`, `import`, `observations`, `observations_page`, `observations_page_for_predicate`, and `record_refresh`.
 
 No automatic schema upgrades, network requests, credentials, subscription, download, scraped data, or installer. Existing unrecognized databases and future schema versions are rejected without replacing data. Use a separate file from Foundry workspace storage.
 
@@ -47,3 +47,23 @@ Sodium's observed license identifier is `LicenseRef-Polyform-Shield-1.0.0`; do n
 ## Consumer query and bounded live refresh
 
 `Store::open_read_only` cannot create/migrate databases; `cargo run --example query -- FILE ENTITY_ID` returns JSON with provenance and scope. Public team memberships now join the generated bundle as creator entities. Refresh metadata is explicitly partial, API-provided, and not complete authorship or compatibility. See `docs/refresh-modrinth.md`.
+
+### Read a single evidence type without filtering an already-capped page
+
+```sh
+cargo run --locked --example query -- FILE EXACT_ENTITY_ID --predicate conditional_plugin_metadata
+cargo run --locked --example query -- FILE EXACT_ENTITY_ID 1000 --predicate conditional_plugin_metadata
+```
+
+The optional predicate is exact and case-sensitive. The current publication and
+retention policy, revision and predicate are all applied before the 1,000-row
+page. Within the selected entity and evidence type, newer observations come
+first, then ID breaks ties. The JSON preserves each source URL, revision, build
+and version scope, completeness and raw value. The old unfiltered command and
+its output fields are unchanged.
+
+An empty page does not mean that no relationship exists. This query does not
+parse descriptions, join names or IDs, evaluate LOOT conditions, infer reverse
+links or turn author evidence into tested compatibility. The
+`conditional_plugin_metadata` predicate is the existing LOOT evidence type; its
+payload and game-family scope stay unchanged.

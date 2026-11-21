@@ -146,9 +146,53 @@ impl Store {
     }
     /// Pages contain at most 1000 records; callers continue until a short page.
     pub fn observations_page(&self, entity: &str, offset: u32) -> Result<Vec<Observation>> {
-        let mut q=self.db.prepare("SELECT o.id,o.entity_id,o.source_id,o.source_url,o.predicate,o.value,o.observed_unix,o.applicable_build,o.mod_version,o.completeness,o.policy_revision FROM observations o JOIN sources s ON s.id=o.source_id WHERE o.entity_id=?1 AND s.can_retain=1 AND s.can_publish=1 AND o.policy_revision=s.policy_revision ORDER BY o.observed_unix DESC,o.id LIMIT 1000 OFFSET ?2")?;
-        Ok(q.query_map(params![entity, offset], observation_from_row)?
-            .collect::<rusqlite::Result<Vec<_>>>()?)
+        self.read_observations_page(entity, offset, None)
+    }
+    /// Find one exact evidence type before paging. No matching public evidence
+    /// is unknown coverage, not a claim that a relationship does not exist.
+    pub fn observations_page_for_predicate(
+        &self,
+        entity: &str,
+        predicate: &str,
+        offset: u32,
+    ) -> Result<Vec<Observation>> {
+        if predicate.trim().is_empty() || predicate.len() > 128 {
+            return Err("Expected an exact predicate of 1 to 128 bytes".into());
+        }
+        self.read_observations_page(entity, offset, Some(predicate))
+    }
+    fn read_observations_page(
+        &self,
+        entity: &str,
+        offset: u32,
+        predicate: Option<&str>,
+    ) -> Result<Vec<Observation>> {
+        macro_rules! page_sql {
+            ($predicate_clause:literal) => {
+                concat!(
+                    "SELECT o.id,o.entity_id,o.source_id,o.source_url,o.predicate,o.value,",
+                    "o.observed_unix,o.applicable_build,o.mod_version,o.completeness,o.policy_revision ",
+                    "FROM observations o JOIN sources s ON s.id=o.source_id ",
+                    "WHERE o.entity_id=?1 AND s.can_retain=1 AND s.can_publish=1 ",
+                    "AND o.policy_revision=s.policy_revision",
+                    $predicate_clause,
+                    " ORDER BY o.observed_unix DESC,o.id LIMIT 1000 OFFSET ?2"
+                )
+            };
+        }
+        // Keep the unfiltered SQL and its parameter list identical to the original.
+        let mut q = self.db.prepare(if predicate.is_some() {
+            page_sql!(" AND o.predicate=?3")
+        } else {
+            page_sql!("")
+        })?;
+        let rows = match predicate {
+            Some(predicate) => {
+                q.query_map(params![entity, offset, predicate], observation_from_row)?
+            }
+            None => q.query_map(params![entity, offset], observation_from_row)?,
+        };
+        Ok(rows.collect::<rusqlite::Result<Vec<_>>>()?)
     }
     pub fn record_refresh(&self, source: &str, at: i64, outcome: &str, detail: &str) -> Result<()> {
         if detail.len() > 4096 {
@@ -223,6 +267,71 @@ mod tests {
         r.source_url = "https://example.org/mod?token=private".into();
         assert!(s.import(&[r]).is_err());
         assert!(s.observations("fixture:mod:1").unwrap().is_empty());
+    }
+    #[test]
+    fn exact_predicate_filters_before_page_and_rechecks_current_policy() {
+        let mut s = store();
+        s.register_entity("fixture:mod:2", "sims4", "mod", "Other synthetic mod")
+            .unwrap();
+        s.set_source_policy("withdrawn", "https://example.org/terms", true, true, "v1")
+            .unwrap();
+        s.set_source_policy("revised", "https://example.org/terms", true, true, "v1")
+            .unwrap();
+        let newer: Vec<_> = (0..1000)
+            .map(|i| {
+                let mut unrelated = row(&format!("other-{i:04}"), "notice");
+                unrelated.observed_unix = 20;
+                unrelated
+            })
+            .collect();
+        s.import(&newer).unwrap();
+        let mut first = row("a-relation", r#"{"fixture":"conditional, not evaluated"}"#);
+        first.predicate = "conditional_plugin_metadata".into();
+        first.completeness = "partial".into();
+        let mut second = row("b-relation", "another source observation");
+        second.predicate.clone_from(&first.predicate);
+        let mut private = row("private", "not public");
+        private.predicate.clone_from(&first.predicate);
+        private.observed_unix = 30;
+        private.source_id = "withdrawn".into();
+        let mut revised = row("revised", "revision superseded");
+        revised.predicate.clone_from(&first.predicate);
+        revised.observed_unix = 29;
+        revised.source_id = "revised".into();
+        let mut other = row("other-entity", "different ID");
+        other.predicate.clone_from(&first.predicate);
+        other.entity_id = "fixture:mod:2".into();
+        s.import(&[second, private, revised, other]).unwrap();
+        s.import(std::slice::from_ref(&first)).unwrap();
+        s.set_source_policy("withdrawn", "https://example.org/terms", true, false, "v1")
+            .unwrap();
+        s.set_source_policy("revised", "https://example.org/terms", true, true, "v2")
+            .unwrap();
+        let unfiltered = s.observations("fixture:mod:1").unwrap();
+        assert_eq!(unfiltered.len(), 1000);
+        assert!(unfiltered.iter().all(|r| r.predicate == "compatibility"));
+        let exact = s
+            .observations_page_for_predicate("fixture:mod:1", "conditional_plugin_metadata", 0)
+            .unwrap();
+        assert_eq!(exact.len(), 2);
+        assert_eq!(exact[0], first);
+        assert_eq!(exact[1].id, "b-relation");
+        assert_eq!(
+            s.observations_page_for_predicate("fixture:mod:1", "conditional_plugin_metadata", 1)
+                .unwrap(),
+            exact[1..]
+        );
+        for no_match in ["CONDITIONAL_PLUGIN_METADATA", "conditional_%"] {
+            assert!(
+                s.observations_page_for_predicate("fixture:mod:1", no_match, 0)
+                    .unwrap()
+                    .is_empty()
+            );
+        }
+        assert!(
+            s.observations_page_for_predicate("fixture:mod:1", " ", 0)
+                .is_err()
+        );
     }
     #[test]
     fn durable_reopen_and_future_schema() {
