@@ -20,6 +20,21 @@ pub struct Observation {
     pub completeness: String,
     pub policy_revision: String,
 }
+fn observation_from_row(r: &rusqlite::Row<'_>) -> rusqlite::Result<Observation> {
+    Ok(Observation {
+        id: r.get(0)?,
+        entity_id: r.get(1)?,
+        source_id: r.get(2)?,
+        source_url: r.get(3)?,
+        predicate: r.get(4)?,
+        value: r.get(5)?,
+        observed_unix: r.get(6)?,
+        applicable_build: r.get(7)?,
+        mod_version: r.get(8)?,
+        completeness: r.get(9)?,
+        policy_revision: r.get(10)?,
+    })
+}
 fn public_url(raw: &str) -> Result<()> {
     let u = url::Url::parse(raw)?;
     if u.scheme() != "https"
@@ -132,22 +147,8 @@ impl Store {
     /// Pages contain at most 1000 records; callers continue until a short page.
     pub fn observations_page(&self, entity: &str, offset: u32) -> Result<Vec<Observation>> {
         let mut q=self.db.prepare("SELECT o.id,o.entity_id,o.source_id,o.source_url,o.predicate,o.value,o.observed_unix,o.applicable_build,o.mod_version,o.completeness,o.policy_revision FROM observations o JOIN sources s ON s.id=o.source_id WHERE o.entity_id=?1 AND s.can_retain=1 AND s.can_publish=1 AND o.policy_revision=s.policy_revision ORDER BY o.observed_unix DESC,o.id LIMIT 1000 OFFSET ?2")?;
-        Ok(q.query_map(params![entity, offset], |r| {
-            Ok(Observation {
-                id: r.get(0)?,
-                entity_id: r.get(1)?,
-                source_id: r.get(2)?,
-                source_url: r.get(3)?,
-                predicate: r.get(4)?,
-                value: r.get(5)?,
-                observed_unix: r.get(6)?,
-                applicable_build: r.get(7)?,
-                mod_version: r.get(8)?,
-                completeness: r.get(9)?,
-                policy_revision: r.get(10)?,
-            })
-        })?
-        .collect::<rusqlite::Result<Vec<_>>>()?)
+        Ok(q.query_map(params![entity, offset], observation_from_row)?
+            .collect::<rusqlite::Result<Vec<_>>>()?)
     }
     pub fn record_refresh(&self, source: &str, at: i64, outcome: &str, detail: &str) -> Result<()> {
         if detail.len() > 4096 {

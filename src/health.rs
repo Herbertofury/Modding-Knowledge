@@ -1,5 +1,6 @@
 //! Scoped evidence query, not a compatibility oracle or automated reputation score.
-use crate::{Observation, Result, Store};
+use crate::{Observation, Result, Store, observation_from_row};
+use rusqlite::params;
 use serde_json::{Value, json};
 use std::collections::BTreeSet;
 
@@ -56,8 +57,8 @@ impl Store {
         self.import(rows)
     }
     /// Exact build/version/runtime context only. Unscoped observations remain available
-    /// in the general API, never promoted to compatibility evidence here. All history is
-    /// returned up to a hard bound; exceeding it fails explicitly, never silently truncates.
+    /// in the general API, never promoted to compatibility evidence here. History
+    /// includes observations first seen at or before the as-of time, up to a hard bound.
     pub fn health_report(
         &self,
         entity: &str,
@@ -67,42 +68,54 @@ impl Store {
         now: i64,
         max_age: i64,
     ) -> Result<Value> {
-        if [build, version, context]
-            .iter()
-            .any(|s| s.trim().is_empty())
-            || now < 0
-            || max_age < 0
-        {
-            return Err("Explicit scope and nonnegative freshness required".into());
-        }
-        let mut rows = Vec::new();
-        let mut offset = 0;
-        loop {
-            let page = self.observations_page(entity, offset)?;
-            let len = page.len();
-            rows.extend(page);
-            if rows.len() > 10_000 {
-                return Err(
-                    "Evidence query exceeds 10000 observations; narrow entity scope".into(),
-                );
+        for (field, value) in [
+            ("game build", build),
+            ("mod version", version),
+            ("runtime context", context),
+        ] {
+            let value = value.trim();
+            if value.is_empty()
+                || ["unverified", "unknown", "unspecified", "n/a", "*"]
+                    .iter()
+                    .any(|placeholder| value.eq_ignore_ascii_case(placeholder))
+            {
+                return Err(format!(
+                    "Exact {field} required; a generic placeholder is not a scope"
+                )
+                .into());
             }
-            if len < 1000 {
-                break;
-            }
-            offset += 1000;
         }
+        if now < 0 || max_age < 0 {
+            return Err("Nonnegative freshness required".into());
+        }
+        // Filter before applying the bound: out-of-scope and not-yet-observed
+        // receipts must not change a historical result, even in large catalogs.
+        // This one statement also reads one consistent snapshot of current policy.
+        const MAX_SCOPED_CLAIMS: usize = 10_000;
+        let mut query = self.db.prepare(
+            "SELECT o.id,o.entity_id,o.source_id,o.source_url,o.predicate,o.value,
+                    o.observed_unix,o.applicable_build,o.mod_version,o.completeness,o.policy_revision
+               FROM observations o JOIN sources s ON s.id=o.source_id
+              WHERE o.entity_id=?1 AND o.predicate='health_claim_v1'
+                AND o.applicable_build=?2 AND o.mod_version=?3 AND o.observed_unix<=?4
+                AND s.can_retain=1 AND s.can_publish=1 AND o.policy_revision=s.policy_revision
+              ORDER BY o.observed_unix DESC,o.id
+              LIMIT ?5",
+        )?;
+        let scoped = query.query_map(
+            params![entity, build, version, now, MAX_SCOPED_CLAIMS as i64 + 1],
+            observation_from_row,
+        )?;
         let mut claims = Vec::new();
         let mut assertions = BTreeSet::new();
         let mut lineage = BTreeSet::new();
         let mut stale = 0;
         let mut invalid = 0;
-        for row in rows {
-            if row.predicate != "health_claim_v1"
-                || row.applicable_build != build
-                || row.mod_version != version
-            {
-                continue;
+        for (idx, row) in scoped.enumerate() {
+            if idx == MAX_SCOPED_CLAIMS {
+                return Err("Evidence query exceeds 10000 observations for this release as of the requested time".into());
             }
+            let row = row?;
             let Ok(v) = validate_claim(&row) else {
                 invalid += 1;
                 continue;
@@ -111,7 +124,9 @@ impl Store {
                 continue;
             }
             let reported = v["reported_unix"].as_i64().unwrap();
-            let fresh = row.observed_unix <= now && reported <= now && now - reported <= max_age;
+            // Validation requires 0 <= reported <= observed; the
+            // query already ensured observed <= now.
+            let fresh = now - reported <= max_age;
             let active = v["status"] == "active";
             if active && fresh {
                 assertions.insert(v["assertion"].as_str().unwrap().to_owned());
