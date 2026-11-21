@@ -19,3 +19,29 @@ The native snapshot importer now uses 500-observation transactions, keeping the 
 Classic Oblivion and Oblivion Remastered are distinct applicability contexts. Current LOOT application source `03f22e99f037c08778731319a6bae0276e7464a0` maps Remastered to the shared `loot/oblivion/v0.29/masterlist.yaml` (game_settings.cpp and its expected-URL test). That routing does not make every row applicable to both editions. Consumers must evaluate game/file/version/CRC conditions and top-level context before showing actionable warnings. Imported expressions remain **not evaluated**; absence is unknown, not safe.
 
 This tranche is pinned and not automatically refreshed. The existing hourly Modrinth workflow rebuilds combined snapshots while retaining this reviewed LOOT tranche. No private author/contact data, mod files or assets were imported.
+
+## Read the stored relationship fields
+
+For an exact existing catalog entity, the native read-only query example has an
+opt-in projection:
+
+```sh
+cargo run --locked --example query -- FILE EXACT_ENTITY_ID --loot-relations
+```
+
+The existing `observations` array retains source URL, time, version/build scope
+and raw value. The extra `loot_relationships` section points back to each
+observation ID and separates the [LOOT plugin fields](https://loot-api.readthedocs.io/en/latest/metadata/data_structures/plugin.html):
+source-declared file requirements (`req`), source-declared incompatibilities
+(`inc`), and load-after-if-present rules (`after`, not requirements).
+File strings and maps keep their exact data, including
+[conditions and existence constraints](https://loot-api.readthedocs.io/en/latest/metadata/data_structures/file.html).
+No expression, regex, path, display text or link is executed or resolved.
+
+Each list distinguishes not recorded, explicitly recorded empty, recorded but
+unevaluated, and malformed or unsupported. Unsupported forms (for example,
+localized detail arrays) are still retained raw. Missing metadata or an empty list
+from this one source does not imply no real relationship or compatibility.
+This works only for the pinned Oblivion-family LOOT evidence above, not other
+providers or exact game editions. No installed data is inspected and no load
+order or compatibility recommendation is made. Regular query modes are unchanged.
