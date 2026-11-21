@@ -35,8 +35,15 @@ fn row(id: &str, observed: i64, reported: i64, assertion: &str) -> Observation {
     }
 }
 fn report(s: &Store, now: i64, max_age: i64) -> Value {
-    s.health_report("fixture:mod", "fixture-build-1", "1.0", CONTEXT, now, max_age)
-        .unwrap()
+    s.health_report(
+        "fixture:mod",
+        "fixture-build-1",
+        "1.0",
+        CONTEXT,
+        now,
+        max_age,
+    )
+    .unwrap()
 }
 
 #[test]

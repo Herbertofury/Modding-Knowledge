@@ -104,8 +104,18 @@ fn generic_scope_placeholders_cannot_promote_retained_reports() {
     // not convert identical "unverified" strings into a user-facing warning.
     assert_eq!(s.observations("mod").unwrap()[0].id, unscoped.id);
     for (build, version, context, missing) in [
-        ("unverified", "1.0", "runtime:test;loader:test", "game build"),
-        ("1.2", " UnKnOwN ", "runtime:test;loader:test", "mod version"),
+        (
+            "unverified",
+            "1.0",
+            "runtime:test;loader:test",
+            "game build",
+        ),
+        (
+            "1.2",
+            " UnKnOwN ",
+            "runtime:test;loader:test",
+            "mod version",
+        ),
         ("1.2", "1.0", "unspecified", "runtime context"),
         ("1.2", "1.0", "*", "runtime context"),
         ("1.2", "N/A", "runtime:test;loader:test", "mod version"),
@@ -139,7 +149,9 @@ fn valid_qualified_scope_matching_stays_exact_without_normalizing_versions() {
     assert_eq!(exact["state"], "partial_evidence");
     assert_eq!(exact["compatibility_verdict"], "not_determined");
     for version in ["1.0", "1.0-beta+build.6", "1.0-BETA+build.5"] {
-        let r = s.health_report("mod", "1.2", version, context, 3, 5).unwrap();
+        let r = s
+            .health_report("mod", "1.2", version, context, 3, 5)
+            .unwrap();
         assert_eq!(r["state"], "unknown");
         assert_eq!(r["claims"].as_array().unwrap().len(), 0);
     }
