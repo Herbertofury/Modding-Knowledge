@@ -2,6 +2,8 @@
 //! Permission to retain and publish is separate; reference-only sources stay out.
 use rusqlite::{Connection, OptionalExtension, TransactionBehavior, params};
 use std::{error::Error, path::Path, time::Duration};
+pub mod loot;
+
 pub type Result<T> = std::result::Result<T, Box<dyn Error>>;
 pub struct Store {
     db: Connection,

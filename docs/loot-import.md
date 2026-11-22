@@ -45,3 +45,33 @@ from this one source does not imply no real relationship or compatibility.
 This works only for the pinned Oblivion-family LOOT evidence above, not other
 providers or exact game editions. No installed data is inspected and no load
 order or compatibility recommendation is made. Regular query modes are unchanged.
+
+### Use the same projection from Rust
+
+Native consumers can use the public `athena_mod_knowledge::loot` module
+instead of starting a CLI process and parsing its JSON:
+
+```rust
+use athena_mod_knowledge::{Store, loot};
+
+fn inspect(path: &std::path::Path, entity_id: &str) -> athena_mod_knowledge::Result<()> {
+    let store = Store::open_read_only(path)?;
+    let page = store.observations_page_for_predicate(entity_id, loot::OBSERVATION_PREDICATE, 0)?;
+    for row in &page {
+        let evidence = loot::project(row);
+        if let Some(fields) = evidence.fields() {
+            println!("{:?} — {}", fields.requirements, evidence.observation().source_url);
+        }
+    }
+    Ok(())
+}
+```
+
+Pass each page (up to 1,000 rows) through `loot::project`. The borrowed
+observation keeps source, policy revision, observation time, exact raw payload
+and version/build scope alongside the typed roles. For each role, match
+`SourceFileSet` variants instead of parsing status strings. An out-of-scope
+or malformed observation has no projected fields but still retains the
+original observation. The Store rechecks policy; projecting an arbitrary
+detached observation does not verify its provenance or grant use rights.
+The CLI reuses the same projection with its original JSON shape.
