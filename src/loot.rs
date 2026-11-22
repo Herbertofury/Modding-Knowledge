@@ -1,4 +1,4 @@
-//! Read-only relationship projection for the reviewed Oblivion-family LOOT tranche.
+//! Read-only relationship projection for separately pinned LOOT source tranches.
 //! These are source facts, not evaluated behavior, dependencies or load-order advice.
 use crate::{Observation, Result, Store, observation_from_row};
 use rusqlite::params;
@@ -10,6 +10,31 @@ const COMMIT: &str = "b3ffc84f6d730f6efb5083448d78611df16e8d78";
 const BLOB: &str = "8c613acedf019890b950e4c4b2450151cead1025";
 const SOURCE_ID: &str = "loot-oblivion";
 const SOURCE: &str = "https://github.com/loot/oblivion/blob/b3ffc84f6d730f6efb5083448d78611df16e8d78/masterlist.yaml";
+const FALLOUT4_COMMIT: &str = "4c7858a84bc65b34904b53c5e6252d3f6f9b1247";
+const FALLOUT4_BLOB: &str = "eed7994e786c896463887d03bcb3f14426b37753";
+const FALLOUT4_SOURCE: &str = "https://github.com/loot/fallout4/blob/4c7858a84bc65b34904b53c5e6252d3f6f9b1247/masterlist.yaml";
+const FALLOUT4_PREFIX: &str = "loot:fallout4:plugin-metadata:";
+
+#[derive(Clone, Copy)]
+struct Pin {
+    id: &'static str,
+    url: &'static str,
+    commit: &'static str,
+    blob: &'static str,
+}
+
+const OBLIVION: Pin = Pin {
+    id: SOURCE_ID,
+    url: SOURCE,
+    commit: COMMIT,
+    blob: BLOB,
+};
+const FALLOUT4: Pin = Pin {
+    id: "loot-fallout4",
+    url: FALLOUT4_SOURCE,
+    commit: FALLOUT4_COMMIT,
+    blob: FALLOUT4_BLOB,
+};
 
 /// Distinguishes what the source recorded from what has been verified in a game.
 #[derive(Debug, PartialEq, Eq)]
@@ -158,7 +183,7 @@ impl Store {
             let observation = observation_from_row(row)?;
             scanned += 1;
             let observed_unix = observation.observed_unix;
-            let observation_id = if let Some(fields) = parse_fields(&observation)
+            let observation_id = if let Some(fields) = parse_fields(&observation, OBLIVION)
                 && fields.has_target(role, exact_target_label)
             {
                 let id = observation.id.clone();
@@ -259,17 +284,40 @@ impl<'a> RelationshipEvidence<'a> {
 pub fn project(observation: &Observation) -> RelationshipEvidence<'_> {
     RelationshipEvidence {
         observation,
-        fields: parse_fields(observation),
+        fields: parse_fields(observation, OBLIVION),
     }
 }
 
-fn parse_fields(r: &Observation) -> Option<SourceFields> {
-    if r.source_id != SOURCE_ID || r.source_url != SOURCE || r.predicate != OBSERVATION_PREDICATE {
+/// Read a separately pinned Fallout 4 LOOT observation, not Fallout 4 VR.
+/// A caller-supplied row does not verify provenance or grant admission; obtain
+/// observations through the policy-filtered Store when reading a snapshot.
+pub fn project_fallout4(observation: &Observation) -> RelationshipEvidence<'_> {
+    let exact_plugin = observation
+        .entity_id
+        .strip_prefix(FALLOUT4_PREFIX)
+        .is_some_and(|suffix| {
+            suffix.len() == 20
+                && suffix
+                    .bytes()
+                    .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
+        });
+    RelationshipEvidence {
+        observation,
+        fields: if exact_plugin {
+            parse_fields(observation, FALLOUT4)
+        } else {
+            None
+        },
+    }
+}
+
+fn parse_fields(r: &Observation, pin: Pin) -> Option<SourceFields> {
+    if r.source_id != pin.id || r.source_url != pin.url || r.predicate != OBSERVATION_PREDICATE {
         return None;
     }
     let mut value: Value = serde_json::from_str(&r.value).ok()?;
-    if value["source_commit_sha"] != COMMIT
-        || value["source_blob_sha"] != BLOB
+    if value["source_commit_sha"] != pin.commit
+        || value["source_blob_sha"] != pin.blob
         || value["condition_evaluation"] != "not_evaluated"
     {
         return None;
