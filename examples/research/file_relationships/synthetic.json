@@ -1,0 +1,30 @@
+{
+  "subject": {"project":{"provider":"fixture-host","game":"fixture-game","id":"8"},"id":"42"},
+  "compatibility": {"status":"unavailable"},
+  "relationships": [
+    {
+      "target":{"provider":"fixture-mirror","game":"fixture-game","id":"8"},
+      "role":"works_with",
+      "constraint":{"type":"minimum_label","label":"2.9-preview","applies":"if_target_present"},
+      "evidence":{
+        "subject":{"project":{"provider":"fixture-host","game":"fixture-game","id":"8"},"id":"42"},
+        "source_id":"fixture-author-page",
+        "source_url":"https://example.test/fixture/releases/42",
+        "locator":"Optional integrations",
+        "basis":"author_statement"
+      }
+    },
+    {
+      "target":{"provider":"fixture-mirror","game":"fixture-game","id":"8"},
+      "role":"requires",
+      "constraint":{"type":"unspecified"},
+      "evidence":{
+        "subject":{"project":{"provider":"fixture-host","game":"fixture-game","id":"8"},"id":"42"},
+        "source_id":"fixture-reviewer",
+        "source_url":"https://example.test/fixture/releases/42",
+        "locator":"Suggested relationship pending source review",
+        "basis":"inferred"
+      }
+    }
+  ]
+}
