@@ -105,3 +105,27 @@ retention/publication and source policy revision before considering candidates.
 These bounds apply to JSON interpretation and returned results; SQLite may
 scan the snapshot's existing keys to sort them. No schema/index migration,
 provider access, or write is performed.
+
+### Read the separately pinned Fallout 4 archive
+
+A snapshot that already contains policy-visible rows for the [pinned Fallout 4
+masterlist](https://github.com/loot/fallout4/blob/4c7858a84bc65b34904b53c5e6252d3f6f9b1247/masterlist.yaml)
+can be read with `loot::project_fallout4` or:
+
+```sh
+cargo run --locked --example query -- ARCHIVED_SQLITE EXACT_ENTITY --loot-fallout4-relations
+```
+
+The source ID, URL, commit and blob must match this pin; only literal
+`loot:fallout4:plugin-metadata:` identities qualify. Fallout 4 VR, other pins,
+and context records are outside the scope. Requirements, incompatibilities
+and load-after-if-present reuse the existing projection without evaluating any
+expression or interpreting labels as resolved files. Not recorded, explicit
+empty and malformed evidence remain separate. An empty page means no visible
+evidence in that page, not compatibility or absence of relationships.
+
+No data, source policy, import or source registry is added. The canonical
+snapshot has no Fallout 4 LOOT rows; it will not gain them by running this command.
+The old `--loot-relations` and `browse_loot` still accept only Oblivion-family
+rows. Use the policy-filtered Store for snapshot evidence; projecting a detached
+caller-supplied row does not authenticate it or grant permissions.

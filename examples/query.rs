@@ -1,11 +1,12 @@
 //! Read-only JSON query for consumers; does not create/migrate databases or fetch.
-use athena_mod_knowledge::{Result, Store, loot};
+use athena_mod_knowledge::{Observation, Result, Store, loot};
 use serde_json::json;
 
 enum Selection<'a> {
     All,
     Predicate(&'a str),
     LootRelations,
+    Fallout4LootRelations,
 }
 
 fn main() -> Result<()> {
@@ -18,6 +19,15 @@ fn main() -> Result<()> {
         [db, entity, offset, flag] if flag == "--loot-relations" => {
             (db, entity, offset.parse::<u32>()?, Selection::LootRelations)
         }
+        [db, entity, flag] if flag == "--loot-fallout4-relations" => {
+            (db, entity, 0, Selection::Fallout4LootRelations)
+        }
+        [db, entity, offset, flag] if flag == "--loot-fallout4-relations" => (
+            db,
+            entity,
+            offset.parse::<u32>()?,
+            Selection::Fallout4LootRelations,
+        ),
         [db, entity, offset] => (db, entity, offset.parse::<u32>()?, Selection::All),
         [db, entity, flag, predicate] if flag == "--predicate" => {
             (db, entity, 0, Selection::Predicate(predicate))
@@ -30,14 +40,16 @@ fn main() -> Result<()> {
         ),
         _ => {
             return Err(
-                "Usage: query DATABASE ENTITY_ID [OFFSET] [--predicate EXACT_PREDICATE | --loot-relations]".into()
+                "Usage: query DATABASE ENTITY_ID [OFFSET] [--predicate EXACT_PREDICATE | --loot-relations | --loot-fallout4-relations]".into()
             );
         }
     };
     let predicate = match selection {
         Selection::All => None,
         Selection::Predicate(p) => Some(p),
-        Selection::LootRelations => Some(loot::OBSERVATION_PREDICATE),
+        Selection::LootRelations | Selection::Fallout4LootRelations => {
+            Some(loot::OBSERVATION_PREDICATE)
+        }
     };
     let store = Store::open_read_only(database)?;
     let records = match predicate {
@@ -51,11 +63,23 @@ fn main() -> Result<()> {
         output["coverage_note"] =
             "An empty page does not establish absence; evidence can be unrecorded, unavailable, or outside this page.".into();
     }
-    if matches!(selection, Selection::LootRelations) {
+    type Project = for<'a> fn(&'a Observation) -> loot::RelationshipEvidence<'a>;
+    let loot_scope: Option<(&str, Project)> = match selection {
+        Selection::LootRelations => Some((
+            "Pinned Oblivion-family LOOT source only; conditions and constraints are not evaluated; not a load-order recommendation.",
+            loot::project,
+        )),
+        Selection::Fallout4LootRelations => Some((
+            "Pinned Fallout 4 LOOT source only, not Fallout 4 VR; conditions and constraints are not evaluated; not a load-order recommendation.",
+            loot::project_fallout4,
+        )),
+        _ => None,
+    };
+    if let Some((scope, project)) = loot_scope {
         output["loot_relationships"] = json!({
             "schema": 1,
-            "scope": "Pinned Oblivion-family LOOT source only; conditions and constraints are not evaluated; not a load-order recommendation.",
-            "observations": records.iter().map(|row| loot::project(row).to_json()).collect::<Vec<_>>(),
+            "scope": scope,
+            "observations": records.iter().map(|row| project(row).to_json()).collect::<Vec<_>>(),
         });
     }
     println!("{}", serde_json::to_string_pretty(&output)?);

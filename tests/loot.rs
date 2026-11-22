@@ -356,3 +356,145 @@ fn browse_does_not_scan_hidden_or_unrelated_sources_and_rechecks_resume_policy()
         assert!(page.next.is_none());
     }
 }
+
+const FO4_ENTITY: &str = "loot:fallout4:plugin-metadata:00123456789abcdef012";
+const FO4_SOURCE: &str = "https://github.com/loot/fallout4/blob/4c7858a84bc65b34904b53c5e6252d3f6f9b1247/masterlist.yaml";
+
+fn fo4_observation(plugin: Value) -> Observation {
+    Observation {
+        id: "synthetic-fo4-observation".into(),
+        entity_id: FO4_ENTITY.into(),
+        source_id: "loot-fallout4".into(),
+        source_url: FO4_SOURCE.into(),
+        predicate: loot::OBSERVATION_PREDICATE.into(),
+        value: json!({
+            "source_commit_sha":"4c7858a84bc65b34904b53c5e6252d3f6f9b1247",
+            "source_blob_sha":"eed7994e786c896463887d03bcb3f14426b37753",
+            "condition_evaluation":"not_evaluated",
+            "plugin_metadata":plugin,
+        })
+        .to_string(),
+        observed_unix: 2,
+        applicable_build: "conditional".into(),
+        mod_version: "unverified".into(),
+        completeness: "partial".into(),
+        policy_revision: "synthetic-fo4-v1".into(),
+    }
+}
+
+#[test]
+fn fallout4_uses_separate_pin_preserves_roles_and_never_evaluates_conditions() {
+    let raw = json!({"name":"Fixture(.*)\\\\.esp",
+                "req":[{"name":"Fixture.esm","constraint":"version(Fixture, 1)"}],
+                "after":[{"name":"Conditional.esp","condition":"unknown(Fixture)"}]});
+    let row = fo4_observation(raw.clone());
+    let result = loot::project_fallout4(&row);
+    assert!(std::ptr::eq(result.observation(), &row));
+    let fields = result.fields().unwrap();
+    assert_eq!(fields.plugin_source_label, raw["name"]);
+    assert_eq!(
+        result.to_json()["source_declared_requirements"]["raw"],
+        raw["req"]
+    );
+    assert_eq!(
+        result.to_json()["source_load_after_if_present"]["raw"],
+        raw["after"]
+    );
+    assert_eq!(fields.incompatibilities, SourceFileSet::NotRecorded);
+    assert_eq!(
+        result.to_json()["conditions_and_constraints"],
+        "not_evaluated"
+    );
+    assert!(loot::project(&row).fields().is_none());
+    assert!(loot::project_fallout4(&evidence(raw)).fields().is_none());
+
+    let unsupported = fo4_observation(json!({"name":"Fixture.esp","req":[],"inc":null}));
+    let unsupported_view = loot::project_fallout4(&unsupported);
+    let fields = unsupported_view.fields().unwrap();
+    assert_eq!(fields.requirements, SourceFileSet::RecordedEmpty);
+    assert_eq!(
+        fields.incompatibilities,
+        SourceFileSet::MalformedOrUnsupported(Value::Null)
+    );
+    assert_eq!(fields.load_after_if_present, SourceFileSet::NotRecorded);
+}
+
+#[test]
+fn fallout4_refuses_wrong_document_blob_namespace_predicate_or_row_scope() {
+    let make = || fo4_observation(json!({"name":"Fixture.esp","req":["Test.esm"]}));
+    for (field, value) in [
+        ("source_commit_sha", "different"),
+        (
+            "source_blob_sha",
+            "8c613acedf019890b950e4c4b2450151cead1025",
+        ),
+        ("condition_evaluation", "evaluated"),
+    ] {
+        let mut row = make();
+        let mut payload: Value = serde_json::from_str(&row.value).unwrap();
+        payload[field] = json!(value);
+        row.value = payload.to_string();
+        assert!(loot::project_fallout4(&row).fields().is_none());
+    }
+    for entity in [
+        "loot:fallout4-vr:plugin-metadata:00123456789abcdef012",
+        "loot:fallout4:source-context",
+        "loot:oblivion:plugin-metadata:00123456789abcdef012",
+        "loot:fallout4:plugin-metadata:",
+    ] {
+        let row = Observation {
+            entity_id: entity.into(),
+            ..make()
+        };
+        assert!(loot::project_fallout4(&row).fields().is_none());
+    }
+    for row in [
+        Observation {
+            source_id: "loot-oblivion".into(),
+            ..make()
+        },
+        Observation {
+            source_url: SOURCE.into(),
+            ..make()
+        },
+        Observation {
+            predicate: "compatibility".into(),
+            ..make()
+        },
+    ] {
+        assert!(loot::project_fallout4(&row).fields().is_none());
+    }
+}
+
+#[test]
+fn fallout4_projection_does_not_admit_source_and_oblivion_browse_does_not_cross_pins() {
+    let mut store = Store::open(":memory:").unwrap();
+    store
+        .register_game("fallout4", "Synthetic Fallout 4")
+        .unwrap();
+    store
+        .register_entity(FO4_ENTITY, "fallout4", "guide", "Synthetic")
+        .unwrap();
+    let make = || fo4_observation(json!({"name":"Fixture.esp","req":["Fixture.esm"]}));
+    assert!(store.import(&[make()]).is_err());
+    assert!(store.observations(FO4_ENTITY).unwrap().is_empty());
+
+    // Only this in-memory fixture is authorized for both retention and visibility.
+    store
+        .set_source_policy("loot-fallout4", FO4_SOURCE, true, true, "synthetic-fo4-v1")
+        .unwrap();
+    store.import(&[make()]).unwrap();
+    let public = store.observations(FO4_ENTITY).unwrap();
+    assert!(loot::project_fallout4(&public[0]).fields().is_some());
+    assert!(
+        store
+            .browse_loot(loot::SourceRole::Requires, None, None)
+            .unwrap()
+            .matches
+            .is_empty()
+    );
+    store
+        .set_source_policy("loot-fallout4", FO4_SOURCE, true, false, "synthetic-fo4-v1")
+        .unwrap();
+    assert!(store.observations(FO4_ENTITY).unwrap().is_empty());
+}
