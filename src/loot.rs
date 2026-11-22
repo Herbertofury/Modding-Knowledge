@@ -118,8 +118,9 @@ pub const BROWSE_SCAN_LIMIT: usize = 256;
 impl Store {
     /// Browse evidenced source labels across the reviewed Oblivion-family source.
     ///
-    /// Public policy and its current revision are checked before scanning. The optional label
-    /// is literal and case-sensitive, never an identity or regex lookup. Only recognized,
+    /// Public policy, its current revision and the registered Oblivion-family game namespace
+    /// are checked before scanning. The optional label is literal and case-sensitive, never
+    /// an identity or regex lookup. Only recognized,
     /// nonempty role fields match. A short/empty page is not proof of absence; it may carry
     /// a continuation. No condition, constraint, or runtime behavior is evaluated.
     pub fn browse_loot(
@@ -142,6 +143,7 @@ impl Store {
                 concat!(
                     "WITH visible AS MATERIALIZED (SELECT o.id,o.observed_unix ",
                     "FROM observations o JOIN sources s ON s.id=o.source_id ",
+                    "JOIN entities e ON e.id=o.entity_id AND e.game_id='oblivion-family' ",
                     "WHERE s.can_retain=1 AND s.can_publish=1 AND o.policy_revision=s.policy_revision ",
                     "AND o.source_id=?1 AND o.source_url=?2 AND o.predicate=?3",
                     $after,

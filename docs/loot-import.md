@@ -101,7 +101,8 @@ call evaluates at most 256 eligible observations and returns at most 100
 matches. Follow `next` even when a page is short or empty (pass both cursor
 fields with the same role/target on the **same immutable snapshot**). A null
 `next` ends this scan, not all possible evidence. Each call rechecks current
-retention/publication and source policy revision before considering candidates.
+retention/publication, source policy revision and the entity's registered
+`oblivion-family` namespace before considering candidates.
 These bounds apply to JSON interpretation and returned results; SQLite may
 scan the snapshot's existing keys to sort them. No schema/index migration,
 provider access, or write is performed.
