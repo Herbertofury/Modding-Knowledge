@@ -1,6 +1,7 @@
 //! Build a new reviewed snapshot; no external JSON may self-grant publication permission.
 use athena_mod_knowledge::{Observation, Result, Store};
 use serde_json::Value;
+use std::collections::HashMap;
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().collect();
     if args.len() != 2 {
@@ -69,21 +70,8 @@ fn main() -> Result<()> {
         store.import(chunk)?; // byte-identical replay must not add duplicates
     }
     drop(store);
-    let reopened = Store::open(&stage)?;
-    let mut found = 0;
-    for e in entities {
-        let id = s(e, "id")?;
-        let actual = reopened.observations(id)?;
-        for row in &actual {
-            assert!(rows.contains(row), "Unexpected reopened row");
-        }
-        assert_eq!(
-            actual.len(),
-            rows.iter().filter(|r| r.entity_id == id).count()
-        );
-        found += actual.len();
-    }
-    assert_eq!(found, rows.len());
+    let reopened = Store::open_read_only(&stage)?;
+    let found = verify_reopened(&reopened, entities.iter().map(|e| s(e, "id")), &rows)?;
     drop(reopened);
     // Windows FlushFileBuffers requires a writable handle; this is our own staging file.
     std::fs::OpenOptions::new()
@@ -100,7 +88,134 @@ fn main() -> Result<()> {
     );
     Ok(())
 }
+
+fn verify_reopened<'a>(
+    store: &Store,
+    entity_ids: impl Iterator<Item = Result<&'a str>>,
+    expected: &[Observation],
+) -> Result<usize> {
+    let mut missing: HashMap<_, _> = expected.iter().map(|r| (r.id.as_str(), r)).collect();
+    if missing.len() != expected.len() {
+        return Err("Duplicate expected observation ID".into());
+    }
+    for entity_id in entity_ids {
+        let entity_id = entity_id?;
+        let mut offset = 0u32;
+        loop {
+            // The staging file is unpublished and unchanged. Check every page, including
+            // when the expected count lands exactly on a page boundary.
+            let page = store.observations_page(entity_id, offset)?;
+            if page.is_empty() {
+                break;
+            }
+            for row in &page {
+                if missing.remove(row.id.as_str()) != Some(row) {
+                    return Err("Reopened observation differs from reviewed input".into());
+                }
+            }
+            offset = offset
+                .checked_add(u32::try_from(page.len())?)
+                .ok_or("Snapshot exceeds observation pagination range")?;
+        }
+    }
+    if !missing.is_empty() {
+        return Err("Reviewed observations missing from reopened snapshot".into());
+    }
+    Ok(expected.len())
+}
+
 fn s<'a>(v: &'a Value, k: &str) -> Result<&'a str> {
     v[k].as_str()
         .ok_or_else(|| format!("missing string {k}").into())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    const A: &str = "fixture:mod:a";
+    const B: &str = "fixture:mod:b";
+
+    fn row(entity_id: &str, index: usize) -> Observation {
+        Observation {
+            id: format!("{entity_id}:{index:04}"),
+            entity_id: entity_id.into(),
+            source_id: "fixture".into(),
+            source_url: "https://example.org/fixture".into(),
+            predicate: [
+                "fixture.requires",
+                "fixture.load_after_if_present",
+                "fixture.works_with",
+            ][index % 3]
+                .into(),
+            value: format!("Framework {index}"),
+            observed_unix: (index / 3) as i64,
+            applicable_build: "fixture-build".into(),
+            mod_version: format!("opaque-{index}"),
+            completeness: "partial".into(),
+            policy_revision: "fixture-review".into(),
+        }
+    }
+
+    fn store_with(rows: &[Observation]) -> Store {
+        let mut store = Store::open(":memory:").unwrap();
+        store.register_game("fixture-game", "Fixture").unwrap();
+        store
+            .set_source_policy(
+                "fixture",
+                "https://example.org/terms",
+                true,
+                true,
+                "fixture-review",
+            )
+            .unwrap();
+        for id in [A, B] {
+            store
+                .register_entity(id, "fixture-game", "mod", "Same display name")
+                .unwrap();
+        }
+        for rows in rows.chunks(500) {
+            store.import(rows).unwrap();
+        }
+        store
+    }
+
+    #[test]
+    fn verifies_all_pages_and_keeps_equal_display_names_separate() {
+        let expected: Vec<_> = (0..2001)
+            .map(|i| row(A, i))
+            .chain((0..1000).map(|i| row(B, i)))
+            .collect();
+        let store = store_with(&expected);
+        assert_eq!(store.observations(A).unwrap().len(), 1000);
+        assert_eq!(
+            verify_reopened(&store, [B, A].into_iter().map(Ok), &expected).unwrap(),
+            3001
+        );
+    }
+
+    #[test]
+    fn refuses_missing_extra_or_changed_oldest_rows_after_the_first_page() {
+        let mut rows: Vec<_> = (0..1001).map(|i| row(A, i)).collect();
+        let store = store_with(&rows);
+        assert_eq!(
+            verify_reopened(&store, [A, B].into_iter().map(Ok), &rows[1..])
+                .unwrap_err()
+                .to_string(),
+            "Reopened observation differs from reviewed input"
+        );
+        rows[0].predicate = "fixture.works_with".into();
+        assert_eq!(
+            verify_reopened(&store, [A, B].into_iter().map(Ok), &rows)
+                .unwrap_err()
+                .to_string(),
+            "Reopened observation differs from reviewed input"
+        );
+        let shorter = store_with(&rows[1..]);
+        assert_eq!(
+            verify_reopened(&shorter, [A, B].into_iter().map(Ok), &rows)
+                .unwrap_err()
+                .to_string(),
+            "Reviewed observations missing from reopened snapshot"
+        );
+    }
 }
