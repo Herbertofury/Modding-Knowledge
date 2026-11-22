@@ -156,3 +156,85 @@ fn valid_qualified_scope_matching_stays_exact_without_normalizing_versions() {
         assert_eq!(r["claims"].as_array().unwrap().len(), 0);
     }
 }
+
+fn duplicate_status() -> Observation {
+    let mut ambiguous = row("ambiguous-status", "broken");
+    // The escaped member name is another spelling of the same JSON key.
+    ambiguous.value = ambiguous.value.replacen(
+        r#""status":"active""#,
+        r#""status":"retracted","sta\u0074us":"active""#,
+        1,
+    );
+    ambiguous
+}
+
+#[test]
+fn ambiguous_health_claim_aborts_the_structured_batch() {
+    let mut s = fixture();
+    let ambiguous = duplicate_status();
+    let result = s.import_health_claims(&[row("good", "warning"), ambiguous]);
+    assert!(result.is_err(), "duplicate status accepted: {result:?}");
+    assert!(s.observations("mod").unwrap().is_empty());
+
+    // Even identical repeated values are ambiguous input, not replay.
+    let mut repeated = row("repeat-assertion", "broken");
+    repeated.value = repeated.value.replacen(
+        r#""assertion":"broken""#,
+        r#""assertion":"broken","assertion":"broken""#,
+        1,
+    );
+    assert!(s.import_health_claims(&[repeated]).is_err());
+}
+
+#[test]
+fn legacy_duplicate_health_claim_stays_raw_and_cannot_create_a_conflict() {
+    let mut s = fixture();
+    let good = row("unambiguous-works", "works");
+    let ambiguous = duplicate_status();
+    // The raw observation API intentionally preserves immutable provenance.
+    let good_id = good.id.clone();
+    s.import(&[good, ambiguous]).unwrap();
+    let raw = s.observations("mod").unwrap();
+    assert!(raw.contains(&duplicate_status()));
+
+    let report = s
+        .health_report("mod", "1.2", "1.0", "runtime:test;loader:test", 3, 5)
+        .unwrap();
+    assert_eq!(report["state"], "partial_evidence");
+    assert_eq!(report["compatibility_verdict"], "not_determined");
+    assert_eq!(report["invalid_claims"], 1);
+    assert_eq!(report["claims"].as_array().unwrap().len(), 1);
+    assert_eq!(report["claims"][0]["id"], good_id);
+}
+
+#[test]
+fn only_named_scalar_fields_are_structured_while_context_remains_opaque() {
+    let mut s = fixture();
+    let mut blank = row("nested-meaning", "warning");
+    blank.value = blank.value.replacen(
+        r#""reported_unix":1"#,
+        r#""reported_unix":{"fixture":1,"fixture":2}"#,
+        1,
+    );
+    assert!(
+        s.import_health_claims(std::slice::from_ref(&blank))
+            .is_err()
+    );
+    s.import(std::slice::from_ref(&blank)).unwrap();
+    assert!(s.observations("mod").unwrap().contains(&blank));
+    let mut positional = row("positional", "warning");
+    positional.value =
+        r#"["warning","community_report","issue:1","runtime:test;loader:test","active",1]"#.into();
+    assert!(s.import_health_claims(&[positional]).is_err());
+
+    let mut opaque = row("opaque-context", "warning");
+    let context = r#"runtime fixture with literal text {"k":"one","k":"two"}"#;
+    let mut value: serde_json::Value = serde_json::from_str(&opaque.value).unwrap();
+    value["context"] = context.into();
+    opaque.value = value.to_string();
+    s.import_health_claims(&[opaque]).unwrap();
+    let report = s.health_report("mod", "1.2", "1.0", context, 3, 5).unwrap();
+    assert_eq!(report["state"], "partial_evidence");
+    assert_eq!(report["invalid_claims"], 1);
+    assert_eq!(report["claims"][0]["claim"]["context"], context);
+}
