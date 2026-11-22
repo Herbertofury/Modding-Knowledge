@@ -381,3 +381,5 @@ mod tests {
 }
 
 pub mod health;
+
+pub mod lifecycle;
