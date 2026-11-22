@@ -13,7 +13,7 @@ Each `health_claim_v1` observation retains entity, exact game build/edition, exa
 - `reported_unix`: original report time, not a scraper refresh date.
 - `status`: active / retracted / superseded. Historical rows remain visible; these statuses are explicitly supplied, not inferred. Automatic successor resolution is not implemented.
 
-Extra JSON fields are rejected by the structured import entry point: raw comments, usernames, private identities and arbitrary payloads do not belong in this public contract. Source policy and byte-identical replay remain enforced. General observation imports retain their existing behavior; malformed health values from that route are counted as invalid rather than promoted to claims.
+Duplicate or extra top-level JSON fields are rejected by the structured import entry point: raw comments, usernames, private identities and arbitrary payloads do not belong in this public contract. Source policy and byte-identical replay remain enforced. General observation imports retain their existing behavior; malformed health values from that route are counted as invalid rather than promoted to claims.
 
 ## Interpretation
 

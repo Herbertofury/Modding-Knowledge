@@ -1,8 +1,41 @@
 //! Scoped evidence query, not a compatibility oracle or automated reputation score.
 use crate::{Observation, Result, Store, observation_from_row};
 use rusqlite::params;
-use serde_json::{Value, json};
+use serde::de::{Deserializer, MapAccess, Visitor};
+use serde_json::{Map, Value, json};
 use std::collections::BTreeSet;
+
+// Parse the named members before converting to Value: serde_json's default
+// object map would silently replace an earlier assertion, status, or scope.
+fn claim_object(input: &str) -> Result<Value> {
+    struct ClaimObject;
+
+    impl<'de> Visitor<'de> for ClaimObject {
+        type Value = Map<String, Value>;
+
+        fn expecting(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.write_str("a health claim object")
+        }
+
+        fn visit_map<M: MapAccess<'de>>(
+            self,
+            mut map: M,
+        ) -> std::result::Result<Self::Value, M::Error> {
+            let mut fields = Map::new();
+            while let Some((key, value)) = map.next_entry()? {
+                if fields.insert(key, value).is_some() {
+                    return Err(serde::de::Error::custom("Duplicate field in health claim"));
+                }
+            }
+            Ok(fields)
+        }
+    }
+
+    let mut parser = serde_json::Deserializer::from_str(input);
+    let fields = parser.deserialize_map(ClaimObject)?;
+    parser.end()?;
+    Ok(Value::Object(fields))
+}
 
 /// Import a structured, attributed assertion. Authority is a reviewed adapter claim,
 /// not inferred from a username, popularity, or the mere presence of metadata.
@@ -10,7 +43,7 @@ pub fn validate_claim(row: &Observation) -> Result<Value> {
     if row.predicate != "health_claim_v1" {
         return Err("Not a health claim".into());
     }
-    let v: Value = serde_json::from_str(&row.value)?;
+    let v = claim_object(&row.value)?;
     for key in ["assertion", "authority", "lineage", "context", "status"] {
         if v[key].as_str().is_none_or(|s| s.trim().is_empty()) {
             return Err(format!("Missing claim {key}").into());
