@@ -19,10 +19,23 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def schema_signature(conn):
+    return conn.execute(
+        'select type,name,tbl_name,sql from main.sqlite_schema order by type,name'
+    ).fetchall()
+
+
 def validate_contents(conn, bundle):
+    require(conn.execute('pragma user_version').fetchone() == (1,), 'Unsupported schema version')
+    # The downloadable SQLite file exposes all stored objects, not just the
+    # columns selected below. Compile the checked-in schema with this SQLite
+    # to reject extra objects/columns before querying the snapshot's tables.
+    with closing(sqlite3.connect(':memory:')) as expected:
+        expected.executescript((ROOT/'src/schema.sql').read_text(encoding='utf-8'))
+        require(schema_signature(conn) == schema_signature(expected),
+                'Snapshot storage schema mismatch')
     require(conn.execute('pragma integrity_check').fetchall() == [('ok',)], 'Integrity check failed')
     require(conn.execute('pragma foreign_key_check').fetchall() == [], 'Foreign key check failed')
-    require(conn.execute('pragma user_version').fetchone() == (1,), 'Unsupported schema version')
     require(conn.execute('select count(*) from refresh_attempts').fetchone() == (0,),
             'Unreviewed refresh attempts in public snapshot')
     games = dict(conn.execute('select id,name from games'))
