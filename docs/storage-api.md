@@ -67,3 +67,11 @@ parse descriptions, join names or IDs, evaluate LOOT conditions, infer reverse
 links or turn author evidence into tested compatibility. The
 `conditional_plugin_metadata` predicate is the existing LOOT evidence type; its
 payload and game-family scope stay unchanged.
+
+### Offline provider relationship research
+
+The [Nexus relationships research example](../examples/research/nexus_relationships/README.md)
+links official API documentation and tests synthetic responses for distinguishing exact
+file-version requirements, DLC groups, and materialized candidates. It is not a
+supported provider client, an admission decision, or a live collector. It does not
+change the catalog, fetch anything, or recommend or install mods.

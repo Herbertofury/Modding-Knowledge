@@ -1,0 +1,227 @@
+{
+  "fixture_only": true,
+  "raw": {
+    "source_v3_id": "fixture:source-A",
+    "source_game_scoped_file_id": "700",
+    "body": {
+      "dependency_definitions": [
+        {
+          "id": "def-A",
+          "ranges": [
+            {
+              "id": "range-A",
+              "target_mod_file": {
+                "id": "group-a",
+                "name": "Synthetic update group",
+                "mod": {
+                  "id": "182210731947591132",
+                  "game_scoped_id": "1500",
+                  "name": "Synthetic target",
+                  "game": {
+                    "id": "42424242",
+                    "name": "Synthetic game namespace",
+                    "domain_name": "fictional-synthetic-game"
+                  }
+                }
+              },
+              "min_version": {
+                "id": "9900",
+                "file": {
+                  "id": "group-a",
+                  "name": "Synthetic update group"
+                },
+                "game_scoped_id": "700",
+                "position": "1.50",
+                "name": "Synthetic file",
+                "version": "V early",
+                "category": "main",
+                "uploaded_at": "2026-11-22T00:00:00Z",
+                "manifest_url": null,
+                "supports_mod_managers": false,
+                "security_scan_status": "unverified",
+                "size_in_bytes": 2
+              },
+              "max_version": {
+                "id": "1001",
+                "file": {
+                  "id": "group-a",
+                  "name": "Synthetic update group"
+                },
+                "game_scoped_id": "900",
+                "position": "3.0200000000000000001",
+                "name": "Synthetic file",
+                "version": "V late",
+                "category": "main",
+                "uploaded_at": "2026-11-22T00:00:00Z",
+                "manifest_url": null,
+                "supports_mod_managers": false,
+                "security_scan_status": "unverified",
+                "size_in_bytes": 2
+              }
+            },
+            {
+              "id": "range-B",
+              "target_mod_file": {
+                "id": "group-b",
+                "name": "Synthetic update group",
+                "mod": {
+                  "id": "182210731947591133",
+                  "game_scoped_id": "1501",
+                  "name": "Synthetic target",
+                  "game": {
+                    "id": "42424242",
+                    "name": "Synthetic game namespace",
+                    "domain_name": "fictional-synthetic-game"
+                  }
+                }
+              },
+              "min_version": {
+                "id": "fixture:alt-v",
+                "file": {
+                  "id": "group-b",
+                  "name": "Synthetic update group"
+                },
+                "game_scoped_id": "800",
+                "position": "1",
+                "name": "Synthetic file",
+                "version": "V alt",
+                "category": "main",
+                "uploaded_at": "2026-11-22T00:00:00Z",
+                "manifest_url": null,
+                "supports_mod_managers": false,
+                "security_scan_status": "unverified",
+                "size_in_bytes": 2
+              },
+              "max_version": null
+            }
+          ]
+        },
+        {
+          "id": "def-B",
+          "ranges": [
+            {
+              "id": "range-C",
+              "target_mod_file": {
+                "id": "group-c",
+                "name": "Synthetic update group",
+                "mod": {
+                  "id": "182210731947591134",
+                  "game_scoped_id": "1502",
+                  "name": "Synthetic target",
+                  "game": {
+                    "id": "42424242",
+                    "name": "Synthetic game namespace",
+                    "domain_name": "fictional-synthetic-game"
+                  }
+                }
+              },
+              "min_version": {
+                "id": "fixture:another-v",
+                "file": {
+                  "id": "group-c",
+                  "name": "Synthetic update group"
+                },
+                "game_scoped_id": "801",
+                "position": "1",
+                "name": "Synthetic file",
+                "version": "V independent",
+                "category": "main",
+                "uploaded_at": "2026-11-22T00:00:00Z",
+                "manifest_url": null,
+                "supports_mod_managers": false,
+                "security_scan_status": "unverified",
+                "size_in_bytes": 2
+              },
+              "max_version": null
+            }
+          ]
+        }
+      ],
+      "dlc_dependency_definitions": [
+        {
+          "id": "dlc-A",
+          "dlc_targets": [
+            {
+              "id": "entry-a",
+              "dlc_id": "game-expansion-A",
+              "name": "Synthetic first option"
+            },
+            {
+              "id": "entry-b",
+              "dlc_id": "game-expansion-B",
+              "name": "Synthetic second option"
+            }
+          ]
+        },
+        {
+          "id": "dlc-B",
+          "dlc_targets": [
+            {
+              "id": "entry-c",
+              "dlc_id": "game-expansion-C",
+              "name": "Synthetic independent expansion"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "batch": {
+    "requested": [
+      "fixture:source-A",
+      "fixture:source-B",
+      "fixture:source-no-candidates"
+    ],
+    "body": {
+      "meta": {
+        "page": 1,
+        "page_size": 3,
+        "total_count": 4
+      },
+      "data": {
+        "candidates": [
+          {
+            "source_version_id": "fixture:source-A",
+            "definition_id": "def-A",
+            "mod_file_id": "group-a",
+            "version_id": "9900",
+            "mod_id": "182210731947591132",
+            "position": "1.50",
+            "category": "main",
+            "mod_status": "published"
+          },
+          {
+            "source_version_id": "fixture:source-A",
+            "definition_id": "def-A",
+            "mod_file_id": "group-a",
+            "version_id": "1001",
+            "mod_id": "182210731947591132",
+            "position": "3.0200000000000000001",
+            "category": "optional",
+            "mod_status": "published"
+          },
+          {
+            "source_version_id": "fixture:source-B",
+            "definition_id": "def-A",
+            "mod_file_id": "group-b",
+            "version_id": "fixture:alt-v",
+            "mod_id": "182210731947591133",
+            "position": "1",
+            "category": "update",
+            "mod_status": "published"
+          }
+        ]
+      }
+    }
+  },
+  "empty_batch_page": {
+    "meta": {
+      "page": 3,
+      "page_size": 3,
+      "total_count": 0
+    },
+    "data": {
+      "candidates": []
+    }
+  }
+}
