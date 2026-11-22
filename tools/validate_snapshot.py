@@ -1,6 +1,7 @@
 """Read-only independent verification of the built public snapshot."""
 import hashlib
 import json
+import re
 import sqlite3
 import sys
 from contextlib import closing
@@ -11,6 +12,10 @@ DEFAULT_REVISION = 'reviewed-public-facts-2026-11-14'
 OBSERVATION_KEYS = ['id','entity_id','source_id','source_url','predicate','value',
                     'observed_unix','applicable_build','mod_version','completeness',
                     'policy_revision']
+SCHEMA_VERBATIM = re.compile(
+    r"""(--(?:[^\r\n]|\r(?!\n))*|/\*[\s\S]*?\*/|'(?:''|[^'])*'|"(?:""|[^"])*"|"""
+    r"""`(?:``|[^`])*`|\[[^\]]*\])"""
+)
 
 
 def require(condition, message):
@@ -25,15 +30,37 @@ def schema_signature(conn):
     ).fetchall()
 
 
+def trusted_schema_variants(sql):
+    # Rewrite only formatting in the trusted DDL, never the observed schema
+    # or the bytes inside SQL literals, delimited identifiers, or comments.
+    segments = SCHEMA_VERBATIM.split(sql)
+    yield sql
+    for ending in ('\n', '\r\n'):
+        alternate = ''.join(
+            part if i % 2 else part.replace('\r\n', '\n').replace('\n', ending)
+            for i, part in enumerate(segments)
+        )
+        if alternate != sql:
+            yield alternate
+
+
+def matches_storage_schema(conn, sql):
+    actual = schema_signature(conn)
+    for ddl in trusted_schema_variants(sql):
+        with closing(sqlite3.connect(':memory:')) as expected:
+            expected.executescript(ddl)
+            if schema_signature(expected) == actual:
+                return True
+    return False
+
+
 def validate_contents(conn, bundle):
     require(conn.execute('pragma user_version').fetchone() == (1,), 'Unsupported schema version')
     # The downloadable SQLite file exposes all stored objects, not just the
     # columns selected below. Compile the checked-in schema with this SQLite
     # to reject extra objects/columns before querying the snapshot's tables.
-    with closing(sqlite3.connect(':memory:')) as expected:
-        expected.executescript((ROOT/'src/schema.sql').read_text(encoding='utf-8'))
-        require(schema_signature(conn) == schema_signature(expected),
-                'Snapshot storage schema mismatch')
+    ddl = (ROOT/'src/schema.sql').read_bytes().decode('utf-8')
+    require(matches_storage_schema(conn, ddl), 'Snapshot storage schema mismatch')
     require(conn.execute('pragma integrity_check').fetchall() == [('ok',)], 'Integrity check failed')
     require(conn.execute('pragma foreign_key_check').fetchall() == [], 'Foreign key check failed')
     require(conn.execute('select count(*) from refresh_attempts').fetchone() == (0,),
