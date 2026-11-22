@@ -175,3 +175,184 @@ fn rejects_other_sources_pins_and_out_of_scope_shapes_without_hidden_joins() {
         json!({"observation_id": "fixture-evidence", "status": "malformed_or_unsupported"})
     );
 }
+
+#[test]
+fn browse_applies_role_and_literal_before_match_page_across_a_large_snapshot() {
+    use loot::{BROWSE_PAGE_LIMIT, BROWSE_SCAN_LIMIT, SourceRole};
+    const LABEL: &str = "Regex(.*)\\.esp";
+    let mut store = Store::open(":memory:").unwrap();
+    store.register_game("fixture", "Fixture").unwrap();
+    store
+        .set_source_policy("loot-oblivion", SOURCE, true, true, "fixture-v1")
+        .unwrap();
+    // Mixed identity, timestamps tied within groups, newer false matches, and recoverable
+    // sparse work slices that cross the old 1,000-row entity page ceiling.
+    let entities = ["fixture-a", "fixture-b"];
+    for id in entities {
+        store.register_entity(id, "fixture", "guide", id).unwrap();
+    }
+    let mut expected = Vec::new();
+    let mut records = Vec::new();
+    for i in 0..1900 {
+        let positive = i >= 1550 && i % 9 != 0;
+        let metadata = if positive {
+            let entry = if i % 2 == 0 {
+                json!(LABEL)
+            } else {
+                json!({"name":LABEL,"condition":"fixture condition not evaluated","constraint":"raw fixture constraint"})
+            };
+            json!({"name":"Observed fixture source","req":[entry]})
+        } else {
+            match i % 7 {
+                0 => json!({"name":"Alternate role","inc":[LABEL]}),
+                1 => json!({"name":"Alternate role","after":[LABEL]}),
+                2 => json!({"name":"Unknown requirements"}),
+                3 => json!({"name":"Explicit empty requirements","req":[]}),
+                4 => json!({"name":"Case-sensitive label","req":["regex(.*)\\.esp"]}),
+                5 => json!({"name":"Incorrect shape","req":[LABEL,null]}),
+                _ => json!({"name":"Not a regex search","req":["RegexFilm.esp"]}),
+            }
+        };
+        let mut row = evidence(metadata);
+        row.id = format!("fixture-{i:04}");
+        row.entity_id = entities[i % entities.len()].into();
+        row.observed_unix = (1900 - i as i64) / 3;
+        if positive {
+            expected.push(row.id.clone());
+        }
+        records.push(row);
+    }
+    for batch in records.chunks(1000) {
+        store.import(batch).unwrap();
+    }
+    let mut seen = Vec::new();
+    let mut later_rows = 0;
+    let mut empty_work_pages = 0;
+    let mut cursor = None;
+    for _ in 0..12 {
+        let page = store
+            .browse_loot(SourceRole::Requires, Some(LABEL), cursor.as_ref())
+            .unwrap();
+        assert!(page.scanned <= BROWSE_SCAN_LIMIT);
+        assert!(page.matches.len() <= BROWSE_PAGE_LIMIT);
+        if page.matches.is_empty() && page.next.is_some() {
+            empty_work_pages += 1;
+        }
+        later_rows += page.scanned;
+        for m in page.matches {
+            assert_eq!(m.observation.source_url, SOURCE);
+            assert_eq!(m.fields.plugin_source_label, "Observed fixture source");
+            assert_eq!(
+                m.relationships_json(),
+                loot::project(&m.observation).to_json()
+            );
+            seen.push(m.observation.id);
+        }
+        cursor = page.next;
+        if cursor.is_none() {
+            break;
+        }
+    }
+    assert!(cursor.is_none());
+    assert_eq!(empty_work_pages, 6);
+    assert_eq!(later_rows, 1900);
+    assert_eq!(seen, expected);
+    assert_eq!(seen.len(), 311);
+    for role in [SourceRole::Incompatible, SourceRole::LoadAfterIfPresent] {
+        let page = store.browse_loot(role, Some(LABEL), None).unwrap();
+        assert!(!page.matches.is_empty());
+        assert!(
+            page.matches
+                .iter()
+                .all(|m| m.fields.plugin_source_label == "Alternate role")
+        );
+    }
+}
+
+#[test]
+fn browse_does_not_scan_hidden_or_unrelated_sources_and_rechecks_resume_policy() {
+    use loot::{BROWSE_PAGE_LIMIT, BrowseCursor, SourceRole};
+    let mut store = Store::open(":memory:").unwrap();
+    store.register_game("fixture", "Fixture").unwrap();
+    store
+        .register_entity(ENTITY, "fixture", "guide", ENTITY)
+        .unwrap();
+    for id in ["fixture", "loot-oblivion"] {
+        store
+            .set_source_policy(id, SOURCE, true, true, "fixture-v1")
+            .unwrap();
+    }
+    let row = || evidence(json!({"name":"Source.esp","req":["Target.esp"]}));
+    let mut batch = Vec::new();
+    for i in 0..101 {
+        let mut r = row();
+        r.id = format!("match-{i:04}");
+        batch.push(r);
+    }
+    let mut wrong_source = row();
+    wrong_source.id = "a-wrong-source".into();
+    wrong_source.source_id = "fixture".into();
+    let mut wrong_url = row();
+    wrong_url.id = "a-wrong-url".into();
+    wrong_url.source_url = "https://example.org/other-pin".into();
+    let mut wrong_predicate = row();
+    wrong_predicate.id = "a-wrong-predicate".into();
+    wrong_predicate.predicate = "unrelated".into();
+    let mut wrong_blob = row();
+    wrong_blob.id = "a-wrong-blob".into();
+    wrong_blob.value = wrong_blob
+        .value
+        .replace("8c613acedf019890b950e4c4b2450151cead1025", "unreviewed");
+    batch.extend([wrong_source, wrong_url, wrong_predicate, wrong_blob]);
+    store.import(&batch).unwrap();
+    let page = store.browse_loot(SourceRole::Requires, None, None).unwrap();
+    assert_eq!(page.scanned, BROWSE_PAGE_LIMIT + 1); // only the wrong blob reaches parsing
+    assert_eq!(page.matches.len(), BROWSE_PAGE_LIMIT);
+    let cursor = page.next.unwrap();
+    assert_eq!(cursor.observed_unix, 2);
+    assert_eq!(cursor.observation_id, "match-0099");
+    let end = store
+        .browse_loot(SourceRole::Requires, None, Some(&cursor))
+        .unwrap();
+    assert_eq!(end.scanned, 1);
+    assert_eq!(end.matches[0].observation.id, "match-0100");
+    assert!(end.next.is_none());
+    for bad in ["", "   ", &"x".repeat(1025)] {
+        assert!(
+            store
+                .browse_loot(SourceRole::Requires, Some(bad), None)
+                .is_err()
+        );
+    }
+    for bad in [
+        BrowseCursor {
+            observed_unix: -1,
+            observation_id: "x".into(),
+        },
+        BrowseCursor {
+            observed_unix: 1,
+            observation_id: "".into(),
+        },
+    ] {
+        assert!(
+            store
+                .browse_loot(SourceRole::Requires, None, Some(&bad))
+                .is_err()
+        );
+    }
+    for (retain, publish, revision) in [
+        (false, true, "fixture-v1"),
+        (true, false, "fixture-v1"),
+        (true, true, "fixture-v2"),
+    ] {
+        store
+            .set_source_policy("loot-oblivion", SOURCE, retain, publish, revision)
+            .unwrap();
+        let page = store
+            .browse_loot(SourceRole::Requires, None, Some(&cursor))
+            .unwrap();
+        assert!(page.matches.is_empty());
+        assert_eq!(page.scanned, 0);
+        assert!(page.next.is_none());
+    }
+}
