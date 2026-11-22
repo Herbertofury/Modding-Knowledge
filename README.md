@@ -75,3 +75,7 @@ LOOT's included metadata retains [CC0 license text](data/loot-CC0-LICENSE). Othe
 ## Cross-project game design research
 
 [Shared RTS/roguelite study layer](docs/game-design-studies.md) references the existing Games catalog by stable identity, with separate foundation-license screening and explicit untested status.
+
+## Informative pre-update warnings
+
+[Shared update advisory contract](docs/update-advisories.md) scopes crash, freeze and bug reports to candidate releases with provenance, uncertainty and freshness. Its tested read-only projection never blocks updates; native adapters, real evidence ingestion and manager UI integration remain tracked work.
