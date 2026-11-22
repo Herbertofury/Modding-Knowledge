@@ -125,8 +125,23 @@ expression or interpreting labels as resolved files. Not recorded, explicit
 empty and malformed evidence remain separate. An empty page means no visible
 evidence in that page, not compatibility or absence of relationships.
 
+Browse the same archived source by role without knowing an entity ID:
+
+```sh
+cargo run --locked --example browse_loot -- ARCHIVED_SQLITE requires --fallout4
+cargo run --locked --example browse_loot -- ARCHIVED_SQLITE incompatible --fallout4 --target 'Z_Horizon.esp'
+cargo run --locked --example browse_loot -- ARCHIVED_SQLITE load-after-if-present --fallout4 --after UNIX OBSERVATION_ID
+```
+
+`Store::browse_loot_fallout4` and `browse_loot --fallout4` apply the pinned
+source, current visibility/revision and registered `fallout4` game namespace.
+The same literal-label, bounded work/result and snapshot-cursor rules apply.
+Keep the source selection, role and target unchanged on continuation.
+Load-after-if-present is not a required mod, and the absence of a role match
+does not establish availability, compatibility or no relationships.
+
 No data, source policy, import or source registry is added. The canonical
 snapshot has no Fallout 4 LOOT rows; it will not gain them by running this command.
-The old `--loot-relations` and `browse_loot` still accept only Oblivion-family
-rows. Use the policy-filtered Store for snapshot evidence; projecting a detached
+`--loot-relations` and the default `browse_loot` still read only Oblivion-family
+evidence. Use the policy-filtered Store for snapshot evidence; projecting a detached
 caller-supplied row does not authenticate it or grant permissions.

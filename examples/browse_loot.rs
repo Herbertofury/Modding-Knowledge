@@ -6,7 +6,7 @@ use athena_mod_knowledge::{
 use serde_json::json;
 
 fn main() -> Result<()> {
-    const USAGE: &str = "Usage: browse_loot DATABASE ROLE [--target EXACT_LABEL] [--after UNIX OBSERVATION_ID]\nRoles: requires, incompatible, load-after-if-present";
+    const USAGE: &str = "Usage: browse_loot DATABASE ROLE [--fallout4] [--target EXACT_LABEL] [--after UNIX OBSERVATION_ID]\nRoles: requires, incompatible, load-after-if-present";
     let args: Vec<_> = std::env::args().skip(1).collect();
     let [db, role, rest @ ..] = args.as_slice() else {
         return Err(USAGE.into());
@@ -16,6 +16,10 @@ fn main() -> Result<()> {
         "incompatible" => SourceRole::Incompatible,
         "load-after-if-present" => SourceRole::LoadAfterIfPresent,
         _ => return Err(USAGE.into()),
+    };
+    let (fallout4, rest) = match rest {
+        [flag, rest @ ..] if flag == "--fallout4" => (true, rest),
+        _ => (false, rest),
     };
     let (label, rest) = match rest {
         [flag, label, rest @ ..] if flag == "--target" => (Some(label.as_str()), rest),
@@ -30,7 +34,18 @@ fn main() -> Result<()> {
         _ => return Err(USAGE.into()),
     };
 
-    let page = Store::open_read_only(db)?.browse_loot(role_filter, label, after.as_ref())?;
+    let store = Store::open_read_only(db)?;
+    let (page, scope) = if fallout4 {
+        (
+            store.browse_loot_fallout4(role_filter, label, after.as_ref())?,
+            "Pinned Fallout 4 LOOT source only, not Fallout 4 VR. Conditions and constraints are not evaluated.",
+        )
+    } else {
+        (
+            store.browse_loot(role_filter, label, after.as_ref())?,
+            "Pinned Oblivion-family LOOT source only. Conditions and constraints are not evaluated.",
+        )
+    };
     let matches: Vec<_> = page
         .matches
         .iter()
@@ -51,7 +66,7 @@ fn main() -> Result<()> {
         .map(|k| json!({"observed_unix": k.observed_unix, "observation_id": k.observation_id}));
     let output = json!({
         "schema": 1,
-        "scope": "Pinned Oblivion-family LOOT source only. Conditions and constraints are not evaluated.",
+        "scope": scope,
         "coverage_note": "Fewer matches or an empty page does not establish absence or compatibility.",
         "role": role, "exact_target_label": label,
         "count": matches.len(), "scanned": page.scanned, "matches": matches, "next": next,
