@@ -114,3 +114,43 @@ fn future_and_wrong_release_receipts_cannot_exhaust_historical_query_bound() {
             .contains("10000")
     );
 }
+
+#[test]
+fn other_runtime_receipts_do_not_consume_the_exact_context_bound() {
+    let mut s = store();
+    s.import_health_claims(&[row("requested-runtime", 10, 1, "warning")])
+        .unwrap();
+    let mut malformed = row("unattributed-runtime", 15, 1, "warning");
+    malformed.value = "not JSON".into();
+    s.import(&[malformed]).unwrap();
+    for page in 0..20 {
+        let other_context = (0..1000)
+            .map(|i| {
+                let mut r = row(
+                    &format!("outside-context-{page:02}-{i:04}"),
+                    12,
+                    1,
+                    "broken",
+                );
+                // Only the opaque context differs; same entity, build and version.
+                let mut value: Value = serde_json::from_str(&r.value).unwrap();
+                value["context"] = "other fixture runtime; loader other".into();
+                r.value = value.to_string();
+                r
+            })
+            .collect::<Vec<_>>();
+        s.import_health_claims(&other_context).unwrap();
+        if page == 9 {
+            let exact = report(&s, 20, 100);
+            assert_eq!(exact["state"], "partial_evidence");
+            assert_eq!(exact["claims"].as_array().unwrap().len(), 1);
+            assert_eq!(exact["claims"][0]["id"], "requested-runtime");
+            assert_eq!(exact["invalid_claims"], 1);
+        }
+    }
+
+    let error = s
+        .health_report("fixture:mod", "fixture-build-1", "1.0", CONTEXT, 20, 100)
+        .unwrap_err();
+    assert!(error.to_string().contains("scan limit"));
+}

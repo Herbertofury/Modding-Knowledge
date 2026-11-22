@@ -88,10 +88,12 @@ impl Store {
         if now < 0 || max_age < 0 {
             return Err("Nonnegative freshness required".into());
         }
-        // Filter before applying the bound: out-of-scope and not-yet-observed
-        // receipts must not change a historical result, even in large catalogs.
-        // This one statement also reads one consistent snapshot of current policy.
-        const MAX_SCOPED_CLAIMS: usize = 10_000;
+        // Keep exact relational filters before any bound. Runtime context lives
+        // in the opaque JSON claim, so use the same parser as validation before
+        // applying the exact-context limit. The independent scan limit keeps
+        // this policy-consistent single SQLite read bounded.
+        const MAX_CONTEXT_CLAIMS: usize = 10_000;
+        const MAX_RELEASE_ROWS_SCANNED: usize = 20_000;
         let mut query = self.db.prepare(
             "SELECT o.id,o.entity_id,o.source_id,o.source_url,o.predicate,o.value,
                     o.observed_unix,o.applicable_build,o.mod_version,o.completeness,o.policy_revision
@@ -103,7 +105,13 @@ impl Store {
               LIMIT ?5",
         )?;
         let scoped = query.query_map(
-            params![entity, build, version, now, MAX_SCOPED_CLAIMS as i64 + 1],
+            params![
+                entity,
+                build,
+                version,
+                now,
+                MAX_RELEASE_ROWS_SCANNED as i64 + 1,
+            ],
             observation_from_row,
         )?;
         let mut claims = Vec::new();
@@ -112,8 +120,8 @@ impl Store {
         let mut stale = 0;
         let mut invalid = 0;
         for (idx, row) in scoped.enumerate() {
-            if idx == MAX_SCOPED_CLAIMS {
-                return Err("Evidence query exceeds 10000 observations for this release as of the requested time".into());
+            if idx == MAX_RELEASE_ROWS_SCANNED {
+                return Err("Evidence scan limit: more than 20000 release observations as of the requested time; no partial report emitted".into());
             }
             let row = row?;
             let Ok(v) = validate_claim(&row) else {
@@ -122,6 +130,9 @@ impl Store {
             };
             if v["context"] != context {
                 continue;
+            }
+            if claims.len() == MAX_CONTEXT_CLAIMS {
+                return Err("Evidence query exceeds 10000 valid observations for this exact runtime context as of the requested time".into());
             }
             let reported = v["reported_unix"].as_i64().unwrap();
             // Validation requires 0 <= reported <= observed; the
