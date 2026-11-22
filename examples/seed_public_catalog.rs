@@ -1,13 +1,13 @@
 //! Small reviewed factual catalog, not scraped compatibility or a complete corpus.
-use athena_mod_knowledge::{Observation, Result, Store};
+#[path = "support/new_sqlite.rs"]
+mod new_sqlite;
+
+use athena_mod_knowledge::{Observation, Result};
 fn main() -> Result<()> {
     let path = std::env::args()
         .nth(1)
         .ok_or("Supply a new output SQLite path")?;
-    if std::path::Path::new(&path).exists() {
-        return Err("Output exists; refusing to overwrite".into());
-    }
-    let mut s = Store::open(&path)?;
+    let mut s = new_sqlite::open_new(std::path::Path::new(&path))?;
     s.register_game("minecraft-java", "Minecraft Java Edition")?;
     s.register_game("skyrim-se", "Skyrim Special Edition")?;
     // Permission applies to original short factual descriptions and source links only,

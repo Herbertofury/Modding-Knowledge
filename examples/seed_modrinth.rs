@@ -1,4 +1,7 @@
 //! Reproducible public metadata import; does not perform network requests.
+#[path = "support/new_sqlite.rs"]
+mod new_sqlite;
+
 use athena_mod_knowledge::{Observation, Result, Store};
 use serde_json::Value;
 fn text<'a>(r: &'a Value, key: &str) -> Result<&'a str> {
@@ -10,10 +13,7 @@ fn main() -> Result<()> {
     let path = std::env::args()
         .nth(1)
         .ok_or("Supply a new output SQLite path")?;
-    if std::path::Path::new(&path).exists() {
-        return Err("Output exists; refusing overwrite".into());
-    }
-    let mut s = Store::open(&path)?;
+    let mut s = new_sqlite::open_new(std::path::Path::new(&path))?;
     populate(&mut s)?;
     println!(
         "Imported 3 Modrinth projects with provider-attributed observations, not verified compatibility."
