@@ -181,7 +181,9 @@ fn browse_applies_role_and_literal_before_match_page_across_a_large_snapshot() {
     use loot::{BROWSE_PAGE_LIMIT, BROWSE_SCAN_LIMIT, SourceRole};
     const LABEL: &str = "Regex(.*)\\.esp";
     let mut store = Store::open(":memory:").unwrap();
-    store.register_game("fixture", "Fixture").unwrap();
+    store
+        .register_game("oblivion-family", "Oblivion family")
+        .unwrap();
     store
         .set_source_policy("loot-oblivion", SOURCE, true, true, "fixture-v1")
         .unwrap();
@@ -189,7 +191,9 @@ fn browse_applies_role_and_literal_before_match_page_across_a_large_snapshot() {
     // sparse work slices that cross the old 1,000-row entity page ceiling.
     let entities = ["fixture-a", "fixture-b"];
     for id in entities {
-        store.register_entity(id, "fixture", "guide", id).unwrap();
+        store
+            .register_entity(id, "oblivion-family", "guide", id)
+            .unwrap();
     }
     let mut expected = Vec::new();
     let mut records = Vec::new();
@@ -273,9 +277,11 @@ fn browse_applies_role_and_literal_before_match_page_across_a_large_snapshot() {
 fn browse_does_not_scan_hidden_or_unrelated_sources_and_rechecks_resume_policy() {
     use loot::{BROWSE_PAGE_LIMIT, BrowseCursor, SourceRole};
     let mut store = Store::open(":memory:").unwrap();
-    store.register_game("fixture", "Fixture").unwrap();
     store
-        .register_entity(ENTITY, "fixture", "guide", ENTITY)
+        .register_game("oblivion-family", "Oblivion family")
+        .unwrap();
+    store
+        .register_entity(ENTITY, "oblivion-family", "guide", ENTITY)
         .unwrap();
     for id in ["fixture", "loot-oblivion"] {
         store
@@ -497,4 +503,54 @@ fn fallout4_projection_does_not_admit_source_and_oblivion_browse_does_not_cross_
         .set_source_policy("loot-fallout4", FO4_SOURCE, true, false, "synthetic-fo4-v1")
         .unwrap();
     assert!(store.observations(FO4_ENTITY).unwrap().is_empty());
+}
+
+#[test]
+fn browse_rejects_wrong_game_namespace_before_the_work_limit() {
+    use loot::{BROWSE_SCAN_LIMIT, SourceRole};
+    const TARGET: &str = "DLCShiveringIsles.esp";
+    const WRONG_ENTITY: &str = "loot:oblivion:plugin-metadata:11111111111111111111";
+    let mut store = Store::open(":memory:").unwrap();
+    store
+        .register_game("oblivion-family", "Oblivion family")
+        .unwrap();
+    store.register_game("skyrim-se", "Skyrim SE").unwrap();
+    store
+        .register_entity(ENTITY, "oblivion-family", "guide", "Fixture")
+        .unwrap();
+    store
+        .register_entity(WRONG_ENTITY, "skyrim-se", "guide", "Misbound fixture")
+        .unwrap();
+    store
+        .set_source_policy("loot-oblivion", SOURCE, true, true, "fixture-v1")
+        .unwrap();
+    let value = json!({"name": "Synthetic source.esp", "req": [TARGET]});
+    let allowed = evidence(value.clone());
+    let wrong: Vec<_> = (0..BROWSE_SCAN_LIMIT)
+        .map(|i| {
+            let mut row = evidence(value.clone());
+            row.id = format!("wrong-namespace-{i:04}");
+            row.entity_id = WRONG_ENTITY.into();
+            row.observed_unix = allowed.observed_unix + 1;
+            row
+        })
+        .collect();
+    store.import(&wrong).unwrap();
+    store.import(std::slice::from_ref(&allowed)).unwrap();
+
+    let page = store
+        .browse_loot(SourceRole::Requires, Some(TARGET), None)
+        .unwrap();
+    assert_eq!(page.scanned, 1);
+    assert!(page.next.is_none());
+    assert_eq!(page.matches.len(), 1);
+    assert_eq!(page.matches[0].observation, allowed);
+    // Do not change the source ledger, which still exposes raw, policy-permitted rows.
+    assert_eq!(
+        store
+            .observations_page_for_predicate(WRONG_ENTITY, loot::OBSERVATION_PREDICATE, 0)
+            .unwrap()
+            .len(),
+        wrong.len(),
+    );
 }
