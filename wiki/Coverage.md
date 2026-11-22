@@ -7,3 +7,7 @@
 Keep editions, runtimes, storefronts and loaders separate. A game appearing in this roadmap is not a claim of working adapters or a populated database.
 
 For each game organize creators/sites, mods/releases, tools, practices, how-tos, crash diagnosis, maintenance and scoped warning evidence. Next work is reviewed migration of existing inventories, reversible identity mapping, authorized refresh adapters and consumer query/export contracts. Existing remembered WCIF/Scarlet workflows require review of permissions, completeness and private/public boundaries before moving data.
+
+## Author source continuity
+
+Requested premium consumer feature for Noxviola, MO2R and Mod Hunter: warn of evidenced creator/source disruptions and continue tracking verified relocated mods. Shared contract and tests exist in [author source transitions](../docs/author-source-transitions.md); live monitoring, SQLite projection, real author records and consumer integration remain open. No ban/reason or full-catalog relocation is inferred from the user's SethSaidThat example.

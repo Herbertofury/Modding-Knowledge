@@ -75,3 +75,7 @@ LOOT's included metadata retains [CC0 license text](data/loot-CC0-LICENSE). Othe
 ## Cross-project game design research
 
 [Shared RTS/roguelite study layer](docs/game-design-studies.md) references the existing Games catalog by stable identity, with separate foundation-license screening and explicit untested status.
+
+## Author source continuity
+
+[Shared author disruption/relocation contract](docs/author-source-transitions.md) provides evidence-based warning and additional-source tracking decisions for Noxviola, MO2R and Mod Hunter. Includes tested freshness, identity and per-mod mapping gates; no live monitoring or automatic downloads are claimed.
