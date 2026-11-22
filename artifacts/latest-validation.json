@@ -1,7 +1,7 @@
 {
   "sqlite_version": "3.46.1",
-  "snapshot_sha256": "d4c8bdba178e5be5936cc916dc4efdfccbc7842887daa78c5c5fd2ef30d0091f",
-  "source_manifest_sha256": "2936cedfb258a891751cb49029528a7a8dd48da0b95886305544c48e30098758",
+  "snapshot_sha256": "e9e6bc5ce33153dd6b45f70d681101ef13e5b2d9931b753aac635d1ba2c6dbcd",
+  "source_manifest_sha256": "05a09c846515230d5657e07a4253395c23a058c71b565a77a6812c7f1a8c878c",
   "entities": 4775,
   "observations": 4885,
   "source_scopes": 9,
@@ -10,7 +10,7 @@
   "integrity": "ok",
   "foreign_key_violations": 0,
   "scope": "Snapshot contents matched reviewed manifest; no native game/provider condition evaluation",
-  "compressed_sha256": "6cf3e29bfe3af6155fd7b64b33e80f37bc1c6fbddfe239bde03a4a4da0442e78",
+  "compressed_sha256": "4905df7931feadda032f3624d6f2f4d42e08d271e401fc78fd6c1284535e1472",
   "artifact": "modding-knowledge-latest.sqlite.gz",
   "source_refresh_state": "../data/live/modrinth-refresh.json"
 }
