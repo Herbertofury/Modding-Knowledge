@@ -75,3 +75,33 @@ or malformed observation has no projected fields but still retains the
 original observation. The Store rechecks policy; projecting an arbitrary
 detached observation does not verify its provenance or grant use rights.
 The CLI reuses the same projection with its original JSON shape.
+
+## Browse a catalog by original relationship role
+
+The separate `browse_loot` example and `Store::browse_loot` enumerate public,
+pinned Oblivion-family source evidence across entities without a known entity ID:
+
+```sh
+cargo run --locked --example browse_loot -- FILE requires --target 'Oblivion.esm'
+cargo run --locked --example browse_loot -- FILE incompatible
+cargo run --locked --example browse_loot -- FILE load-after-if-present --after UNIX OBSERVATION_ID
+```
+
+A target is an **exact case-sensitive source label**, including any special
+characters; it is neither a regex nor a resolved plugin identity. A row is
+returned once if the selected recognized role contains a matching entry.
+The result retains the exact observation and exposes the separate role fields
+using the existing pinned projection. Unknown, empty and malformed fields do
+not become role matches; absence alone proves neither compatibility nor that
+a role is absent. No condition, constraint, load order or installation
+behavior is evaluated.
+
+Rows sort by descending observation time, then ascending observation ID. A
+call evaluates at most 256 eligible observations and returns at most 100
+matches. Follow `next` even when a page is short or empty (pass both cursor
+fields with the same role/target on the **same immutable snapshot**). A null
+`next` ends this scan, not all possible evidence. Each call rechecks current
+retention/publication and source policy revision before considering candidates.
+These bounds apply to JSON interpretation and returned results; SQLite may
+scan the snapshot's existing keys to sort them. No schema/index migration,
+provider access, or write is performed.
