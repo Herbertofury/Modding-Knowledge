@@ -1,0 +1,88 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Source-backed Skyrim Special Edition HDT-SMP creator watch entry; link/manual review only, no download or compatibility claims.",
+  "games": {
+    "skyrim-se": "Skyrim Special Edition"
+  },
+  "sources": {
+    "nasuno04-public-blog": "https://nasunosakuragawa.blogspot.com/",
+    "nasuno04-public-video-channel": "https://www.youtube.com/channel/UCkOZ0Z6uqayo-2hN8dDiY1w",
+    "nexus-skyrimse-mages-daily-outfit-credit": "https://www.nexusmods.com/skyrimspecialedition/mods/155656"
+  },
+  "entities": [
+    {
+      "id": "blogger:creator:nasunosakuragawa",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "なすの (nasuno04)",
+      "source_id": "nasuno04-public-blog"
+    }
+  ],
+  "observations": [
+    {
+      "id": "blogger:creator:nasunosakuragawa:2026-11-23:creator_website",
+      "entity_id": "blogger:creator:nasunosakuragawa",
+      "source_id": "nasuno04-public-blog",
+      "source_url": "https://nasunosakuragawa.blogspot.com/",
+      "predicate": "creator_website",
+      "value": "https://nasunosakuragawa.blogspot.com/",
+      "observed_unix": 1795457880,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "blogger:creator:nasunosakuragawa:2026-11-23:creator_public_social_link",
+      "entity_id": "blogger:creator:nasunosakuragawa",
+      "source_id": "nasuno04-public-blog",
+      "source_url": "https://nasunosakuragawa.blogspot.com/",
+      "predicate": "creator_public_social_link",
+      "value": "https://x.com/nasuno04 (the public blog links the matching twitter.com handle).",
+      "observed_unix": 1795457880,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "blogger:creator:nasunosakuragawa:2026-11-23:creator_public_channel",
+      "entity_id": "blogger:creator:nasunosakuragawa",
+      "source_id": "nasuno04-public-video-channel",
+      "source_url": "https://www.youtube.com/channel/UCkOZ0Z6uqayo-2hN8dDiY1w",
+      "predicate": "creator_public_channel",
+      "value": "https://www.youtube.com/channel/UCkOZ0Z6uqayo-2hN8dDiY1w (public channel uses @nasuno04 and identifies Skyrim/HDT-SMP work).",
+      "observed_unix": 1795457880,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "blogger:creator:nasunosakuragawa:2026-11-23:creator_discovery_scope",
+      "entity_id": "blogger:creator:nasunosakuragawa",
+      "source_id": "nasuno04-public-blog",
+      "source_url": "https://nasunosakuragawa.blogspot.com/",
+      "predicate": "creator_discovery_scope",
+      "value": "Skyrim Special Edition HDT-SMP outfit and physics patches. Public titles for review: Ziitch Sexy Onepiece 2 SMP, Osare Culort Outfit SMP, Noble Knight Armor, Vanilla DLC1 Dawnguard SMP Patch, and Mage’s Daily Outfit SMP Patch. These are selected discovery leads, not a complete list or verified files, versions, requirements, licenses or compatibility.",
+      "observed_unix": 1795457880,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    },
+    {
+      "id": "blogger:creator:nasunosakuragawa:2026-11-23:credited_patch_attribution",
+      "entity_id": "blogger:creator:nasunosakuragawa",
+      "source_id": "nexus-skyrimse-mages-daily-outfit-credit",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/155656",
+      "predicate": "credited_patch_attribution",
+      "value": "The upstream Mage’s Daily Outfit credits nasuno04 for the Mage’s Daily Outfit SMP Patch only; it does not establish authorship of the base mod or a verified Nexus account.",
+      "observed_unix": 1795457880,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "reviewed-public-facts-2026-11-14"
+    }
+  ]
+}
