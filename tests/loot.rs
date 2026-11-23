@@ -554,3 +554,105 @@ fn browse_rejects_wrong_game_namespace_before_the_work_limit() {
         wrong.len(),
     );
 }
+
+#[test]
+fn fallout4_browse_keeps_pinned_role_namespace_and_policy_before_paging() {
+    use loot::{BROWSE_SCAN_LIMIT, SourceRole};
+    const WRONG_GAME_ID: &str = "loot:fallout4:plugin-metadata:01000000000000000010";
+    const WRONG_ENTITY_ID: &str = "loot:fallout4:source-context";
+    const LABEL: &str = "Exact(Plugin).esp";
+    let mut store = Store::open(":memory:").unwrap();
+    for (id, game) in [
+        (FO4_ENTITY, "fallout4"),
+        (WRONG_ENTITY_ID, "fallout4"),
+        (WRONG_GAME_ID, "fallout4-vr"),
+    ] {
+        store.register_game(game, "Synthetic game").unwrap();
+        store.register_entity(id, game, "guide", id).unwrap();
+    }
+    store
+        .set_source_policy("loot-fallout4", FO4_SOURCE, true, true, "synthetic-fo4-v1")
+        .unwrap();
+    let mut rows = vec![];
+    for (name, plugin) in [
+        ("required", json!({"name":"A.esp", "req":[LABEL]})),
+        ("incompatible", json!({"name":"B.esp", "inc":[LABEL]})),
+        (
+            "after",
+            json!({"name":"C.esp","after":[{"name":LABEL,"condition":"file(Fixture.esp)"}]}),
+        ),
+        (
+            "case-distinct",
+            json!({"name":"D.esp","req":[LABEL.to_lowercase()]}),
+        ),
+        ("malformed", json!({"name":"E.esp", "req":[LABEL,null]})),
+    ] {
+        let mut row = fo4_observation(plugin);
+        row.id = name.into();
+        rows.push(row);
+    }
+    let make_req = || fo4_observation(json!({"name":"Wrong scope.esp", "req":[LABEL]}));
+    let mut context = make_req();
+    context.id = "context-lookalike".into();
+    context.entity_id = WRONG_ENTITY_ID.into();
+    rows.push(context);
+    let mut wrong_blob = make_req();
+    wrong_blob.id = "wrong-blob".into();
+    wrong_blob.value = wrong_blob
+        .value
+        .replace("eed7994e786c896463887d03bcb3f14426b37753", "different");
+    rows.push(wrong_blob);
+    for index in 0..=BROWSE_SCAN_LIMIT {
+        let mut wrong_game = make_req();
+        wrong_game.id = format!("wrong-game-{index:04}");
+        wrong_game.entity_id = WRONG_GAME_ID.into();
+        wrong_game.observed_unix = 3;
+        rows.push(wrong_game);
+    }
+    store.import(&rows).unwrap();
+
+    for (role, expected) in [
+        (SourceRole::Requires, "required"),
+        (SourceRole::Incompatible, "incompatible"),
+        (SourceRole::LoadAfterIfPresent, "after"),
+    ] {
+        let page = store.browse_loot_fallout4(role, Some(LABEL), None).unwrap();
+        // None of the VR rows should reach JSON parsing or fill a work page.
+        assert_eq!(page.scanned, 7);
+        assert!(page.next.is_none());
+        assert_eq!(page.matches.len(), 1);
+        let actual = &page.matches[0];
+        assert_eq!(actual.observation.id, expected);
+        assert_eq!(actual.observation.entity_id, FO4_ENTITY);
+        let json = actual.relationships_json();
+        assert_eq!(json, loot::project_fallout4(&actual.observation).to_json());
+        assert_eq!(json["conditions_and_constraints"], "not_evaluated");
+        if role == SourceRole::LoadAfterIfPresent {
+            assert_eq!(
+                json["source_declared_requirements"]["status"],
+                "not_recorded"
+            );
+            assert_eq!(
+                json["source_load_after_if_present"]["raw"][0]["condition"],
+                "file(Fixture.esp)"
+            );
+        }
+        assert_eq!(
+            store.browse_loot(role, Some(LABEL), None).unwrap().scanned,
+            0
+        );
+    }
+    store
+        .set_source_policy("loot-fallout4", FO4_SOURCE, true, false, "synthetic-fo4-v1")
+        .unwrap();
+    let after = loot::BrowseCursor {
+        observed_unix: 2,
+        observation_id: "a".into(),
+    };
+    let withdrawn = store
+        .browse_loot_fallout4(SourceRole::Requires, None, Some(&after))
+        .unwrap();
+    assert_eq!(withdrawn.scanned, 0);
+    assert!(withdrawn.matches.is_empty());
+    assert!(withdrawn.next.is_none());
+}

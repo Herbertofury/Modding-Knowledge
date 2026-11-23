@@ -21,6 +21,8 @@ struct Pin {
     url: &'static str,
     commit: &'static str,
     blob: &'static str,
+    game: &'static str,
+    plugin_prefix: Option<&'static str>,
 }
 
 const OBLIVION: Pin = Pin {
@@ -28,12 +30,16 @@ const OBLIVION: Pin = Pin {
     url: SOURCE,
     commit: COMMIT,
     blob: BLOB,
+    game: "oblivion-family",
+    plugin_prefix: None,
 };
 const FALLOUT4: Pin = Pin {
     id: "loot-fallout4",
     url: FALLOUT4_SOURCE,
     commit: FALLOUT4_COMMIT,
     blob: FALLOUT4_BLOB,
+    game: "fallout4",
+    plugin_prefix: Some(FALLOUT4_PREFIX),
 };
 
 /// Distinguishes what the source recorded from what has been verified in a game.
@@ -129,6 +135,28 @@ impl Store {
         exact_target_label: Option<&str>,
         after: Option<&BrowseCursor>,
     ) -> Result<BrowsePage> {
+        self.browse_pinned_loot(OBLIVION, role, exact_target_label, after)
+    }
+
+    /// Browse the separately reviewed Fallout 4 masterlist when already present
+    /// and visible in the snapshot. Does not admit sources or include Fallout 4 VR.
+    /// Apply the same exact labels, scoped roles and bounds as [Store::browse_loot].
+    pub fn browse_loot_fallout4(
+        &self,
+        role: SourceRole,
+        exact_target_label: Option<&str>,
+        after: Option<&BrowseCursor>,
+    ) -> Result<BrowsePage> {
+        self.browse_pinned_loot(FALLOUT4, role, exact_target_label, after)
+    }
+
+    fn browse_pinned_loot(
+        &self,
+        pin: Pin,
+        role: SourceRole,
+        exact_target_label: Option<&str>,
+        after: Option<&BrowseCursor>,
+    ) -> Result<BrowsePage> {
         if exact_target_label.is_some_and(|s| s.trim().is_empty() || s.len() > 1024) {
             return Err("Expected an exact nonblank target label of at most 1024 bytes".into());
         }
@@ -143,7 +171,7 @@ impl Store {
                 concat!(
                     "WITH visible AS MATERIALIZED (SELECT o.id,o.observed_unix ",
                     "FROM observations o JOIN sources s ON s.id=o.source_id ",
-                    "JOIN entities e ON e.id=o.entity_id AND e.game_id='oblivion-family' ",
+                    "JOIN entities e ON e.id=o.entity_id AND e.game_id=?5 ",
                     "WHERE s.can_retain=1 AND s.can_publish=1 AND o.policy_revision=s.policy_revision ",
                     "AND o.source_id=?1 AND o.source_url=?2 AND o.predicate=?3",
                     $after,
@@ -155,21 +183,28 @@ impl Store {
             };
         }
         let mut query = self.db.prepare_cached(if after.is_some() {
-            browse_sql!(" AND (o.observed_unix<?5 OR (o.observed_unix=?5 AND o.id>?6))")
+            browse_sql!(" AND (o.observed_unix<?6 OR (o.observed_unix=?6 AND o.id>?7))")
         } else {
             browse_sql!("")
         })?;
         let capacity = (BROWSE_SCAN_LIMIT + 1) as i64;
         let mut rows = match after {
             Some(c) => query.query(params![
-                SOURCE_ID,
-                SOURCE,
+                pin.id,
+                pin.url,
                 OBSERVATION_PREDICATE,
                 capacity,
+                pin.game,
                 c.observed_unix,
                 c.observation_id,
             ])?,
-            None => query.query(params![SOURCE_ID, SOURCE, OBSERVATION_PREDICATE, capacity])?,
+            None => query.query(params![
+                pin.id,
+                pin.url,
+                OBSERVATION_PREDICATE,
+                capacity,
+                pin.game,
+            ])?,
         };
         let mut matches = Vec::new();
         let mut scanned = 0;
@@ -185,7 +220,7 @@ impl Store {
             let observation = observation_from_row(row)?;
             scanned += 1;
             let observed_unix = observation.observed_unix;
-            let observation_id = if let Some(fields) = parse_fields(&observation, OBLIVION)
+            let observation_id = if let Some(fields) = parse_fields(&observation, pin)
                 && fields.has_target(role, exact_target_label)
             {
                 let id = observation.id.clone();
@@ -294,28 +329,25 @@ pub fn project(observation: &Observation) -> RelationshipEvidence<'_> {
 /// A caller-supplied row does not verify provenance or grant admission; obtain
 /// observations through the policy-filtered Store when reading a snapshot.
 pub fn project_fallout4(observation: &Observation) -> RelationshipEvidence<'_> {
-    let exact_plugin = observation
-        .entity_id
-        .strip_prefix(FALLOUT4_PREFIX)
-        .is_some_and(|suffix| {
-            suffix.len() == 20
-                && suffix
-                    .bytes()
-                    .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
-        });
     RelationshipEvidence {
         observation,
-        fields: if exact_plugin {
-            parse_fields(observation, FALLOUT4)
-        } else {
-            None
-        },
+        fields: parse_fields(observation, FALLOUT4),
     }
 }
 
 fn parse_fields(r: &Observation, pin: Pin) -> Option<SourceFields> {
     if r.source_id != pin.id || r.source_url != pin.url || r.predicate != OBSERVATION_PREDICATE {
         return None;
+    }
+    if let Some(prefix) = pin.plugin_prefix {
+        let suffix = r.entity_id.strip_prefix(prefix)?;
+        if suffix.len() != 20
+            || !suffix
+                .bytes()
+                .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b))
+        {
+            return None;
+        }
     }
     let mut value: Value = serde_json::from_str(&r.value).ok()?;
     if value["source_commit_sha"] != pin.commit
