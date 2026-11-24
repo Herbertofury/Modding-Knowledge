@@ -1,6 +1,6 @@
 {
   "schema": "athena-reviewed-observations-v1",
-  "scope": "Eighteen public project records and three creator identities. Release labels/compatibility and mod relationships are creator statements observed 2026-11-24, not full catalogs or independent tests.",
+  "scope": "Twenty-four public project records and three creator identities. Release labels/compatibility and mod relationships are creator statements observed 2026-11-24, not full catalogs or independent tests.",
   "games": {
     "sims4": "The Sims 4"
   },
@@ -140,6 +140,42 @@
       "game_id": "sims4",
       "kind": "mod",
       "name": "Bug Life"
+    },
+    {
+      "id": "lumpinou:project:first-impressions-mod",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "First Impressions"
+    },
+    {
+      "id": "lumpinou:project:road-to-romance",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Road to Romance"
+    },
+    {
+      "id": "lumpinou:project:no-strings-attached",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "No Strings Attached"
+    },
+    {
+      "id": "lumpinou:project:contextual-social-interactions",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Contextual Social Interactions"
+    },
+    {
+      "id": "lumpinou:project:memory-panel-a-memory-system-mod",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Memory Panel"
+    },
+    {
+      "id": "lumpinou:project:lumpinous-lgbtqia-mod",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "LGBTQIA+ / Gender & Orientation Overhaul"
     }
   ],
   "observations": [
@@ -946,6 +982,240 @@
       "observed_unix": 1795527730,
       "applicable_build": "1.129.39",
       "mod_version": "3.1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:first-impressions-mod:20261124:creator",
+      "entity_id": "lumpinou:project:first-impressions-mod",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/12/08/first-impressions-mod/",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lumpinou:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lumpinoumods.com/2020/12/08/first-impressions-mod/\",\"provider_project_slug\":\"first-impressions-mod\",\"summary\":\"Adds sentiments based on Sims’ first meetings.\"}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:first-impressions-mod:20261124:publishing_locations",
+      "entity_id": "lumpinou:project:first-impressions-mod",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/12/08/first-impressions-mod/",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://lumpinoumods.com/2020/12/08/first-impressions-mod/\",\"author_identified_delivery_host\":\"Patreon\",\"location\":\"reader lines 212–226\",\"terms_url\":\"https://lumpinoumods.com/terms-of-use/\",\"file_redistribution\":\"not authorized; author terms prohibit sharing files without permission\",\"download_endpoint\":null,\"automated_download_authorized\":null,\"access_verified\":false}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:first-impressions-mod:20261124:mod.relationships.v1",
+      "entity_id": "lumpinou:project:first-impressions-mod",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/12/08/first-impressions-mod/",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"optional\":\"partial\",\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lumpinou:project:the-mood-pack-mod\",\"label\":\"The Mood Pack Mod\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Download notes\",\"quote\":\"REQUIRES the Mood Pack Mod\",\"location\":\"reader line 212\"}},{\"target_id\":null,\"label\":\"Introduction-type impact (component)\",\"relation\":\"optional\",\"raw_relation\":\"optional module\",\"version_constraint\":null,\"condition\":\"Applies when this option is installed; no separate file identity verified.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Optional modules\",\"quote\":\"Impact of the type of Introduction used\",\"location\":\"reader lines 189–190\"}},{\"target_id\":null,\"label\":\"Post-Conversation Moodlets (component)\",\"relation\":\"optional\",\"raw_relation\":\"optional module\",\"version_constraint\":null,\"condition\":\"Author marks this optional; exact package version and separate file identity are unverified.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Optional modules\",\"quote\":\"Optional Module: Post-Conversation Moodlets\",\"location\":\"reader line 192\"}}]}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:road-to-romance:20261124:creator",
+      "entity_id": "lumpinou:project:road-to-romance",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/10/20/road-to-romance/",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lumpinou:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lumpinoumods.com/2020/10/20/road-to-romance/\",\"provider_project_slug\":\"road-to-romance\",\"summary\":\"Adds romance progression and interactions, with separate builds depending on the installed game pack.\"}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:road-to-romance:20261124:publishing_locations",
+      "entity_id": "lumpinou:project:road-to-romance",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/10/20/road-to-romance/",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://lumpinoumods.com/2020/10/20/road-to-romance/\",\"author_identified_delivery_host\":\"Patreon\",\"location\":\"reader lines 153–157\",\"terms_url\":\"https://lumpinoumods.com/terms-of-use/\",\"file_redistribution\":\"not authorized; author terms prohibit sharing files without permission\",\"download_endpoint\":null,\"automated_download_authorized\":null,\"access_verified\":false}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:road-to-romance:20261124:mod.relationships.v1",
+      "entity_id": "lumpinou:project:road-to-romance",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/10/20/road-to-romance/",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"alternative\":\"partial\",\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Lovestruck (EA pack)\",\"relation\":\"required\",\"raw_relation\":\"Lovestruck version only\",\"version_constraint\":null,\"condition\":\"Only for the dedicated Lovestruck build. The author directs players without the pack to a different base-game variant.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Versions and compatibility\",\"quote\":\"If you have the EP, use that.\",\"location\":\"reader line 145\"}},{\"target_id\":null,\"label\":\"Base-game build (variant)\",\"relation\":\"alternative\",\"raw_relation\":\"BG VERSION\",\"version_constraint\":null,\"condition\":\"Alternate variant when Lovestruck is not installed; neither exact file nor numeric release version was verified.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Versions and compatibility\",\"quote\":\"get the BG Version\",\"location\":\"reader line 147\"}}]}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:no-strings-attached:20261124:creator",
+      "entity_id": "lumpinou:project:no-strings-attached",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/10/20/no-strings-attached/",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lumpinou:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lumpinoumods.com/2020/10/20/no-strings-attached/\",\"provider_project_slug\":\"no-strings-attached\",\"summary\":\"Adds a friends-with-benefits relationship path.\"}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:no-strings-attached:20261124:publishing_locations",
+      "entity_id": "lumpinou:project:no-strings-attached",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/10/20/no-strings-attached/",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://lumpinoumods.com/2020/10/20/no-strings-attached/\",\"author_identified_delivery_host\":\"Patreon\",\"location\":\"reader lines 140–144\",\"terms_url\":\"https://lumpinoumods.com/terms-of-use/\",\"file_redistribution\":\"not authorized; author terms prohibit sharing files without permission\",\"download_endpoint\":null,\"automated_download_authorized\":null,\"access_verified\":false}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:no-strings-attached:20261124:mod.relationships.v1",
+      "entity_id": "lumpinou:project:no-strings-attached",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/10/20/no-strings-attached/",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lumpinou:project:road-to-romance\",\"label\":\"Road to Romance\",\"relation\":\"works_with\",\"raw_relation\":\"when used together\",\"version_constraint\":null,\"condition\":\"Friends-with-benefits interactions give romance skill points when Road to Romance is used.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Notes\",\"quote\":\"will grant romance skill points\",\"location\":\"reader line 130\"}},{\"target_id\":\"lumpinou:project:contextual-social-interactions\",\"label\":\"Contextual Social Interactions\",\"relation\":\"works_with\",\"raw_relation\":\"with Cheating Module\",\"version_constraint\":null,\"condition\":\"Only when its Cheating Module is in use; specified affair disclosures or being seen trigger its behavior.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Notes\",\"quote\":\"Cheating Module\",\"location\":\"reader line 131\"}}]}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:contextual-social-interactions:20261124:creator",
+      "entity_id": "lumpinou:project:contextual-social-interactions",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/10/20/contextual-social-interactions/",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lumpinou:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lumpinoumods.com/2020/10/20/contextual-social-interactions/\",\"provider_project_slug\":\"contextual-social-interactions\",\"summary\":\"Adds context-dependent social interactions and reactions.\"}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:contextual-social-interactions:20261124:publishing_locations",
+      "entity_id": "lumpinou:project:contextual-social-interactions",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/10/20/contextual-social-interactions/",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://lumpinoumods.com/2020/10/20/contextual-social-interactions/\",\"author_identified_delivery_host\":\"Patreon\",\"location\":\"reader lines 132–136\",\"terms_url\":\"https://lumpinoumods.com/terms-of-use/\",\"file_redistribution\":\"not authorized; author terms prohibit sharing files without permission\",\"download_endpoint\":null,\"automated_download_authorized\":null,\"access_verified\":false}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:contextual-social-interactions:20261124:mod.relationships.v1",
+      "entity_id": "lumpinou:project:contextual-social-interactions",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2020/10/20/contextual-social-interactions/",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"optional\":\"partial\",\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Psychic Sims!\",\"relation\":\"works_with\",\"raw_relation\":\"recognizes\",\"version_constraint\":null,\"condition\":\"Recognition applies to the supernatural questionnaire only when Psychic Sims! is installed.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"New added interactions\",\"quote\":\"recognizes Psychics from my Psychic Sims!\",\"location\":\"reader line 111\"}},{\"target_id\":null,\"label\":\"Seasons (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"feature-specific pack\",\"version_constraint\":null,\"condition\":\"Two holiday conversations are for players with Seasons; this statement is not a mod-wide DLC requirement.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"New added interactions\",\"quote\":\"for those with the Seasons pack\",\"location\":\"reader lines 114–115\"}}]}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:memory-panel-a-memory-system-mod:20261124:creator",
+      "entity_id": "lumpinou:project:memory-panel-a-memory-system-mod",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2022/10/30/memory-panel-a-memory-system-mod/",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lumpinou:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lumpinoumods.com/2022/10/30/memory-panel-a-memory-system-mod/\",\"provider_project_slug\":\"memory-panel-a-memory-system-mod\",\"summary\":\"Records milestones in a Sim’s memory interface.\"}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:memory-panel-a-memory-system-mod:20261124:publishing_locations",
+      "entity_id": "lumpinou:project:memory-panel-a-memory-system-mod",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2022/10/30/memory-panel-a-memory-system-mod/",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://lumpinoumods.com/2022/10/30/memory-panel-a-memory-system-mod/\",\"author_identified_delivery_host\":\"Patreon\",\"location\":\"reader line 235\",\"terms_url\":\"https://lumpinoumods.com/terms-of-use/\",\"file_redistribution\":\"not authorized; author terms prohibit sharing files without permission\",\"download_endpoint\":null,\"automated_download_authorized\":null,\"access_verified\":false}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:memory-panel-a-memory-system-mod:20261124:mod.relationships.v1",
+      "entity_id": "lumpinou:project:memory-panel-a-memory-system-mod",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2022/10/30/memory-panel-a-memory-system-mod/",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"alternative\":\"partial\",\"optional\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"High School Years (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"not a requirement\",\"version_constraint\":null,\"condition\":\"Only the additional Social Bunny posts need the pack.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Sim Reactions, Moodlets, Social Bunny\",\"quote\":\"the pack is NOT a requirement\",\"location\":\"reader line 133\"}},{\"target_id\":null,\"label\":\"Milestones Expanded\",\"relation\":\"alternative\",\"raw_relation\":\"instead\",\"version_constraint\":null,\"condition\":\"Suggested alternative for players with Growing Together, not an incompatibility or hard dependency.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"About Memory Panel\",\"quote\":\"you can use my mod\",\"location\":\"reader lines 78–79\"}}]}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:lumpinous-lgbtqia-mod:20261124:creator",
+      "entity_id": "lumpinou:project:lumpinous-lgbtqia-mod",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2022/06/07/lumpinous-lgbtqia-mod/",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lumpinou:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lumpinoumods.com/2022/06/07/lumpinous-lgbtqia-mod/\",\"provider_project_slug\":\"lumpinous-lgbtqia-mod\",\"summary\":\"Adds gender identity and orientation gameplay systems.\"}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:lumpinous-lgbtqia-mod:20261124:publishing_locations",
+      "entity_id": "lumpinou:project:lumpinous-lgbtqia-mod",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2022/06/07/lumpinous-lgbtqia-mod/",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://lumpinoumods.com/2022/06/07/lumpinous-lgbtqia-mod/\",\"author_identified_delivery_host\":\"Patreon\",\"location\":\"reader lines 104–106\",\"terms_url\":\"https://lumpinoumods.com/terms-of-use/\",\"file_redistribution\":\"not authorized; author terms prohibit sharing files without permission\",\"download_endpoint\":null,\"automated_download_authorized\":null,\"access_verified\":false}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lumpinou:project:lumpinous-lgbtqia-mod:20261124:mod.relationships.v1",
+      "entity_id": "lumpinou:project:lumpinous-lgbtqia-mod",
+      "source_id": "sims4-lumpinou-official",
+      "source_url": "https://lumpinoumods.com/2022/06/07/lumpinous-lgbtqia-mod/",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"incompatible\":\"partial\",\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"McWooHoo\",\"relation\":\"incompatible\",\"raw_relation\":\"one setting is incompatible\",\"version_constraint\":null,\"condition\":\"Only with McWooHoo’s No string woohoo setting enabled; the author says to turn off that setting, not remove all of McWooHoo or MCCC.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"One setting is incompatible\",\"location\":\"reader lines 795–799\"}},{\"target_id\":null,\"label\":\"Wonderful Whims\",\"relation\":\"works_with\",\"raw_relation\":\"orientation interoperability\",\"version_constraint\":null,\"condition\":\"Sexual attraction can use the orientations, but the author says this integration reads CAS gender and does not use the mod’s gender identities.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"see ONLY the CAS gender\",\"location\":\"reader lines 801–803\"}},{\"target_id\":null,\"label\":\"Wicked Whims\",\"relation\":\"works_with\",\"raw_relation\":\"orientation interoperability\",\"version_constraint\":null,\"condition\":\"Sexual attraction can use the orientations, but the author says this integration reads CAS gender and does not use the mod’s gender identities.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"see ONLY the CAS gender\",\"location\":\"reader lines 801–803\"}}]}",
+      "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
       "completeness": "partial",
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     }

@@ -36,7 +36,7 @@ class DistributorPacks(unittest.TestCase):
     def test_exact_two_packs_and_windows_line_endings(self):
         expected = copy.deepcopy(self.base)
         admit_distributor_packs(expected, self.root)
-        self.assertEqual((len(expected['entities']),len(expected['observations'])), (36,93))
+        self.assertEqual((len(expected['entities']),len(expected['observations'])), (42,111))
         self.assertEqual(set(expected['games']), {'skyrim-se','sims4'})
         self.assertEqual(len(expected['sources']),4)
         for name in PINS:
@@ -66,8 +66,8 @@ class DistributorPacks(unittest.TestCase):
         self.base['entities']=[prior.copy()]
         admit_distributor_packs(self.base,self.root)
         self.assertEqual([x for x in self.base['entities'] if x['id']==prior['id']],[prior])
-        self.assertEqual(len(self.base['entities']),36)
-        self.assertEqual(len(self.base['observations']),93)
+        self.assertEqual(len(self.base['entities']),42)
+        self.assertEqual(len(self.base['observations']),111)
 
     def test_casefold_collision_and_exact_observation_collision_fail_closed(self):
         old={'id':'github:creator:POWEROF3','kind':'creator','game_id':'skyrim-se','name':'unknown'}
@@ -220,3 +220,46 @@ class DistributorPacks(unittest.TestCase):
         self.assertIn('High School Years', edges['smarter-phone-use'][1]['condition'])
         self.assertTrue(all(r['relation'] == 'works_with' and r['condition']
                             for slug in ('telephone', 'smarter-phone-use') for r in edges[slug]))
+
+    def test_lumpinou_links_scopes_and_one_setting_incompatibility(self):
+        admit_distributor_packs(self.base, self.root)
+        prefix = 'lumpinou:project:'
+        expected = {'first-impressions-mod', 'road-to-romance', 'no-strings-attached',
+                    'contextual-social-interactions', 'memory-panel-a-memory-system-mod',
+                    'lumpinous-lgbtqia-mod'}
+        self.assertEqual(expected, {e['id'].removeprefix(prefix) for e in self.base['entities']
+                                   if e['id'].startswith(prefix)
+                                   and e['id'] != prefix + 'the-mood-pack-mod'})
+        rows = {}
+        for r in self.base['observations']:
+            slug = r['entity_id'].removeprefix(prefix)
+            if slug in expected:
+                self.assertEqual(r['source_id'], 'sims4-lumpinou-official')
+                self.assertTrue(r['source_url'].endswith('/' + slug + '/'))
+                self.assertEqual((r['applicable_build'], r['mod_version'], r['completeness']),
+                                 ('unverified', 'unverified', 'partial'))
+                rows.setdefault(slug, {})[r['predicate']] = json.loads(r['value'])
+        for claims in rows.values():
+            self.assertEqual(set(claims), {'creator', 'publishing_locations', 'mod.relationships.v1'})
+            self.assertEqual(claims['creator']['creator_id'], 'lumpinou:creator')
+            self.assertEqual(claims['publishing_locations']['author_identified_delivery_host'], 'Patreon')
+            self.assertIsNone(claims['publishing_locations']['download_endpoint'])
+            self.assertIsNone(claims['publishing_locations']['automated_download_authorized'])
+            self.assertIs(claims['publishing_locations']['access_verified'], False)
+            self.assertEqual(claims['mod.relationships.v1']['none_evidence'], {})
+            self.assertTrue(all(x == 'partial' for x in claims['mod.relationships.v1']['coverage'].values()))
+        relations = {slug: claim['mod.relationships.v1']['relationships'] for slug, claim in rows.items()}
+        self.assertEqual([(r['relation'], r['target_id']) for r in relations['first-impressions-mod']],
+                         [('required', prefix + 'the-mood-pack-mod'), ('optional', None), ('optional', None)])
+        road = relations['road-to-romance']
+        self.assertEqual([r['relation'] for r in road], ['required', 'alternative'])
+        self.assertTrue(all(r['condition'] and r['target_id'] is None for r in road))
+        self.assertEqual([r['target_id'] for r in relations['no-strings-attached']],
+                         [prefix + 'road-to-romance', prefix + 'contextual-social-interactions'])
+        self.assertTrue(all(r['condition'] for r in relations['no-strings-attached']))
+        incompatible = [r for r in relations['lumpinous-lgbtqia-mod'] if r['relation'] == 'incompatible']
+        conflict, = incompatible
+        self.assertEqual(conflict['label'], 'McWooHoo')
+        self.assertIn('No string woohoo setting enabled', conflict['condition'])
+        self.assertIsNone(conflict['target_id'])
+        self.assertIsNone(conflict['version_constraint'])
