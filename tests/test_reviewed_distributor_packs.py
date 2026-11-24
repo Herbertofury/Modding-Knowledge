@@ -36,7 +36,7 @@ class DistributorPacks(unittest.TestCase):
     def test_exact_two_packs_and_windows_line_endings(self):
         expected = copy.deepcopy(self.base)
         admit_distributor_packs(expected, self.root)
-        self.assertEqual((len(expected['entities']),len(expected['observations'])), (59,145))
+        self.assertEqual((len(expected['entities']),len(expected['observations'])), (67,177))
         self.assertEqual(set(expected['games']), {'skyrim-se','sims4'})
         self.assertEqual(len(expected['sources']),4)
         for name in PINS:
@@ -66,8 +66,8 @@ class DistributorPacks(unittest.TestCase):
         self.base['entities']=[prior.copy()]
         admit_distributor_packs(self.base,self.root)
         self.assertEqual([x for x in self.base['entities'] if x['id']==prior['id']],[prior])
-        self.assertEqual(len(self.base['entities']),59)
-        self.assertEqual(len(self.base['observations']),145)
+        self.assertEqual(len(self.base['entities']),67)
+        self.assertEqual(len(self.base['observations']),177)
 
     def test_casefold_collision_and_exact_observation_collision_fail_closed(self):
         old={'id':'github:creator:POWEROF3','kind':'creator','game_id':'skyrim-se','name':'unknown'}
@@ -275,6 +275,57 @@ class DistributorPacks(unittest.TestCase):
         self.assertIn('High School Years', edges['smarter-phone-use'][1]['condition'])
         self.assertTrue(all(r['relation'] == 'works_with' and r['condition']
                             for slug in ('telephone', 'smarter-phone-use') for r in edges[slug]))
+
+    def test_lot51_additional_projects_do_not_confuse_optional_with_required(self):
+        admit_distributor_packs(self.base, self.root)
+        prefix = 'lot51:project:'
+        expected = {
+            'custom-channel-injector': ('1.2', '2026-05-02', '>= 1.27', None),
+            'bird-life': ('1.1.3', '2025-12-29', '>= 1.27', 'Cottage Living'),
+            'come-thru-thy-window': ('1.1', '2024-03-05', '>= 1.27', 'High School Years'),
+            'dust-buster-mod': ('7', '2023-05-08', '>= 1.27', 'Bust the Dust Kit'),
+            'feral-run-werewolf-tweak': ('2.0', '2022-06-23', '>= 1.27', 'Werewolves'),
+            'fire-extinguisher-cheat': ('1.0', '2023-01-22', None, None),
+            'mini-weather-controller': ('4', '2024-03-10', '>= 1.33', 'Seasons'),
+            'slower-stories': ('1', '2022-04-23', None, None),
+        }
+        edges = {}
+        for slug, (version, date, core_version, dlc) in expected.items():
+            e = prefix + slug
+            rows = {r['predicate']:r for r in self.base['observations'] if r['entity_id']==e}
+            self.assertEqual(set(rows), {'creator', 'public_release', 'compatibility', 'mod.relationships.v1'})
+            for row in rows.values():
+                self.assertEqual(row['source_id'], 'sims4-lot51-official')
+                self.assertEqual(row['source_url'], 'https://lot51.cc/mods/' + slug)
+            creator, released, compatibility, relations = (
+                json.loads(rows[name]['value']) for name in
+                ('creator','public_release','compatibility','mod.relationships.v1'))
+            self.assertEqual(creator['creator_id'], 'lot51:creator')
+            self.assertEqual((released['version'], released['released_date']), (version,date))
+            self.assertIsNone(released['download_endpoint'])
+            self.assertIs(compatibility['independently_tested'], False)
+            self.assertEqual(compatibility['game_build'], '1.129.39')
+            self.assertEqual(relations['none_evidence'], {})
+            required = [r for r in relations['relationships'] if r['relation']=='required']
+            wanted = []
+            if core_version:
+                wanted.append(('Core Library', prefix+'core-library', core_version))
+            if dlc:
+                wanted.append((dlc+' (EA pack)',None,None))
+            self.assertEqual([(r['label'],r['target_id'],r['version_constraint']) for r in required], wanted)
+            if not wanted:
+                self.assertNotIn('required', relations['coverage'])
+                self.assertEqual(relations['relationships'], [])
+            edges[slug] = [r for r in relations['relationships'] if r['relation']!='required']
+        self.assertEqual([(r['relation'],r['target_id'],r['label']) for r in edges['bird-life']], [
+            ('optional',None,'Cats & Dogs (EA pack)'),
+            ('works_with',prefix+'free-range','Free-Range'),
+            ('works_with',prefix+'bug-life','Bug Life'),
+        ])
+        original, = edges['custom-channel-injector']
+        self.assertEqual((original['relation'], original['target_id']), ('related',None))
+        self.assertIn('SashaT1804', original['label'])
+        self.assertIn('not an install prerequisite', original['condition'])
 
     def test_lumpinou_links_scopes_and_one_setting_incompatibility(self):
         admit_distributor_packs(self.base, self.root)

@@ -28795,10 +28795,22 @@
       "name": "Lot 51"
     },
     {
+      "id": "lot51:project:bird-life",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Bird Life"
+    },
+    {
       "id": "lot51:project:bug-life",
       "game_id": "sims4",
       "kind": "mod",
       "name": "Bug Life"
+    },
+    {
+      "id": "lot51:project:come-thru-thy-window",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Come Thru Thy Window"
     },
     {
       "id": "lot51:project:core-library",
@@ -28807,10 +28819,34 @@
       "name": "Core Library"
     },
     {
+      "id": "lot51:project:custom-channel-injector",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Custom Channel Injector"
+    },
+    {
+      "id": "lot51:project:dust-buster-mod",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Dust Buster Mod"
+    },
+    {
       "id": "lot51:project:fashion-authority",
       "game_id": "sims4",
       "kind": "mod",
       "name": "Fashion Authority"
+    },
+    {
+      "id": "lot51:project:feral-run-werewolf-tweak",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Feral Run Werewolf Tweak"
+    },
+    {
+      "id": "lot51:project:fire-extinguisher-cheat",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Fire Extinguisher Cheat"
     },
     {
       "id": "lot51:project:flicbuster",
@@ -28825,6 +28861,12 @@
       "name": "Free-Range"
     },
     {
+      "id": "lot51:project:mini-weather-controller",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Mini Weather Controller"
+    },
+    {
       "id": "lot51:project:plumbbros",
       "game_id": "sims4",
       "kind": "mod",
@@ -28835,6 +28877,12 @@
       "game_id": "sims4",
       "kind": "mod",
       "name": "Simzlink"
+    },
+    {
+      "id": "lot51:project:slower-stories",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Slower Stories"
     },
     {
       "id": "lot51:project:smart-doorbell",
@@ -92122,6 +92170,58 @@
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },
     {
+      "id": "lot51:project:bird-life:20261124:compatibility",
+      "entity_id": "lot51:project:bird-life",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/bird-life",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"1.1.3\",\"independently_tested\":false,\"location\":\"reader line 38\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.1.3",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:bird-life:20261124:creator",
+      "entity_id": "lot51:project:bird-life",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/bird-life",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/bird-life\",\"provider_project_slug\":\"bird-life\",\"summary\":\"Bird ambience and behavior outdoors.\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:bird-life:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:bird-life",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/bird-life",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\",\"optional\":\"partial\",\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.27\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.27\",\"location\":\"reader line 32\"}},{\"target_id\":null,\"label\":\"Cottage Living (EA pack)\",\"relation\":\"required\",\"raw_relation\":\"Required DLC\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required DLC\",\"quote\":\"Cottage Living\",\"location\":\"reader lines 14–18\"}},{\"target_id\":null,\"label\":\"Cats & Dogs (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"optional\",\"version_constraint\":null,\"condition\":\"Adds interactable pigeons and seagulls; not required for the base Bird Life features.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"About Bird Life\",\"quote\":\"Cats and Dogs\",\"location\":\"reader line 27\"}},{\"target_id\":\"lot51:project:free-range\",\"label\":\"Free-Range\",\"relation\":\"works_with\",\"raw_relation\":\"companion\",\"version_constraint\":null,\"condition\":\"Author lists it as a companion; no installation requirement or version claim.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"About Bird Life\",\"quote\":\"companion\",\"location\":\"reader line 29\"}},{\"target_id\":\"lot51:project:bug-life\",\"label\":\"Bug Life\",\"relation\":\"works_with\",\"raw_relation\":\"companion\",\"version_constraint\":null,\"condition\":\"Author lists it as a companion; no installation requirement or version claim.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"About Bird Life\",\"quote\":\"companion\",\"location\":\"reader line 29\"}}]}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.1.3",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:bird-life:20261124:public_release",
+      "entity_id": "lot51:project:bird-life",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/bird-life",
+      "predicate": "public_release",
+      "value": "{\"version\":\"1.1.3\",\"released_date\":\"2025-12-29\",\"label\":\"author project page release listing\",\"location\":\"reader line 44\",\"download_endpoint\":null}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "1.1.3",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
       "id": "lot51:project:bug-life:20261124:compatibility",
       "entity_id": "lot51:project:bug-life",
       "source_id": "sims4-lot51-official",
@@ -92174,6 +92274,58 @@
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },
     {
+      "id": "lot51:project:come-thru-thy-window:20261124:compatibility",
+      "entity_id": "lot51:project:come-thru-thy-window",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/come-thru-thy-window",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"1.1\",\"independently_tested\":false,\"location\":\"reader line 42\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:come-thru-thy-window:20261124:creator",
+      "entity_id": "lot51:project:come-thru-thy-window",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/come-thru-thy-window",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/come-thru-thy-window\",\"provider_project_slug\":\"come-thru-thy-window\",\"summary\":\"Adds window invitations and sneaking interactions.\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:come-thru-thy-window:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:come-thru-thy-window",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/come-thru-thy-window",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.27\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.27\",\"location\":\"reader line 36\"}},{\"target_id\":null,\"label\":\"High School Years (EA pack)\",\"relation\":\"required\",\"raw_relation\":\"Required DLC\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required DLC\",\"quote\":\"High School Years\",\"location\":\"reader lines 14–18\"}}]}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:come-thru-thy-window:20261124:public_release",
+      "entity_id": "lot51:project:come-thru-thy-window",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/come-thru-thy-window",
+      "predicate": "public_release",
+      "value": "{\"version\":\"1.1\",\"released_date\":\"2024-03-05\",\"label\":\"author project page release listing\",\"location\":\"reader line 48\",\"download_endpoint\":null}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "1.1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
       "id": "lot51:project:core-library:20261124:compatibility",
       "entity_id": "lot51:project:core-library",
       "source_id": "sims4-lot51-official",
@@ -92209,6 +92361,110 @@
       "observed_unix": 1795478400,
       "applicable_build": "unverified",
       "mod_version": "1.43.1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:custom-channel-injector:20261124:compatibility",
+      "entity_id": "lot51:project:custom-channel-injector",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/custom-channel-injector",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"1.2\",\"independently_tested\":false,\"location\":\"reader line 44\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:custom-channel-injector:20261124:creator",
+      "entity_id": "lot51:project:custom-channel-injector",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/custom-channel-injector",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher and fork maintainer\",\"project_url\":\"https://lot51.cc/mods/custom-channel-injector\",\"provider_project_slug\":\"custom-channel-injector\",\"summary\":\"Adds custom radio and television channels via tuning snippets.\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:custom-channel-injector:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:custom-channel-injector",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/custom-channel-injector",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\",\"related\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.27\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.27\",\"location\":\"reader line 38\"}},{\"target_id\":null,\"label\":\"SashaT1804 Custom Channel Injector v4\",\"relation\":\"related\",\"raw_relation\":\"original project and replacement guidance\",\"version_constraint\":null,\"condition\":\"Lot 51 credits SashaT1804 for the original and directs users to remove the original script before installing this fork. This is not an install prerequisite.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"About Custom Channel Injector\",\"quote\":\"Original Edition (v4)\",\"location\":\"reader lines 21–24\"}}]}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:custom-channel-injector:20261124:public_release",
+      "entity_id": "lot51:project:custom-channel-injector",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/custom-channel-injector",
+      "predicate": "public_release",
+      "value": "{\"version\":\"1.2\",\"released_date\":\"2026-05-02\",\"label\":\"author project page release listing\",\"location\":\"reader line 50\",\"download_endpoint\":null}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "1.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:dust-buster-mod:20261124:compatibility",
+      "entity_id": "lot51:project:dust-buster-mod",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/dust-buster-mod",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"7\",\"independently_tested\":false,\"location\":\"reader line 30\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "7",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:dust-buster-mod:20261124:creator",
+      "entity_id": "lot51:project:dust-buster-mod",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/dust-buster-mod",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/dust-buster-mod\",\"provider_project_slug\":\"dust-buster-mod\",\"summary\":\"Adds floor-level dust controls and requires testing cheats for the interactions.\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:dust-buster-mod:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:dust-buster-mod",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/dust-buster-mod",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.27\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.27\",\"location\":\"reader line 24\"}},{\"target_id\":null,\"label\":\"Bust the Dust Kit (EA pack)\",\"relation\":\"required\",\"raw_relation\":\"Required DLC\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required DLC\",\"quote\":\"Bust the Dust Kit\",\"location\":\"reader lines 10–14\"}}]}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "7",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:dust-buster-mod:20261124:public_release",
+      "entity_id": "lot51:project:dust-buster-mod",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/dust-buster-mod",
+      "predicate": "public_release",
+      "value": "{\"version\":\"7\",\"released_date\":\"2023-05-08\",\"label\":\"author project page release listing\",\"location\":\"reader line 36\",\"download_endpoint\":null}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "7",
       "completeness": "partial",
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },
@@ -92261,6 +92517,110 @@
       "observed_unix": 1795478400,
       "applicable_build": "unverified",
       "mod_version": "2.5.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:feral-run-werewolf-tweak:20261124:compatibility",
+      "entity_id": "lot51:project:feral-run-werewolf-tweak",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/feral-run-werewolf-tweak",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"2.0\",\"independently_tested\":false,\"location\":\"reader line 27\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "2.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:feral-run-werewolf-tweak:20261124:creator",
+      "entity_id": "lot51:project:feral-run-werewolf-tweak",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/feral-run-werewolf-tweak",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/feral-run-werewolf-tweak\",\"provider_project_slug\":\"feral-run-werewolf-tweak\",\"summary\":\"Adds a beast-form running interaction for werewolves.\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:feral-run-werewolf-tweak:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:feral-run-werewolf-tweak",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/feral-run-werewolf-tweak",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.27\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.27\",\"location\":\"reader line 21\"}},{\"target_id\":null,\"label\":\"Werewolves (EA pack)\",\"relation\":\"required\",\"raw_relation\":\"Required DLC\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required DLC\",\"quote\":\"Werewolves\",\"location\":\"reader lines 10–14\"}}]}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "2.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:feral-run-werewolf-tweak:20261124:public_release",
+      "entity_id": "lot51:project:feral-run-werewolf-tweak",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/feral-run-werewolf-tweak",
+      "predicate": "public_release",
+      "value": "{\"version\":\"2.0\",\"released_date\":\"2022-06-23\",\"label\":\"author project page release listing\",\"location\":\"reader line 33\",\"download_endpoint\":null}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "2.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:fire-extinguisher-cheat:20261124:compatibility",
+      "entity_id": "lot51:project:fire-extinguisher-cheat",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/fire-extinguisher-cheat",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"1.0\",\"independently_tested\":false,\"location\":\"reader line 25\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:fire-extinguisher-cheat:20261124:creator",
+      "entity_id": "lot51:project:fire-extinguisher-cheat",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/fire-extinguisher-cheat",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/fire-extinguisher-cheat\",\"provider_project_slug\":\"fire-extinguisher-cheat\",\"summary\":\"Adds a lot-wide fire extinguishing cheat.\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:fire-extinguisher-cheat:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:fire-extinguisher-cheat",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/fire-extinguisher-cheat",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{},\"none_evidence\":{},\"relationships\":[]}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.0",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:fire-extinguisher-cheat:20261124:public_release",
+      "entity_id": "lot51:project:fire-extinguisher-cheat",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/fire-extinguisher-cheat",
+      "predicate": "public_release",
+      "value": "{\"version\":\"1.0\",\"released_date\":\"2023-01-22\",\"label\":\"author project page release listing\",\"location\":\"reader line 31\",\"download_endpoint\":null}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "1.0",
       "completeness": "partial",
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },
@@ -92369,6 +92729,58 @@
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },
     {
+      "id": "lot51:project:mini-weather-controller:20261124:compatibility",
+      "entity_id": "lot51:project:mini-weather-controller",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/mini-weather-controller",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"4\",\"independently_tested\":false,\"location\":\"reader line 40\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "4",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:mini-weather-controller:20261124:creator",
+      "entity_id": "lot51:project:mini-weather-controller",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/mini-weather-controller",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/mini-weather-controller\",\"provider_project_slug\":\"mini-weather-controller\",\"summary\":\"Adds a placeable controller for season and weather changes.\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:mini-weather-controller:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:mini-weather-controller",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/mini-weather-controller",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.33\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.33\",\"location\":\"reader line 35\"}},{\"target_id\":null,\"label\":\"Seasons (EA pack)\",\"relation\":\"required\",\"raw_relation\":\"Required DLC\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required DLC\",\"quote\":\"Seasons\",\"location\":\"reader lines 12–16\"}}]}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "4",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:mini-weather-controller:20261124:public_release",
+      "entity_id": "lot51:project:mini-weather-controller",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/mini-weather-controller",
+      "predicate": "public_release",
+      "value": "{\"version\":\"4\",\"released_date\":\"2024-03-10\",\"label\":\"author project page release listing\",\"location\":\"reader line 46\",\"download_endpoint\":null}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "4",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
       "id": "lot51:project:plumbbros:20261124:compatibility",
       "entity_id": "lot51:project:plumbbros",
       "source_id": "sims4-lot51-official",
@@ -92469,6 +92881,58 @@
       "observed_unix": 1795527730,
       "applicable_build": "unverified",
       "mod_version": "1.10.5",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:slower-stories:20261124:compatibility",
+      "entity_id": "lot51:project:slower-stories",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/slower-stories",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"1\",\"independently_tested\":false,\"location\":\"reader line 29\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:slower-stories:20261124:creator",
+      "entity_id": "lot51:project:slower-stories",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/slower-stories",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/slower-stories\",\"provider_project_slug\":\"slower-stories\",\"summary\":\"Configures Neighborhood Stories timing.\"}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:slower-stories:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:slower-stories",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/slower-stories",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{},\"none_evidence\":{},\"relationships\":[]}",
+      "observed_unix": 1795545780,
+      "applicable_build": "1.129.39",
+      "mod_version": "1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:slower-stories:20261124:public_release",
+      "entity_id": "lot51:project:slower-stories",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/slower-stories",
+      "predicate": "public_release",
+      "value": "{\"version\":\"1\",\"released_date\":\"2022-04-23\",\"label\":\"author project page release listing\",\"location\":\"reader line 34\",\"download_endpoint\":null}",
+      "observed_unix": 1795545780,
+      "applicable_build": "unverified",
+      "mod_version": "1",
       "completeness": "partial",
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },
