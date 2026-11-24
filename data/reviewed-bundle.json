@@ -28693,6 +28693,12 @@
       "name": "Lot 51"
     },
     {
+      "id": "lot51:project:bug-life",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Bug Life"
+    },
+    {
       "id": "lot51:project:core-library",
       "game_id": "sims4",
       "kind": "mod",
@@ -28705,16 +28711,40 @@
       "name": "Fashion Authority"
     },
     {
+      "id": "lot51:project:flicbuster",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "FlicBuster"
+    },
+    {
+      "id": "lot51:project:free-range",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Free-Range"
+    },
+    {
       "id": "lot51:project:plumbbros",
       "game_id": "sims4",
       "kind": "mod",
       "name": "PlumbBros"
     },
     {
+      "id": "lot51:project:simzlink",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Simzlink"
+    },
+    {
       "id": "lot51:project:smart-doorbell",
       "game_id": "sims4",
       "kind": "mod",
       "name": "Ding & Ditch Smart Doorbell"
+    },
+    {
+      "id": "lot51:project:smarter-phone-use",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Smarter Phone Use"
     },
     {
       "id": "lot51:project:suite-life",
@@ -28727,6 +28757,12 @@
       "game_id": "sims4",
       "kind": "mod",
       "name": "Sunrise"
+    },
+    {
+      "id": "lot51:project:telephone",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Plum Telephone Company"
     },
     {
       "id": "lumpinou:creator",
@@ -91506,6 +91542,58 @@
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },
     {
+      "id": "lot51:project:bug-life:20261124:compatibility",
+      "entity_id": "lot51:project:bug-life",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/bug-life",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"3.1\",\"independently_tested\":false,\"location\":\"reader line 40\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "3.1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:bug-life:20261124:creator",
+      "entity_id": "lot51:project:bug-life",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/bug-life",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/bug-life\",\"provider_project_slug\":\"bug-life\",\"summary\":\"Adds lot-level insect activity and related interactions.\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:bug-life:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:bug-life",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/bug-life",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"optional\":\"partial\",\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.27\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.27\",\"location\":\"reader line 34\"}},{\"target_id\":null,\"label\":\"Outdoor Retreat (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"Enhanced by\",\"version_constraint\":null,\"condition\":\"Creator lists this pack as an enhancement and separately labels the mod base-game compatible.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"About Bug Life\",\"quote\":\"Outdoor Retreat\",\"location\":\"reader lines 21–23\"}},{\"target_id\":null,\"label\":\"Seasons (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"Enhanced by\",\"version_constraint\":null,\"condition\":\"Creator lists this pack as an enhancement and separately labels the mod base-game compatible.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"About Bug Life\",\"quote\":\"Seasons\",\"location\":\"reader lines 21–23\"}},{\"target_id\":null,\"label\":\"Eco Lifestyle (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"Enhanced by\",\"version_constraint\":null,\"condition\":\"Creator lists this pack as an enhancement and separately labels the mod base-game compatible.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"About Bug Life\",\"quote\":\"Eco Lifestyle\",\"location\":\"reader lines 21–23\"}}]}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "3.1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:bug-life:20261124:public_release",
+      "entity_id": "lot51:project:bug-life",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/bug-life",
+      "predicate": "public_release",
+      "value": "{\"version\":\"3.1\",\"released_date\":\"2025-07-02\",\"label\":\"author project page release listing\",\"location\":\"reader line 45\",\"download_endpoint\":null}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "3.1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
       "id": "lot51:project:core-library:20261124:compatibility",
       "entity_id": "lot51:project:core-library",
       "source_id": "sims4-lot51-official",
@@ -91597,6 +91685,110 @@
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },
     {
+      "id": "lot51:project:flicbuster:20261124:compatibility",
+      "entity_id": "lot51:project:flicbuster",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/flicbuster",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"2.2\",\"independently_tested\":false,\"location\":\"reader line 38\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "2.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:flicbuster:20261124:creator",
+      "entity_id": "lot51:project:flicbuster",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/flicbuster",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/flicbuster\",\"provider_project_slug\":\"flicbuster\",\"summary\":\"DVD viewing and rental gameplay.\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:flicbuster:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:flicbuster",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/flicbuster",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\",\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.27\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.27\",\"location\":\"reader line 32\"}},{\"target_id\":null,\"label\":\"Movie Hangout Stuff (EA pack)\",\"relation\":\"required\",\"raw_relation\":\"Required DLC\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required DLC\",\"quote\":\"Movie Hangout Stuff\",\"location\":\"reader lines 14–18\"}},{\"target_id\":\"lot51:project:simzlink\",\"label\":\"Simzlink\",\"relation\":\"works_with\",\"raw_relation\":\"companion\",\"version_constraint\":null,\"condition\":\"Author describes companion DVD playback without a television subscription; this is not a prerequisite for FlicBuster.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"About FlicBuster\",\"quote\":\"perfect companion mod for\",\"location\":\"reader line 28\"}}]}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "2.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:flicbuster:20261124:public_release",
+      "entity_id": "lot51:project:flicbuster",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/flicbuster",
+      "predicate": "public_release",
+      "value": "{\"version\":\"2.2\",\"released_date\":\"2025-07-03\",\"label\":\"author project page release listing\",\"location\":\"reader line 44\",\"download_endpoint\":null}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "2.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:free-range:20261124:compatibility",
+      "entity_id": "lot51:project:free-range",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/free-range",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"1.8.2\",\"independently_tested\":false,\"location\":\"reader line 38\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.8.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:free-range:20261124:creator",
+      "entity_id": "lot51:project:free-range",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/free-range",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/free-range\",\"provider_project_slug\":\"free-range\",\"summary\":\"Lets cows and llamas roam separately from the animal shelter.\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:free-range:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:free-range",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/free-range",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.27\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.27\",\"location\":\"reader line 32\"}},{\"target_id\":null,\"label\":\"Cottage Living (EA pack)\",\"relation\":\"required\",\"raw_relation\":\"Required DLC\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required DLC\",\"quote\":\"Cottage Living\",\"location\":\"reader lines 14–18\"}}]}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.8.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:free-range:20261124:public_release",
+      "entity_id": "lot51:project:free-range",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/free-range",
+      "predicate": "public_release",
+      "value": "{\"version\":\"1.8.2\",\"released_date\":\"2026-03-20\",\"label\":\"author project page release listing\",\"location\":\"reader line 43\",\"download_endpoint\":null}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "1.8.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
       "id": "lot51:project:plumbbros:20261124:compatibility",
       "entity_id": "lot51:project:plumbbros",
       "source_id": "sims4-lot51-official",
@@ -91649,6 +91841,58 @@
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },
     {
+      "id": "lot51:project:simzlink:20261124:compatibility",
+      "entity_id": "lot51:project:simzlink",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/simzlink",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"1.10.5\",\"independently_tested\":false,\"location\":\"reader line 45\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.10.5",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:simzlink:20261124:creator",
+      "entity_id": "lot51:project:simzlink",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/simzlink",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/simzlink\",\"provider_project_slug\":\"simzlink\",\"summary\":\"In-game internet, television, and music subscriptions.\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:simzlink:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:simzlink",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/simzlink",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.27\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.27\",\"location\":\"reader line 39\"}}]}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.10.5",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:simzlink:20261124:public_release",
+      "entity_id": "lot51:project:simzlink",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/simzlink",
+      "predicate": "public_release",
+      "value": "{\"version\":\"1.10.5\",\"released_date\":\"2026-07-21\",\"label\":\"author project page release listing\",\"location\":\"reader line 51\",\"download_endpoint\":null}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "1.10.5",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
       "id": "lot51:project:smart-doorbell:20261124:compatibility",
       "entity_id": "lot51:project:smart-doorbell",
       "source_id": "sims4-lot51-official",
@@ -91697,6 +91941,58 @@
       "observed_unix": 1795478400,
       "applicable_build": "unverified",
       "mod_version": "3.2.3",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:smarter-phone-use:20261124:compatibility",
+      "entity_id": "lot51:project:smarter-phone-use",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/smarter-phone-use",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"2.2.1\",\"independently_tested\":false,\"location\":\"reader line 31\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "2.2.1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:smarter-phone-use:20261124:creator",
+      "entity_id": "lot51:project:smarter-phone-use",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/smarter-phone-use",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/smarter-phone-use\",\"provider_project_slug\":\"smarter-phone-use\",\"summary\":\"Adjusts autonomous phone use and phone idles.\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:smarter-phone-use:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:smarter-phone-use",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/smarter-phone-use",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\",\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.27\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.27\",\"location\":\"reader line 25\"}},{\"target_id\":\"lot51:project:telephone\",\"label\":\"Plum Telephone Company\",\"relation\":\"works_with\",\"raw_relation\":\"integration\",\"version_constraint\":null,\"condition\":\"With Plum Telephone Company installed, using its per-Sim restriction disables mobile phone autonomy.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Cross Mod Compatibility / 2.2.1 changelog\",\"quote\":\"Adds integration with upcoming Lot 51 Plum Telephone Company mod.\",\"location\":\"reader lines 61–76\"}},{\"target_id\":null,\"label\":\"ChippedSims’ School Tweaks\",\"relation\":\"works_with\",\"raw_relation\":\"cross-mod compatibility\",\"version_constraint\":null,\"condition\":\"Only with High School Years and School Tweaks installed, when a teacher confiscates the phone; no provider identity or link is resolved.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Cross Mod Compatibility\",\"quote\":\"phone has been confiscated by a teacher\",\"location\":\"reader line 63\"}}]}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "2.2.1",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:smarter-phone-use:20261124:public_release",
+      "entity_id": "lot51:project:smarter-phone-use",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/smarter-phone-use",
+      "predicate": "public_release",
+      "value": "{\"version\":\"2.2.1\",\"released_date\":\"2026-02-27\",\"label\":\"author project page release listing\",\"location\":\"reader line 36\",\"download_endpoint\":null}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "2.2.1",
       "completeness": "partial",
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },
@@ -91801,6 +92097,58 @@
       "observed_unix": 1795478400,
       "applicable_build": "unverified",
       "mod_version": "1.4",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:telephone:20261124:compatibility",
+      "entity_id": "lot51:project:telephone",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/telephone",
+      "predicate": "compatibility",
+      "value": "{\"authority\":\"author public compatibility label\",\"game_build\":\"1.129.39\",\"mod_version\":\"1.0.4\",\"independently_tested\":false,\"location\":\"reader line 45\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.0.4",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:telephone:20261124:creator",
+      "entity_id": "lot51:project:telephone",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/telephone",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"lot51:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://lot51.cc/mods/telephone\",\"provider_project_slug\":\"telephone\",\"summary\":\"Landline telephones and shared household calling.\"}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:telephone:20261124:mod.relationships.v1",
+      "entity_id": "lot51:project:telephone",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/telephone",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\",\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":\">= 1.40.1\",\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirement callout\",\"quote\":\"requires Core Library >= 1.40.1\",\"location\":\"reader line 39\"}},{\"target_id\":\"lot51:project:smarter-phone-use\",\"label\":\"Smarter Phone Use\",\"relation\":\"works_with\",\"raw_relation\":\"integration\",\"version_constraint\":null,\"condition\":\"Author names v2.2 for preventing mobile phone autonomy and idles when access is restricted. The page does not claim this blocks actual mobile calls or texts.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Disable the Mobile Phone\",\"quote\":\"Smarter Phone Use mod (v2.2)\",\"location\":\"reader lines 72–74\"}},{\"target_id\":\"lot51:project:suite-life\",\"label\":\"Suite Life\",\"relation\":\"works_with\",\"raw_relation\":\"phone interaction forwarding\",\"version_constraint\":null,\"condition\":\"Author names this mod for forwarding interactions registered in the phone-affordance list; not a claim about all interactions or features.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"Suite Life\",\"location\":\"reader lines 76–78\"}},{\"target_id\":\"lot51:project:flicbuster\",\"label\":\"FlicBuster\",\"relation\":\"works_with\",\"raw_relation\":\"phone interaction forwarding\",\"version_constraint\":null,\"condition\":\"Author names this mod for forwarding interactions registered in the phone-affordance list; not a claim about all interactions or features.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"Flicbuster\",\"location\":\"reader lines 76–78\"}},{\"target_id\":\"lot51:project:plumbbros\",\"label\":\"PlumbBros\",\"relation\":\"works_with\",\"raw_relation\":\"phone interaction forwarding\",\"version_constraint\":null,\"condition\":\"Author names this mod for forwarding interactions registered in the phone-affordance list; not a claim about all interactions or features.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"PlumbBros\",\"location\":\"reader lines 76–78\"}}]}",
+      "observed_unix": 1795527730,
+      "applicable_build": "1.129.39",
+      "mod_version": "1.0.4",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "lot51:project:telephone:20261124:public_release",
+      "entity_id": "lot51:project:telephone",
+      "source_id": "sims4-lot51-official",
+      "source_url": "https://lot51.cc/mods/telephone",
+      "predicate": "public_release",
+      "value": "{\"version\":\"1.0.4\",\"released_date\":\"2026-03-23\",\"label\":\"author project page release listing\",\"location\":\"reader line 51\",\"download_endpoint\":null}",
+      "observed_unix": 1795527730,
+      "applicable_build": "unverified",
+      "mod_version": "1.0.4",
       "completeness": "partial",
       "policy_revision": "sims4-official-factual-links-2026-11-24"
     },

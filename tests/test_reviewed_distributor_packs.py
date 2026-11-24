@@ -36,7 +36,7 @@ class DistributorPacks(unittest.TestCase):
     def test_exact_two_packs_and_windows_line_endings(self):
         expected = copy.deepcopy(self.base)
         admit_distributor_packs(expected, self.root)
-        self.assertEqual((len(expected['entities']),len(expected['observations'])), (30,69))
+        self.assertEqual((len(expected['entities']),len(expected['observations'])), (36,93))
         self.assertEqual(set(expected['games']), {'skyrim-se','sims4'})
         self.assertEqual(len(expected['sources']),4)
         for name in PINS:
@@ -66,8 +66,8 @@ class DistributorPacks(unittest.TestCase):
         self.base['entities']=[prior.copy()]
         admit_distributor_packs(self.base,self.root)
         self.assertEqual([x for x in self.base['entities'] if x['id']==prior['id']],[prior])
-        self.assertEqual(len(self.base['entities']),30)
-        self.assertEqual(len(self.base['observations']),69)
+        self.assertEqual(len(self.base['entities']),36)
+        self.assertEqual(len(self.base['observations']),93)
 
     def test_casefold_collision_and_exact_observation_collision_fail_closed(self):
         old={'id':'github:creator:POWEROF3','kind':'creator','game_id':'skyrim-se','name':'unknown'}
@@ -167,3 +167,56 @@ class DistributorPacks(unittest.TestCase):
             self.assertEqual(relation['target_scope'], {
                 'game_id': 'skyrim-se', 'mod_version': None, 'file_id': None, 'runtime': None,
             })
+
+    def test_lot51_projects_keep_exact_author_scope_and_pack_roles(self):
+        admit_distributor_packs(self.base, self.root)
+        prefix = 'lot51:project:'
+        expected = {
+            'simzlink': ('1.10.5', '2026-07-21', '>= 1.27'),
+            'flicbuster': ('2.2', '2025-07-03', '>= 1.27'),
+            'smarter-phone-use': ('2.2.1', '2026-02-27', '>= 1.27'),
+            'telephone': ('1.0.4', '2026-03-23', '>= 1.40.1'),
+            'free-range': ('1.8.2', '2026-03-20', '>= 1.27'),
+            'bug-life': ('3.1', '2025-07-02', '>= 1.27'),
+        }
+        scope = {prefix + slug for slug in expected}
+        self.assertEqual({x['id'] for x in self.base['entities']} & scope, scope)
+        rows = {}
+        for o in self.base['observations']:
+            if o['entity_id'] in scope:
+                rows.setdefault(o['entity_id'].removeprefix(prefix), {})[o['predicate']] = o
+        edges = {}
+        for slug, (version, release, minimum) in expected.items():
+            found = rows[slug]
+            self.assertEqual(set(found), {'creator', 'public_release', 'compatibility',
+                                          'mod.relationships.v1'})
+            self.assertTrue(all(o['source_url'] == 'https://lot51.cc/mods/' + slug
+                                and o['source_id'] == 'sims4-lot51-official'
+                                for o in found.values()))
+            read = lambda predicate: json.loads(found[predicate]['value'])
+            self.assertEqual(read('creator')['creator_id'], 'lot51:creator')
+            self.assertEqual((read('public_release')['version'], read('public_release')['released_date']),
+                             (version, release))
+            self.assertIsNone(read('public_release')['download_endpoint'])
+            self.assertIs(read('compatibility')['independently_tested'], False)
+            self.assertEqual(read('compatibility')['game_build'], '1.129.39')
+            payload = read('mod.relationships.v1')
+            self.assertEqual(payload['none_evidence'], {})
+            self.assertTrue(all(v == 'partial' for v in payload['coverage'].values()))
+            core, *other = payload['relationships']
+            self.assertEqual((core['target_id'], core['relation'], core['version_constraint']),
+                             (prefix + 'core-library', 'required', minimum))
+            self.assertTrue(all(rel['evidence']['location'] for rel in payload['relationships']))
+            edges[slug] = other
+        self.assertEqual([(r['label'], r['relation'], r['target_id']) for r in edges['flicbuster']],
+                         [('Movie Hangout Stuff (EA pack)', 'required', None),
+                          ('Simzlink', 'works_with', prefix + 'simzlink')])
+        self.assertEqual([(r['label'], r['relation'], r['target_id']) for r in edges['free-range']],
+                         [('Cottage Living (EA pack)', 'required', None)])
+        self.assertEqual({(r['label'], r['relation'], r['target_id']) for r in edges['bug-life']},
+                         {(x + ' (EA pack)', 'optional', None)
+                          for x in ('Outdoor Retreat', 'Seasons', 'Eco Lifestyle')})
+        self.assertIsNone(edges['smarter-phone-use'][1]['target_id'])
+        self.assertIn('High School Years', edges['smarter-phone-use'][1]['condition'])
+        self.assertTrue(all(r['relation'] == 'works_with' and r['condition']
+                            for slug in ('telephone', 'smarter-phone-use') for r in edges[slug]))
