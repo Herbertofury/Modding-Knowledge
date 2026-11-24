@@ -2,7 +2,7 @@
   "scope": "Two explicitly reviewed public factual projections only. No provider connectivity or distribution rights.",
   "packs": {
     "skyrim-se-distributors-reviewed.json": {
-      "sha256_lf": "37e1d46e52a4225a561f774edae08b684f3f6d7739f034dc8b3feabb393dd1ae",
+      "sha256_lf": "a6257a44746a57e92121fade8399beacb7b435b1db280c6b3c2a030fcb6f8fdf",
       "sources": {
         "skyrim-se-distributors-reviewed-github-facts": {
           "policy_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",

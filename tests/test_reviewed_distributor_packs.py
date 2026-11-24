@@ -36,7 +36,7 @@ class DistributorPacks(unittest.TestCase):
     def test_exact_two_packs_and_windows_line_endings(self):
         expected = copy.deepcopy(self.base)
         admit_distributor_packs(expected, self.root)
-        self.assertEqual((len(expected['entities']),len(expected['observations'])), (50,127))
+        self.assertEqual((len(expected['entities']),len(expected['observations'])), (59,145))
         self.assertEqual(set(expected['games']), {'skyrim-se','sims4'})
         self.assertEqual(len(expected['sources']),4)
         for name in PINS:
@@ -66,8 +66,8 @@ class DistributorPacks(unittest.TestCase):
         self.base['entities']=[prior.copy()]
         admit_distributor_packs(self.base,self.root)
         self.assertEqual([x for x in self.base['entities'] if x['id']==prior['id']],[prior])
-        self.assertEqual(len(self.base['entities']),50)
-        self.assertEqual(len(self.base['observations']),127)
+        self.assertEqual(len(self.base['entities']),59)
+        self.assertEqual(len(self.base['observations']),145)
 
     def test_casefold_collision_and_exact_observation_collision_fail_closed(self):
         old={'id':'github:creator:POWEROF3','kind':'creator','game_id':'skyrim-se','name':'unknown'}
@@ -167,6 +167,61 @@ class DistributorPacks(unittest.TestCase):
             self.assertEqual(relation['target_scope'], {
                 'game_id': 'skyrim-se', 'mod_version': None, 'file_id': None, 'runtime': None,
             })
+
+    def test_skyrim_sound_string_and_model_distributors_keep_runtime_roles_distinct(self):
+        admit_distributor_packs(self.base, self.root)
+        short = {
+            'original': 'github:Thiago099/Model-Swapper',
+            'port': 'github:DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update',
+            'srd': 'github:doodlum/skyrim-srd',
+            'dsd': 'github:SkyHorizon3/SSE-Dynamic-String-Distributor',
+            'list': 'github:Eudalus/LeveledListObjectSwapper',
+        }
+        rows = {(r['entity_id'], r['predicate']): r for r in self.base['observations']
+                if r['entity_id'] in short.values()}
+        self.assertTrue(all((eid, 'reviewed.project_attribution') in rows for eid in short.values()))
+        self.assertNotIn((short['original'], 'mod.relationships.v1'), rows)
+        projects = {name: json.loads(rows[eid, 'reviewed.project_attribution']['value'])['project']
+                    for name, eid in short.items()}
+        original_tag = projects['original']['github_release']
+        self.assertEqual((original_tag['tag'], original_tag['attached_assets_reported']), ('1.3', 0))
+        self.assertEqual(projects['port']['upstream_reference']['entity_id'], short['original'])
+        self.assertEqual(projects['port']['documented_primary_target']['runtime'], '1.7.104.0')
+        self.assertEqual(projects['srd']['source_build_version']['value'], '1.5.3')
+        self.assertTrue(all(p['version'] is None and p['release_date'] is None for p in projects.values()))
+
+        edges = {}
+        for name in ('port', 'srd', 'dsd', 'list'):
+            row = rows[short[name], 'mod.relationships.v1']
+            self.assertEqual((row['applicable_build'], row['mod_version'], row['completeness']),
+                             ('unverified', 'unverified', 'partial'))
+            self.assertIn('/blob/', row['source_url'])
+            value = json.loads(row['value'])
+            self.assertEqual(value['none_evidence'], {})
+            self.assertTrue(all(x['basis'] == 'explicit' and x['evidence']['location']
+                                for x in value['relationships']))
+            edges[name] = {e['label']: e for e in value['relationships']}
+
+        upstream = edges['port']['Model Swapper (Thiago099)']
+        self.assertEqual((upstream['target_id'], upstream['relation']), (short['original'], 'related'))
+        assets = edges['port']['Original Model Swapper configuration and swap definitions']
+        self.assertEqual((assets['target_id'], assets['relation']), (None, 'required'))
+        self.assertIn('do not require the original DLL', assets['condition'])
+        skse = edges['port']['SKSE64']
+        self.assertEqual((skse['version_constraint'], skse['target_scope']['runtime']),
+                         ('=2.3.1', '1.7.104.0'))
+        addr = edges['port']['Address Library for SKSE Plugins']
+        self.assertIsNone(addr['target_scope']['file_id'])
+        self.assertIsNone(addr['version_constraint'])
+        for name in ('srd', 'dsd'):
+            self.assertEqual(set(edges[name]), {'MergeMapper'})
+            edge = edges[name]['MergeMapper']
+            self.assertEqual(edge['relation'], 'works_with')
+            self.assertIsNone(edge['target_id'])
+        library, = edges['list'].values()
+        self.assertEqual((library['relation'], library['raw_relation']), ('required', 'Needed for SE/AE'))
+        self.assertIn('VR library is outside', library['condition'])
+        self.assertIsNone(library['target_scope']['runtime'])
 
     def test_lot51_projects_keep_exact_author_scope_and_pack_roles(self):
         admit_distributor_packs(self.base, self.root)
