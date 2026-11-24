@@ -29561,6 +29561,19 @@
       "policy_revision": "reviewed-public-facts-2026-11-14"
     },
     {
+      "id": "github:powerof3/BaseObjectSwapper:20261124:mod.relationships.v1:address-library",
+      "entity_id": "github:powerof3/BaseObjectSwapper",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/BaseObjectSwapper/blob/28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb/README.md",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Address Library for SKSE\",\"relation\":\"required\",\"raw_relation\":\"Needed for SSE/AE\",\"version_constraint\":null,\"condition\":\"Only for desktop Skyrim SSE/AE, as explicitly listed. The separately listed VR library is outside the scope of this observation.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"User Requirements\",\"quote\":\"Needed for SSE/AE\",\"location\":\"README lines 22–23\"}}]}",
+      "observed_unix": 1795522839,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
       "id": "github:powerof3/BaseObjectSwapper:20261124:reviewed.project_attribution",
       "entity_id": "github:powerof3/BaseObjectSwapper",
       "source_id": "skyrim-se-distributors-reviewed-github-facts",
@@ -29568,6 +29581,19 @@
       "predicate": "reviewed.project_attribution",
       "value": "{\"creator_id\":\"github:creator:powerof3\",\"project\":{\"name\":\"Base Object Swapper\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/powerof3/BaseObjectSwapper\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"Runtime base-form swaps. Upstream separates desktop and VR packages.\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"distribution_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/60805\",\"distribution_evidence\":{\"kind\":\"upstream README link; destination and files not accessed\",\"url\":\"https://github.com/powerof3/BaseObjectSwapper/blob/28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb/README.md\"},\"separate_vr_page\":{\"url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/61734\",\"scope\":\"Separate upstream-linked edition, not merged with this Skyrim SE entity; compatibility not evaluated.\"}},\"evidence\":{\"url\":\"https://github.com/powerof3/BaseObjectSwapper/blob/28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb/README.md\",\"repository_id\":\"441953497\",\"commit\":\"28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb\",\"blob\":\"beeb8f859f4f72c79e54c51b6408007c3e86e8c6\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
       "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:powerof3/Keyword-Item-Distributor:20261124:mod.relationships.v1:address-library",
+      "entity_id": "github:powerof3/Keyword-Item-Distributor",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/Keyword-Item-Distributor/blob/99adaaa1d8cefe320524802b57e91723f66b1c7c/README.md",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Address Library for SKSE\",\"relation\":\"required\",\"raw_relation\":\"Needed for SSE\",\"version_constraint\":null,\"condition\":\"Only desktop Skyrim SSE is established by this source; AE is not stated. The separately listed VR library is outside the scope of this observation.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"User Requirements\",\"quote\":\"Needed for SSE\",\"location\":\"README lines 19–20\"}}]}",
+      "observed_unix": 1795522839,
       "applicable_build": "unverified",
       "mod_version": "unverified",
       "completeness": "partial",
@@ -29587,6 +29613,19 @@
       "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
     },
     {
+      "id": "github:powerof3/SeasonsOfSkyrim:20261124:mod.relationships.v1:address-library",
+      "entity_id": "github:powerof3/SeasonsOfSkyrim",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/SeasonsOfSkyrim/blob/89837a27849c97a9f91d01f2911d14b49bef2662/README.md",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Address Library for SKSE\",\"relation\":\"required\",\"raw_relation\":\"Needed for SSE/AE\",\"version_constraint\":null,\"condition\":\"Only for desktop Skyrim SSE/AE, as explicitly listed. The separately listed VR library is outside the scope of this observation.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"User Requirements\",\"quote\":\"Needed for SSE/AE\",\"location\":\"README lines 23–24\"}}]}",
+      "observed_unix": 1795522839,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
       "id": "github:powerof3/SeasonsOfSkyrim:20261124:reviewed.project_attribution",
       "entity_id": "github:powerof3/SeasonsOfSkyrim",
       "source_id": "skyrim-se-distributors-reviewed-github-facts",
@@ -29594,6 +29633,19 @@
       "predicate": "reviewed.project_attribution",
       "value": "{\"creator_id\":\"github:creator:powerof3\",\"project\":{\"name\":\"Seasons of Skyrim\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/powerof3/SeasonsOfSkyrim\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"Adds dynamic seasons using model/LOD swaps and snow coverage. Upstream separates desktop and VR packages.\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"distribution_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/62861\",\"distribution_evidence\":{\"kind\":\"upstream README link; destination and files not accessed\",\"url\":\"https://github.com/powerof3/SeasonsOfSkyrim/blob/89837a27849c97a9f91d01f2911d14b49bef2662/README.md\"},\"separate_vr_page\":{\"url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/63593\",\"scope\":\"Separate upstream-linked edition, not merged with this Skyrim SE entity; compatibility not evaluated.\"}},\"evidence\":{\"url\":\"https://github.com/powerof3/SeasonsOfSkyrim/blob/89837a27849c97a9f91d01f2911d14b49bef2662/README.md\",\"repository_id\":\"451625279\",\"commit\":\"89837a27849c97a9f91d01f2911d14b49bef2662\",\"blob\":\"c6ba3207045961b7efc7c41cd0e9c4500e8794f7\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
       "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:powerof3/Spell-Perk-Item-Distributor:20261124:mod.relationships.v1:address-library",
+      "entity_id": "github:powerof3/Spell-Perk-Item-Distributor",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/Spell-Perk-Item-Distributor/blob/105725c1318c7740b406c34ae7225e3973a7398e/README.md",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Address Library for SKSE\",\"relation\":\"required\",\"raw_relation\":\"Needed for SSE\",\"version_constraint\":null,\"condition\":\"Only desktop Skyrim SSE is established by this source; AE is not stated. The separately listed VR library is outside the scope of this observation.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"User Requirements\",\"quote\":\"Needed for SSE\",\"location\":\"README lines 22–23\"}}]}",
+      "observed_unix": 1795522839,
       "applicable_build": "unverified",
       "mod_version": "unverified",
       "completeness": "partial",
