@@ -36,7 +36,7 @@ class DistributorPacks(unittest.TestCase):
     def test_exact_two_packs_and_windows_line_endings(self):
         expected = copy.deepcopy(self.base)
         admit_distributor_packs(expected, self.root)
-        self.assertEqual((len(expected['entities']),len(expected['observations'])), (30,65))
+        self.assertEqual((len(expected['entities']),len(expected['observations'])), (30,69))
         self.assertEqual(set(expected['games']), {'skyrim-se','sims4'})
         self.assertEqual(len(expected['sources']),4)
         for name in PINS:
@@ -67,7 +67,7 @@ class DistributorPacks(unittest.TestCase):
         admit_distributor_packs(self.base,self.root)
         self.assertEqual([x for x in self.base['entities'] if x['id']==prior['id']],[prior])
         self.assertEqual(len(self.base['entities']),30)
-        self.assertEqual(len(self.base['observations']),65)
+        self.assertEqual(len(self.base['observations']),69)
 
     def test_casefold_collision_and_exact_observation_collision_fail_closed(self):
         old={'id':'github:creator:POWEROF3','kind':'creator','game_id':'skyrim-se','name':'unknown'}
@@ -109,7 +109,8 @@ class DistributorPacks(unittest.TestCase):
         admit_distributor_packs(self.base, self.root)
         source = 'skyrim-se-distributors-reviewed-github-facts'
         rows = {r['entity_id']: r for r in self.base['observations']
-                if r['predicate'] == 'mod.relationships.v1' and r['source_id'] == source}
+                if r['predicate'] == 'mod.relationships.v1' and r['source_id'] == source
+                and r['id'].endswith(':mod.relationships.v1')}
         boutique = 'github:aglowinthefield/boutique'
         studio = 'github:Jrollsons/skypatcher-studio'
         oif = 'github:arachnocid/ObjectImpactFramework'
@@ -133,3 +134,36 @@ class DistributorPacks(unittest.TestCase):
         self.assertTrue(all('exported patch in-game' in x['condition'] for x in relations[studio]))
         self.assertEqual([(x['label'], x['target_id']) for x in relations[oif]], [('Grab And Throw', None)])
         self.assertIn('Throw event', relations[oif][0]['condition'])
+
+
+    def test_skyrim_desktop_address_library_preserves_edition_limits(self):
+        admit_distributor_packs(self.base, self.root)
+        root = 'github:powerof3/'
+        expected = {
+            root + 'BaseObjectSwapper': 'Needed for SSE/AE',
+            root + 'SeasonsOfSkyrim': 'Needed for SSE/AE',
+            root + 'Keyword-Item-Distributor': 'Needed for SSE',
+            root + 'Spell-Perk-Item-Distributor': 'Needed for SSE',
+        }
+        rows = {r['entity_id']: r for r in self.base['observations']
+                if r['predicate'] == 'mod.relationships.v1'
+                and r['id'].endswith(':address-library')}
+        self.assertEqual(set(rows), set(expected))
+        for entity, requirement in expected.items():
+            r = rows[entity]
+            self.assertEqual((r['applicable_build'], r['mod_version'], r['completeness']),
+                             ('unverified', 'unverified', 'partial'))
+            p = json.loads(r['value'])
+            self.assertEqual(p['coverage'], {'required': 'partial'})
+            self.assertEqual(p['none_evidence'], {})
+            relation, = p['relationships']
+            self.assertEqual(relation['raw_relation'], requirement)
+            self.assertEqual(relation['evidence']['quote'], requirement)
+            self.assertEqual(relation['label'], 'Address Library for SKSE')
+            self.assertEqual((relation['relation'], relation['basis']), ('required', 'explicit'))
+            self.assertIn('VR library is outside', relation['condition'])
+            self.assertIsNone(relation['version_constraint'])
+            self.assertIsNone(relation['target_id'])
+            self.assertEqual(relation['target_scope'], {
+                'game_id': 'skyrim-se', 'mod_version': None, 'file_id': None, 'runtime': None,
+            })
