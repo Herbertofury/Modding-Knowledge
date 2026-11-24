@@ -36,7 +36,7 @@ class DistributorPacks(unittest.TestCase):
     def test_exact_two_packs_and_windows_line_endings(self):
         expected = copy.deepcopy(self.base)
         admit_distributor_packs(expected, self.root)
-        self.assertEqual((len(expected['entities']),len(expected['observations'])), (42,111))
+        self.assertEqual((len(expected['entities']),len(expected['observations'])), (50,127))
         self.assertEqual(set(expected['games']), {'skyrim-se','sims4'})
         self.assertEqual(len(expected['sources']),4)
         for name in PINS:
@@ -66,8 +66,8 @@ class DistributorPacks(unittest.TestCase):
         self.base['entities']=[prior.copy()]
         admit_distributor_packs(self.base,self.root)
         self.assertEqual([x for x in self.base['entities'] if x['id']==prior['id']],[prior])
-        self.assertEqual(len(self.base['entities']),42)
-        self.assertEqual(len(self.base['observations']),111)
+        self.assertEqual(len(self.base['entities']),50)
+        self.assertEqual(len(self.base['observations']),127)
 
     def test_casefold_collision_and_exact_observation_collision_fail_closed(self):
         old={'id':'github:creator:POWEROF3','kind':'creator','game_id':'skyrim-se','name':'unknown'}
@@ -263,3 +263,48 @@ class DistributorPacks(unittest.TestCase):
         self.assertIn('No string woohoo setting enabled', conflict['condition'])
         self.assertIsNone(conflict['target_id'])
         self.assertIsNone(conflict['version_constraint'])
+
+    def test_adeepindigo_health_roles_preserve_source_conditions(self):
+        admit_distributor_packs(self.base, self.root)
+        pre = 'adeepindigo:project:'
+        expected = {
+            'cosmetic-enhancements': 5, 'dental-care': 7, 'divergent-sims': 4,
+            'eye-care': 2, 'family-therapy': 5, 'healthy-living': 2,
+            'personal-care-services': 4, 'personal-sim-hygiene': 5,
+        }
+        entities = {x['id'] for x in self.base['entities']}
+        self.assertTrue({pre + s for s in expected} <= entities)
+        selected = {}
+        for row in self.base['observations']:
+            key = row['entity_id'].removeprefix(pre)
+            if key not in expected:
+                continue
+            self.assertEqual(row['source_id'], 'sims4-adeepindigo-official')
+            self.assertEqual(row['source_url'], 'https://adeepindigomods.itch.io/' + key)
+            self.assertEqual((row['mod_version'], row['applicable_build'], row['completeness']),
+                             ('unverified', 'unverified', 'partial'))
+            selected.setdefault(key, {})[row['predicate']] = json.loads(row['value'])
+        self.assertEqual(set(selected), set(expected))
+        relationships = {}
+        for key, facts in selected.items():
+            self.assertEqual(set(facts), {'creator', 'mod.relationships.v1'})
+            self.assertEqual(facts['creator']['creator_id'], 'adeepindigo:creator')
+            v = facts['mod.relationships.v1']
+            self.assertEqual(v['none_evidence'], {})
+            self.assertTrue(all(x == 'partial' for x in v['coverage'].values()))
+            self.assertEqual(len(v['relationships']), expected[key])
+            self.assertTrue(all(r['evidence']['location'] and not r['version_constraint']
+                                and (not r['target_id'] or r['target_id'] in entities)
+                                for r in v['relationships']))
+            relationships[key] = v['relationships']
+        hygiene_conflict, = (r for r in relationships['personal-sim-hygiene'] if r['relation'] == 'incompatible')
+        self.assertEqual(hygiene_conflict['target_id'], pre + 'dental-care')
+        self.assertIn('Only applies when', hygiene_conflict['condition'])
+        self.assertIn('dental hygiene package', hygiene_conflict['condition'])
+        self.assertEqual({r['label'] for r in relationships['dental-care'] if r['relation'] == 'incompatible'},
+                         {'Brush the Taste Away', 'Faster Teeth Brushing'})
+        self.assertEqual({r['label'] for r in relationships['family-therapy'] if r['relation'] == 'required'},
+                         {'The Mood Pack Mod', 'General Pie Menus (Shared Utilities component)'})
+        self.assertTrue(all(r['condition'] for r in relationships['family-therapy'] if r['relation'] == 'works_with'))
+        self.assertEqual({r['relation'] for r in relationships['eye-care']}, {'works_with'})
+        self.assertEqual(sum(r['relation'] == 'optional' for r in relationships['personal-care-services']), 3)
