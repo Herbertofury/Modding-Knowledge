@@ -41,7 +41,11 @@ class DistributorPacks(unittest.TestCase):
         self.assertEqual(len(expected['sources']),4)
         for name in PINS:
             file=self.root/'data'/name
-            file.write_bytes(file.read_bytes().replace(b'\n', b'\r\n'))
+            lf = file.read_bytes().replace(b'\r\n', b'\n')
+            crlf = lf.replace(b'\n', b'\r\n')
+            self.assertIn(b'\r\n', crlf)
+            self.assertNotIn(b'\r\r\n', crlf)
+            file.write_bytes(crlf)
         admit_distributor_packs(self.base, self.root)
         self.assertEqual(self.base, expected)
 
