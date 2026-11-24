@@ -1,8 +1,8 @@
 {
-  "creator_accounts": 11,
-  "dataset_sha256": "5c091b083589bacb5ed72700f2409f9232badd7dcc28c7a8d2a3fe4295edd07c",
-  "last_attempt_at": "2026-11-24T21:25:23.874754+00:00",
-  "last_success_at": "2026-11-24T21:25:23.874754+00:00",
+  "creator_accounts": 10,
+  "dataset_sha256": "adbf3709db7944c1a8486f0cd2146298322d9af529f575786aeed1d4beabd03d",
+  "last_attempt_at": "2026-11-24T22:25:09.652360+00:00",
+  "last_success_at": "2026-11-24T22:25:09.652360+00:00",
   "outcome": "success",
   "project_count": 7,
   "requests": 14
