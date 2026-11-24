@@ -1,6 +1,6 @@
 {
   "schema": "athena-reviewed-observations-v1",
-  "scope": "Twenty-four public project records and three creator identities. Release labels/compatibility and mod relationships are creator statements observed 2026-11-24, not full catalogs or independent tests.",
+  "scope": "Thirty-two public project records and three creator identities. Release labels/compatibility and mod relationships are creator statements observed 2026-11-24, not full catalogs or independent tests.",
   "games": {
     "sims4": "The Sims 4"
   },
@@ -176,6 +176,54 @@
       "game_id": "sims4",
       "kind": "mod",
       "name": "LGBTQIA+ / Gender & Orientation Overhaul"
+    },
+    {
+      "id": "adeepindigo:project:cosmetic-enhancements",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Cosmetic Enhancements"
+    },
+    {
+      "id": "adeepindigo:project:dental-care",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Dental Care"
+    },
+    {
+      "id": "adeepindigo:project:divergent-sims",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Divergent Sims"
+    },
+    {
+      "id": "adeepindigo:project:eye-care",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Eye Care"
+    },
+    {
+      "id": "adeepindigo:project:family-therapy",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Family Therapy"
+    },
+    {
+      "id": "adeepindigo:project:healthy-living",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Healthy Living"
+    },
+    {
+      "id": "adeepindigo:project:personal-care-services",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Personal Care Services"
+    },
+    {
+      "id": "adeepindigo:project:personal-sim-hygiene",
+      "game_id": "sims4",
+      "kind": "mod",
+      "name": "Personal Sim Hygiene"
     }
   ],
   "observations": [
@@ -1214,6 +1262,214 @@
       "predicate": "mod.relationships.v1",
       "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"incompatible\":\"partial\",\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"McWooHoo\",\"relation\":\"incompatible\",\"raw_relation\":\"one setting is incompatible\",\"version_constraint\":null,\"condition\":\"Only with McWooHoo’s No string woohoo setting enabled; the author says to turn off that setting, not remove all of McWooHoo or MCCC.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"One setting is incompatible\",\"location\":\"reader lines 795–799\"}},{\"target_id\":null,\"label\":\"Wonderful Whims\",\"relation\":\"works_with\",\"raw_relation\":\"orientation interoperability\",\"version_constraint\":null,\"condition\":\"Sexual attraction can use the orientations, but the author says this integration reads CAS gender and does not use the mod’s gender identities.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"see ONLY the CAS gender\",\"location\":\"reader lines 801–803\"}},{\"target_id\":null,\"label\":\"Wicked Whims\",\"relation\":\"works_with\",\"raw_relation\":\"orientation interoperability\",\"version_constraint\":null,\"condition\":\"Sexual attraction can use the orientations, but the author says this integration reads CAS gender and does not use the mod’s gender identities.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"see ONLY the CAS gender\",\"location\":\"reader lines 801–803\"}}]}",
       "observed_unix": 1795531341,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:cosmetic-enhancements:20261124:creator",
+      "entity_id": "adeepindigo:project:cosmetic-enhancements",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/cosmetic-enhancements",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"adeepindigo:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://adeepindigomods.itch.io/cosmetic-enhancements\",\"provider_project_slug\":\"cosmetic-enhancements\",\"summary\":\"Adds elective body and face changes as in-game cosmetic appointments.\"}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:cosmetic-enhancements:20261124:mod.relationships.v1",
+      "entity_id": "adeepindigo:project:cosmetic-enhancements",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/cosmetic-enhancements",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"optional\":\"partial\",\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installation Instructions\",\"quote\":\"Core Library\",\"location\":\"reader line 25\"}},{\"target_id\":\"lumpinou:project:the-mood-pack-mod\",\"label\":\"The Mood Pack Mod\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installation Instructions\",\"quote\":\"is required for the mod to work\",\"location\":\"reader line 26\"}},{\"target_id\":\"adeepindigo:project:utility-mods\",\"label\":\"General Pie Menus (Shared Utilities component)\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":\"Only the named General Pie Menus component is referenced; not the entire utility collection.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installation Instructions\",\"quote\":\"general pie menus\",\"location\":\"reader line 27\"}},{\"target_id\":null,\"label\":\"Always Testing + Always Full Edit Mode\",\"relation\":\"optional\",\"raw_relation\":\"recommended only\",\"version_constraint\":null,\"condition\":\"Suggested by the author for creating the cosmetic surgery changes without enabling the two cheats manually.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installation Instructions\",\"quote\":\"aren't necessarily required\",\"location\":\"reader line 28\"}},{\"target_id\":null,\"label\":\"Spooky Stuff (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"feature or animation only\",\"version_constraint\":null,\"condition\":\"Changes medication animation availability; absence does not make the mod a DLC dependency.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installation Instructions\",\"quote\":\"Spooky Stuff, but it is not required\",\"location\":\"reader line 28\"}}]}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:dental-care:20261124:creator",
+      "entity_id": "adeepindigo:project:dental-care",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/dental-care",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"adeepindigo:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://adeepindigomods.itch.io/dental-care\",\"provider_project_slug\":\"dental-care\",\"summary\":\"Adds dental hygiene, conditions, appointments and treatment gameplay.\"}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:dental-care:20261124:mod.relationships.v1",
+      "entity_id": "adeepindigo:project:dental-care",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/dental-care",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"incompatible\":\"partial\",\"optional\":\"partial\",\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lumpinou:project:the-mood-pack-mod\",\"label\":\"The Mood Pack Mod\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"Mood Pack. Link below\",\"location\":\"reader line 72\"}},{\"target_id\":\"adeepindigo:project:utility-mods\",\"label\":\"General Pie Menus (Shared Utilities component)\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":\"Only the named General Pie Menus component is referenced; not the entire utility collection.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Download Instruction\",\"quote\":\"General Pie menus\",\"location\":\"reader line 96\"}},{\"target_id\":null,\"label\":\"Sandy’s Dental Care objects\",\"relation\":\"required\",\"raw_relation\":\"functional dental care items\",\"version_constraint\":null,\"condition\":\"The author lists these objects for functional dental items; package identity, delivery URL and permission were not verified.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Download Instruction\",\"quote\":\"Required for functional dental care items\",\"location\":\"reader line 87\"}},{\"target_id\":null,\"label\":\"Faster Teeth Brushing\",\"relation\":\"incompatible\",\"raw_relation\":\"will conflict with\",\"version_constraint\":null,\"condition\":\"Author states incompatibility with the named faster brushing mod in the context of the shared brushing override.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"Faster Teeth Brushing\",\"location\":\"reader line 76\"}},{\"target_id\":null,\"label\":\"Brush the Taste Away\",\"relation\":\"incompatible\",\"raw_relation\":\"will conflict with\",\"version_constraint\":null,\"condition\":\"Author names this brushing mod in its conflict list; exact versions and files are unverified.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"Brush the Taste Away\",\"location\":\"reader line 76\"}},{\"target_id\":null,\"label\":\"Spooky Stuff (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"feature or animation only\",\"version_constraint\":null,\"condition\":\"Listed as a recommended pack for medication animations, not a mod-wide requirement.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"Spooky Stuff\",\"location\":\"reader line 80\"}},{\"target_id\":null,\"label\":\"GTW (EA pack; author shorthand)\",\"relation\":\"optional\",\"raw_relation\":\"feature or animation only\",\"version_constraint\":null,\"condition\":\"Listed for medication animations, not a mod-wide requirement.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"GTW\",\"location\":\"reader line 80\"}}]}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:divergent-sims:20261124:creator",
+      "entity_id": "adeepindigo:project:divergent-sims",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/divergent-sims",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"adeepindigo:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://adeepindigomods.itch.io/divergent-sims\",\"provider_project_slug\":\"divergent-sims\",\"summary\":\"Adds Sim health and neurodivergent gameplay through selectable modules.\"}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:divergent-sims:20261124:mod.relationships.v1",
+      "entity_id": "adeepindigo:project:divergent-sims",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/divergent-sims",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"optional\":\"partial\",\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Divergent Sims core package and script\",\"relation\":\"required\",\"raw_relation\":\"core required file\",\"version_constraint\":null,\"condition\":\"Author installation step requires this project’s own core package and script; no separate download is asserted.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installation Instructions\",\"quote\":\"core required file\",\"location\":\"reader line 199\"}},{\"target_id\":\"lumpinou:project:the-mood-pack-mod\",\"label\":\"The Mood Pack Mod\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installation Instructions\",\"quote\":\"is required for the mod to work\",\"location\":\"reader line 203\"}},{\"target_id\":\"adeepindigo:project:utility-mods\",\"label\":\"General Pie Menus (Shared Utilities component)\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":\"Only the named General Pie Menus component is referenced; not the entire utility collection.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installation Instructions\",\"quote\":\"general pie menus\",\"location\":\"reader line 205\"}},{\"target_id\":null,\"label\":\"Spooky Stuff (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"feature or animation only\",\"version_constraint\":null,\"condition\":\"The author says the public variant has medication animation from this pack; the Patreon variant uses different animations. No version or binary identity asserted.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements\",\"quote\":\"Spooky Stuff, but it is not required\",\"location\":\"reader line 193\"}}]}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:eye-care:20261124:creator",
+      "entity_id": "adeepindigo:project:eye-care",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/eye-care",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"adeepindigo:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://adeepindigomods.itch.io/eye-care\",\"provider_project_slug\":\"eye-care\",\"summary\":\"Adds diagnosis, exams and corrective care for Sims’ eye conditions.\"}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:eye-care:20261124:mod.relationships.v1",
+      "entity_id": "adeepindigo:project:eye-care",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/eye-care",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Private Practice\",\"relation\":\"works_with\",\"raw_relation\":\"does not conflict\",\"version_constraint\":null,\"condition\":\"Author lists this as a non-conflicting pair on the project page, without exact versions.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"Private Practice\",\"location\":\"reader line 45\"}},{\"target_id\":null,\"label\":\"SOL (author shorthand)\",\"relation\":\"works_with\",\"raw_relation\":\"does not conflict\",\"version_constraint\":null,\"condition\":\"Author’s abbreviation retained without assigning a provider or version. This is not a tested compatibility claim.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"Private Practice or SOL\",\"location\":\"reader line 45\"}}]}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:family-therapy:20261124:creator",
+      "entity_id": "adeepindigo:project:family-therapy",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/family-therapy",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"adeepindigo:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://adeepindigomods.itch.io/family-therapy\",\"provider_project_slug\":\"family-therapy\",\"summary\":\"Adds household family therapy consultations and sessions.\"}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:family-therapy:20261124:mod.relationships.v1",
+      "entity_id": "adeepindigo:project:family-therapy",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/family-therapy",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\",\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"adeepindigo:project:utility-mods\",\"label\":\"General Pie Menus (Shared Utilities component)\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":\"Only the named General Pie Menus component is referenced; not the entire utility collection.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements\",\"quote\":\"general pie menu package\",\"location\":\"reader line 80\"}},{\"target_id\":\"lumpinou:project:the-mood-pack-mod\",\"label\":\"The Mood Pack Mod\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements\",\"quote\":\"Mood Pack\",\"location\":\"reader line 80\"}},{\"target_id\":\"adeepindigo:project:healthcare-redux\",\"label\":\"Healthcare Redux\",\"relation\":\"works_with\",\"raw_relation\":\"diagnosis integration\",\"version_constraint\":null,\"condition\":\"The author names anxiety, postpartum depression and seasonal affective disorder as diagnosis inputs; Family Therapy does not supply diagnosis itself.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements preface\",\"quote\":\"from Healthcare Redux\",\"location\":\"reader line 77\"}},{\"target_id\":null,\"label\":\"Basemental Drugs\",\"relation\":\"works_with\",\"raw_relation\":\"diagnosis integration\",\"version_constraint\":null,\"condition\":\"The author names ADHD, lung cancer and addiction as inputs; this is not listed as a required dependency.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements preface\",\"quote\":\"Basemental Drugs\",\"location\":\"reader line 77\"}},{\"target_id\":null,\"label\":\"Lumpinou WHW Module 10\",\"relation\":\"works_with\",\"raw_relation\":\"separation-status integration\",\"version_constraint\":null,\"condition\":\"Reads separation status when that module is present; no exact current package identity or version asserted.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements preface\",\"quote\":\"WHW Module 10\",\"location\":\"reader line 77\"}}]}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:healthy-living:20261124:creator",
+      "entity_id": "adeepindigo:project:healthy-living",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/healthy-living",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"adeepindigo:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://adeepindigomods.itch.io/healthy-living\",\"provider_project_slug\":\"healthy-living\",\"summary\":\"Adds workout, nutrition and wellness services and objects.\"}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:healthy-living:20261124:mod.relationships.v1",
+      "entity_id": "adeepindigo:project:healthy-living",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/healthy-living",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"adeepindigo:project:utility-mods\",\"label\":\"General Pie Menus (Shared Utilities component)\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":\"Only the named General Pie Menus component is referenced; not the entire utility collection.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements and installation\",\"quote\":\"REQUIRED general pie menus\",\"location\":\"reader line 109\"}},{\"target_id\":null,\"label\":\"Healthy Living package, script and meshes\",\"relation\":\"required\",\"raw_relation\":\"install all parts\",\"version_constraint\":null,\"condition\":\"Author expects these three installation components for intended behavior; no archive or packaging arrangement verified.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installation\",\"quote\":\"Install all parts of the mod\",\"location\":\"reader line 111\"}}]}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:personal-care-services:20261124:creator",
+      "entity_id": "adeepindigo:project:personal-care-services",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/personal-care-services",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"adeepindigo:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://adeepindigomods.itch.io/personal-care-services\",\"provider_project_slug\":\"personal-care-services\",\"summary\":\"Adds in-game appointments for personal-care services.\"}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:personal-care-services:20261124:mod.relationships.v1",
+      "entity_id": "adeepindigo:project:personal-care-services",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/personal-care-services",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"optional\":\"partial\",\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"adeepindigo:project:utility-mods\",\"label\":\"General Pie Menus (Shared Utilities component)\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":\"Only the named General Pie Menus component is referenced; not the entire utility collection.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements\",\"quote\":\"General Pie menus\",\"location\":\"reader line 33\"}},{\"target_id\":null,\"label\":\"IL (EA pack; author shorthand)\",\"relation\":\"optional\",\"raw_relation\":\"feature or animation only\",\"version_constraint\":null,\"condition\":\"Tanning Salon becomes available with the pack identified as IL. The author says the base mod needs only the base game.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements\",\"quote\":\"the Tanning Salon will be available\",\"location\":\"reader line 33\"}},{\"target_id\":null,\"label\":\"Spa Day (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"feature or animation only\",\"version_constraint\":null,\"condition\":\"Enables spa and nail-salon services; not a mod-wide DLC dependency.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements\",\"quote\":\"all the spa and nail salon options\",\"location\":\"reader line 33\"}},{\"target_id\":null,\"label\":\"HSY (EA pack; author shorthand)\",\"relation\":\"optional\",\"raw_relation\":\"feature or animation only\",\"version_constraint\":null,\"condition\":\"Enables waxing and shaving services; not a mod-wide DLC dependency.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements\",\"quote\":\"waxing and shaving options\",\"location\":\"reader line 33\"}}]}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:personal-sim-hygiene:20261124:creator",
+      "entity_id": "adeepindigo:project:personal-sim-hygiene",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/personal-sim-hygiene",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"adeepindigo:creator\",\"role\":\"official site publisher\",\"project_url\":\"https://adeepindigomods.itch.io/personal-sim-hygiene\",\"provider_project_slug\":\"personal-sim-hygiene\",\"summary\":\"Adds personal and dental hygiene gameplay in separate modules.\"}",
+      "observed_unix": 1795536273,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "sims4-official-factual-links-2026-11-24"
+    },
+    {
+      "id": "adeepindigo:project:personal-sim-hygiene:20261124:mod.relationships.v1",
+      "entity_id": "adeepindigo:project:personal-sim-hygiene",
+      "source_id": "sims4-adeepindigo-official",
+      "source_url": "https://adeepindigomods.itch.io/personal-sim-hygiene",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"incompatible\":\"partial\",\"optional\":\"partial\",\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"lot51:project:core-library\",\"label\":\"Core Library\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"Core Library\",\"location\":\"reader line 20\"}},{\"target_id\":null,\"label\":\"Personal Sim Hygiene base package\",\"relation\":\"required\",\"raw_relation\":\"core required file\",\"version_constraint\":null,\"condition\":\"The author explicitly requires the project’s own base package.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Instructions\",\"quote\":\"core required file\",\"location\":\"reader line 23\"}},{\"target_id\":\"adeepindigo:project:dental-care\",\"label\":\"Dental Care\",\"relation\":\"incompatible\",\"raw_relation\":\"dental module conflict\",\"version_constraint\":null,\"condition\":\"Only applies when Personal Sim Hygiene’s dental hygiene package is present; not a whole-project incompatibility.\",\"target_scope\":{\"game_id\":\"sims4\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"dental hygiene package will conflict with Dental Care\",\"location\":\"reader line 20\"}},{\"target_id\":null,\"label\":\"Snowy Escape (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"feature or animation only\",\"version_constraint\":null,\"condition\":\"Body Hygiene animation only; the author explicitly says neither pack is required.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"Snowy Escape\",\"location\":\"reader line 20\"}},{\"target_id\":null,\"label\":\"High School Years (EA pack)\",\"relation\":\"optional\",\"raw_relation\":\"feature or animation only\",\"version_constraint\":null,\"condition\":\"Body Hygiene animation only; the author explicitly says neither pack is required.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Compatibility\",\"quote\":\"High School Years\",\"location\":\"reader line 20\"}}]}",
+      "observed_unix": 1795536273,
       "applicable_build": "unverified",
       "mod_version": "unverified",
       "completeness": "partial",
