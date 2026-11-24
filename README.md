@@ -27,6 +27,16 @@ The original snapshot has eight game namespaces and eight source scopes. It rema
 
 The latest snapshot now includes all **4,745 plugin metadata rows** from the reviewed LOOT Oblivion source commit `b3ffc84f6d730f6efb5083448d78611df16e8d78`, plus top-level context. This replaces the 100-row sample in the latest projection, not its preserved original artifact. Total current counts are in the latest validation manifest. This is complete coverage of that single source document, **not every mod or evaluated compatibility**. [Importer, provenance and limits](docs/loot-import.md). LOOT is not automatically refreshed yet.
 
+## Reviewed Skyrim SE and Sims 4 distributor records
+
+The canonical seed includes two bounded, independently reviewed source packs:
+[Skyrim SE distributor projects](docs/research/skyrim-se-distributors-2026-11-24.md) and
+[Sims 4 utility relationships](docs/research/sims4-utility-relationships-2026-11-24.md).
+These preserve author provenance, conditions, one-of choices, and unknowns.
+They are not a complete compatibility verdict, download list, or new provider
+refresh. The downloadable artifact is refreshed by the existing workflow; its
+validation receipt describes the snapshot that is actually available.
+
 ## Scoped Mod Health evidence
 
 The latest central database includes four source-attributed community warnings and two separate official release reports from six reviewed public GitHub documents. Claims retain exact version/build/runtime context, report and observation dates, provenance, authority type and uncertainty. The shared Rust query and read-only JSON CLI expose unknown, stale, partial and conflicting evidence without inventing compatibility or independent corroboration. [Contract, consumer example and limits](docs/mod-health-query.md) · [Reviewed source records](data/github-health-reviewed.json). This issue/release tranche is manually reviewed, not automatically refreshed or independently game-tested.

@@ -1,0 +1,43 @@
+{
+  "scope": "Two explicitly reviewed public factual projections only. No provider connectivity or distribution rights.",
+  "packs": {
+    "skyrim-se-distributors-reviewed.json": {
+      "sha256_lf": "e1f33ce5d5ca1d8bda12b624292d36fbcec6e8c8dc4d428e305cd543d01a4a36",
+      "sources": {
+        "skyrim-se-distributors-reviewed-github-facts": {
+          "policy_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+          "host": "github.com",
+          "revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24",
+          "allow_retain": true,
+          "allow_publish": true
+        }
+      }
+    },
+    "sims4-utility-relationships-reviewed.json": {
+      "sha256_lf": "bbad0e4599a103326be9ea5335d7e07df5b68b28c6216bbd590e72274a34940d",
+      "sources": {
+        "sims4-lot51-official": {
+          "policy_url": "https://lot51.cc/",
+          "host": "lot51.cc",
+          "revision": "sims4-official-factual-links-2026-11-24",
+          "allow_retain": true,
+          "allow_publish": true
+        },
+        "sims4-adeepindigo-official": {
+          "policy_url": "https://adeepindigomods.itch.io/",
+          "host": "adeepindigomods.itch.io",
+          "revision": "sims4-official-factual-links-2026-11-24",
+          "allow_retain": true,
+          "allow_publish": true
+        },
+        "sims4-lumpinou-official": {
+          "policy_url": "https://lumpinoumods.com/",
+          "host": "lumpinoumods.com",
+          "revision": "sims4-official-factual-links-2026-11-24",
+          "allow_retain": true,
+          "allow_publish": true
+        }
+      }
+    }
+  }
+}
