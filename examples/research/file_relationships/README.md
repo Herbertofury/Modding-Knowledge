@@ -31,7 +31,13 @@ ownership. Project-level declarations cannot be upgraded into exact-file evidenc
 without an actual file-scoped reference.
 
 Requirements, optional dependencies, works-with, conflicts and conditional
-load-after remain literal roles. Author statements and structured provider fields
+load-after remain literal roles. `embedded` is separately attributed bundled
+content, not an install requirement; provider examples include [Modrinth
+embedded dependencies](https://docs.modrinth.com/api/operations/getversionfromidornumber/)
+and [CurseForge EmbeddedLibrary](https://docs.curseforge.com/rest-api/#tocS_FileRelationType).
+`patch_for` labels a patch target without asserting that the target must be
+installed. Either role still requires exact scope and evidence; a provider
+version-level or project-level fact alone cannot establish a file-scoped claim. Author statements and structured provider fields
 retain distinct provenance in `unverified_attributed_source_statements`; inferred
 candidates go into `unverified_candidates` and
 must not be presented as declared dependencies. Version constraints remain

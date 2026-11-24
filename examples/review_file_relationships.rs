@@ -89,6 +89,8 @@ enum Role {
     Requires,
     OptionalDependency,
     WorksWith,
+    Embedded,
+    PatchFor,
     Conflicts,
     LoadAfterIfPresent,
 }
@@ -352,6 +354,34 @@ mod tests {
             output["unverified_attributed_source_statements"][0]["constraint"]["label"],
             "2.9-exact"
         );
+    }
+
+    #[test]
+    fn bundled_and_patch_relationships_stay_distinct_from_requires() {
+        let mut input = fixture();
+        let mut embedded = input["relationships"][0].clone();
+        embedded["role"] = json!("embedded");
+        embedded["constraint"] = json!({"type":"unspecified"});
+        embedded["evidence"]["basis"] = json!("provider_structured");
+        embedded["evidence"]["locator"] = json!("Declared bundled component");
+        let mut patch = embedded.clone();
+        patch["role"] = json!("patch_for");
+        patch["evidence"]["basis"] = json!("author_statement");
+        patch["evidence"]["locator"] = json!("Patch target");
+        let mut possible_patch = patch.clone();
+        possible_patch["evidence"]["basis"] = json!("inferred");
+        possible_patch["evidence"]["locator"] = json!("Unconfirmed patch candidate");
+        input["relationships"] = json!([embedded, patch, possible_patch]);
+        let result = validate(input.clone()).unwrap();
+        assert_eq!(
+            result["unverified_attributed_source_statements"],
+            json!([input["relationships"][0], input["relationships"][1]])
+        );
+        assert_eq!(
+            result["unverified_candidates"],
+            json!([input["relationships"][2]])
+        );
+        assert_eq!(result["status"], "offline_shape_review_only");
     }
 
     #[test]
