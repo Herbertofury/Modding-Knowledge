@@ -1,0 +1,419 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Nine partial creator-account/project associations for Skyrim Special Edition, reviewed against commit-pinned public author repositories. Descriptions are attributed documentation, not install instructions, rights, a release feed, exhaustive relationships, or a compatibility verdict.",
+  "games": {
+    "skyrim-se": "Skyrim Special Edition"
+  },
+  "sources": {
+    "skyrim-se-distributors-reviewed-github-facts": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service"
+  },
+  "source_policy_revisions": {
+    "skyrim-se-distributors-reviewed-github-facts": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+  },
+  "entities": [
+    {
+      "id": "github:DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Music Type Distributor - Skyrim 1.7.104.0 Compatibility Port"
+    },
+    {
+      "id": "github:Jrollsons/skypatcher-studio",
+      "game_id": "skyrim-se",
+      "kind": "tool",
+      "name": "SkyPatcher Studio"
+    },
+    {
+      "id": "github:Zzyxz/SkyPatcher",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "SkyPatcher"
+    },
+    {
+      "id": "github:aglowinthefield/boutique",
+      "game_id": "skyrim-se",
+      "kind": "tool",
+      "name": "Boutique"
+    },
+    {
+      "id": "github:arachnocid/ObjectImpactFramework",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Object Impact Framework"
+    },
+    {
+      "id": "github:creator:DeadOnKeyboard1",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "DeadOnKeyboard1"
+    },
+    {
+      "id": "github:creator:Jrollsons",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "Jrollsons"
+    },
+    {
+      "id": "github:creator:Zzyxz",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "Zzyxz"
+    },
+    {
+      "id": "github:creator:aglowinthefield",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "aglowinthefield"
+    },
+    {
+      "id": "github:creator:arachnocid",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "arachnocid"
+    },
+    {
+      "id": "github:creator:powerof3",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "powerof3"
+    },
+    {
+      "id": "github:powerof3/BaseObjectSwapper",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Base Object Swapper"
+    },
+    {
+      "id": "github:powerof3/Keyword-Item-Distributor",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Keyword Item Distributor"
+    },
+    {
+      "id": "github:powerof3/SeasonsOfSkyrim",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Seasons of Skyrim"
+    },
+    {
+      "id": "github:powerof3/Spell-Perk-Item-Distributor",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Spell Perk Item Distributor"
+    }
+  ],
+  "observations": [
+    {
+      "id": "github:DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update:20261124:reviewed.project_attribution",
+      "entity_id": "github:DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update/blob/4e26d5496c605266afa0734f8cc96c5155552190/README.md",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:DeadOnKeyboard1\",\"project\":{\"name\":\"Music Type Distributor - Skyrim 1.7.104.0 Compatibility Port\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"Independent native source port targeting Skyrim runtime 1.7.104.0 / SKSE 2.3.1 according to its author. It still uses original mod configuration and authored music distribution INIs; not the original distribution.\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"upstream_reference\":{\"url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/119571\",\"credit\":\"ThirdEyeSqueegee, as credited by port maintainer\",\"scope\":\"Separate original project; no cross-site person merge, no verified test/availability.\"}},\"evidence\":{\"url\":\"https://github.com/DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update/blob/4e26d5496c605266afa0734f8cc96c5155552190/README.md\",\"repository_id\":\"1373642269\",\"commit\":\"4e26d5496c605266afa0734f8cc96c5155552190\",\"blob\":\"8b7dd93bec35e42ff37317577066f2f3d6c28b98\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:Jrollsons/skypatcher-studio:20261124:reviewed.project_attribution",
+      "entity_id": "github:Jrollsons/skypatcher-studio",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/Jrollsons/skypatcher-studio/blob/efa1e67e7f89f16490b113fa3433d9752de90d4c/README.md",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:Jrollsons\",\"project\":{\"name\":\"SkyPatcher Studio\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/Jrollsons/skypatcher-studio\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"Generates SkyPatcher INI patches. This is a patch-authoring tool, not a substitute for SkyPatcher at runtime.\",\"release_date\":null,\"updated_at\":null,\"version\":null},\"evidence\":{\"url\":\"https://github.com/Jrollsons/skypatcher-studio/blob/efa1e67e7f89f16490b113fa3433d9752de90d4c/README.md\",\"repository_id\":\"1271221426\",\"commit\":\"efa1e67e7f89f16490b113fa3433d9752de90d4c\",\"blob\":\"bd551b9859df973500fa82504114007ae534307c\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:Zzyxz/SkyPatcher:20261124:reviewed.project_attribution",
+      "entity_id": "github:Zzyxz/SkyPatcher",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/Zzyxz/SkyPatcher/blob/48d17799bdcab50091cdad657fa523fedb323fb7/main.cpp",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:Zzyxz\",\"project\":{\"name\":\"SkyPatcher\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/Zzyxz/SkyPatcher\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"SKSE configuration-driven record patcher; upstream code reads its own SkyPatcher INI.\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"distribution_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/106659\",\"distribution_evidence\":{\"kind\":\"third-party SkyPatcher Studio author link; listed destination and files not verified\",\"url\":\"https://github.com/Jrollsons/skypatcher-studio/blob/efa1e67e7f89f16490b113fa3433d9752de90d4c/README.md\"}},\"evidence\":{\"url\":\"https://github.com/Zzyxz/SkyPatcher/blob/48d17799bdcab50091cdad657fa523fedb323fb7/main.cpp\",\"repository_id\":\"732783659\",\"commit\":\"48d17799bdcab50091cdad657fa523fedb323fb7\",\"blob\":\"e332d945efc401651108caf8245930e8a2a77b72\",\"kind\":\"author-source\",\"location\":\"lines 31–44\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:aglowinthefield/boutique:20261124:reviewed.project_attribution",
+      "entity_id": "github:aglowinthefield/boutique",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/aglowinthefield/boutique/blob/42d5ab67859f4a3503b2913efb99c6ed96819d57/README.md",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:aglowinthefield\",\"project\":{\"name\":\"Boutique\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/aglowinthefield/boutique\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"Creates and reviews Skyrim outfit distributions in SPID and SkyPatcher formats. Format support is not a claim that both frameworks must be installed.\",\"release_date\":null,\"updated_at\":null,\"version\":null},\"evidence\":{\"url\":\"https://github.com/aglowinthefield/boutique/blob/42d5ab67859f4a3503b2913efb99c6ed96819d57/README.md\",\"repository_id\":\"1016381790\",\"commit\":\"42d5ab67859f4a3503b2913efb99c6ed96819d57\",\"blob\":\"eb456f8a453420398ce5b244857845096fc39443\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:arachnocid/ObjectImpactFramework:20261124:reviewed.project_attribution",
+      "entity_id": "github:arachnocid/ObjectImpactFramework",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/arachnocid/ObjectImpactFramework/blob/31817a2ac92fc9ccf632155fccba47a867271fbf/README.md",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:arachnocid\",\"project\":{\"name\":\"Object Impact Framework\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/arachnocid/ObjectImpactFramework\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"SKSE plug-in with JSON-defined object interaction effects, including sound playback. No universal compatibility claim is retained.\",\"release_date\":null,\"updated_at\":null,\"version\":null},\"evidence\":{\"url\":\"https://github.com/arachnocid/ObjectImpactFramework/blob/31817a2ac92fc9ccf632155fccba47a867271fbf/README.md\",\"repository_id\":\"979558311\",\"commit\":\"31817a2ac92fc9ccf632155fccba47a867271fbf\",\"blob\":\"2bd38ef42402c5a0871af2088cffa9ad050da47b\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:DeadOnKeyboard1:20261124:reviewed.creator_identity",
+      "entity_id": "github:creator:DeadOnKeyboard1",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update/blob/4e26d5496c605266afa0734f8cc96c5155552190/README.md",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[],\"evidence\":{\"url\":\"https://github.com/DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update/blob/4e26d5496c605266afa0734f8cc96c5155552190/README.md\",\"repository_id\":\"1373642269\",\"commit\":\"4e26d5496c605266afa0734f8cc96c5155552190\",\"blob\":\"8b7dd93bec35e42ff37317577066f2f3d6c28b98\",\"kind\":\"github-repository-owner\",\"summary\":\"GitHub public repository metadata names this account as repository owner. No external account association inferred.\"},\"profiles\":[{\"url\":\"https://github.com/DeadOnKeyboard1\",\"status\":\"provider-qualified account URL\"}],\"github_account_id\":\"229149466\",\"gaps\":[\"Legal-person identity, sole authorship and full portfolios not determined.\"]}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:DeadOnKeyboard1:20261124:reviewed.project_link:1373642269",
+      "entity_id": "github:creator:DeadOnKeyboard1",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update/blob/4e26d5496c605266afa0734f8cc96c5155552190/README.md",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update/blob/4e26d5496c605266afa0734f8cc96c5155552190/README.md\",\"repository_id\":\"1373642269\",\"commit\":\"4e26d5496c605266afa0734f8cc96c5155552190\",\"blob\":\"8b7dd93bec35e42ff37317577066f2f3d6c28b98\",\"kind\":\"author-readme\"}}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:Jrollsons:20261124:reviewed.creator_identity",
+      "entity_id": "github:creator:Jrollsons",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/Jrollsons/skypatcher-studio/blob/efa1e67e7f89f16490b113fa3433d9752de90d4c/README.md",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[],\"evidence\":{\"url\":\"https://github.com/Jrollsons/skypatcher-studio/blob/efa1e67e7f89f16490b113fa3433d9752de90d4c/README.md\",\"repository_id\":\"1271221426\",\"commit\":\"efa1e67e7f89f16490b113fa3433d9752de90d4c\",\"blob\":\"bd551b9859df973500fa82504114007ae534307c\",\"kind\":\"github-repository-owner\",\"summary\":\"GitHub public repository metadata names this account as repository owner. No external account association inferred.\"},\"profiles\":[{\"url\":\"https://github.com/Jrollsons\",\"status\":\"provider-qualified account URL\"}],\"github_account_id\":\"294183565\",\"gaps\":[\"Legal-person identity, sole authorship and full portfolios not determined.\"]}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:Jrollsons:20261124:reviewed.project_link:1271221426",
+      "entity_id": "github:creator:Jrollsons",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/Jrollsons/skypatcher-studio/blob/efa1e67e7f89f16490b113fa3433d9752de90d4c/README.md",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:Jrollsons/skypatcher-studio\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/Jrollsons/skypatcher-studio/blob/efa1e67e7f89f16490b113fa3433d9752de90d4c/README.md\",\"repository_id\":\"1271221426\",\"commit\":\"efa1e67e7f89f16490b113fa3433d9752de90d4c\",\"blob\":\"bd551b9859df973500fa82504114007ae534307c\",\"kind\":\"author-readme\"}}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:Zzyxz:20261124:reviewed.creator_identity",
+      "entity_id": "github:creator:Zzyxz",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/Zzyxz/SkyPatcher/blob/48d17799bdcab50091cdad657fa523fedb323fb7/main.cpp",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[],\"evidence\":{\"url\":\"https://github.com/Zzyxz/SkyPatcher/blob/48d17799bdcab50091cdad657fa523fedb323fb7/main.cpp\",\"repository_id\":\"732783659\",\"commit\":\"48d17799bdcab50091cdad657fa523fedb323fb7\",\"blob\":\"e332d945efc401651108caf8245930e8a2a77b72\",\"kind\":\"github-repository-owner\",\"summary\":\"GitHub public repository metadata names this account as repository owner. No external account association inferred.\",\"location\":\"lines 31–44\"},\"profiles\":[{\"url\":\"https://github.com/Zzyxz\",\"status\":\"provider-qualified account URL\"}],\"github_account_id\":\"33715692\",\"gaps\":[\"Legal-person identity, sole authorship and full portfolios not determined.\"]}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:Zzyxz:20261124:reviewed.project_link:732783659",
+      "entity_id": "github:creator:Zzyxz",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/Zzyxz/SkyPatcher/blob/48d17799bdcab50091cdad657fa523fedb323fb7/main.cpp",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:Zzyxz/SkyPatcher\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/Zzyxz/SkyPatcher/blob/48d17799bdcab50091cdad657fa523fedb323fb7/main.cpp\",\"repository_id\":\"732783659\",\"commit\":\"48d17799bdcab50091cdad657fa523fedb323fb7\",\"blob\":\"e332d945efc401651108caf8245930e8a2a77b72\",\"kind\":\"author-source\",\"location\":\"lines 31–44\"}}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:aglowinthefield:20261124:reviewed.creator_identity",
+      "entity_id": "github:creator:aglowinthefield",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/aglowinthefield/boutique/blob/42d5ab67859f4a3503b2913efb99c6ed96819d57/README.md",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[],\"evidence\":{\"url\":\"https://github.com/aglowinthefield/boutique/blob/42d5ab67859f4a3503b2913efb99c6ed96819d57/README.md\",\"repository_id\":\"1016381790\",\"commit\":\"42d5ab67859f4a3503b2913efb99c6ed96819d57\",\"blob\":\"eb456f8a453420398ce5b244857845096fc39443\",\"kind\":\"github-repository-owner\",\"summary\":\"GitHub public repository metadata names this account as repository owner. No external account association inferred.\"},\"profiles\":[{\"url\":\"https://github.com/aglowinthefield\",\"status\":\"provider-qualified account URL\"}],\"github_account_id\":\"146008217\",\"gaps\":[\"Legal-person identity, sole authorship and full portfolios not determined.\"]}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:aglowinthefield:20261124:reviewed.project_link:1016381790",
+      "entity_id": "github:creator:aglowinthefield",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/aglowinthefield/boutique/blob/42d5ab67859f4a3503b2913efb99c6ed96819d57/README.md",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:aglowinthefield/boutique\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/aglowinthefield/boutique/blob/42d5ab67859f4a3503b2913efb99c6ed96819d57/README.md\",\"repository_id\":\"1016381790\",\"commit\":\"42d5ab67859f4a3503b2913efb99c6ed96819d57\",\"blob\":\"eb456f8a453420398ce5b244857845096fc39443\",\"kind\":\"author-readme\"}}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:arachnocid:20261124:reviewed.creator_identity",
+      "entity_id": "github:creator:arachnocid",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/arachnocid/ObjectImpactFramework/blob/31817a2ac92fc9ccf632155fccba47a867271fbf/README.md",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[],\"evidence\":{\"url\":\"https://github.com/arachnocid/ObjectImpactFramework/blob/31817a2ac92fc9ccf632155fccba47a867271fbf/README.md\",\"repository_id\":\"979558311\",\"commit\":\"31817a2ac92fc9ccf632155fccba47a867271fbf\",\"blob\":\"2bd38ef42402c5a0871af2088cffa9ad050da47b\",\"kind\":\"github-repository-owner\",\"summary\":\"GitHub public repository metadata names this account as repository owner. No external account association inferred.\"},\"profiles\":[{\"url\":\"https://github.com/arachnocid\",\"status\":\"provider-qualified account URL\"}],\"github_account_id\":\"149023500\",\"gaps\":[\"Legal-person identity, sole authorship and full portfolios not determined.\"]}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:arachnocid:20261124:reviewed.project_link:979558311",
+      "entity_id": "github:creator:arachnocid",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/arachnocid/ObjectImpactFramework/blob/31817a2ac92fc9ccf632155fccba47a867271fbf/README.md",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:arachnocid/ObjectImpactFramework\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/arachnocid/ObjectImpactFramework/blob/31817a2ac92fc9ccf632155fccba47a867271fbf/README.md\",\"repository_id\":\"979558311\",\"commit\":\"31817a2ac92fc9ccf632155fccba47a867271fbf\",\"blob\":\"2bd38ef42402c5a0871af2088cffa9ad050da47b\",\"kind\":\"author-readme\"}}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:powerof3:20261124:reviewed.creator_identity",
+      "entity_id": "github:creator:powerof3",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/BaseObjectSwapper/blob/28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb/README.md",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"aliases\":[],\"evidence\":{\"url\":\"https://github.com/powerof3/BaseObjectSwapper/blob/28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb/README.md\",\"repository_id\":\"441953497\",\"commit\":\"28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb\",\"blob\":\"beeb8f859f4f72c79e54c51b6408007c3e86e8c6\",\"kind\":\"github-repository-owner\",\"summary\":\"GitHub public repository metadata names this account as repository owner. No external account association inferred.\"},\"profiles\":[{\"url\":\"https://github.com/powerof3\",\"status\":\"provider-qualified account URL\"}],\"github_account_id\":\"32599957\",\"gaps\":[\"Legal-person identity, sole authorship and full portfolios not determined.\"]}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:powerof3:20261124:reviewed.project_link:301413449",
+      "entity_id": "github:creator:powerof3",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/Spell-Perk-Item-Distributor/blob/105725c1318c7740b406c34ae7225e3973a7398e/README.md",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:powerof3/Spell-Perk-Item-Distributor\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/powerof3/Spell-Perk-Item-Distributor/blob/105725c1318c7740b406c34ae7225e3973a7398e/README.md\",\"repository_id\":\"301413449\",\"commit\":\"105725c1318c7740b406c34ae7225e3973a7398e\",\"blob\":\"7ae795551f148fc09fc63359d2231ba5875be70b\",\"kind\":\"author-readme\"}}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:powerof3:20261124:reviewed.project_link:407661894",
+      "entity_id": "github:creator:powerof3",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/Keyword-Item-Distributor/blob/99adaaa1d8cefe320524802b57e91723f66b1c7c/README.md",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:powerof3/Keyword-Item-Distributor\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/powerof3/Keyword-Item-Distributor/blob/99adaaa1d8cefe320524802b57e91723f66b1c7c/README.md\",\"repository_id\":\"407661894\",\"commit\":\"99adaaa1d8cefe320524802b57e91723f66b1c7c\",\"blob\":\"3b60bf4d3ab8dd62af2b1d893028ba6b153561f9\",\"kind\":\"author-readme\"}}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:powerof3:20261124:reviewed.project_link:441953497",
+      "entity_id": "github:creator:powerof3",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/BaseObjectSwapper/blob/28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb/README.md",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:powerof3/BaseObjectSwapper\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/powerof3/BaseObjectSwapper/blob/28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb/README.md\",\"repository_id\":\"441953497\",\"commit\":\"28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb\",\"blob\":\"beeb8f859f4f72c79e54c51b6408007c3e86e8c6\",\"kind\":\"author-readme\"}}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:creator:powerof3:20261124:reviewed.project_link:451625279",
+      "entity_id": "github:creator:powerof3",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/SeasonsOfSkyrim/blob/89837a27849c97a9f91d01f2911d14b49bef2662/README.md",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:powerof3/SeasonsOfSkyrim\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/powerof3/SeasonsOfSkyrim/blob/89837a27849c97a9f91d01f2911d14b49bef2662/README.md\",\"repository_id\":\"451625279\",\"commit\":\"89837a27849c97a9f91d01f2911d14b49bef2662\",\"blob\":\"c6ba3207045961b7efc7c41cd0e9c4500e8794f7\",\"kind\":\"author-readme\"}}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:powerof3/BaseObjectSwapper:20261124:reviewed.project_attribution",
+      "entity_id": "github:powerof3/BaseObjectSwapper",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/BaseObjectSwapper/blob/28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb/README.md",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:powerof3\",\"project\":{\"name\":\"Base Object Swapper\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/powerof3/BaseObjectSwapper\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"Runtime base-form swaps. Upstream separates desktop and VR packages.\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"distribution_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/60805\",\"distribution_evidence\":{\"kind\":\"upstream README link; destination and files not accessed\",\"url\":\"https://github.com/powerof3/BaseObjectSwapper/blob/28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb/README.md\"},\"separate_vr_page\":{\"url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/61734\",\"scope\":\"Separate upstream-linked edition, not merged with this Skyrim SE entity; compatibility not evaluated.\"}},\"evidence\":{\"url\":\"https://github.com/powerof3/BaseObjectSwapper/blob/28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb/README.md\",\"repository_id\":\"441953497\",\"commit\":\"28e24d11e0bc6ddc73e0273ec6ff5327fd4e81cb\",\"blob\":\"beeb8f859f4f72c79e54c51b6408007c3e86e8c6\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:powerof3/Keyword-Item-Distributor:20261124:reviewed.project_attribution",
+      "entity_id": "github:powerof3/Keyword-Item-Distributor",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/Keyword-Item-Distributor/blob/99adaaa1d8cefe320524802b57e91723f66b1c7c/README.md",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:powerof3\",\"project\":{\"name\":\"Keyword Item Distributor\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/powerof3/Keyword-Item-Distributor\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"Keyword distribution to item records such as armor, weapons and ammunition.\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"distribution_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/55728\",\"distribution_evidence\":{\"kind\":\"upstream README link; destination and files not accessed\",\"url\":\"https://github.com/powerof3/Keyword-Item-Distributor/blob/99adaaa1d8cefe320524802b57e91723f66b1c7c/README.md\"}},\"evidence\":{\"url\":\"https://github.com/powerof3/Keyword-Item-Distributor/blob/99adaaa1d8cefe320524802b57e91723f66b1c7c/README.md\",\"repository_id\":\"407661894\",\"commit\":\"99adaaa1d8cefe320524802b57e91723f66b1c7c\",\"blob\":\"3b60bf4d3ab8dd62af2b1d893028ba6b153561f9\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:powerof3/SeasonsOfSkyrim:20261124:reviewed.project_attribution",
+      "entity_id": "github:powerof3/SeasonsOfSkyrim",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/SeasonsOfSkyrim/blob/89837a27849c97a9f91d01f2911d14b49bef2662/README.md",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:powerof3\",\"project\":{\"name\":\"Seasons of Skyrim\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/powerof3/SeasonsOfSkyrim\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"Adds dynamic seasons using model/LOD swaps and snow coverage. Upstream separates desktop and VR packages.\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"distribution_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/62861\",\"distribution_evidence\":{\"kind\":\"upstream README link; destination and files not accessed\",\"url\":\"https://github.com/powerof3/SeasonsOfSkyrim/blob/89837a27849c97a9f91d01f2911d14b49bef2662/README.md\"},\"separate_vr_page\":{\"url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/63593\",\"scope\":\"Separate upstream-linked edition, not merged with this Skyrim SE entity; compatibility not evaluated.\"}},\"evidence\":{\"url\":\"https://github.com/powerof3/SeasonsOfSkyrim/blob/89837a27849c97a9f91d01f2911d14b49bef2662/README.md\",\"repository_id\":\"451625279\",\"commit\":\"89837a27849c97a9f91d01f2911d14b49bef2662\",\"blob\":\"c6ba3207045961b7efc7c41cd0e9c4500e8794f7\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:powerof3/Spell-Perk-Item-Distributor:20261124:reviewed.project_attribution",
+      "entity_id": "github:powerof3/Spell-Perk-Item-Distributor",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/powerof3/Spell-Perk-Item-Distributor/blob/105725c1318c7740b406c34ae7225e3973a7398e/README.md",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:powerof3\",\"project\":{\"name\":\"Spell Perk Item Distributor\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/powerof3/Spell-Perk-Item-Distributor\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"Distributes forms including spells, perks, items and outfits to NPCs. Upstream separates desktop and VR packages.\",\"release_date\":null,\"updated_at\":null,\"version\":null,\"distribution_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/36869\",\"distribution_evidence\":{\"kind\":\"upstream README link; destination and files not accessed\",\"url\":\"https://github.com/powerof3/Spell-Perk-Item-Distributor/blob/105725c1318c7740b406c34ae7225e3973a7398e/README.md\"},\"separate_vr_page\":{\"url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/59121\",\"scope\":\"Separate upstream-linked edition, not merged with this Skyrim SE entity; compatibility not evaluated.\"}},\"evidence\":{\"url\":\"https://github.com/powerof3/Spell-Perk-Item-Distributor/blob/105725c1318c7740b406c34ae7225e3973a7398e/README.md\",\"repository_id\":\"301413449\",\"commit\":\"105725c1318c7740b406c34ae7225e3973a7398e\",\"blob\":\"7ae795551f148fc09fc63359d2231ba5875be70b\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
+      "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    }
+  ]
+}

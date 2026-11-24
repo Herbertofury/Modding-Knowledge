@@ -1,5 +1,6 @@
 """Deterministically combine only checked-in reviewed public projections. No network."""
 import json
+from reviewed_distributor_packs import admit_distributor_packs
 from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 data = root / 'data'
@@ -36,6 +37,7 @@ if live:
         creator_entities.setdefault(ident,{'id':ident,'game_id':'minecraft-java','kind':'creator','name':r['username']})
         bundle['observations'].append({'id':f"{ident}:{r['project_id']}:{r['observed_unix']}:membership",'entity_id':ident,'source_id':'modrinth-public-metadata','source_url':r['source_url_api'],'predicate':'provider_claim.team_membership','value':json.dumps({k:r[k] for k in ('username','profile_url','team_id','project_id','role','scope')},separators=(',',':'),ensure_ascii=False),'observed_unix':r['observed_unix'],'applicable_build':'unverified','mod_version':'unverified','completeness':'partial','policy_revision':revision})
     bundle['entities'].extend(creator_entities.values())
+admit_distributor_packs(bundle, root)
 context_id='loot:oblivion:source-context'
 context=json.loads((data/'loot-source-context.json').read_text(encoding='utf-8'))
 template=b['observations'][0]
