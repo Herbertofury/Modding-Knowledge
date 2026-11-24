@@ -36,7 +36,7 @@ class DistributorPacks(unittest.TestCase):
     def test_exact_two_packs_and_windows_line_endings(self):
         expected = copy.deepcopy(self.base)
         admit_distributor_packs(expected, self.root)
-        self.assertEqual((len(expected['entities']),len(expected['observations'])), (30,62))
+        self.assertEqual((len(expected['entities']),len(expected['observations'])), (30,65))
         self.assertEqual(set(expected['games']), {'skyrim-se','sims4'})
         self.assertEqual(len(expected['sources']),4)
         for name in PINS:
@@ -67,7 +67,7 @@ class DistributorPacks(unittest.TestCase):
         admit_distributor_packs(self.base,self.root)
         self.assertEqual([x for x in self.base['entities'] if x['id']==prior['id']],[prior])
         self.assertEqual(len(self.base['entities']),30)
-        self.assertEqual(len(self.base['observations']),62)
+        self.assertEqual(len(self.base['observations']),65)
 
     def test_casefold_collision_and_exact_observation_collision_fail_closed(self):
         old={'id':'github:creator:POWEROF3','kind':'creator','game_id':'skyrim-se','name':'unknown'}
@@ -104,3 +104,32 @@ class DistributorPacks(unittest.TestCase):
         gtw=rows['adeepindigo:project:gtw-health-overhaul:20261124:mod.relationships.v1']['relationships']
         self.assertEqual(gtw[0]['relation'],'works_with')
         self.assertIn('core',gtw[0]['condition'])
+
+    def test_skyrim_runtime_and_feature_requirements_remain_conditional(self):
+        admit_distributor_packs(self.base, self.root)
+        source = 'skyrim-se-distributors-reviewed-github-facts'
+        rows = {r['entity_id']: r for r in self.base['observations']
+                if r['predicate'] == 'mod.relationships.v1' and r['source_id'] == source}
+        boutique = 'github:aglowinthefield/boutique'
+        studio = 'github:Jrollsons/skypatcher-studio'
+        oif = 'github:arachnocid/ObjectImpactFramework'
+        self.assertEqual(set(rows), {boutique, studio, oif})
+        relations = {}
+        for entity, r in rows.items():
+            value = json.loads(r['value'])
+            self.assertEqual((r['applicable_build'], r['mod_version'], r['completeness']),
+                             ('unverified', 'unverified', 'partial'))
+            self.assertEqual(value['coverage'], {'required': 'partial'})
+            self.assertEqual(value['none_evidence'], {})
+            relations[entity] = value['relationships']
+            self.assertTrue(all(rel['condition'] and rel['basis'] == 'explicit'
+                                and rel['relation'] == 'required'
+                                and rel['evidence']['location']
+                                for rel in relations[entity]))
+        self.assertEqual([x['raw_relation'] for x in relations[boutique]], ['one-of'])
+        self.assertIsNone(relations[boutique][0]['target_id'])
+        self.assertEqual([(x['label'], x['target_id']) for x in relations[studio]],
+                         [('SKSE', None), ('SkyPatcher', 'github:Zzyxz/SkyPatcher')])
+        self.assertTrue(all('exported patch in-game' in x['condition'] for x in relations[studio]))
+        self.assertEqual([(x['label'], x['target_id']) for x in relations[oif]], [('Grab And Throw', None)])
+        self.assertIn('Throw event', relations[oif][0]['condition'])

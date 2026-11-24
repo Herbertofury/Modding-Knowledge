@@ -29041,6 +29041,19 @@
       "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
     },
     {
+      "id": "github:Jrollsons/skypatcher-studio:20261124:mod.relationships.v1",
+      "entity_id": "github:Jrollsons/skypatcher-studio",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/Jrollsons/skypatcher-studio/blob/efa1e67e7f89f16490b113fa3433d9752de90d4c/README.md",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"SKSE\",\"relation\":\"required\",\"raw_relation\":\"installed and enabled\",\"version_constraint\":null,\"condition\":\"Only when using an exported patch in-game; the cited step does not establish a dependency for running Studio.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installing a patch you made\",\"quote\":\"Make sure SKSE and the SkyPatcher mod are installed and enabled.\",\"location\":\"README lines 101–106\"}},{\"target_id\":\"github:Zzyxz/SkyPatcher\",\"label\":\"SkyPatcher\",\"relation\":\"required\",\"raw_relation\":\"installed and enabled\",\"version_constraint\":null,\"condition\":\"Only when using an exported patch in-game; the cited step does not establish a dependency for running Studio.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Installing a patch you made\",\"quote\":\"Make sure SKSE and the SkyPatcher mod are installed and enabled.\",\"location\":\"README lines 101–106\"}}]}",
+      "observed_unix": 1795520049,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
       "id": "github:Jrollsons/skypatcher-studio:20261124:reviewed.project_attribution",
       "entity_id": "github:Jrollsons/skypatcher-studio",
       "source_id": "skyrim-se-distributors-reviewed-github-facts",
@@ -29067,6 +29080,19 @@
       "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
     },
     {
+      "id": "github:aglowinthefield/boutique:20261124:mod.relationships.v1",
+      "entity_id": "github:aglowinthefield/boutique",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/aglowinthefield/boutique/blob/42d5ab67859f4a3503b2913efb99c6ed96819d57/README.md",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"SPID or SkyPatcher (choose one for distribution features)\",\"relation\":\"required\",\"raw_relation\":\"one-of\",\"version_constraint\":null,\"condition\":\"Only for distribution features; one of SPID or SkyPatcher is required. Both are not required by this statement.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements\",\"quote\":\"For distribution features: SPID or SkyPatcher installed\",\"location\":\"README line 57\"}}]}",
+      "observed_unix": 1795520049,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
       "id": "github:aglowinthefield/boutique:20261124:reviewed.project_attribution",
       "entity_id": "github:aglowinthefield/boutique",
       "source_id": "skyrim-se-distributors-reviewed-github-facts",
@@ -29074,6 +29100,19 @@
       "predicate": "reviewed.project_attribution",
       "value": "{\"creator_id\":\"github:creator:aglowinthefield\",\"project\":{\"name\":\"Boutique\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/aglowinthefield/boutique\",\"attribution\":\"public repository owner account; not sole or original authorship\",\"summary\":\"Creates and reviews Skyrim outfit distributions in SPID and SkyPatcher formats. Format support is not a claim that both frameworks must be installed.\",\"release_date\":null,\"updated_at\":null,\"version\":null},\"evidence\":{\"url\":\"https://github.com/aglowinthefield/boutique/blob/42d5ab67859f4a3503b2913efb99c6ed96819d57/README.md\",\"repository_id\":\"1016381790\",\"commit\":\"42d5ab67859f4a3503b2913efb99c6ed96819d57\",\"blob\":\"eb456f8a453420398ce5b244857845096fc39443\",\"kind\":\"author-readme\"},\"scope\":\"Documentation and attributed source links only. Exact runtime/build, latest release, game-tested compatibility, automatic downloading and asset reuse not verified.\"}",
       "observed_unix": 1795478400,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-distributors-reviewed-github-facts-2026-11-24"
+    },
+    {
+      "id": "github:arachnocid/ObjectImpactFramework:20261124:mod.relationships.v1",
+      "entity_id": "github:arachnocid/ObjectImpactFramework",
+      "source_id": "skyrim-se-distributors-reviewed-github-facts",
+      "source_url": "https://github.com/arachnocid/ObjectImpactFramework/blob/31817a2ac92fc9ccf632155fccba47a867271fbf/README.md",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Grab And Throw\",\"relation\":\"required\",\"raw_relation\":\"requires\",\"version_constraint\":null,\"condition\":\"Only for rules using the Throw event; the cited statement does not establish a framework-wide prerequisite.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Basic Rule Structure\",\"quote\":\"requires the Grab And Throw mod by powerofthree\",\"location\":\"README lines 42–48\"}}]}",
+      "observed_unix": 1795520049,
       "applicable_build": "unverified",
       "mod_version": "unverified",
       "completeness": "partial",
