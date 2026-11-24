@@ -8,8 +8,50 @@ enum Selection<'a> {
     All,
     Predicate(&'a str),
     LootRelations,
-    ModRelations,
+    ModRelations(ModProjection),
     Fallout4LootRelations,
+}
+
+#[derive(Clone, Copy)]
+enum ModProjection {
+    Legacy,
+    V2,
+}
+
+impl ModProjection {
+    fn from_flag(flag: &str) -> Option<Self> {
+        match flag {
+            "--mod-relations" => Some(Self::Legacy),
+            "--mod-relations-v2" => Some(Self::V2),
+            _ => None,
+        }
+    }
+
+    fn columns(self) -> &'static [(&'static str, &'static str)] {
+        match self {
+            Self::Legacy => &[
+                ("required", "required"),
+                ("optional", "optional"),
+                ("works_with", "compatible"),
+                ("", "unknown"),
+            ],
+            Self::V2 => &[
+                ("required", "required"),
+                ("optional", "optional"),
+                ("works_with", "compatible"),
+                ("incompatible", "conflict"),
+                ("alternative", "alternative"),
+                ("", "unknown"),
+            ],
+        }
+    }
+
+    fn schema(self) -> u8 {
+        match self {
+            Self::Legacy => 1,
+            Self::V2 => 2,
+        }
+    }
 }
 
 fn main() -> Result<()> {
@@ -31,10 +73,18 @@ fn main() -> Result<()> {
             offset.parse::<u32>()?,
             Selection::Fallout4LootRelations,
         ),
-        [db, entity, flag] if flag == "--mod-relations" => (db, entity, 0, Selection::ModRelations),
-        [db, entity, offset, flag] if flag == "--mod-relations" => {
-            (db, entity, offset.parse::<u32>()?, Selection::ModRelations)
-        }
+        [db, entity, flag] if ModProjection::from_flag(flag).is_some() => (
+            db,
+            entity,
+            0,
+            Selection::ModRelations(ModProjection::from_flag(flag).unwrap()),
+        ),
+        [db, entity, offset, flag] if ModProjection::from_flag(flag).is_some() => (
+            db,
+            entity,
+            offset.parse::<u32>()?,
+            Selection::ModRelations(ModProjection::from_flag(flag).unwrap()),
+        ),
         [db, entity, offset] => (db, entity, offset.parse::<u32>()?, Selection::All),
         [db, entity, flag, predicate] if flag == "--predicate" => {
             (db, entity, 0, Selection::Predicate(predicate))
@@ -47,14 +97,14 @@ fn main() -> Result<()> {
         ),
         _ => {
             return Err(
-                "Usage: query DATABASE ENTITY_ID [OFFSET] [--predicate EXACT_PREDICATE | --loot-relations | --loot-fallout4-relations | --mod-relations]".into()
+                "Usage: query DATABASE ENTITY_ID [OFFSET] [--predicate EXACT_PREDICATE | --loot-relations | --loot-fallout4-relations | --mod-relations | --mod-relations-v2]".into()
             );
         }
     };
     let predicate = match selection {
         Selection::All => None,
         Selection::Predicate(p) => Some(p),
-        Selection::ModRelations => Some(MOD_RELATIONSHIP_PREDICATE),
+        Selection::ModRelations(_) => Some(MOD_RELATIONSHIP_PREDICATE),
         Selection::LootRelations | Selection::Fallout4LootRelations => {
             Some(loot::OBSERVATION_PREDICATE)
         }
@@ -90,12 +140,12 @@ fn main() -> Result<()> {
             "observations": records.iter().map(|row| project(row).to_json()).collect::<Vec<_>>(),
         });
     }
-    if matches!(selection, Selection::ModRelations) {
+    if let Selection::ModRelations(mode) = selection {
         output["mod_relationships"] = json!({
-            "schema": 1,
+            "schema": mode.schema(),
             "coverage": "unknown",
             "scope": "Recorded evidence on this page only. Roles quote source claims; conditions, builds and compatibility are not evaluated. An empty column does not establish absence.",
-            "observations": records.iter().map(mod_relationships).collect::<Vec<_>>(),
+            "observations": records.iter().map(|row| mod_relationships(row, mode)).collect::<Vec<_>>(),
         });
     }
     println!("{}", serde_json::to_string_pretty(&output)?);
@@ -105,11 +155,11 @@ fn main() -> Result<()> {
 // Parse the fields used for classification strictly. In particular, Serde
 // rejects duplicate keys for these fields instead of letting the last win.
 #[derive(serde_derive::Deserialize)]
-struct RelationEnvelope {
+struct RelationEnvelope<C, R = RecordedRole> {
     version: u64,
     review: String,
-    coverage: RoleCoverage,
-    relationships: Vec<RecordedRole>,
+    coverage: C,
+    relationships: Vec<R>,
 }
 #[derive(serde_derive::Deserialize)]
 struct RoleCoverage {
@@ -123,45 +173,112 @@ struct RecordedRole {
     basis: Option<String>,
 }
 
+#[derive(serde_derive::Deserialize)]
+struct RoleCoverageV2 {
+    required: Option<String>,
+    optional: Option<String>,
+    works_with: Option<String>,
+    incompatible: Option<String>,
+    alternative: Option<String>,
+}
+
+// V2 must not place a conflict into a dedicated column if ambiguous version
+// or scope keys could turn the source's narrow claim into a blanket warning.
+#[derive(serde_derive::Deserialize)]
+struct RecordedRoleV2 {
+    relation: Option<String>,
+    basis: Option<String>,
+    #[serde(rename = "condition")]
+    _condition: Option<String>,
+    #[serde(rename = "target_id")]
+    _target_id: Option<String>,
+    #[serde(rename = "version_constraint")]
+    _version_constraint: Option<String>,
+    #[serde(rename = "target_scope")]
+    _target_scope: Option<RecordedScope>,
+}
+#[derive(serde_derive::Deserialize)]
+struct RecordedScope {
+    #[serde(rename = "game_id")]
+    _game_id: Option<String>,
+    #[serde(rename = "mod_version")]
+    _mod_version: Option<String>,
+    #[serde(rename = "file_id")]
+    _file_id: Option<String>,
+    #[serde(rename = "runtime")]
+    _runtime: Option<String>,
+}
+
+type ClassifiedEnvelope = (u64, String, [Option<String>; 5], Vec<RecordedRole>);
+
+fn classify_envelope(raw: &str, mode: ModProjection) -> Option<ClassifiedEnvelope> {
+    match mode {
+        ModProjection::Legacy => {
+            let r: RelationEnvelope<RoleCoverage> = serde_json::from_str(raw).ok()?;
+            let c = r.coverage;
+            Some((
+                r.version,
+                r.review,
+                [c.required, c.optional, c.works_with, None, None],
+                r.relationships,
+            ))
+        }
+        ModProjection::V2 => {
+            let r: RelationEnvelope<RoleCoverageV2, RecordedRoleV2> =
+                serde_json::from_str(raw).ok()?;
+            let c = r.coverage;
+            Some((
+                r.version,
+                r.review,
+                [
+                    c.required,
+                    c.optional,
+                    c.works_with,
+                    c.incompatible,
+                    c.alternative,
+                ],
+                r.relationships
+                    .into_iter()
+                    .map(|r| RecordedRole {
+                        relation: r.relation,
+                        basis: r.basis,
+                    })
+                    .collect(),
+            ))
+        }
+    }
+}
+
 // The raw observation remains in the original output. This view does not
 // infer roles from prose or make candidate/unversioned statements actionable.
-fn mod_relationships(row: &Observation) -> Value {
-    let labels = ["required", "optional", "compatible", "unknown"];
-    let stored_labels = ["required", "optional", "works_with"];
-    let mut items: [Vec<Value>; 4] = std::array::from_fn(|_| Vec::new());
-    let mut coverage = ["unknown"; 4];
+fn mod_relationships(row: &Observation, mode: ModProjection) -> Value {
+    let columns = mode.columns();
+    let unknown = columns.len() - 1;
+    let mut items: [Vec<Value>; 6] = std::array::from_fn(|_| Vec::new());
+    let mut coverage = ["unknown"; 6];
     let mut review = None;
     let mut status = "unrecognized_payload";
-    if let Ok(envelope) = serde_json::from_str::<RelationEnvelope>(&row.value)
-        && envelope.version == 1
-        && matches!(envelope.review.as_str(), "reviewed" | "candidate")
+    if let Some((1, review_label, reported, roles)) = classify_envelope(&row.value, mode)
+        && matches!(review_label.as_str(), "reviewed" | "candidate")
         && let Ok(mut payload) = serde_json::from_str::<Value>(&row.value)
         && let Some(relationships) = payload
             .get_mut("relationships")
             .and_then(Value::as_array_mut)
     {
         status = "recorded_evidence";
-        for (relationship, recorded) in std::mem::take(relationships)
-            .into_iter()
-            .zip(envelope.relationships)
-        {
+        for (relationship, recorded) in std::mem::take(relationships).into_iter().zip(roles) {
             let role = recorded.relation.as_deref();
             let index = if recorded.basis.as_deref() == Some("explicit") {
-                stored_labels.iter().position(|r| Some(*r) == role)
+                columns[..unknown]
+                    .iter()
+                    .position(|(r, _)| Some(*r) == role)
             } else {
                 None
             };
-            items[index.unwrap_or(3)].push(relationship);
+            items[index.unwrap_or(unknown)].push(relationship);
         }
-        review = Some(envelope.review);
-        for (i, reported) in [
-            envelope.coverage.required,
-            envelope.coverage.optional,
-            envelope.coverage.works_with,
-        ]
-        .into_iter()
-        .enumerate()
-        {
+        review = Some(review_label);
+        for (i, reported) in reported.into_iter().take(unknown).enumerate() {
             if !items[i].is_empty() && reported.as_deref() == Some("partial") {
                 coverage[i] = "partial";
             }
@@ -177,7 +294,7 @@ fn mod_relationships(row: &Observation) -> Value {
         "mod_version": row.mod_version,
         "review": review,
         "status": status,
-        "columns": labels.into_iter().zip(coverage).zip(items).map(|((role, coverage), evidence)| {
+        "columns": columns.iter().zip(coverage).zip(items).map(|(((_, role), coverage), evidence)| {
             json!({"role": role, "coverage": coverage, "evidence": evidence})
         }).collect::<Vec<_>>(),
     })
@@ -188,19 +305,26 @@ mod tests {
     use super::*;
 
     fn project(value: &str) -> Value {
-        mod_relationships(&Observation {
-            id: "observation".into(),
-            entity_id: "project".into(),
-            source_id: "source".into(),
-            source_url: "https://example.org/source".into(),
-            predicate: MOD_RELATIONSHIP_PREDICATE.into(),
-            value: value.into(),
-            observed_unix: 42,
-            applicable_build: "unverified".into(),
-            mod_version: "unverified".into(),
-            completeness: "partial".into(),
-            policy_revision: "fixture".into(),
-        })
+        project_mode(value, ModProjection::Legacy)
+    }
+
+    fn project_mode(value: &str, mode: ModProjection) -> Value {
+        mod_relationships(
+            &Observation {
+                id: "observation".into(),
+                entity_id: "project".into(),
+                source_id: "source".into(),
+                source_url: "https://example.org/source".into(),
+                predicate: MOD_RELATIONSHIP_PREDICATE.into(),
+                value: value.into(),
+                observed_unix: 42,
+                applicable_build: "unverified".into(),
+                mod_version: "unverified".into(),
+                completeness: "partial".into(),
+                policy_revision: "fixture".into(),
+            },
+            mode,
+        )
     }
 
     #[test]
@@ -243,5 +367,74 @@ mod tests {
                 |x| x["coverage"] == "unknown" && x["evidence"].as_array().unwrap().is_empty()
             ));
         }
+    }
+
+    #[test]
+    fn v2_moves_only_exact_explicit_roles_out_of_unknown() {
+        let value = r#"{
+            "version":1,"review":"candidate",
+            "coverage":{"incompatible":"partial","alternative":"partial"},
+            "relationships":[
+                {"relation":"incompatible","basis":"explicit","label":"setting only",
+                 "condition":"one setting is enabled","version_constraint":">= 3",
+                 "target_scope":{"game_id":"sims4","file_id":"one-file"}},
+                {"relation":"alternative","basis":"explicit","condition":"different pack"},
+                {"relation":"incompatible","basis":"inferred"},
+                {"relation":"conflict","basis":"explicit"},
+                {"relation":"related","basis":"explicit"}
+            ]
+        }"#;
+        let row = project_mode(value, ModProjection::V2);
+        assert_eq!(row["review"], "candidate");
+        let c = row["columns"].as_array().unwrap();
+        assert_eq!(
+            c.iter()
+                .map(|v| v["role"].as_str().unwrap())
+                .collect::<Vec<_>>(),
+            [
+                "required",
+                "optional",
+                "compatible",
+                "conflict",
+                "alternative",
+                "unknown"
+            ]
+        );
+        let expected = serde_json::from_str::<Value>(value).unwrap();
+        assert_eq!(c[3]["coverage"], "partial");
+        assert_eq!(c[3]["evidence"][0], expected["relationships"][0]);
+        assert_eq!(c[4]["coverage"], "partial");
+        assert_eq!(c[4]["evidence"][0], expected["relationships"][1]);
+        assert_eq!(c[5]["coverage"], "unknown");
+        assert_eq!(c[5]["evidence"].as_array().unwrap().len(), 3);
+        let legacy = project(value);
+        assert_eq!(legacy["columns"][3]["role"], "unknown");
+        assert_eq!(legacy["columns"][3]["evidence"], expected["relationships"]);
+    }
+
+    #[test]
+    fn v2_rejects_ambiguous_scope_and_never_claims_absence() {
+        for raw in [
+            r#"{"version":1,"review":"reviewed","coverage":{"incompatible":"partial","incompatible":"unknown"},"relationships":[]}"#,
+            r#"{"version":1,"review":"reviewed","coverage":{},"relationships":[{"relation":"incompatible","basis":"explicit","condition":"scope","condition":null}]}"#,
+            r#"{"version":1,"review":"reviewed","coverage":{},"relationships":[{"relation":"incompatible","basis":"explicit","target_scope":{"file_id":"f","file_id":null}}]}"#,
+            r#"{"version":1,"review":"reviewed","coverage":{},"relationships":[{"relation":"incompatible","relation":"alternative","basis":"explicit"}]}"#,
+            r#"{"version":2,"review":"reviewed","coverage":{},"relationships":[]}"#,
+        ] {
+            let r = project_mode(raw, ModProjection::V2);
+            assert_eq!(r["status"], "unrecognized_payload");
+            assert!(
+                r["columns"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .all(|c| c["coverage"] == "unknown")
+            );
+        }
+        let r = project_mode(
+            r#"{"version":1,"review":"reviewed","coverage":{"incompatible":"complete"},"relationships":[]}"#,
+            ModProjection::V2,
+        );
+        assert_eq!(r["columns"][3]["coverage"], "unknown");
     }
 }
