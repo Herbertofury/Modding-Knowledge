@@ -36,3 +36,25 @@ cargo run --locked --example seed_reviewed_bundle -- --sims4-lot51 sims4-lot51-r
 python tools/verify_lot51_snapshot.py sims4-lot51-reviewed.sqlite --html sims4-lot51-reviewed.html
 cargo run --locked --example query -- sims4-lot51-reviewed.sqlite curseforge:project:1146500
 ```
+
+## Before removing or replacing files
+
+These are first-party maintenance advisories, not an installation scan or
+a game-tested repair. The database and expandable offline notes distinguish:
+
+- **Game save:** [Suite Life’s hotel guide](https://lot51.cc/node/534) warns
+  that Hotel lots can be cleared if you save without Suite Life. Preserve a
+  separate copy of the affected game save and do not overwrite it during a
+  test without Suite Life.
+- **Generated presets:** [Lot 51’s data-file note](https://lot51.cc/node/710)
+  identifies `lot51_hotels.dat` as shared Kitchen Menu Presets. Keep it
+  across updates; it does not substitute for the affected save backup.
+- **Thread data and referenced CC:** [Fashion Authority’s usage notes](https://lot51.cc/node/571)
+  say Threads are saved per game slot in `lot51_fashion_authority_data`,
+  beside the script. Protect that directory separately from actual outfit
+  CC. Removing referenced outfit CC can damage a Thread even if the mod
+  itself is still installed.
+
+An advisory describes the conditions in the cited guide, not proof that a
+given user installed the mod, experienced the issue, or has a complete
+backup. The pack never runs, modifies, or restores a save.
