@@ -114,6 +114,22 @@ enum Constraint {
     },
 }
 
+#[derive(Debug, Default, Deserialize, Serialize, PartialEq, Eq)]
+#[serde(tag = "type", rename_all = "snake_case", deny_unknown_fields)]
+enum Applicability {
+    #[default]
+    Always,
+    OptionSelected {
+        option: String,
+    },
+}
+
+impl Applicability {
+    fn is_always(&self) -> bool {
+        matches!(self, Self::Always)
+    }
+}
+
 #[derive(Debug, Deserialize, Serialize, PartialEq, Eq)]
 #[serde(deny_unknown_fields)]
 struct Relationship {
@@ -122,6 +138,12 @@ struct Relationship {
     role: Role,
     #[serde(deserialize_with = "object")]
     constraint: Constraint,
+    #[serde(
+        default,
+        deserialize_with = "object",
+        skip_serializing_if = "Applicability::is_always"
+    )]
+    applicability: Applicability,
     #[serde(deserialize_with = "object")]
     evidence: Evidence,
 }
@@ -143,6 +165,10 @@ struct Review<'a> {
     compatibility: &'a Compatibility,
     unverified_attributed_source_statements: Vec<&'a Relationship>,
     unverified_candidates: Vec<&'a Relationship>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    unverified_conditional_source_statements: Vec<&'a Relationship>,
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    unverified_conditional_candidates: Vec<&'a Relationship>,
 }
 
 const MAX_INPUT: usize = 64 * 1024;
@@ -168,6 +194,26 @@ fn file_is_valid(file: &File) -> bool {
     project_is_valid(&file.project) && opaque(&file.id)
 }
 
+// Public Nexus Files tab links use a selector, unlike ordinary reviewed URLs.
+fn nexus_file_citation(url: &url::Url, expected: &File) -> bool {
+    let project = &expected.project;
+    fn decimal_id(value: &str) -> bool {
+        !value.is_empty() && !value.starts_with('0') && value.bytes().all(|b| b.is_ascii_digit())
+    }
+    project.provider == "nexus"
+        && url.host_str() == Some("www.nexusmods.com")
+        && url.port().is_none()
+        && !project.game.is_empty()
+        && project
+            .game
+            .bytes()
+            .all(|b| b.is_ascii_lowercase() || b.is_ascii_digit())
+        && decimal_id(&project.id)
+        && decimal_id(&expected.id)
+        && url.path() == format!("/{}/mods/{}", project.game, project.id)
+        && url.query() == Some(format!("show_file={}&tab=files", expected.id).as_str())
+}
+
 fn validate_evidence(expected: &File, evidence: &Evidence) -> Result<(), &'static str> {
     if &evidence.subject != expected
         || !opaque(&evidence.source_id)
@@ -184,7 +230,7 @@ fn validate_evidence(expected: &File, evidence: &Evidence) -> Result<(), &'stati
         || url.host_str().is_none()
         || !url.username().is_empty()
         || url.password().is_some()
-        || url.query().is_some()
+        || (url.query().is_some() && !nexus_file_citation(&url, expected))
         || url.fragment().is_some()
     {
         return Err("Expected canonical HTTPS source");
@@ -219,6 +265,8 @@ fn review<'a>(expected: &File, input: &'a Input) -> Result<Review<'a>, &'static 
         compatibility: &input.compatibility,
         unverified_attributed_source_statements: Vec::new(),
         unverified_candidates: Vec::new(),
+        unverified_conditional_source_statements: Vec::new(),
+        unverified_conditional_candidates: Vec::new(),
     };
     for (index, record) in input.relationships.iter().enumerate() {
         let Object(row) = record;
@@ -242,13 +290,29 @@ fn review<'a>(expected: &File, input: &'a Input) -> Result<Review<'a>, &'static 
             }
             _ => {}
         }
+        if let Applicability::OptionSelected { option } = &row.applicability
+            && (!label(option, 128)
+                || matches!(
+                    row.constraint,
+                    Constraint::MinimumLabel {
+                        applies: Applies::IfTargetPresent,
+                        ..
+                    }
+                ))
+        {
+            return Err("Invalid option label or unsupported compound condition");
+        }
         if input.relationships[..index].contains(record) {
             return Err("Duplicate exact relationship assertion");
         }
-        match row.evidence.basis {
-            Basis::Inferred => result.unverified_candidates.push(row),
-            Basis::AuthorStatement | Basis::ProviderStructured => {
+        match (row.evidence.basis, row.applicability.is_always()) {
+            (Basis::Inferred, true) => result.unverified_candidates.push(row),
+            (Basis::Inferred, false) => result.unverified_conditional_candidates.push(row),
+            (Basis::AuthorStatement | Basis::ProviderStructured, true) => {
                 result.unverified_attributed_source_statements.push(row);
+            }
+            (Basis::AuthorStatement | Basis::ProviderStructured, false) => {
+                result.unverified_conditional_source_statements.push(row);
             }
         }
     }
@@ -470,6 +534,151 @@ mod tests {
         let mut promoted = input;
         promoted["relationships"][0]["role"] = json!("requires");
         assert!(validate(promoted).is_err());
+    }
+
+    const NEXUS_SHAWL: &str =
+        include_str!("research/file_relationships/mages-daily-outfit-smp.json");
+
+    fn nexus_shawl() -> File {
+        File {
+            project: Project {
+                provider: "nexus".into(),
+                game: "skyrimspecialedition".into(),
+                id: "155656".into(),
+            },
+            id: "667812".into(),
+        }
+    }
+
+    #[test]
+    fn preserves_exact_nexus_citation_without_promoting_compatibility() {
+        let expected = nexus_shawl();
+        let output = validate_stdin(&expected, NEXUS_SHAWL.as_bytes()).unwrap();
+        let result: Value = serde_json::from_slice(&output).unwrap();
+        assert_eq!(result["compatibility"]["status"], "unknown");
+        let rows = result["unverified_attributed_source_statements"]
+            .as_array()
+            .unwrap();
+        assert_eq!(rows.len(), 1);
+        assert_eq!(rows[0]["target"]["id"], "57339");
+        assert_eq!(
+            rows[0]["evidence"]["source_url"],
+            "https://www.nexusmods.com/skyrimspecialedition/mods/155656?show_file=667812&tab=files"
+        );
+        let mut other = expected;
+        other.id = "667813".into();
+        assert!(validate_stdin(&other, NEXUS_SHAWL.as_bytes()).is_err());
+    }
+
+    #[test]
+    fn permits_only_the_exact_public_nexus_file_query() {
+        let example =
+            "https://www.nexusmods.com/skyrimspecialedition/mods/155656?show_file=667812&tab=files";
+        let expected = nexus_shawl();
+        for link in [
+            example.replace("show_file=667812", "show_file=667811"),
+            example.replace("/155656?", "/156597?"),
+            example.replace("/skyrimspecialedition/", "/fallout4/"),
+            example.replace("www.nexusmods.com", "www.nexusmods.com.example.test"),
+            example.replace("www.nexusmods.com", "www.nexusmods.com:8443"),
+            example.replace("show_file=667812", "file_id=667812"),
+            example.replace("tab=files", "tab=requirements"),
+            example.replace("667812", "%3667812"),
+            format!("{example}&show_file=667812"),
+            format!("{example}&campaign=unwanted"),
+            format!("{example}#fragment"),
+        ] {
+            let fixture = NEXUS_SHAWL.replace(example, &link);
+            assert_ne!(fixture, NEXUS_SHAWL);
+            assert_eq!(
+                validate_stdin(&expected, fixture.as_bytes()),
+                Err("Expected canonical HTTPS source")
+            );
+        }
+        let mut other = expected;
+        other.project.provider = "other".into();
+        let fixture = NEXUS_SHAWL.replace("\"provider\": \"nexus\"", "\"provider\": \"other\"");
+        assert_eq!(
+            validate_stdin(&other, fixture.as_bytes()),
+            Err("Expected canonical HTTPS source")
+        );
+    }
+
+    #[test]
+    fn keeps_conditional_exact_file_requirements_out_of_unconditional_results() {
+        let mut input = fixture();
+        let target = input["relationships"][0]["target"].clone();
+        input["relationships"][0]["role"] = json!("requires");
+        input["relationships"][0]["constraint"] = json!({
+            "type":"exact_target_file", "file":{"project":target, "id":"77"}
+        });
+        let unconditional = input["relationships"][0].clone();
+        input["relationships"][0]["applicability"] =
+            json!({"type":"option_selected","option":"SMP shawl"});
+        let mut inferred = input["relationships"][0].clone();
+        inferred["evidence"]["basis"] = json!("inferred");
+        input["relationships"]
+            .as_array_mut()
+            .unwrap()
+            .extend([unconditional, inferred]);
+        let result = validate(input).unwrap();
+        assert_eq!(
+            result["unverified_attributed_source_statements"]
+                .as_array()
+                .unwrap()
+                .len(),
+            1
+        );
+        assert!(
+            result["unverified_attributed_source_statements"][0]
+                .get("applicability")
+                .is_none()
+        );
+        let row = &result["unverified_conditional_source_statements"][0];
+        assert_eq!(row["constraint"]["file"]["id"], "77");
+        assert_eq!(row["applicability"]["option"], "SMP shawl");
+        assert_eq!(
+            result["unverified_conditional_candidates"]
+                .as_array()
+                .unwrap()
+                .len(),
+            1
+        );
+        assert_eq!(result["unverified_candidates"].as_array().unwrap().len(), 1);
+    }
+
+    #[test]
+    fn refuses_ambiguous_option_shapes_and_preserves_existing_output() {
+        let input = fixture();
+        let baseline = validate(input.clone()).unwrap();
+        assert!(
+            baseline
+                .get("unverified_conditional_source_statements")
+                .is_none()
+        );
+        assert!(baseline.get("unverified_conditional_candidates").is_none());
+        for condition in [
+            json!(null),
+            json!({"type":"option_selected","option":" "}),
+            json!({"type":"option_selected","option":"line\nbreak"}),
+            json!({"type":"option_selected","option":"x","or":"y"}),
+            json!({"type":"option_selected","option":"x"}),
+        ] {
+            let mut invalid = input.clone();
+            // Row 0 has the existing "if target present" condition.
+            invalid["relationships"][0]["applicability"] = condition;
+            assert!(validate(invalid).is_err());
+        }
+        let mut valid = input.clone();
+        valid["relationships"][0]["applicability"] = json!({"type":"always"});
+        assert_eq!(validate(valid), Ok(baseline));
+        let duplicate = FIXTURE.replacen(
+            "\"role\":",
+            "\"applicability\":{\"type\":\"always\"},\"applicability\":{\"type\":\"always\"},\"role\":",
+            1,
+        );
+        assert_ne!(duplicate, FIXTURE);
+        assert!(validate_stdin(&expected(), duplicate.as_bytes()).is_err());
     }
 
     #[test]
