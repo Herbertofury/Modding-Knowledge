@@ -33,7 +33,10 @@ class ReviewedFormList(unittest.TestCase):
             self.assertEqual(alternative["original_project"], "nexus:skyrim-se:project:74037")
 
     def test_rendered_offline_rows_and_runtime_claims(self):
-        path = Path(os.environ.get("SKYRIM_FLM_HTML", ROOT / "Open FLM Evidence.html"))
+        supplied = os.environ.get("SKYRIM_FLM_HTML")
+        if not supplied:
+            self.skipTest("requires generated offline HTML from the dedicated lane")
+        path = Path(supplied)
         html = path.read_bytes().decode("utf-8")
         raw = re.search('<script type="application/json" id="data">(.*?)</script>', html, re.S)
         script = re.search('<script>(.*?)</script>', html, re.S)
@@ -47,7 +50,10 @@ class ReviewedFormList(unittest.TestCase):
         self.assertIn("default-src 'none'", html)
 
     def test_native_reopen_matches_all_provenance_and_fact_bytes(self):
-        db = Path(os.environ.get("SKYRIM_FLM_SQLITE", ROOT / "skyrim-flm.sqlite"))
+        supplied = os.environ.get("SKYRIM_FLM_SQLITE")
+        if not supplied:
+            self.skipTest("requires native SQLite from the dedicated lane")
+        db = Path(supplied)
         self.assertTrue(db.is_file())
         with sqlite3.connect(db.resolve().as_uri() + "?mode=ro", uri=True) as conn:
             self.assertEqual(conn.execute("pragma integrity_check").fetchone(), ("ok",))
