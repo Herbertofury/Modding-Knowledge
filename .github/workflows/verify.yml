@@ -84,6 +84,24 @@ jobs:
             skyrim-fsmp-reviewed.html
           if-no-files-found: error
 
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: "24"
+      - name: Verify source-pinned FSMP legacy MCM transition in native SQLite
+        run: |
+          cargo run --locked --example seed_reviewed_bundle -- --skyrim-fsmp-mcm-history skyrim-fsmp-mcm-history.sqlite
+          python tools/build_skyrim_fsmp_mcm_history.py skyrim-fsmp-mcm-history.html
+          python -m unittest discover -s tests -p test_skyrim_fsmp_mcm_history.py -v
+          node --test tests/test_skyrim_fsmp_mcm_viewer.mjs
+        env:
+          SKYRIM_FSMP_MCM_HISTORY_SQLITE: skyrim-fsmp-mcm-history.sqlite
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: skyrim-fsmp-mcm-history-${{ matrix.os }}
+          path: |
+            skyrim-fsmp-mcm-history.sqlite
+            skyrim-fsmp-mcm-history.html
+          if-no-files-found: error
       - uses: actions/upload-artifact@v4
         with:
           name: skyrim-distributor-releases-${{ matrix.os }}

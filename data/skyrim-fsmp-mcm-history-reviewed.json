@@ -1,0 +1,235 @@
+{
+  "schema": 1,
+  "games": {
+    "skyrim-se": "Skyrim Special Edition (including desktop AE)",
+    "skyrim-vr": "Skyrim VR"
+  },
+  "sources": {
+    "skyrim-fsmp-maintainer": "https://github.com/DaymareOn/hdtSMP64"
+  },
+  "source_policy_revisions": {
+    "skyrim-fsmp-maintainer": "skyrim-fsmp-release-evidence-2026-11-25"
+  },
+  "entities": [
+    {
+      "id": "github:DaymareOn/hdtSMP64",
+      "kind": "mod",
+      "name": "Faster HDT-SMP",
+      "game_id": "skyrim-se"
+    },
+    {
+      "id": "github:creator:DaymareOn",
+      "kind": "creator",
+      "name": "DaymareOn",
+      "game_id": "skyrim-se"
+    },
+    {
+      "id": "nexus:skyrim-se:project:120352",
+      "kind": "mod",
+      "name": "SKSE Menu Framework",
+      "game_id": "skyrim-se"
+    },
+    {
+      "id": "github:DaymareOn/FSMP-MCM",
+      "kind": "mod",
+      "name": "FSMP MCM",
+      "game_id": "skyrim-se"
+    },
+    {
+      "id": "nexus:skyrim-se:project:57339",
+      "kind": "mod",
+      "name": "Faster HDT-SMP (Nexus listing)",
+      "game_id": "skyrim-se"
+    },
+    {
+      "id": "github:DaymareOn/FSMP-Validator",
+      "kind": "mod",
+      "name": "FSMP Validator",
+      "game_id": "skyrim-se"
+    }
+  ],
+  "observations": [
+    {
+      "id": "github:DaymareOn/hdtSMP64:20261125:project_release_evidence_v1:377386950",
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/releases/tag/v4.1.1",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"DaymareOn/hdtSMP64\",\"tag\":\"v4.1.1\",\"provider_release_id\":377386950,\"provider_prerelease_flag\":false,\"release_type\":\"not marked prerelease\",\"publisher_latest_endpoint_match\":true,\"published_at\":\"2026-08-26T19:57:19Z\",\"files\":[{\"provider_asset_id\":531271125,\"name\":\"FSMP-4.1.1.zip\",\"size\":38859254,\"provider_sha256\":\"fae3659452e6df66ad7ede0a53d39832ac5636d62e0abcf8e01bd6a607dc5094\",\"official_download_url\":\"https://github.com/DaymareOn/hdtSMP64/releases/download/v4.1.1/FSMP-4.1.1.zip\",\"archive_bytes_verified\":false,\"role\":\"publisher archive; installed binary, options, and runtime unverified\"}],\"install_authorized\":false,\"runtime_tested_by_catalog\":false}",
+      "observed_unix": 1795640400,
+      "applicable_build": "unverified",
+      "mod_version": "v4.1.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25"
+    },
+    {
+      "id": "github:DaymareOn/hdtSMP64:20261125:project_release_evidence_v1:377367598",
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/releases/tag/v3.0.0-dev-e52ad96",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"DaymareOn/hdtSMP64\",\"tag\":\"v3.0.0-dev-e52ad96\",\"provider_release_id\":377367598,\"provider_prerelease_flag\":true,\"release_type\":\"publisher-marked prerelease\",\"publisher_latest_endpoint_match\":false,\"published_at\":\"2026-08-26T19:22:49Z\",\"files\":[{\"provider_asset_id\":531228713,\"name\":\"FSMP-3.0.0-dev-e52ad96.zip\",\"size\":38864188,\"provider_sha256\":\"788aef963acee4d9d53acf2604e30a6707ef49dae065ff56085b73db7cb08e07\",\"official_download_url\":\"https://github.com/DaymareOn/hdtSMP64/releases/download/v3.0.0-dev-e52ad96/FSMP-3.0.0-dev-e52ad96.zip\",\"archive_bytes_verified\":false,\"role\":\"publisher archive; installed binary, options, and runtime unverified\"}],\"install_authorized\":false,\"runtime_tested_by_catalog\":false}",
+      "observed_unix": 1795640400,
+      "applicable_build": "unverified",
+      "mod_version": "v3.0.0-dev-e52ad96",
+      "completeness": "partial",
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25"
+    },
+    {
+      "id": "github:DaymareOn/hdtSMP64:20261125:project_release_evidence_v1:349220857",
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/releases/tag/v4.0.1",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"DaymareOn/hdtSMP64\",\"tag\":\"v4.0.1\",\"provider_release_id\":349220857,\"provider_prerelease_flag\":false,\"release_type\":\"not marked prerelease\",\"publisher_latest_endpoint_match\":false,\"published_at\":\"2026-07-05T18:19:21Z\",\"files\":[{\"provider_asset_id\":467338327,\"name\":\"FSMP-4.0.1.zip\",\"size\":37975792,\"provider_sha256\":\"c42904c9da94758f790c00bec0bdc91f208c54ca628287414bcb13fe731176c8\",\"official_download_url\":\"https://github.com/DaymareOn/hdtSMP64/releases/download/v4.0.1/FSMP-4.0.1.zip\",\"archive_bytes_verified\":false,\"role\":\"publisher archive; installed binary, options, and runtime unverified\"}],\"install_authorized\":false,\"runtime_tested_by_catalog\":false}",
+      "observed_unix": 1795640400,
+      "applicable_build": "unverified",
+      "mod_version": "v4.0.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25"
+    },
+    {
+      "id": "github:DaymareOn/hdtSMP64:20261125:project_release_evidence_v1:349147768",
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/releases/tag/v4.0.0",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"DaymareOn/hdtSMP64\",\"tag\":\"v4.0.0\",\"provider_release_id\":349147768,\"provider_prerelease_flag\":false,\"release_type\":\"not marked prerelease\",\"publisher_latest_endpoint_match\":false,\"published_at\":\"2026-07-05T11:18:34Z\",\"files\":[{\"provider_asset_id\":467316748,\"name\":\"FSMP-4.0.0.zip\",\"size\":38015070,\"provider_sha256\":\"a51e6dfce672df15e50a69bd8e64219e576da4115d64e34aba3a14ea87569645\",\"official_download_url\":\"https://github.com/DaymareOn/hdtSMP64/releases/download/v4.0.0/FSMP-4.0.0.zip\",\"archive_bytes_verified\":false,\"role\":\"publisher archive; installed binary, options, and runtime unverified\"}],\"install_authorized\":false,\"runtime_tested_by_catalog\":false}",
+      "observed_unix": 1795640400,
+      "applicable_build": "unverified",
+      "mod_version": "v4.0.0",
+      "completeness": "partial",
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25"
+    },
+    {
+      "id": "github:DaymareOn/hdtSMP64:20261125:project_release_evidence_v1:348285438",
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/releases/tag/v3.5.0",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"DaymareOn/hdtSMP64\",\"tag\":\"v3.5.0\",\"provider_release_id\":348285438,\"provider_prerelease_flag\":false,\"release_type\":\"not marked prerelease\",\"publisher_latest_endpoint_match\":false,\"published_at\":\"2026-07-02T20:51:00Z\",\"files\":[{\"provider_asset_id\":464701790,\"name\":\"FSMP-3.5.0.zip\",\"size\":36152706,\"provider_sha256\":\"3bb7a0c76488c8743118e22ee2cd8c47915952ffaa80dc6d237772feb84dc918\",\"official_download_url\":\"https://github.com/DaymareOn/hdtSMP64/releases/download/v3.5.0/FSMP-3.5.0.zip\",\"archive_bytes_verified\":false,\"role\":\"publisher archive; installed binary, options, and runtime unverified\"}],\"install_authorized\":false,\"runtime_tested_by_catalog\":false}",
+      "observed_unix": 1795640400,
+      "applicable_build": "unverified",
+      "mod_version": "v3.5.0",
+      "completeness": "partial",
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25"
+    },
+    {
+      "id": "github:creator:DaymareOn:20261125:creator_project_identity_v1",
+      "entity_id": "github:creator:DaymareOn",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/blob/2215ec3ba09adf0843a3291ed0437a6ca6d385e2/README.md",
+      "predicate": "creator_project_identity_v1",
+      "value": "{\"handle\":\"DaymareOn\",\"aliases\":[\"DaydreamingDay\"],\"project\":\"github:DaymareOn/hdtSMP64\",\"project_distribution\":[\"https://github.com/DaymareOn/hdtSMP64\",\"https://www.nexusmods.com/skyrimspecialedition/mods/57339\"],\"association\":\"Pinned maintainer README explicitly names the aliases; it is not proof of sole authorship.\",\"upstream_lineage\":[\"https://github.com/Karonar1/hdtSMP64\",\"https://github.com/aers/hdtSMP64\",\"https://github.com/HydrogensaysHDT/hdt-skyrimse-mods\"]}",
+      "observed_unix": 1795640400,
+      "applicable_build": "unverified",
+      "mod_version": "v4.1.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25"
+    },
+    {
+      "id": "github:DaymareOn/hdtSMP64:20261125:project_venue_evidence_v1",
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/blob/2215ec3ba09adf0843a3291ed0437a6ca6d385e2/README.md",
+      "predicate": "project_venue_evidence_v1",
+      "value": "{\"canonical_project_url\":\"https://github.com/DaymareOn/hdtSMP64\",\"creator_entity_id\":\"github:creator:DaymareOn\",\"nexus_project_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/57339\",\"nexus_entity_id\":\"nexus:skyrim-se:project:57339\",\"nexus_exact_archive_equivalence\":\"unverified\",\"license_label\":\"GPL-3.0\",\"license_source\":\"https://github.com/DaymareOn/hdtSMP64/blob/2215ec3ba09adf0843a3291ed0437a6ca6d385e2/LICENSE\",\"archive_rights_inferred\":false}",
+      "observed_unix": 1795640400,
+      "applicable_build": "unverified",
+      "mod_version": "v4.1.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25"
+    },
+    {
+      "id": "github:DaymareOn/hdtSMP64:20261125:mod.relationships.v1",
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/blob/2215ec3ba09adf0843a3291ed0437a6ca6d385e2/README.md",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"unknown\",\"optional\":\"partial\",\"works_with\":\"partial\",\"incompatible\":\"unknown\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"nexus:skyrim-se:project:120352\",\"label\":\"SKSE Menu Framework\",\"relation\":\"optional\",\"raw_relation\":\"optional\",\"condition\":\"Only for exposing the current in-game configuration interface; do not infer that the physics runtime requires it.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Documentation\",\"location\":\"Maintainer README pinned to source commit\",\"quote\":null}},{\"target_id\":\"github:DaymareOn/FSMP-Validator\",\"label\":\"FSMP Validator\",\"relation\":\"works_with\",\"raw_relation\":\"works_with\",\"condition\":\"Authoring and XML validation workflow, not an asserted runtime requirement.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Documentation\",\"location\":\"Maintainer README pinned to source commit\",\"quote\":null}}]}",
+      "observed_unix": 1795640400,
+      "applicable_build": "unverified",
+      "mod_version": "v4.1.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25"
+    },
+    {
+      "id": "github:DaymareOn/hdtSMP64:20261125:fomod_source_selection_evidence_v1",
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/blob/2215ec3ba09adf0843a3291ed0437a6ca6d385e2/fomod%20tree/fomod/ModuleConfig.xml",
+      "predicate": "fomod_source_selection_evidence_v1",
+      "value": "{\"source_commit\":\"2215ec3ba09adf0843a3291ed0437a6ca6d385e2\",\"provider_release_id\":377386950,\"provider_asset_id\":531271125,\"exact_binary_member\":null,\"source_build_matrix_url\":\"https://github.com/DaymareOn/hdtSMP64/blob/2215ec3ba09adf0843a3291ed0437a6ca6d385e2/.github/workflows/build.yml\",\"game_runtime\":{\"se\":null,\"ae\":null,\"gog\":null,\"vr\":null,\"validated_installed_runtime\":false},\"evidence_lane\":\"tagged installer source; archive contents and applied choices not checked\",\"groups\":[{\"group\":\"AVX\",\"pick\":\"exactly-one\",\"options\":[{\"label\":\"No AVX\",\"flag\":\"NOAVX\",\"cpu_check_required\":false},{\"label\":\"AVX\",\"flag\":\"AVX\",\"cpu_check_required\":true},{\"label\":\"AVX2\",\"flag\":\"AVX2\",\"cpu_check_required\":true},{\"label\":\"AVX512\",\"flag\":\"AVX512\",\"cpu_check_required\":true}],\"performance_order\":null},{\"group\":\"Legacy MCM\",\"pick\":\"exactly-one-when-visible\",\"visibility\":{\"operator\":\"any\",\"plugin\":\"FSMPM - The FSMP MCM.esp\",\"state\":[\"Active\",\"Inactive\"]},\"options\":[{\"label\":\"Keep the legacy MCM\",\"flag_value\":\"On\",\"author_recommended\":true,\"retains_same_named_stub\":true},{\"label\":\"No legacy MCM\",\"flag_value\":\"Off\",\"author_recommended\":false,\"retains_same_named_stub\":false}],\"apply_without_user_review\":false}],\"user_cpu_checked\":false,\"installer_executed\":false}",
+      "observed_unix": 1795640400,
+      "applicable_build": "unverified",
+      "mod_version": "v4.1.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25"
+    },
+    {
+      "id": "github:DaymareOn/hdtSMP64:20261125:mod_maintenance_advisory_evidence_v1",
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/blob/2215ec3ba09adf0843a3291ed0437a6ca6d385e2/fomod%20tree/fomod/ModuleConfig.xml",
+      "predicate": "mod_maintenance_advisory_evidence_v1",
+      "value": "{\"applies_when\":{\"previous_track\":\"3.x\",\"plugin\":\"FSMPM - The FSMP MCM.esp\",\"plugin_present\":true,\"action\":\"updating\"},\"keep_option\":\"Keep the legacy MCM\",\"policy\":\"Surface author warning and offer review of loaded profile/save dependencies; never disable the ESP or pick an install option silently.\",\"savegame_risk\":\"Maintainer warns that removing a plugin referenced by existing saves can invalidate them. The stub preserves the named plugin; save compatibility was not tested here.\",\"evidence_confidence\":\"maintainer statement in pinned installer source\",\"release_file_id\":531271125,\"review_required\":true}",
+      "observed_unix": 1795640400,
+      "applicable_build": "unverified",
+      "mod_version": "v4.1.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25"
+    },
+    {
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/blob/3b0b80e30c2ff4766d01e888ff4c1896247d8163/fomod%20tree/fomod/ModuleConfig.xml",
+      "predicate": "fomod_named_plugin_lineage_v1",
+      "applicable_build": "unverified",
+      "mod_version": "v3.5.0",
+      "completeness": "partial",
+      "observed_unix": 1795641000,
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25",
+      "id": "github:DaymareOn/hdtSMP64:20261125:fomod_named_plugin_lineage_v1:v3.5.0",
+      "value": "{\"source_commit\":\"3b0b80e30c2ff4766d01e888ff4c1896247d8163\",\"git_blob\":\"71f57f9a0f139b296e307e14a872a60e0413807f\",\"source_sha256\":\"7965e8d7916770ab84a8bd86c7b609eecfece1eb629068ae1726c4acbfd8edac\",\"named_file\":\"FSMPM - The FSMP MCM.esp\",\"named_file_copy_rules\":[{\"scope\":\"choice-step\",\"selection\":\"SelectAll\",\"plugin_label\":\"Thanks\"}],\"legacy_step_visibility\":null,\"archive_contents_tested\":false,\"savegame_compatibility_tested\":false,\"automatic_upgrade_authorized\":false}"
+    },
+    {
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/blob/a7de94f26656be67a39533d54482bd7a00b80d31/fomod%20tree/fomod/ModuleConfig.xml",
+      "predicate": "fomod_named_plugin_lineage_v1",
+      "applicable_build": "unverified",
+      "mod_version": "v4.0.0",
+      "completeness": "partial",
+      "observed_unix": 1795641000,
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25",
+      "id": "github:DaymareOn/hdtSMP64:20261125:fomod_named_plugin_lineage_v1:v4.0.0",
+      "value": "{\"source_commit\":\"a7de94f26656be67a39533d54482bd7a00b80d31\",\"git_blob\":\"99149bab8f7ff1081a8b15f68ce57170c80565b9\",\"source_sha256\":\"5fdfae6cfdf3a33a5ef5abf10bfd3a7fd664ce6496c9dc13311c9b630d4856db\",\"named_file\":\"FSMPM - The FSMP MCM.esp\",\"named_file_copy_rules\":[],\"legacy_step_visibility\":null,\"archive_contents_tested\":false,\"savegame_compatibility_tested\":false,\"automatic_upgrade_authorized\":false}"
+    },
+    {
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/blob/1b4c7415b7e362a69a975483959dcb3d5946c6fc/fomod%20tree/fomod/ModuleConfig.xml",
+      "predicate": "fomod_named_plugin_lineage_v1",
+      "applicable_build": "unverified",
+      "mod_version": "v4.0.1",
+      "completeness": "partial",
+      "observed_unix": 1795641000,
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25",
+      "id": "github:DaymareOn/hdtSMP64:20261125:fomod_named_plugin_lineage_v1:v4.0.1",
+      "value": "{\"source_commit\":\"1b4c7415b7e362a69a975483959dcb3d5946c6fc\",\"git_blob\":\"99149bab8f7ff1081a8b15f68ce57170c80565b9\",\"source_sha256\":\"5fdfae6cfdf3a33a5ef5abf10bfd3a7fd664ce6496c9dc13311c9b630d4856db\",\"named_file\":\"FSMPM - The FSMP MCM.esp\",\"named_file_copy_rules\":[],\"legacy_step_visibility\":null,\"archive_contents_tested\":false,\"savegame_compatibility_tested\":false,\"automatic_upgrade_authorized\":false}"
+    },
+    {
+      "entity_id": "github:DaymareOn/hdtSMP64",
+      "source_id": "skyrim-fsmp-maintainer",
+      "source_url": "https://github.com/DaymareOn/hdtSMP64/blob/2215ec3ba09adf0843a3291ed0437a6ca6d385e2/fomod%20tree/fomod/ModuleConfig.xml",
+      "predicate": "fomod_named_plugin_lineage_v1",
+      "applicable_build": "unverified",
+      "mod_version": "v4.1.1",
+      "completeness": "partial",
+      "observed_unix": 1795641000,
+      "policy_revision": "skyrim-fsmp-release-evidence-2026-11-25",
+      "id": "github:DaymareOn/hdtSMP64:20261125:fomod_named_plugin_lineage_v1:v4.1.1",
+      "value": "{\"source_commit\":\"2215ec3ba09adf0843a3291ed0437a6ca6d385e2\",\"git_blob\":\"198d96e123c1815e3f8033d713fcb9c7b9ea6017\",\"source_sha256\":\"5171e0fdf96d50024be06b692da34c1121e9e74589d24dd339bb6c785317c174\",\"named_file\":\"FSMPM - The FSMP MCM.esp\",\"named_file_copy_rules\":[{\"scope\":\"conditional\",\"flags\":[[\"LEGACYMCM\",\"On\"]]}],\"legacy_step_visibility\":{\"operator\":\"Or\",\"states\":[\"Active\",\"Inactive\"]},\"archive_contents_tested\":false,\"savegame_compatibility_tested\":false,\"automatic_upgrade_authorized\":false}"
+    }
+  ]
+}
