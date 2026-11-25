@@ -21,6 +21,10 @@ fn main() -> Result<()> {
             path,
             include_str!("../data/hytale-file-channels-reviewed.json"),
         ),
+        [flag, path] if flag == "--skyrim-native-runtime" => (
+            path,
+            include_str!("../data/skyrim-native-runtime-reviewed.json"),
+        ),
         _ => {
             return Err("Expected optional reviewed-pack flag and a NEW-SQLITE-PATH".into());
         }
