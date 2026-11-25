@@ -20,6 +20,7 @@ class FormListLayout(unittest.TestCase):
             (d/'FLM'/'Malformed.ini').write_bytes(b'\xff\xfe\x00')
             summary = report(d)
             self.assertEqual(summary['file_count'], 5)
+            self.assertEqual(summary['file_states']['read-utf8'], 2, summary['file_states'])
             self.assertEqual(summary['possible_overlap_count'], 1)
             self.assertEqual(summary['possible_overlaps'][0]['locations'], [
                 {'path':'Source_FLM.ini','line':1}, {'path':'FLM/Optional.ini','line':2}])

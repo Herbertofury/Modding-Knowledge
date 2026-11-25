@@ -48,13 +48,16 @@ def staged_files(data):
                 if len(entries) >= MAX_FILES:
                     raise ValueError('Too many candidate configuration files')
                 relative = info.name if role == 'Data-root' else 'FLM/' + info.name
-                s = info.stat(follow_symlinks=False)
+                # Windows DirEntry.stat() can fill st_dev/st_ino with zeros.
+                # lstat supplies the comparable identity without following a link.
+                path = Path(info.path)
+                s = path.lstat()
                 state = 'candidate' if stat.S_ISREG(s.st_mode) and not reparse(s) else 'not-a-plain-file'
                 if lower == 'formlistmanipulator_debug.ini':
                     state = 'debug-toggle-not-analyzed'
                 if role == 'FLM-subfolder' and not info.name.endswith('.ini') and state == 'candidate':
                     state = 'extension-case-needs-review'
-                entries.append((relative, role, state, Path(info.path), s))
+                entries.append((relative, role, state, path, s))
     return sorted(entries, key=lambda e: (e[1] != 'Data-root', e[0].casefold(), e[0]))
 
 
