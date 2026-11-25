@@ -63,7 +63,8 @@ def smoke(folder, executable, entity_count, observed_count, expected_database):
     if 'lumpinou:project:the-mood-pack-mod' not in required:
         raise ValueError('Source-specific Dental Care dependency was not retained')
     view = run(db, 'visual-in', 'minecraft-java', 'mod', 'Iris').stdout
-    if b'Iris Shaders' not in view or b'Vampirism' in view:
+    if (b'Iris Shaders' not in view or b'Vampirism' in view
+            or b'<strong><a href="https://modrinth.com/project/YL57xq9U"' not in view):
         raise ValueError('Visual export did not retain scoped selection')
     if sha(read_regular(db)) != expected_database or any(
             (folder / (db.name + s)).exists() for s in ('-wal', '-shm', '-journal')):

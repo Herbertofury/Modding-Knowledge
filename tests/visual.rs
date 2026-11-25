@@ -46,3 +46,79 @@ fn evidence_media_rights_xss_and_withdrawal() {
             .contains("Fixture art")
     );
 }
+
+#[test]
+fn qualified_titles_link_to_exact_project_or_profile_without_guessing_ambiguous_rows() {
+    let mut s = Store::open(":memory:").unwrap();
+    s.register_game("game", "Game").unwrap();
+    s.set_source_policy("test", "https://example.org/terms", true, true, "1")
+        .unwrap();
+    let records = [
+        (
+            "modrinth:project:YL57xq9U",
+            "mod",
+            "Iris",
+            "provider_claim.source_url",
+            "https://api.modrinth.com/v2/project/YL57xq9U",
+            json!("https://github.com/IrisShaders/Iris"),
+        ),
+        (
+            "modrinth:project:12345678",
+            "mod",
+            "Wrong ID",
+            "provider_claim.source_url",
+            "https://api.modrinth.com/v2/project/XL57xq9U",
+            json!("https://github.com/IrisShaders/Iris"),
+        ),
+        (
+            "github:creator:Tester",
+            "creator",
+            "Profile",
+            "reviewed.creator_identity",
+            "https://example.org/record",
+            json!({"profiles":[{"url":"https://github.com/Tester","status":"provider-qualified account URL"},{"url":"https://example.org/maybe","status":"unverified"}]}),
+        ),
+        (
+            "github:creator:Two",
+            "creator",
+            "Ambiguous",
+            "reviewed.creator_identity",
+            "https://example.org/record",
+            json!({"profiles":[{"url":"https://github.com/Two","status":"provider-qualified account URL"},{"url":"https://example.org/Two","status":"provider-qualified account URL"}]}),
+        ),
+    ];
+    for (id, kind, label, predicate, url, value) in records {
+        s.register_entity(id, "game", kind, label).unwrap();
+        s.import(&[Observation {
+            id: id.into(),
+            entity_id: id.into(),
+            source_id: "test".into(),
+            source_url: url.into(),
+            predicate: predicate.into(),
+            value: value.to_string(),
+            observed_unix: 1,
+            applicable_build: "unknown".into(),
+            mod_version: "unknown".into(),
+            completeness: "partial".into(),
+            policy_revision: "1".into(),
+        }])
+        .unwrap();
+    }
+    let html = s.visual_catalog("", "", 20).unwrap();
+    assert!(html.contains(r#"<strong><a href="https://modrinth.com/project/YL57xq9U" rel="noreferrer noopener" target="_blank">Iris</a></strong>"#));
+    assert!(html.contains(r#"<strong><a href="https://github.com/Tester" rel="noreferrer noopener" target="_blank">Profile</a></strong>"#));
+    assert!(
+        html.contains("<strong>Wrong ID</strong>") && html.contains("<strong>Ambiguous</strong>")
+    );
+    assert!(!html.contains("https://modrinth.com/project/12345678"));
+    assert!(!html.contains("https://example.org/maybe"));
+    assert!(
+        html.contains("Recorded project / profile pages")
+            && html.contains("Reviewed evidence links")
+    );
+    assert!(!html.contains("<img src=") && !html.contains("<iframe"));
+    s.set_source_policy("test", "https://example.org/terms", true, false, "1")
+        .unwrap();
+    let withdrawn = s.visual_catalog("", "", 20).unwrap();
+    assert!(!withdrawn.contains("https://github.com/Tester"));
+}

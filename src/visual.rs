@@ -1,6 +1,7 @@
 //! Evidence-qualified presentation adapter; no fetching, downloads or automatic classification.
-use crate::{Result, Store, public_url};
+use crate::{Observation, Result, Store, public_url};
 use serde_json::{Value, json};
+use std::collections::BTreeSet;
 
 fn escape(s: &str) -> String {
     s.replace('&', "&amp;")
@@ -9,54 +10,100 @@ fn escape(s: &str) -> String {
         .replace('"', "&quot;")
         .replace('\'', "&#39;")
 }
+fn presentation_rows(observations: &[Observation]) -> Value {
+    let mut claims = Vec::new();
+    let mut media = Vec::new();
+    for r in observations {
+        if !matches!(
+            r.predicate.as_str(),
+            "presentation.content" | "presentation.category" | "presentation.media"
+        ) {
+            continue;
+        }
+        let Ok(v) = serde_json::from_str::<Value>(&r.value) else {
+            continue;
+        };
+        let status = v["evidence_status"].as_str().unwrap_or("");
+        if !matches!(status, "verified" | "provider_declared" | "inferred") {
+            continue;
+        }
+        let provenance = json!({"observation_id":r.id,"source_url":r.source_url,"observed_unix":r.observed_unix,"evidence_status":status});
+        if r.predicate == "presentation.media" {
+            let Some(url) = v["url"].as_str() else {
+                continue;
+            };
+            if public_url(url).is_err() || !matches!(v["kind"].as_str(), Some("image" | "video")) {
+                continue;
+            }
+            // Display rights and retention rights are separate, explicitly reviewed inputs.
+            if v["display_allowed"] != true {
+                continue;
+            }
+            media.push(json!({"url":url,"kind":v["kind"],"alt":v["alt"].as_str().unwrap_or("Source media"),"retention_allowed":v["retention_allowed"]==true,"provenance":provenance}));
+        } else {
+            let Some(label) = v["label"]
+                .as_str()
+                .filter(|s| !s.is_empty() && s.len() <= 120)
+            else {
+                continue;
+            };
+            claims.push(json!({"dimension":if r.predicate.ends_with("content") {"content"} else {"category"},"label":label,"provenance":provenance}));
+        }
+    }
+    json!({"claims":claims,"media":media,"observations_page_limit":1000,"possibly_truncated":observations.len()==1000})
+}
+
+fn catalog_links<'a>(
+    entity_id: &str,
+    kind: &str,
+    rows: &'a [Observation],
+) -> (BTreeSet<String>, BTreeSet<&'a str>) {
+    let mut direct = BTreeSet::new();
+    let mut sources = BTreeSet::new();
+    for row in rows {
+        if public_url(&row.source_url).is_ok() {
+            sources.insert(row.source_url.as_str());
+        }
+        if kind != "creator"
+            && let Some(id) = entity_id.strip_prefix("modrinth:project:")
+            && id.len() == 8
+            && id.bytes().all(|b| b.is_ascii_alphanumeric())
+            && row.predicate.starts_with("provider_claim.")
+            && row.source_url == format!("https://api.modrinth.com/v2/project/{id}")
+        {
+            direct.insert(format!("https://modrinth.com/project/{id}"));
+        }
+        if row.predicate == "reviewed.project_attribution" && matches!(kind, "mod" | "tool") {
+            if let Ok(raw) = serde_json::from_str::<Value>(&row.value)
+                && let Some(url) = raw["project"]["url"].as_str()
+                && public_url(url).is_ok()
+            {
+                direct.insert(url.to_owned());
+            }
+        } else if row.predicate == "reviewed.creator_identity"
+            && kind == "creator"
+            && let Ok(raw) = serde_json::from_str::<Value>(&row.value)
+            && let Some(profiles) = raw["profiles"].as_array()
+        {
+            for profile in profiles
+                .iter()
+                .filter(|p| p["status"] == "provider-qualified account URL")
+            {
+                if let Some(url) = profile["url"].as_str()
+                    && public_url(url).is_ok()
+                {
+                    direct.insert(url.to_owned());
+                }
+            }
+        }
+    }
+    (direct, sources)
+}
+
 impl Store {
     /// A bounded, policy-filtered projection. Content/category are independent claims.
     pub fn presentation(&self, entity: &str) -> Result<Value> {
-        let observations = self.observations(entity)?;
-        let mut claims = Vec::new();
-        let mut media = Vec::new();
-        for r in &observations {
-            if !matches!(
-                r.predicate.as_str(),
-                "presentation.content" | "presentation.category" | "presentation.media"
-            ) {
-                continue;
-            }
-            let Ok(v) = serde_json::from_str::<Value>(&r.value) else {
-                continue;
-            };
-            let status = v["evidence_status"].as_str().unwrap_or("");
-            if !matches!(status, "verified" | "provider_declared" | "inferred") {
-                continue;
-            }
-            let provenance = json!({"observation_id":r.id,"source_url":r.source_url,"observed_unix":r.observed_unix,"evidence_status":status});
-            if r.predicate == "presentation.media" {
-                let Some(url) = v["url"].as_str() else {
-                    continue;
-                };
-                if public_url(url).is_err()
-                    || !matches!(v["kind"].as_str(), Some("image" | "video"))
-                {
-                    continue;
-                }
-                // Display rights and retention rights are separate, explicitly reviewed inputs.
-                if v["display_allowed"] != true {
-                    continue;
-                }
-                media.push(json!({"url":url,"kind":v["kind"],"alt":v["alt"].as_str().unwrap_or("Source media"),"retention_allowed":v["retention_allowed"]==true,"provenance":provenance}));
-            } else {
-                let Some(label) = v["label"]
-                    .as_str()
-                    .filter(|s| !s.is_empty() && s.len() <= 120)
-                else {
-                    continue;
-                };
-                claims.push(json!({"dimension":if r.predicate.ends_with("content") {"content"} else {"category"},"label":label,"provenance":provenance}));
-            }
-        }
-        Ok(
-            json!({"claims":claims,"media":media,"observations_page_limit":1000,"possibly_truncated":observations.len()==1000}),
-        )
+        Ok(presentation_rows(&self.observations(entity)?))
     }
 
     /// Local HTML document for an explicit catalog page. Remote media loads only after user click.
@@ -80,7 +127,12 @@ impl Store {
 </style><label>Theme <select id="theme"><option value="oled">OLED black</option><option value="slate">Neutral slate</option><option value="light">Light</option></select></label><h1>Knowledge / Visual catalog</h1><p>Projects and creators, with source-backed media, content and categories. Unknown stays unknown.</p><input id="filter" aria-label="Filter displayed records" placeholder="Filter name, content, category or evidence status…"><label>Field <select id="field"><option value="all">All fields</option><option value="1">Project / author</option><option value="2">Content</option><option value="3">Category</option></select></label><label>Sort <select id="sort"><option value="1">Name</option><option value="2">Content</option><option value="3">Category</option></select></label><button id="direction" aria-label="Toggle sort direction">Ascending</button><label>Group <select id="group"><option value="none">No groups</option><option value="game">Game</option><option value="kind">Project / author type</option></select></label><p id="count" aria-live="polite"></p><table><thead><tr><th>Image / gallery</th><th>Project / author</th><th>▣ Content</th><th>◇ Category</th></tr></thead><tbody>"##,
         );
         for entity in page["entities"].as_array().unwrap() {
-            let p = self.presentation(entity["id"].as_str().unwrap())?;
+            let entity_id = entity["id"].as_str().unwrap();
+            let kind = entity["kind"].as_str().unwrap();
+            let observations = self.observations(entity_id)?;
+            let p = presentation_rows(&observations);
+            let (direct, sources) = catalog_links(entity_id, kind, &observations);
+
             html.push_str(&format!(
                 "<tr data-game=\"{}\" data-kind=\"{}\"><td>",
                 escape(entity["game_id"].as_str().unwrap()),
@@ -94,13 +146,40 @@ impl Store {
                 let kind = m["kind"].as_str().unwrap();
                 html.push_str(&format!("<details><summary>{}</summary><button class=\"load\" data-kind=\"{}\" data-url=\"{}\" data-alt=\"{}\">Load {} from source</button><p><a href=\"{}\" rel=\"noreferrer noopener\" target=\"_blank\">Source evidence</a> · {}</p><small>Retention permission: {}. Not downloaded.</small></details>",escape(m["alt"].as_str().unwrap()),kind,url,escape(m["alt"].as_str().unwrap()),kind,escape(m["provenance"]["source_url"].as_str().unwrap()),escape(m["provenance"]["evidence_status"].as_str().unwrap()),m["retention_allowed"]));
             }
+            html.push_str("</td><td><strong>");
+            let label = escape(entity["name"].as_str().unwrap());
+            if direct.len() == 1 {
+                html.push_str(&format!(
+                    "<a href=\"{}\" rel=\"noreferrer noopener\" target=\"_blank\">{}</a>",
+                    escape(direct.first().unwrap()),
+                    label
+                ));
+            } else {
+                html.push_str(&label);
+            }
             html.push_str(&format!(
-                "</td><td><strong>{}</strong><br><small>{} · {}<br>{}</small>",
-                escape(entity["name"].as_str().unwrap()),
-                escape(entity["kind"].as_str().unwrap()),
+                "</strong><br><small>{} · {}<br>{}</small>",
+                escape(kind),
                 escape(entity["game_id"].as_str().unwrap()),
-                escape(entity["id"].as_str().unwrap())
+                escape(entity_id)
             ));
+            if direct.len() > 1 {
+                html.push_str("<details><summary>Recorded project / profile pages</summary><ul>");
+                for url in &direct {
+                    html.push_str(&format!("<li><a href=\"{}\" rel=\"noreferrer noopener\" target=\"_blank\">{}</a></li>",escape(url),escape(url)));
+                }
+                html.push_str("</ul></details>");
+            }
+            if !sources.is_empty() {
+                html.push_str("<details><summary>Reviewed evidence links</summary><ul>");
+                for url in sources.iter().take(8) {
+                    html.push_str(&format!("<li><a href=\"{}\" rel=\"noreferrer noopener\" target=\"_blank\">{}</a></li>",escape(url),escape(url)));
+                }
+                if sources.len() > 8 {
+                    html.push_str("<li>Additional links available via the evidence command.</li>");
+                }
+                html.push_str("</ul></details>");
+            }
             if p["possibly_truncated"] == true {
                 html.push_str("<p>Presentation limited to first 1000 observations.</p>");
             }

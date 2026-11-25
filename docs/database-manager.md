@@ -104,6 +104,15 @@ project/author, content and category columns, with live text filtering across th
 page and explicit evidence-status labels. It is an export view, not yet a desktop
 installation, live database editor or full visual-management application.
 
+Project and creator names link directly when this page has one unambiguous
+provider-qualified destination. Modrinth project routes require a matching
+public API observation for the exact ID; explicitly reviewed project URLs and
+account profiles come from their evidence rows. When there are several
+recorded pages, show them separately rather than picking one. Other rows
+keep the original name and offer labeled reviewed source links without
+implying a canonical mod page or cross-platform identity. These links do
+not fetch or load before a user chooses them.
+
 Media is source-linked and click-to-load: images and native playable video use
 separate explicit source display permission. No media is downloaded or cached by
 the Rust command. Unsupported codecs and unavailable media remain possible;
