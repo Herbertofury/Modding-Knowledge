@@ -2,7 +2,10 @@
 use crate::{Observation, Result, Store, observation_from_row};
 use rusqlite::params;
 use serde_json::{Value, json};
-use std::{collections::HashSet, fmt::Write};
+use std::{
+    collections::{BTreeSet, HashMap, HashSet},
+    fmt::Write,
+};
 
 const LIMIT: usize = 128;
 const PREDICATE: &str = "project_release_evidence_v1";
@@ -136,6 +139,102 @@ impl Store {
     }
 }
 
+fn exact_release<'a>(report: &'a Value, tag: &str) -> Result<&'a Value> {
+    let releases = report["releases"]
+        .as_array()
+        .ok_or("Missing reviewed releases")?;
+    let mut matches = releases.iter().filter(|row| row["tag"] == tag);
+    let result = matches
+        .next()
+        .ok_or("Exact release tag was not found in retained observations")?;
+    if matches.next().is_some() {
+        return Err(
+            "Multiple observations share this tag; review the source before comparing".into(),
+        );
+    }
+    Ok(result)
+}
+
+impl Store {
+    /// Compare retained metadata for two explicit tags, without inferring replacement files.
+    pub fn compare_skyrim_release_files(
+        &self,
+        entity: &str,
+        first_tag: &str,
+        second_tag: &str,
+    ) -> Result<Value> {
+        if !component(first_tag, 100) || !component(second_tag, 100) || first_tag == second_tag {
+            return Err("Choose two distinct exact release tags".into());
+        }
+        let report = self.skyrim_release_files(entity)?;
+        if report["invalid_reviewed_rows"] != 0 {
+            return Err("Invalid retained rows require review before comparison".into());
+        }
+        let first = exact_release(&report, first_tag)?;
+        let second = exact_release(&report, second_tag)?;
+        let before = first["files"].as_array().ok_or("Missing reference files")?;
+        let after = second["files"].as_array().ok_or("Missing compared files")?;
+        let (mut ids, mut names, mut digests) = (HashMap::new(), HashMap::new(), HashMap::new());
+        for (index, file) in after.iter().enumerate() {
+            ids.insert(file["provider_asset_id"].as_u64(), index);
+            names
+                .entry(file["name"].as_str())
+                .or_insert_with(Vec::new)
+                .push(index);
+            if let Some(digest) = file["provider_sha256"].as_str() {
+                digests.entry(digest).or_insert_with(Vec::new).push(index);
+            }
+        }
+        let (mut pairs, mut reference_without_candidate, mut matched_second) =
+            (Vec::new(), Vec::new(), HashSet::new());
+        for file in before {
+            let first_id = file["provider_asset_id"].as_u64();
+            let a_digest = file["provider_sha256"].as_str();
+            let mut candidates = BTreeSet::<usize>::new();
+            candidates.extend(ids.get(&first_id));
+            if let Some(indices) = names.get(&file["name"].as_str()) {
+                candidates.extend(indices);
+            }
+            if let Some(indices) = a_digest.and_then(|digest| digests.get(digest)) {
+                candidates.extend(indices);
+            }
+            if candidates.is_empty() {
+                reference_without_candidate.push(first_id);
+            }
+            for index in candidates {
+                let other = &after[index];
+                let b_digest = other["provider_sha256"].as_str();
+                let digest_observation = match (a_digest, b_digest) {
+                    (Some(a), Some(b)) if a == b => "reported_sha256_equal",
+                    (Some(_), Some(_)) => "reported_sha256_different",
+                    _ => "reported_sha256_unavailable",
+                };
+                matched_second.insert(index);
+                pairs.push(json!({
+                    "reference_asset_id":first_id,
+                    "compared_asset_id":other["provider_asset_id"],
+                    "same_provider_asset_id":file["provider_asset_id"]==other["provider_asset_id"],
+                    "same_exact_filename":file["name"]==other["name"],
+                    "reported_digest_observation":digest_observation,
+                }));
+            }
+        }
+        let compared_without_candidate = after
+            .iter()
+            .enumerate()
+            .filter(|(index, _)| !matched_second.contains(index))
+            .map(|(_, equality)| &equality["provider_asset_id"])
+            .collect::<Vec<_>>();
+        Ok(json!({
+            "entity_id":entity,"repository":report["repository"],
+            "reference":first,"compared":second,"metadata_pairs":pairs,
+            "reference_without_metadata_pair":reference_without_candidate,
+            "compared_without_metadata_pair":compared_without_candidate,
+            "scope":"Exact retained observations only. Filename equality is not file identity. Reported hashes were not verified against archive bytes. No replacement, compatibility, availability, or install verdict."
+        }))
+    }
+}
+
 fn escape(value: &Value) -> String {
     value
         .as_str()
@@ -264,6 +363,91 @@ mod tests {
         let withheld = store.skyrim_release_files(&a.entity_id)?;
         assert_eq!(withheld["file_count"], 0);
         assert_eq!(withheld["invalid_reviewed_rows"], 0);
+        Ok(())
+    }
+
+    #[test]
+    fn compare_keeps_identity_hash_and_name_independent_and_refuses_ambiguous_tags() -> Result<()> {
+        let mut store = Store::open(":memory:")?;
+        let mut a = evidence(11, "v4.0.6", None);
+        let mut b = evidence(22, "v4.1.0", None);
+        let identical = "f".repeat(64);
+        let file = |id, name, digest| {
+            json!({
+                "provider_asset_id":id,"name":name,"size":100,"official_download_url":null,"provider_sha256":digest
+            })
+        };
+        for (row, files) in [
+            (
+                &mut a,
+                vec![
+                    file(11, "Shared.7z", Value::Null),
+                    file(12, "Before.7z", json!(identical)),
+                    file(13, "Original.7z", Value::Null),
+                    file(14, "First-Only.7z", Value::Null),
+                ],
+            ),
+            (
+                &mut b,
+                vec![
+                    file(22, "Shared.7z", Value::Null),
+                    file(23, "After.7z", json!(identical)),
+                    file(13, "Renamed.7z", Value::Null),
+                    file(25, "Second-Only.7z", Value::Null),
+                ],
+            ),
+        ] {
+            let mut body: Value = serde_json::from_str(&row.value)?;
+            body["files"] = json!(files);
+            row.value = body.to_string();
+        }
+        store.register_game("skyrim-se", "Skyrim Special Edition")?;
+        store.set_source_policy(
+            &a.source_id,
+            "https://github.com/powerof3",
+            true,
+            true,
+            &a.policy_revision,
+        )?;
+        store.register_entity(&a.entity_id, "skyrim-se", "mod", "KID")?;
+        store.import(std::slice::from_ref(&a))?;
+        store.import(std::slice::from_ref(&b))?;
+        let r = store.compare_skyrim_release_files(&a.entity_id, "v4.0.6", "v4.1.0")?;
+        assert_eq!(r["reference_without_metadata_pair"], json!([14]));
+        assert_eq!(r["compared_without_metadata_pair"], json!([25]));
+        let rows = r["metadata_pairs"].as_array().unwrap();
+        assert_eq!(rows.len(), 3);
+        assert_eq!(rows[0]["same_exact_filename"], true);
+        assert_eq!(rows[0]["same_provider_asset_id"], false);
+        assert_eq!(
+            rows[0]["reported_digest_observation"],
+            "reported_sha256_unavailable"
+        );
+        assert_eq!(rows[1]["same_exact_filename"], false);
+        assert_eq!(rows[1]["same_provider_asset_id"], false);
+        assert_eq!(
+            rows[1]["reported_digest_observation"],
+            "reported_sha256_equal"
+        );
+        assert_eq!(rows[2]["same_exact_filename"], false);
+        assert_eq!(rows[2]["same_provider_asset_id"], true);
+        assert!(
+            store
+                .compare_skyrim_release_files(&a.entity_id, "v4.1.0", "v4.1.0")
+                .is_err()
+        );
+        assert!(
+            store
+                .compare_skyrim_release_files(&a.entity_id, "v4.1.0", "v4")
+                .is_err()
+        );
+        b.id = "duplicate".into();
+        store.import(&[b])?;
+        assert!(
+            store
+                .compare_skyrim_release_files(&a.entity_id, "v4.0.6", "v4.1.0")
+                .is_err()
+        );
         Ok(())
     }
 }
