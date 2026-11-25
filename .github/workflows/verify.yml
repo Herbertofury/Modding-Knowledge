@@ -42,6 +42,9 @@ jobs:
       - name: Package and exercise the extracted manager outside the checkout
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         run: python tools/package_manager_candidate.py --binary target/release/knowledge-manager${{ runner.os == 'Windows' && '.exe' || '' }} --snapshot verified.sqlite --output modding-knowledge-portable.zip --commit ${{ github.sha }}
+      - name: Exercise exact reviewed file identities through the extracted executable
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: python tools/verify_release_file_manager.py --package modding-knowledge-portable.zip
       - uses: actions/upload-artifact@v4
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         with:

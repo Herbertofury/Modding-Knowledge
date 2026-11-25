@@ -200,3 +200,20 @@ Supply the storefront and exact game executable version. A missing match is
 unknown; it is not a reason to fall back to another store or install a nearby
 version. The command returns reviewed source links and does not detect,
 download or install files.
+
+### Read exact Skyrim publisher files
+
+Point the manager at a separately reviewed sidecar, not the bundled general
+catalogue if it has no Skyrim release rows:
+
+```sh
+knowledge-manager skyrim-distributor-releases.sqlite release-files github:powerof3/Keyword-Item-Distributor
+knowledge-manager skyrim-distributor-releases.sqlite release-files github:powerof3/Keyword-Item-Distributor --html > reviewed-kid.html
+```
+
+Repeated FOMOD names stay separate by release and provider asset ID. Links
+are included only when the cited source and exact recorded archive path agree.
+A source release page is retained when an asset link was not recorded; no
+URL is guessed. Provider digests are not locally verified archive bytes.
+The output does not check which installer option matches an installed runtime,
+contact providers, download mods, change SQLite, or overwrite catalogues.
