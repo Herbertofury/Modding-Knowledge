@@ -3,8 +3,10 @@ import argparse
 import gzip
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
+import stat
 import tempfile
 
 from validate_snapshot import validate_snapshot
@@ -60,9 +62,36 @@ def capture(stream, output, limit, label):
     return sha.hexdigest()
 
 
-def verify_packaged(archive, receipt, manifest):
+def output_path(value):
+    path = Path(value)
+    if '..' in path.parts:
+        raise ValueError('Use a direct output path without parent components')
+    path = path.absolute()
+    for parent in path.parents:
+        metadata = parent.lstat()
+        if not stat.S_ISDIR(metadata.st_mode) or getattr(metadata, 'st_file_attributes', 0) & 0x400:
+            raise ValueError('Use existing ordinary, non-linked output directories')
+    if any(os.path.lexists(str(path) + suffix) for suffix in ('', '-wal', '-shm', '-journal')):
+        raise FileExistsError('Choose a new SQLite filename without existing files or sidecars')
+    return path
+
+
+def publish_verified(snapshot, output):
+    # The private staging directory was created on the destination filesystem.
+    with snapshot.open('r+b') as staged:
+        os.fsync(staged.fileno())
+    output_path(output)
+    if os.name == 'nt':
+        os.rename(snapshot, output)  # Windows refuses an existing target.
+    else:
+        os.link(snapshot, output)  # POSIX rename would overwrite an existing target.
+
+
+def verify_packaged(archive, receipt, manifest, output=None):
     expected = read_receipt(receipt)
-    with tempfile.TemporaryDirectory(prefix='knowledge-verify-') as scratch:
+    output = output_path(output) if output is not None else None
+    staging_dir = output.parent if output is not None else None
+    with tempfile.TemporaryDirectory(prefix='knowledge-verify-', dir=staging_dir) as scratch:
         temp = Path(scratch)
         frozen_archive, frozen_manifest, snapshot = (
             temp / 'input.sqlite.gz', temp / 'manifest.json', temp / 'snapshot.sqlite'
@@ -91,10 +120,13 @@ def verify_packaged(archive, receipt, manifest):
                     'integrity', 'exact_manifest_equality'):
             if actual.get(key) != expected[key]:
                 raise ValueError(f'Recomputed validation does not match receipt field: {key}')
+        if output is not None:
+            publish_verified(snapshot, output)
     return {
         **actual,
         'compressed_sha256': compressed,
         'read_only_inputs': True,
+        'extracted_verified_copy': output is not None,
         'verified': 'archive hashes, schema, integrity, counts and reviewed manifest',
     }
 
@@ -104,8 +136,10 @@ def main():
     parser.add_argument('archive', type=Path)
     parser.add_argument('receipt', type=Path)
     parser.add_argument('manifest', type=Path)
+    parser.add_argument('--extract', type=Path, metavar='NEW.sqlite',
+                        help='publish a new standalone copy after all checks; never overwrite')
     args = parser.parse_args()
-    print(json.dumps(verify_packaged(args.archive, args.receipt, args.manifest), indent=2))
+    print(json.dumps(verify_packaged(args.archive, args.receipt, args.manifest, args.extract), indent=2))
 
 
 if __name__ == '__main__':

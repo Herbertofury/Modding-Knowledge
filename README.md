@@ -60,7 +60,12 @@ python tools/verify_packaged_snapshot.py artifacts/modding-knowledge-latest.sqli
 
 It verifies both archive hashes, the source manifest digest, the actual SQLite
 schema and rows, integrity, and reported counts using disposable local copies.
-The command does not extract a persistent database or modify the three inputs.
+The default only verifies and does not modify the three inputs. To keep the exact
+verified SQLite file, add `--extract offline-catalog.sqlite` to the same command.
+Use a fresh filename in an existing local directory. The verifier refuses
+existing files or SQLite sidecars and never falls back to overwriting. Windows
+uses a no-replace rename; POSIX needs hard-link support on the output filesystem.
+This is not a test of external USB/network drives or sudden power loss.
 Bounds: 64 KiB receipt, 64 MiB compressed archive or manifest, 512 MiB unpacked
 snapshot. An equal receipt is a consistency check, not publisher authentication,
 a freshness guarantee, or tested mod compatibility. The original dated archive

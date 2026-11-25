@@ -1,7 +1,11 @@
+from contextlib import closing
+import gzip
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
+import sqlite3
 import sys
 import tempfile
 import unittest
@@ -24,8 +28,8 @@ class VerifyPackagedSnapshot(unittest.TestCase):
         shutil.copyfile(ROOT / 'artifacts/latest-validation.json', self.receipt)
         shutil.copyfile(ROOT / 'data/reviewed-bundle.json', self.manifest)
 
-    def verify(self):
-        return verifier.verify_packaged(self.archive, self.receipt, self.manifest)
+    def verify(self, output=None):
+        return verifier.verify_packaged(self.archive, self.receipt, self.manifest, output)
 
     def rewrite_receipt(self, **fields):
         record = json.loads(self.receipt.read_text(encoding='utf-8'))
@@ -71,6 +75,61 @@ class VerifyPackagedSnapshot(unittest.TestCase):
         self.receipt.write_text(dup, encoding='utf-8')
         with self.assertRaisesRegex(ValueError, 'Duplicate field'):
             self.verify()
+
+    def test_extract_exact_validated_bytes_to_a_fresh_queryable_database(self):
+        output = self.archive.parent / 'offline catalogue.sqlite'
+        result = self.verify(output)
+        self.assertTrue(result['extracted_verified_copy'])
+        self.assertEqual(output.read_bytes(), gzip.decompress(self.archive.read_bytes()))
+        with closing(sqlite3.connect(output.as_uri() + '?mode=ro', uri=True)) as store:
+            self.assertEqual(store.execute('SELECT count(*) FROM entities').fetchone()[0], result['entities'])
+        self.assertFalse(self.verify()['extracted_verified_copy'])
+        with self.assertRaises(FileExistsError):
+            self.verify(output)
+
+    def test_existing_sidecar_or_invalid_archive_leaves_destination_untouched(self):
+        output = self.archive.parent / 'new.sqlite'
+        sidecar = Path(str(output) + '-shm')
+        sidecar.write_bytes(b'keep existing bytes')
+        with patch.object(verifier, 'validate_snapshot') as validate:
+            with self.assertRaises(FileExistsError):
+                self.verify(output)
+            validate.assert_not_called()
+        self.assertEqual(sidecar.read_bytes(), b'keep existing bytes')
+        sidecar.unlink()
+        self.rewrite_receipt(compressed_sha256='0' * 64)
+        with self.assertRaisesRegex(ValueError, 'Compressed archive'):
+            self.verify(output)
+        self.assertFalse(output.exists())
+        self.assertEqual(list(output.parent.glob('knowledge-verify-*')), [])
+
+    def test_parent_components_and_links_are_refused_before_extraction(self):
+        root = self.archive.parent
+        with self.assertRaisesRegex(ValueError, 'parent components'):
+            self.verify(root / '..' / 'not-created.sqlite')
+        linked = root / 'linked'
+        try:
+            linked.symlink_to(root, target_is_directory=True)
+        except OSError:
+            return  # This checkout cannot create a disposable directory symlink.
+        with self.assertRaisesRegex(ValueError, 'non-linked'):
+            self.verify(linked / 'not-created.sqlite')
+        self.assertFalse((root / 'not-created.sqlite').exists())
+
+    def test_a_concurrent_destination_cannot_be_replaced(self):
+        output = self.archive.parent / 'race.sqlite'
+        operation = 'rename' if os.name == 'nt' else 'link'
+        original = getattr(verifier.os, operation)
+
+        def racing_create(src, dst):
+            output.write_bytes(b'existing writer')
+            return original(src, dst)
+
+        with patch.object(verifier.os, operation, side_effect=racing_create):
+            with self.assertRaises(FileExistsError):
+                self.verify(output)
+        self.assertEqual(output.read_bytes(), b'existing writer')
+        self.assertEqual(list(output.parent.glob('knowledge-verify-*')), [])
 
 
 if __name__ == '__main__':
