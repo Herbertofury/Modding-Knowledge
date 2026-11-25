@@ -4,16 +4,20 @@ use serde_json::Value;
 use std::collections::HashMap;
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().collect();
-    if args.len() != 2 {
-        return Err("Expected new SQLite output path".into());
-    }
-    if std::path::Path::new(&args[1]).exists() {
+    let (path, embedded) = match &args[1..] {
+        [path] if !path.starts_with("--") => (path, include_str!("../data/reviewed-bundle.json")),
+        [flag, path] if flag == "--scumbumbo-sims4" => {
+            (path, include_str!("../data/scumbumbo-sims4-reviewed.json"))
+        }
+        _ => return Err("Expected [--scumbumbo-sims4] NEW-SQLITE-PATH".into()),
+    };
+    if std::path::Path::new(path).exists() {
         return Err("Refusing overwrite".into());
     }
-    let data: Value = serde_json::from_str(include_str!("../data/reviewed-bundle.json"))?;
+    let data: Value = serde_json::from_str(embedded)?;
     // Build beside target so final hard-link publication is same-filesystem and
     // refuses an existing target atomically. Preserve failed staging for diagnosis.
-    let stage = std::path::PathBuf::from(format!("{}.pending-{}", args[1], std::process::id()));
+    let stage = std::path::PathBuf::from(format!("{}.pending-{}", path, std::process::id()));
     std::fs::OpenOptions::new()
         .write(true)
         .create_new(true)
@@ -79,7 +83,7 @@ fn main() -> Result<()> {
         .write(true)
         .open(&stage)?
         .sync_all()?;
-    std::fs::hard_link(&stage, &args[1])?;
+    std::fs::hard_link(&stage, path)?;
     std::fs::remove_file(&stage)?;
     println!(
         "Native Rust Store import + identical replay + close/reopen exact equality passed: {} entities, {} observations",
