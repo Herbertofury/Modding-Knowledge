@@ -54,3 +54,14 @@ jobs:
           name: oblivion-runtime-tracks-${{ matrix.os }}
           path: oblivion-runtime-tracks.sqlite
           if-no-files-found: error
+      - name: Verify the Arena and Daggerfall sidecar
+        run: cargo run --locked --example seed_reviewed_bundle -- --early-tes-engine-tracks early-tes-engine-tracks.sqlite
+      - name: Inspect both reviewed early TES engine projects
+        run: |
+          cargo run --locked --example query -- early-tes-engine-tracks.sqlite daggerfall-unity:project:dfu
+          cargo run --locked --example query -- early-tes-engine-tracks.sqlite arena:project:opentesarena
+      - uses: actions/upload-artifact@v4
+        with:
+          name: early-tes-engine-tracks-${{ matrix.os }}
+          path: early-tes-engine-tracks.sqlite
+          if-no-files-found: error

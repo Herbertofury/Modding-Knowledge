@@ -14,6 +14,10 @@ fn main() -> Result<()> {
             path,
             include_str!("../data/oblivion-runtime-tracks-reviewed.json"),
         ),
+        [flag, path] if flag == "--early-tes-engine-tracks" => (
+            path,
+            include_str!("../data/early-tes-engine-tracks-reviewed.json"),
+        ),
         _ => return Err("Expected optional reviewed-pack flag and a new SQLite path".into()),
     };
     if std::path::Path::new(path).exists() {
