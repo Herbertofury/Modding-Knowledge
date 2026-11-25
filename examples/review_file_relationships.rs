@@ -290,18 +290,17 @@ fn review<'a>(expected: &File, input: &'a Input) -> Result<Review<'a>, &'static 
             }
             _ => {}
         }
-        if let Applicability::OptionSelected { option } = &row.applicability {
-            if !label(option, 128)
+        if let Applicability::OptionSelected { option } = &row.applicability
+            && (!label(option, 128)
                 || matches!(
                     row.constraint,
                     Constraint::MinimumLabel {
                         applies: Applies::IfTargetPresent,
                         ..
                     }
-                )
-            {
-                return Err("Invalid option label or unsupported compound condition");
-            }
+                ))
+        {
+            return Err("Invalid option label or unsupported compound condition");
         }
         if input.relationships[..index].contains(record) {
             return Err("Duplicate exact relationship assertion");
