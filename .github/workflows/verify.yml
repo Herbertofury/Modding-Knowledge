@@ -65,3 +65,10 @@ jobs:
           name: early-tes-engine-tracks-${{ matrix.os }}
           path: early-tes-engine-tracks.sqlite
           if-no-files-found: error
+      - name: Verify all three reviewed classic Elder Scrolls packs in one SQLite catalog
+        run: cargo run --locked --example seed_reviewed_bundle -- --classic-tes-reviewed classic-tes-reviewed.sqlite
+      - uses: actions/upload-artifact@v4
+        with:
+          name: classic-tes-reviewed-${{ matrix.os }}
+          path: classic-tes-reviewed.sqlite
+          if-no-files-found: error

@@ -1,29 +1,46 @@
 //! Build a new reviewed snapshot; no external JSON may self-grant publication permission.
 use athena_mod_knowledge::{Observation, Result, Store};
-use serde_json::Value;
-use std::collections::HashMap;
+use serde_json::{Value, json};
+use std::collections::{HashMap, HashSet};
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().collect();
+    const CLASSIC_TES: [&str; 3] = [
+        include_str!("../data/morrowind-engine-tracks-reviewed.json"),
+        include_str!("../data/oblivion-runtime-tracks-reviewed.json"),
+        include_str!("../data/early-tes-engine-tracks-reviewed.json"),
+    ];
     let (path, embedded) = match &args[1..] {
-        [path] if !path.starts_with("--") => (path, include_str!("../data/reviewed-bundle.json")),
+        [path] if !path.starts_with("--") => {
+            (path, Some(include_str!("../data/reviewed-bundle.json")))
+        }
         [flag, path] if flag == "--morrowind-engine-tracks" => (
             path,
-            include_str!("../data/morrowind-engine-tracks-reviewed.json"),
+            Some(include_str!(
+                "../data/morrowind-engine-tracks-reviewed.json"
+            )),
         ),
         [flag, path] if flag == "--oblivion-runtime-tracks" => (
             path,
-            include_str!("../data/oblivion-runtime-tracks-reviewed.json"),
+            Some(include_str!(
+                "../data/oblivion-runtime-tracks-reviewed.json"
+            )),
         ),
         [flag, path] if flag == "--early-tes-engine-tracks" => (
             path,
-            include_str!("../data/early-tes-engine-tracks-reviewed.json"),
+            Some(include_str!(
+                "../data/early-tes-engine-tracks-reviewed.json"
+            )),
         ),
+        [flag, path] if flag == "--classic-tes-reviewed" => (path, None),
         _ => return Err("Expected optional reviewed-pack flag and a new SQLite path".into()),
     };
     if std::path::Path::new(path).exists() {
         return Err("Refusing overwrite".into());
     }
-    let data: Value = serde_json::from_str(embedded)?;
+    let data = match embedded {
+        Some(single) => serde_json::from_str(single)?,
+        None => compose_reviewed(&CLASSIC_TES)?,
+    };
     // Build beside target so final hard-link publication is same-filesystem and
     // refuses an existing target atomically. Preserve failed staging for diagnosis.
     let stage = std::path::PathBuf::from(format!("{}.pending-{}", path, std::process::id()));
@@ -230,5 +247,67 @@ mod tests {
                 .to_string(),
             "Reviewed observations missing from reopened snapshot"
         );
+    }
+}
+
+/// Compose only reviewed embedded cohorts; duplicate provider IDs must not
+/// silently overwrite another publisher's evidence.
+fn compose_reviewed(inputs: &[&str]) -> Result<Value> {
+    let mut package = json!({
+        "schema":"athena-reviewed-observations-v1",
+        "scope":"Three independently reviewed classic Elder Scrolls packs, composed without rewriting evidence.",
+        "games":{},"sources":{},"source_policy_revisions":{},"entities":[],"observations":[]
+    });
+    let mut entities = HashSet::new();
+    let mut observations = HashSet::new();
+    for input in inputs {
+        let value: Value = serde_json::from_str(input)?;
+        if value["schema"] != "athena-reviewed-observations-v1" {
+            return Err("Unknown reviewed pack schema".into());
+        }
+        for k in ["games", "sources", "source_policy_revisions"] {
+            let target = package[k].as_object_mut().ok_or("Invalid compose target")?;
+            for (id, row) in value[k].as_object().ok_or("Invalid reviewed pack map")? {
+                if target.insert(id.clone(), row.clone()).is_some() {
+                    return Err("Repeated key across reviewed pack maps".into());
+                }
+            }
+        }
+        for (k, seen) in [
+            ("entities", &mut entities),
+            ("observations", &mut observations),
+        ] {
+            let target = package[k].as_array_mut().ok_or("Invalid compose array")?;
+            for row in value[k].as_array().ok_or("Invalid reviewed pack list")? {
+                if !seen.insert(s(row, "id")?.to_string()) {
+                    return Err("Repeated entity or observation across reviewed packs".into());
+                }
+                target.push(row.clone());
+            }
+        }
+    }
+    Ok(package)
+}
+
+#[cfg(test)]
+mod composed_tests {
+    use super::*;
+
+    #[test]
+    fn rejects_duplicates_and_incompatible_schemas() {
+        let json = include_str!("../data/early-tes-engine-tracks-reviewed.json");
+        assert!(compose_reviewed(&[json, json]).is_err());
+        assert!(compose_reviewed(&[r#"{"schema":"other"}"#]).is_err());
+        let merged = compose_reviewed(&[json]).unwrap();
+        let original: Value = serde_json::from_str(json).unwrap();
+        for key in [
+            "entities",
+            "observations",
+            "games",
+            "sources",
+            "source_policy_revisions",
+        ] {
+            assert_eq!(merged[key], original[key]);
+        }
     }
 }
