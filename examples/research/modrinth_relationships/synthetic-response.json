@@ -1,0 +1,15 @@
+{
+  "id": "Version1",
+  "project_id": "Sample01",
+  "game_versions": ["1.21.1"],
+  "loaders": ["fabric"],
+  "dependencies": [
+    {"dependency_type":"required","project_id":"ProjectA","version_id":"VersionA"},
+    {"dependency_type":"optional","project_id":"ProjectA","version_id":null},
+    {"dependency_type":"incompatible","project_id":null,"version_id":"VersionB"},
+    {"dependency_type":"embedded","file_name":"external-example.jar"},
+    {"dependency_type":"future-role"}
+  ],
+  "author_id": "IgnoredAuthor",
+  "files": [{"url":"https://example.invalid/not-used.jar"}]
+}
