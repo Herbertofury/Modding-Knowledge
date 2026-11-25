@@ -52,6 +52,17 @@ or guaranteed compaction savings. Structural integrity does not validate factual
 claims or game compatibility. Raw databases may contain withdrawn observations;
 these commands do not authorize distributing those files.
 
+## Portable evaluation ZIP
+
+Same-repository pull requests can produce an unsigned evaluation artifact for
+Windows and Linux. It contains one locally built binary, its exact reviewed
+SQLite catalog, an offline scoped HTML example and a short start guide. The CI
+packager verifies that the entire catalog matches the reviewed snapshot,
+extracts and executes the native CLI outside the checkout, rechecks integrity,
+confirms the scoped query/output and refuses writes to the database. It retains
+the exact executable and catalog bytes with a source-commit and hash receipt.
+This is a preview, not a production release, installer or compatibility verdict.
+
 ## Backlog and acceptance gates
 
 - [x] Rust native executable: real catalog browsing, bounded pagination,

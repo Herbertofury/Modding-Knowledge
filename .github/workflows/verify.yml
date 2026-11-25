@@ -36,3 +36,16 @@ jobs:
         with:
           name: knowledge-${{ matrix.os }}
           path: verified.sqlite
+      - name: Build own portable manager candidate
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: cargo build --locked --release --bin knowledge-manager
+      - name: Package and exercise the extracted manager outside the checkout
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: python tools/package_manager_candidate.py --binary target/release/knowledge-manager${{ runner.os == 'Windows' && '.exe' || '' }} --snapshot verified.sqlite --output modding-knowledge-portable.zip --commit ${{ github.sha }}
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        with:
+          name: modding-knowledge-portable-${{ matrix.os }}
+          path: modding-knowledge-portable.zip
+          if-no-files-found: error
+          retention-days: 14
