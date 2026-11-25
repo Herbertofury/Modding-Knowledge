@@ -29,6 +29,9 @@ fn main() -> Result<()> {
             path,
             include_str!("../data/skyrim-distributor-release-reviewed.json"),
         ),
+        [flag, path] if flag == "--skyrim-fsmp" => {
+            (path, include_str!("../data/skyrim-fsmp-reviewed.json"))
+        }
         _ => {
             return Err("Expected optional reviewed-pack flag and a NEW-SQLITE-PATH".into());
         }
