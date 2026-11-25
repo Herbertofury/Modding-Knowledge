@@ -57,3 +57,9 @@ jobs:
           python -m unittest discover -s tests -p test_hytale_file_channels.py -v
         env:
           HYTALE_CHANNEL_SQLITE: hytale-file-channels.sqlite
+      - name: Build and verify the independent Skyrim native runtime sidecar
+        run: |
+          cargo run --locked --example seed_reviewed_bundle -- --skyrim-native-runtime skyrim-native-runtime.sqlite
+          python -m unittest discover -s tests -p test_skyrim_native_runtime.py -v
+        env:
+          SKYRIM_RUNTIME_SQLITE: skyrim-native-runtime.sqlite
