@@ -613,6 +613,45 @@
       "mod_version": "1.4",
       "completeness": "partial",
       "policy_revision": "sims4-lot51-source-split-2026-11-25"
+    },
+    {
+      "id": "curseforge:project:1146500:20261125:maintenance:hotel_lots",
+      "entity_id": "curseforge:project:1146500",
+      "source_id": "lot51-site",
+      "source_url": "https://lot51.cc/node/534",
+      "predicate": "maintenance_hotel_lots_v1",
+      "value": "{\"version\":1,\"kind\":\"game_save\",\"trigger\":\"save_without_suite_life\",\"risk\":\"Lot 51 warns Hotel lots can be cleared when Suite Life is absent and the game is saved.\",\"preserve\":[{\"scope\":\"game_save\",\"label\":\"Keep a separate backup of the affected save; do not save while testing without Suite Life.\",\"location\":null}],\"tested_in_game\":false,\"autofix\":false,\"install_status\":\"unverified\"}",
+      "observed_unix": 1795634820,
+      "applicable_build": "unverified",
+      "mod_version": "1.11",
+      "completeness": "partial",
+      "policy_revision": "sims4-lot51-source-split-2026-11-25"
+    },
+    {
+      "id": "curseforge:project:1146500:20261125:maintenance:kitchen_presets",
+      "entity_id": "curseforge:project:1146500",
+      "source_id": "lot51-site",
+      "source_url": "https://lot51.cc/node/710",
+      "predicate": "maintenance_kitchen_presets_v1",
+      "value": "{\"version\":1,\"kind\":\"generated_file\",\"trigger\":\"replace_suite_life\",\"risk\":\"Kitchen menu presets are kept separately and shared across saves; this file is not a Hotel-lot backup.\",\"preserve\":[{\"scope\":\"mod_generated_state\",\"label\":\"Keep Kitchen Menu Presets across updates.\",\"location\":\"lot51_hotels.dat\"}],\"tested_in_game\":false,\"autofix\":false,\"install_status\":\"unverified\"}",
+      "observed_unix": 1795634820,
+      "applicable_build": "unverified",
+      "mod_version": "1.11",
+      "completeness": "partial",
+      "policy_revision": "sims4-lot51-source-split-2026-11-25"
+    },
+    {
+      "id": "curseforge:project:1078531:20261125:maintenance:thread_assets",
+      "entity_id": "curseforge:project:1078531",
+      "source_id": "lot51-site",
+      "source_url": "https://lot51.cc/node/571",
+      "predicate": "maintenance_thread_assets_v1",
+      "value": "{\"version\":1,\"kind\":\"referenced_custom_content\",\"trigger\":\"remove_thread_cc\",\"risk\":\"Removing custom content used in a Thread may damage that Thread even if Fashion Authority is still installed.\",\"preserve\":[{\"scope\":\"mod_generated_state\",\"label\":\"Keep the per-save Thread data directory beside the script.\",\"location\":\"lot51_fashion_authority_data\"},{\"scope\":\"referenced_custom_content\",\"label\":\"Keep a copy of the custom content actually referenced by the affected Threads.\",\"location\":null}],\"tested_in_game\":false,\"autofix\":false,\"install_status\":\"unverified\"}",
+      "observed_unix": 1795634820,
+      "applicable_build": "unverified",
+      "mod_version": "2.5.2",
+      "completeness": "partial",
+      "policy_revision": "sims4-lot51-source-split-2026-11-25"
     }
   ]
 }

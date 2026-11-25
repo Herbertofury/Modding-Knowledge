@@ -74,10 +74,12 @@ jobs:
           if-no-files-found: error
       - name: Verify the Sims 4 Lot 51 optional catalog
         run: cargo run --locked --example seed_reviewed_bundle -- --sims4-lot51 sims4-lot51-reviewed.sqlite
-      - name: Verify exact publisher file IDs and Suite Life's venue choices
-        run: python tools/verify_lot51_snapshot.py sims4-lot51-reviewed.sqlite
+      - name: Verify exact file links and isolated author maintenance notes
+        run: python tools/test_lot51_maintenance_fixture.py sims4-lot51-reviewed.sqlite sims4-lot51-reviewed.html
       - uses: actions/upload-artifact@v4
         with:
           name: sims4-lot51-reviewed-${{ matrix.os }}
-          path: sims4-lot51-reviewed.sqlite
+          path: |
+            sims4-lot51-reviewed.sqlite
+            sims4-lot51-reviewed.html
           if-no-files-found: error
