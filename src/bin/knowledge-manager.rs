@@ -1,7 +1,7 @@
 //! Native read-only catalog manager. JSON reports or standalone visual HTML output.
 use athena_mod_knowledge::{Result, Store, evidence_report};
 
-const USAGE: &str = "Usage: knowledge-manager DATABASE status|check|duplicates|browse|visual [QUERY [AFTER_ID [LIMIT]]]\n       knowledge-manager DATABASE browse-in|visual-in GAME KIND [QUERY [AFTER_ID [LIMIT]]]\n       knowledge-manager DATABASE evidence ENTITY_ID [OFFSET] [--predicate EXACT_PREDICATE | --mod-relations | --mod-relations-v2 | --loot-relations | --loot-fallout4-relations]\n       knowledge-manager DATABASE runtime-in GAME STOREFRONT EXACT_GAME_VERSION\n       knowledge-manager DATABASE release-files ENTITY_ID [--html]\nGAME and KIND are exact catalog IDs, or * for either dimension. Quote '*' in a shell.";
+const USAGE: &str = "Usage: knowledge-manager DATABASE status|check|duplicates|browse|visual [QUERY [AFTER_ID [LIMIT]]]\n       knowledge-manager DATABASE browse-in|visual-in GAME KIND [QUERY [AFTER_ID [LIMIT]]]\n       knowledge-manager DATABASE evidence ENTITY_ID [OFFSET] [--predicate EXACT_PREDICATE | --mod-relations | --mod-relations-v2 | --loot-relations | --loot-fallout4-relations]\n       knowledge-manager DATABASE runtime-in GAME STOREFRONT EXACT_GAME_VERSION\n       knowledge-manager DATABASE release-files ENTITY_ID [--html]\n       knowledge-manager DATABASE compare-release-files ENTITY_ID REFERENCE_TAG COMPARED_TAG\nGAME and KIND are exact catalog IDs, or * for either dimension. Quote '*' in a shell.";
 
 fn main() -> Result<()> {
     let mut args: Vec<String> = std::env::args().skip(1).collect();
@@ -12,6 +12,15 @@ fn main() -> Result<()> {
     let Some(command) = args.get(1).map(String::as_str) else {
         return Err(USAGE.into());
     };
+    if command == "compare-release-files" {
+        if args.len() != 5 {
+            return Err(USAGE.into());
+        }
+        let store = Store::open_read_only(&args[0])?;
+        let evidence = store.compare_skyrim_release_files(&args[2], &args[3], &args[4])?;
+        println!("{}", serde_json::to_string_pretty(&evidence)?);
+        return Ok(());
+    }
     if command == "release-files" {
         if args.len() != 3 && !(args.len() == 4 && args[3] == "--html") {
             return Err(USAGE.into());

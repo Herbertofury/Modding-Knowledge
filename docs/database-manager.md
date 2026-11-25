@@ -217,3 +217,17 @@ A source release page is retained when an asset link was not recorded; no
 URL is guessed. Provider digests are not locally verified archive bytes.
 The output does not check which installer option matches an installed runtime,
 contact providers, download mods, change SQLite, or overwrite catalogues.
+
+Use two exact tags for a version-to-version file metadata comparison:
+
+```sh
+knowledge-manager skyrim-distributor-releases.sqlite compare-release-files github:powerof3/Keyword-Item-Distributor v4.0.6 v4.1.0
+```
+
+Pairs are matched only by observed provider asset ID, exact filename, or an
+equal reported SHA-256; the three observations remain separate. The reviewed
+KID example has the same FOMOD filename, different provider asset IDs and
+different reported digests. None of these signals implies a replacement or
+runtime match. Both source observation records remain in the output, and
+unpaired files are listed without assuming removal. Missing/ambiguous tags
+and invalid retained rows are refused. No download or SQLite write occurs.

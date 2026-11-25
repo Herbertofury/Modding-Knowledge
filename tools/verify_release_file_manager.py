@@ -44,9 +44,22 @@ def main(package):
         assert all(f["official_download_url"] and not f["archive_bytes_verified"] for f in assets)
         page=subprocess.check_output(cli+["--html"],cwd=cwd,encoding="utf-8",timeout=20)
         assert page.count("Publisher download")==2 and "<script" not in page
+        comparison = [str(exe), str(db), "compare-release-files", e["id"]]
+        diff = json.loads(subprocess.check_output(
+            comparison + ["v4.0.6", "v4.1.0"], cwd=cwd, encoding="utf-8", timeout=20))
+        assert diff["reference"]["tag"] == "v4.0.6" and diff["compared"]["tag"] == "v4.1.0"
+        assert diff["metadata_pairs"] == [{
+            "reference_asset_id": 462208143, "compared_asset_id": 528411221,
+            "same_provider_asset_id": False, "same_exact_filename": True,
+            "reported_digest_observation": "reported_sha256_different",
+        }]
+        assert not diff["reference_without_metadata_pair"] and not diff["compared_without_metadata_pair"]
+        missing = subprocess.run(comparison + ["v4.0.6", "v0.0.0"], cwd=cwd,
+                                 capture_output=True, encoding="utf-8", timeout=20)
+        assert missing.returncode != 0 and missing.stdout == ""
         assert hashlib.sha256(db.read_bytes()).hexdigest()==before
         assert set(p.name for p in cwd.iterdir())=={db.name,exe.name}
-        print("Extracted native manager retained distinct KID asset IDs, explicit links and an untouched database.")
+        print("Extracted native manager retained distinct KID asset IDs, compared exact tags with different reported digests, and left the database untouched.")
 
 
 if __name__=="__main__":
