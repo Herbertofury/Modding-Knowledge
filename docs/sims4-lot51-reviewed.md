@@ -58,3 +58,19 @@ a game-tested repair. The database and expandable offline notes distinguish:
 An advisory describes the conditions in the cited guide, not proof that a
 given user installed the mod, experienced the issue, or has a complete
 backup. The pack never runs, modifies, or restores a save.
+
+### Machine-readable read-only advisory query
+
+The Rust example reads one reviewed project, exact mod version, and requested
+maintenance action as of an evidence cutoff. The three action values are
+`save-without-mod`, `replace-mod`, and `remove-referenced-content`.
+
+```sh
+cargo run --locked --example query_maintenance -- sims4-lot51-reviewed.sqlite curseforge:project:1146500 1.11 save-without-mod 1795635000 86400
+```
+
+The last arguments are UTC Unix seconds for the evidence cutoff and the
+maximum observation age. An empty result means coverage is unknown.
+The query rechecks current source policy, never edits the catalog, and
+does not inspect or assert the state of a local game install or backup.
+A recorded basename is only a hint from the source, never a filesystem path.
