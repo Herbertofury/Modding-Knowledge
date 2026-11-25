@@ -2,6 +2,7 @@
 //! Permission to retain and publish is separate; reference-only sources stay out.
 use rusqlite::{Connection, OptionalExtension, TransactionBehavior, params};
 use std::{error::Error, path::Path, time::Duration};
+pub mod evidence_report;
 pub mod loot;
 
 pub type Result<T> = std::result::Result<T, Box<dyn Error>>;
@@ -381,3 +382,7 @@ mod tests {
 }
 
 pub mod health;
+
+pub mod manager;
+
+pub mod visual;
