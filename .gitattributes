@@ -1,0 +1,6 @@
+# SQLite stores the schema text in the database. Keep release seeds consistent
+# across normal LF checkouts and Windows worktrees with core.autocrlf=true.
+/src/schema.sql text eol=lf
+
+# The snapshot receipt hashes the exact reviewed bundle bytes.
+/data/reviewed-bundle.json text eol=lf
