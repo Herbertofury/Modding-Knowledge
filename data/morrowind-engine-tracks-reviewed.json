@@ -1,0 +1,472 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Morrowind replacement and original engine tracks kept separate. Public GitHub release metadata and indexed publisher guidance reviewed 2026-11-25. No installs, archive verification, exhaustive runtime or issue coverage.",
+  "games": {
+    "morrowind": "The Elder Scrolls III: Morrowind"
+  },
+  "sources": {
+    "morrowind-github-official": "https://github.com",
+    "morrowind-openmw-docs": "https://openmw.readthedocs.io",
+    "morrowind-tamriel-indexed": "https://www.tamriel-rebuilt.org",
+    "morrowind-nexus-indexed": "https://www.nexusmods.com"
+  },
+  "source_policy_revisions": {
+    "morrowind-github-official": "morrowind-official-engine-evidence-2026-11-25",
+    "morrowind-openmw-docs": "morrowind-official-engine-evidence-2026-11-25",
+    "morrowind-tamriel-indexed": "morrowind-official-engine-evidence-2026-11-25",
+    "morrowind-nexus-indexed": "morrowind-official-engine-evidence-2026-11-25"
+  },
+  "entities": [
+    {
+      "id": "morrowind:project:mwse",
+      "game_id": "morrowind",
+      "kind": "tool",
+      "name": "Morrowind Script Extender (MWSE)"
+    },
+    {
+      "id": "morrowind:project:openmw",
+      "game_id": "morrowind",
+      "kind": "tool",
+      "name": "OpenMW"
+    },
+    {
+      "id": "morrowind:project:tamriel-data",
+      "game_id": "morrowind",
+      "kind": "mod",
+      "name": "Tamriel_Data"
+    },
+    {
+      "id": "morrowind:project:tamriel-rebuilt",
+      "game_id": "morrowind",
+      "kind": "mod",
+      "name": "Tamriel Rebuilt"
+    },
+    {
+      "id": "morrowind:publisher:hrnchamd",
+      "game_id": "morrowind",
+      "kind": "creator",
+      "name": "Hrnchamd"
+    },
+    {
+      "id": "morrowind:publisher:mwse",
+      "game_id": "morrowind",
+      "kind": "creator",
+      "name": "MWSE team"
+    },
+    {
+      "id": "morrowind:publisher:openmw",
+      "game_id": "morrowind",
+      "kind": "creator",
+      "name": "OpenMW team"
+    },
+    {
+      "id": "morrowind:publisher:patch-for-purists",
+      "game_id": "morrowind",
+      "kind": "creator",
+      "name": "TES3 Community and Half11"
+    },
+    {
+      "id": "morrowind:publisher:tamriel-rebuilt",
+      "game_id": "morrowind",
+      "kind": "creator",
+      "name": "Tamriel Rebuilt team"
+    },
+    {
+      "id": "nexus:morrowind:19510",
+      "game_id": "morrowind",
+      "kind": "tool",
+      "name": "Morrowind Code Patch"
+    },
+    {
+      "id": "nexus:morrowind:41102",
+      "game_id": "morrowind",
+      "kind": "tool",
+      "name": "Morrowind Graphics Extender XE"
+    },
+    {
+      "id": "nexus:morrowind:45096",
+      "game_id": "morrowind",
+      "kind": "mod",
+      "name": "Patch for Purists"
+    }
+  ],
+  "observations": [
+    {
+      "id": "morrowind:project:mwse:20261125:creator",
+      "entity_id": "morrowind:project:mwse",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/MWSE/MWSE",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"morrowind:publisher:mwse\",\"role\":\"Official publisher or author attribution, not a contributor census.\",\"project_url\":\"https://github.com/MWSE/MWSE\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:mwse:20261125:maintainer_notice_v1:installer-route",
+      "entity_id": "morrowind:project:mwse",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/MWSE/MWSE/blob/master/readme.md",
+      "predicate": "maintainer_notice_v1",
+      "value": "{\"scope\":\"Official MWSE deployment guidance; not a strict dependency inference.\",\"summary\":\"MGE XE installer includes nightly MWSE. When installing from the MGE XE archive, its updater is the separately documented route for nightly MWSE. Preserve original and OpenMW engines as distinct targets.\",\"source_blob_sha\":\"e45ff2b78f41550500386286dc3b987ecfc0416d\",\"related_project_id\":\"nexus:morrowind:41102\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:mwse:20261125:project_release_evidence_v1:24861833",
+      "entity_id": "morrowind:project:mwse",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/MWSE/MWSE/releases/tag/build-automatic",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"MWSE/MWSE\",\"release_id\":24861833,\"tag\":\"build-automatic\",\"channel\":\"rolling-nightly\",\"provider_prerelease_flag\":false,\"published_at\":\"2020-03-25T18:01:55Z\",\"target_commitish\":\"1dce8de6b87c7b216c6809fbc261a176157764ce\",\"game_target_verified\":false,\"install_authorized\":false,\"code_license_provider_label\":\"GPL-2.0\",\"license_applies_to\":\"Repository code only; no per-asset or game-content licensing inference.\",\"files\":[{\"github_id\":730456243,\"name\":\"csse_debug_symbols.7z\",\"size_bytes\":6823121,\"sha256\":\"1fca91d6bcb9390699f16f9d12a50c01de2a47833f001b70c6a8d579a18470a4\",\"role\":\"debug-symbols\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-11-10T07:03:30Z\",\"publisher_updated_at\":\"2026-11-10T07:03:31Z\",\"official_download_url\":\"https://github.com/MWSE/MWSE/releases/download/build-automatic/csse_debug_symbols.7z\",\"metadata_url\":\"https://api.github.com/repos/MWSE/MWSE/releases/assets/730456243\"},{\"github_id\":730456184,\"name\":\"mwse.zip\",\"size_bytes\":10059603,\"sha256\":\"f809cf003bc59b6f9de98cd05da27d9a1368876edf0d3df386f258bf5025e254\",\"role\":\"extension-archive\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-11-10T07:03:28Z\",\"publisher_updated_at\":\"2026-11-10T07:03:29Z\",\"official_download_url\":\"https://github.com/MWSE/MWSE/releases/download/build-automatic/mwse.zip\",\"metadata_url\":\"https://api.github.com/repos/MWSE/MWSE/releases/assets/730456184\"},{\"github_id\":730456298,\"name\":\"mwse_debug_symbols.7z\",\"size_bytes\":49081160,\"sha256\":\"e6abe7a3124c48dfe8eaffaccf492ae1a2f88841bb9992f1ea268d6e0feb34fd\",\"role\":\"debug-symbols\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-11-10T07:03:31Z\",\"publisher_updated_at\":\"2026-11-10T07:03:35Z\",\"official_download_url\":\"https://github.com/MWSE/MWSE/releases/download/build-automatic/mwse_debug_symbols.7z\",\"metadata_url\":\"https://api.github.com/repos/MWSE/MWSE/releases/assets/730456298\"}]}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "build-automatic",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:mwse:20261125:project_release_evidence_v1:9601199",
+      "entity_id": "morrowind:project:mwse",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/MWSE/MWSE/releases/tag/v2.0.0",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"MWSE/MWSE\",\"release_id\":9601199,\"tag\":\"v2.0.0\",\"channel\":\"historical-release\",\"provider_prerelease_flag\":false,\"published_at\":\"2018-02-08T22:40:48Z\",\"target_commitish\":\"master\",\"game_target_verified\":false,\"install_authorized\":false,\"code_license_provider_label\":\"GPL-2.0\",\"license_applies_to\":\"Repository code only; no per-asset or game-content licensing inference.\",\"files\":[{\"github_id\":6155187,\"name\":\"MWSE_v2.0.0.zip\",\"size_bytes\":258721,\"sha256\":null,\"role\":\"extension-archive\",\"bytes_verified\":false,\"publisher_created_at\":\"2018-02-08T22:39:36Z\",\"publisher_updated_at\":\"2018-02-08T22:39:38Z\",\"official_download_url\":\"https://github.com/MWSE/MWSE/releases/download/v2.0.0/MWSE_v2.0.0.zip\",\"metadata_url\":\"https://api.github.com/repos/MWSE/MWSE/releases/assets/6155187\"}]}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "v2.0.0",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:mwse:20261125:publishing_locations",
+      "entity_id": "morrowind:project:mwse",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/MWSE/MWSE",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://github.com/MWSE/MWSE\",\"release_index_url\":\"https://github.com/MWSE/MWSE/releases\",\"summary\":\"Original-engine Lua and script extender, not OpenMW Lua.\",\"download_mode\":\"Explicit selection via official provider; no download, automatic install or redistribution.\",\"file_coverage\":\"see exact release observations\",\"reported_issue_count\":null}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:openmw:20261125:creator",
+      "entity_id": "morrowind:project:openmw",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/OpenMW/openmw",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"morrowind:publisher:openmw\",\"role\":\"Official publisher or author attribution, not a contributor census.\",\"project_url\":\"https://github.com/OpenMW/openmw\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:openmw:20261125:maintainer_notice_v1:assets",
+      "entity_id": "morrowind:project:openmw",
+      "source_id": "morrowind-openmw-docs",
+      "source_url": "https://openmw.readthedocs.io/en/stable/manuals/installation/install-game-files.html",
+      "predicate": "maintainer_notice_v1",
+      "value": "{\"scope\":\"Official installation guidance\",\"summary\":\"To run Morrowind in OpenMW, point the wizard at lawfully obtained game data. OpenMW-CS projects can instead provide their own authored assets. No source for obtaining game assets is included.\",\"portability\":\"Do not infer folder-local settings from an installer or archive.\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:openmw:20261125:mod.relationships.v1",
+      "entity_id": "morrowind:project:openmw",
+      "source_id": "morrowind-openmw-docs",
+      "source_url": "https://openmw.readthedocs.io/en/stable/reference/modding/extended.html",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\",\"conflict\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"morrowind:project:mwse\",\"label\":\"MWSE Lua mods\",\"relation\":\"conflict\",\"raw_relation\":\"conflict\",\"version_constraint\":null,\"condition\":\"An OpenMW-specific port is a distinct implementation. Ordinary ESP/ESM and texture support does not establish Lua compatibility.\",\"target_scope\":{\"game_id\":\"morrowind\",\"mod_version\":null,\"file_id\":null,\"runtime\":\"OpenMW\"},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Extended modding feature overview\",\"quote\":\"It is not compatible with MWSE.\",\"location\":\"Publisher documentation\"}}]}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:openmw:20261125:project_release_evidence_v1:334684060",
+      "entity_id": "morrowind:project:openmw",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/OpenMW/openmw/releases/tag/openmw-0.51.0",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"OpenMW/openmw\",\"release_id\":334684060,\"tag\":\"openmw-0.51.0\",\"channel\":\"stable\",\"provider_prerelease_flag\":false,\"published_at\":\"2026-06-19T19:58:46Z\",\"target_commitish\":\"master\",\"game_target_verified\":false,\"install_authorized\":false,\"code_license_provider_label\":\"GPL-3.0\",\"license_applies_to\":\"Repository code only; no per-asset or game-content licensing inference.\",\"files\":[{\"github_id\":451600199,\"name\":\"openmw-0.51.0-Linux-64Bit-debug.tar.gz\",\"size_bytes\":629363279,\"sha256\":\"7acc875d8af4f2509a64a6a6ad50ab6996849f52417f0c54518a77ec58d65ea8\",\"role\":\"debug-symbols\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-06-18T21:37:29Z\",\"publisher_updated_at\":\"2026-06-18T21:59:12Z\",\"official_download_url\":\"https://github.com/OpenMW/openmw/releases/download/openmw-0.51.0/openmw-0.51.0-Linux-64Bit-debug.tar.gz\",\"metadata_url\":\"https://api.github.com/repos/OpenMW/openmw/releases/assets/451600199\"},{\"github_id\":451589526,\"name\":\"openmw-0.51.0-Linux-64Bit.tar.gz\",\"size_bytes\":94444356,\"sha256\":\"a39459e6adad06163eb0ffd4d80229e13aec8748211c3dfd5bf95c204ae68f0b\",\"role\":\"engine-archive\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-06-18T21:21:16Z\",\"publisher_updated_at\":\"2026-06-18T21:25:07Z\",\"official_download_url\":\"https://github.com/OpenMW/openmw/releases/download/openmw-0.51.0/openmw-0.51.0-Linux-64Bit.tar.gz\",\"metadata_url\":\"https://api.github.com/repos/OpenMW/openmw/releases/assets/451589526\"},{\"github_id\":438829353,\"name\":\"OpenMW-0.51.0-macOS-arm64.dmg\",\"size_bytes\":137461865,\"sha256\":\"76bc0436413ed500dcd846a2cc3889711af948645bdd4eafd36ad16bc0c5615c\",\"role\":\"disk-image\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-06-05T01:14:10Z\",\"publisher_updated_at\":\"2026-06-05T01:14:15Z\",\"official_download_url\":\"https://github.com/OpenMW/openmw/releases/download/openmw-0.51.0/OpenMW-0.51.0-macOS-arm64.dmg\",\"metadata_url\":\"https://api.github.com/repos/OpenMW/openmw/releases/assets/438829353\"},{\"github_id\":438835004,\"name\":\"OpenMW-0.51.0-macOS-x86_64.dmg\",\"size_bytes\":145801559,\"sha256\":\"cce014e1827cf2b1a23017894015648298c90e3324097fac157dd9e40b341602\",\"role\":\"disk-image\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-06-05T01:25:17Z\",\"publisher_updated_at\":\"2026-06-05T01:25:23Z\",\"official_download_url\":\"https://github.com/OpenMW/openmw/releases/download/openmw-0.51.0/OpenMW-0.51.0-macOS-x86_64.dmg\",\"metadata_url\":\"https://api.github.com/repos/OpenMW/openmw/releases/assets/438835004\"},{\"github_id\":438833986,\"name\":\"OpenMW-0.51.0-Windows-x64.exe\",\"size_bytes\":73331347,\"sha256\":\"56f6ccda630860a3197fb10c802e047740ea92230474dc442a39674e227f9ce7\",\"role\":\"installer\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-06-05T01:23:17Z\",\"publisher_updated_at\":\"2026-06-05T01:23:20Z\",\"official_download_url\":\"https://github.com/OpenMW/openmw/releases/download/openmw-0.51.0/OpenMW-0.51.0-Windows-x64.exe\",\"metadata_url\":\"https://api.github.com/repos/OpenMW/openmw/releases/assets/438833986\"}]}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "openmw-0.51.0",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:openmw:20261125:project_release_evidence_v1:430432078",
+      "entity_id": "morrowind:project:openmw",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/OpenMW/openmw/releases/tag/openmw-52-rc1",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"OpenMW/openmw\",\"release_id\":430432078,\"tag\":\"openmw-52-rc1\",\"channel\":\"release-candidate\",\"provider_prerelease_flag\":true,\"published_at\":\"2026-11-01T09:26:54Z\",\"target_commitish\":\"master\",\"game_target_verified\":false,\"install_authorized\":false,\"code_license_provider_label\":\"GPL-3.0\",\"license_applies_to\":\"Repository code only; no per-asset or game-content licensing inference.\",\"files\":[{\"github_id\":697733558,\"name\":\"OpenMW-0.52.0-RC1-Linux-x86_64.tar.xz\",\"size_bytes\":73985828,\"sha256\":\"0e4082780a5a1bff21697d7c21627b587a783e7e17bb0543e475ab79d08290a1\",\"role\":\"engine-archive\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-11-01T09:15:32Z\",\"publisher_updated_at\":\"2026-11-01T09:16:21Z\",\"official_download_url\":\"https://github.com/OpenMW/openmw/releases/download/openmw-52-rc1/OpenMW-0.52.0-RC1-Linux-x86_64.tar.xz\",\"metadata_url\":\"https://api.github.com/repos/OpenMW/openmw/releases/assets/697733558\"},{\"github_id\":697674942,\"name\":\"OpenMW-0.52.0-RC1-macOS-arm64.dmg\",\"size_bytes\":124573794,\"sha256\":\"465c52b122453c7d7b5b72d2be3ed4c1cb76162ed3f4cd7780abe0a0c754b3b5\",\"role\":\"disk-image\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-11-01T07:44:49Z\",\"publisher_updated_at\":\"2026-11-01T09:18:01Z\",\"official_download_url\":\"https://github.com/OpenMW/openmw/releases/download/openmw-52-rc1/OpenMW-0.52.0-RC1-macOS-arm64.dmg\",\"metadata_url\":\"https://api.github.com/repos/OpenMW/openmw/releases/assets/697674942\"},{\"github_id\":697727140,\"name\":\"OpenMW-0.52.0-RC1-macOS-x86_64.dmg\",\"size_bytes\":131394779,\"sha256\":\"4106f053e9fe22d7abc32644e53cc9113c66b9d68e57d8975a138aa524330118\",\"role\":\"disk-image\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-11-01T09:12:13Z\",\"publisher_updated_at\":\"2026-11-01T09:18:01Z\",\"official_download_url\":\"https://github.com/OpenMW/openmw/releases/download/openmw-52-rc1/OpenMW-0.52.0-RC1-macOS-x86_64.dmg\",\"metadata_url\":\"https://api.github.com/repos/OpenMW/openmw/releases/assets/697727140\"},{\"github_id\":697688646,\"name\":\"OpenMW-0.52.0-RC1-Windows-x64.exe\",\"size_bytes\":70280297,\"sha256\":\"3b0d8e520bd1d16e38039eb20be2618f6523eeefc991573fa863ee8fa443cf5d\",\"role\":\"installer\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-11-01T07:51:56Z\",\"publisher_updated_at\":\"2026-11-01T09:18:01Z\",\"official_download_url\":\"https://github.com/OpenMW/openmw/releases/download/openmw-52-rc1/OpenMW-0.52.0-RC1-Windows-x64.exe\",\"metadata_url\":\"https://api.github.com/repos/OpenMW/openmw/releases/assets/697688646\"}]}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "openmw-52-rc1",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:openmw:20261125:publishing_locations",
+      "entity_id": "morrowind:project:openmw",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/OpenMW/openmw",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://github.com/OpenMW/openmw\",\"release_index_url\":\"https://openmw.org/downloads/\",\"summary\":\"Replacement engine and mod ecosystem for The Elder Scrolls III: Morrowind; original game assets are separate.\",\"download_mode\":\"Explicit selection via official provider; no download, automatic install or redistribution.\",\"file_coverage\":\"see exact release observations\",\"reported_issue_count\":null}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:tamriel-data:20261125:project_release_evidence_v1:publisher",
+      "entity_id": "morrowind:project:tamriel-data",
+      "source_id": "morrowind-tamriel-indexed",
+      "source_url": "https://www.tamriel-rebuilt.org/downloads/resources",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"channel\":\"publisher-indexed-resource-pack\",\"version\":\"26.08\",\"published_date\":\"2026-08-23\",\"files\":null,\"game_target_verified\":false,\"install_authorized\":false,\"limits\":\"Cached indexed excerpt; freshly opened page denied, provider file IDs and byte verification unknown.\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "26.08",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:tamriel-data:20261125:publishing_locations",
+      "entity_id": "morrowind:project:tamriel-data",
+      "source_id": "morrowind-tamriel-indexed",
+      "source_url": "https://www.tamriel-rebuilt.org/downloads/resources",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://www.tamriel-rebuilt.org/downloads/resources\",\"release_index_url\":\"https://www.tamriel-rebuilt.org/downloads/resources\",\"summary\":\"Shared asset pack used by Tamriel Rebuilt and Project Tamriel; official index lists 26.08.\",\"download_mode\":\"Explicit selection via official provider; no download, automatic install or redistribution.\",\"file_coverage\":\"direct page denied, indexed headline facts only\",\"reported_issue_count\":null}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:tamriel-rebuilt:20261125:creator",
+      "entity_id": "morrowind:project:tamriel-rebuilt",
+      "source_id": "morrowind-tamriel-indexed",
+      "source_url": "https://www.tamriel-rebuilt.org/downloads/main-release",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"morrowind:publisher:tamriel-rebuilt\",\"role\":\"Official publisher or author attribution, not a contributor census.\",\"project_url\":\"https://www.tamriel-rebuilt.org/downloads/main-release\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:tamriel-rebuilt:20261125:mod.relationships.v1",
+      "entity_id": "morrowind:project:tamriel-rebuilt",
+      "source_id": "morrowind-tamriel-indexed",
+      "source_url": "https://www.tamriel-rebuilt.org/downloads/main-release",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"partial\",\"conflict\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"morrowind:project:tamriel-data\",\"label\":\"Tamriel_Data\",\"relation\":\"required\",\"raw_relation\":\"required\",\"version_constraint\":\">=26.08\",\"condition\":\"For publisher-listed Tamriel Rebuilt 26.08.23. This is a project-level claim, not verified archive metadata.\",\"target_scope\":{\"game_id\":\"morrowind\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Main release\",\"quote\":\"Tamriel_Data, version 26.08 or higher\",\"location\":\"Publisher-indexed excerpt; direct page denied.\"}},{\"target_id\":\"nexus:morrowind:19510\",\"label\":\"Morrowind Code Patch\",\"relation\":\"required\",\"raw_relation\":\"required\",\"version_constraint\":null,\"condition\":\"Required on the original executable installation route only; alternate route is OpenMW. Do not install both as a resolver action.\",\"target_scope\":{\"game_id\":\"morrowind\",\"mod_version\":null,\"file_id\":null,\"runtime\":\"Original Morrowind\"},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Main release\",\"quote\":\"Either the Morrowind Code Patch or OpenMW\",\"location\":\"Publisher-indexed excerpt; direct page denied.\"}},{\"target_id\":\"morrowind:project:openmw\",\"label\":\"OpenMW\",\"relation\":\"required\",\"raw_relation\":\"required\",\"version_constraint\":null,\"condition\":\"Engine requirement only when following the replacement-engine route. Not an unconditional second dependency.\",\"target_scope\":{\"game_id\":\"morrowind\",\"mod_version\":null,\"file_id\":null,\"runtime\":\"OpenMW\"},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Main release\",\"quote\":\"Either the Morrowind Code Patch or OpenMW\",\"location\":\"Publisher-indexed excerpt; direct page denied.\"}},{\"target_id\":null,\"label\":\"Morrowind with Tribunal and Bloodmoon\",\"relation\":\"required\",\"raw_relation\":\"required\",\"version_constraint\":null,\"condition\":\"Published expansions requirement; original commercial assets not provided.\",\"target_scope\":{\"game_id\":\"morrowind\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Main release\",\"quote\":\"expansions Tribunal and Bloodmoon\",\"location\":\"Publisher-indexed excerpt; direct page denied.\"}}]}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "26.08.23",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:tamriel-rebuilt:20261125:project_release_evidence_v1:publisher",
+      "entity_id": "morrowind:project:tamriel-rebuilt",
+      "source_id": "morrowind-tamriel-indexed",
+      "source_url": "https://www.tamriel-rebuilt.org/downloads/main-release",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"channel\":\"publisher-indexed-main-release\",\"version\":\"26.08.23\",\"published_date\":\"2026-08-23\",\"files\":null,\"game_target_verified\":false,\"install_authorized\":false,\"limits\":\"Cached indexed excerpt; freshly opened page denied, provider file IDs and byte verification unknown.\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "26.08.23",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:project:tamriel-rebuilt:20261125:publishing_locations",
+      "entity_id": "morrowind:project:tamriel-rebuilt",
+      "source_id": "morrowind-tamriel-indexed",
+      "source_url": "https://www.tamriel-rebuilt.org/downloads/main-release",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://www.tamriel-rebuilt.org/downloads/main-release\",\"release_index_url\":\"https://www.tamriel-rebuilt.org/downloads/main-release\",\"summary\":\"Mainland expansion; the publisher lists 26.08.23, with original engine and OpenMW installation paths.\",\"download_mode\":\"Explicit selection via official provider; no download, automatic install or redistribution.\",\"file_coverage\":\"direct page denied, indexed headline facts only\",\"reported_issue_count\":null}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:publisher:hrnchamd:20261125:publishing_locations",
+      "entity_id": "morrowind:publisher:hrnchamd",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/Hrnchamd",
+      "predicate": "publishing_locations",
+      "value": "{\"profile_url\":\"https://github.com/Hrnchamd\",\"role\":\"MGE XE repository publisher and author label on official Nexus listings; no account IDs joined\",\"scope\":\"Public publisher attribution; no legal identity or complete roster.\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:publisher:mwse:20261125:publishing_locations",
+      "entity_id": "morrowind:publisher:mwse",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/MWSE",
+      "predicate": "publishing_locations",
+      "value": "{\"profile_url\":\"https://github.com/MWSE\",\"role\":\"official repository publisher\",\"scope\":\"Public publisher attribution; no legal identity or complete roster.\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:publisher:openmw:20261125:publishing_locations",
+      "entity_id": "morrowind:publisher:openmw",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/OpenMW",
+      "predicate": "publishing_locations",
+      "value": "{\"profile_url\":\"https://github.com/OpenMW\",\"role\":\"official source and releases\",\"scope\":\"Public publisher attribution; no legal identity or complete roster.\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:publisher:patch-for-purists:20261125:publishing_locations",
+      "entity_id": "morrowind:publisher:patch-for-purists",
+      "source_id": "morrowind-nexus-indexed",
+      "source_url": "https://www.nexusmods.com/morrowind/mods/45096",
+      "predicate": "publishing_locations",
+      "value": "{\"profile_url\":\"https://www.nexusmods.com/morrowind/mods/45096\",\"role\":\"joint credit in official listing; not a separate resolved account\",\"scope\":\"Public publisher attribution; no legal identity or complete roster.\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "morrowind:publisher:tamriel-rebuilt:20261125:publishing_locations",
+      "entity_id": "morrowind:publisher:tamriel-rebuilt",
+      "source_id": "morrowind-tamriel-indexed",
+      "source_url": "https://www.tamriel-rebuilt.org/",
+      "predicate": "publishing_locations",
+      "value": "{\"profile_url\":\"https://www.tamriel-rebuilt.org/\",\"role\":\"project publisher; indexed project domain\",\"scope\":\"Public publisher attribution; no legal identity or complete roster.\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "nexus:morrowind:19510:20261125:creator",
+      "entity_id": "nexus:morrowind:19510",
+      "source_id": "morrowind-nexus-indexed",
+      "source_url": "https://www.nexusmods.com/morrowind/mods/19510",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"morrowind:publisher:hrnchamd\",\"role\":\"Official publisher or author attribution, not a contributor census.\",\"project_url\":\"https://www.nexusmods.com/morrowind/mods/19510\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "nexus:morrowind:19510:20261125:publishing_locations",
+      "entity_id": "nexus:morrowind:19510",
+      "source_id": "morrowind-nexus-indexed",
+      "source_url": "https://www.nexusmods.com/morrowind/mods/19510",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://www.nexusmods.com/morrowind/mods/19510\",\"release_index_url\":\"https://www.nexusmods.com/morrowind/mods/19510?tab=files\",\"summary\":\"Original-game code patch, not an OpenMW component.\",\"download_mode\":\"Explicit selection via official provider; no download, automatic install or redistribution.\",\"file_coverage\":\"direct page denied, indexed headline facts only\",\"reported_issue_count\":null}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "nexus:morrowind:41102:20261125:creator",
+      "entity_id": "nexus:morrowind:41102",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/Hrnchamd/MGE-XE",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"morrowind:publisher:hrnchamd\",\"role\":\"Official publisher or author attribution, not a contributor census.\",\"project_url\":\"https://github.com/Hrnchamd/MGE-XE\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "nexus:morrowind:41102:20261125:mod.relationships.v1",
+      "entity_id": "nexus:morrowind:41102",
+      "source_id": "morrowind-nexus-indexed",
+      "source_url": "https://www.nexusmods.com/morrowind/mods/41102",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"partial\",\"conflict\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"nexus:morrowind:19510\",\"label\":\"Morrowind Code Patch\",\"relation\":\"required\",\"raw_relation\":\"required\",\"version_constraint\":null,\"condition\":\"Needed for the named MWSE 2.1/Lua path, not an unconditional dependency for every graphics-only setup.\",\"target_scope\":{\"game_id\":\"morrowind\",\"mod_version\":null,\"file_id\":null,\"runtime\":\"Original Morrowind, MWSE 2.1 path\"},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Author documentation\",\"quote\":\"you must first install Morrowind Code Patch\",\"location\":\"Publisher-indexed excerpt; direct page denied.\"}}]}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "nexus:morrowind:41102:20261125:publishing_locations",
+      "entity_id": "nexus:morrowind:41102",
+      "source_id": "morrowind-github-official",
+      "source_url": "https://github.com/Hrnchamd/MGE-XE",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://github.com/Hrnchamd/MGE-XE\",\"release_index_url\":\"https://www.nexusmods.com/morrowind/mods/41102?tab=files\",\"summary\":\"Original Morrowind rendering extender. Public code repository exposes no GitHub Releases on the reviewed page; use the author Nexus listing for release selection.\",\"download_mode\":\"Explicit selection via official provider; no download, automatic install or redistribution.\",\"file_coverage\":\"see exact release observations\",\"reported_issue_count\":null}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "nexus:morrowind:45096:20261125:creator",
+      "entity_id": "nexus:morrowind:45096",
+      "source_id": "morrowind-nexus-indexed",
+      "source_url": "https://www.nexusmods.com/morrowind/mods/45096",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"morrowind:publisher:patch-for-purists\",\"role\":\"Official publisher or author attribution, not a contributor census.\",\"project_url\":\"https://www.nexusmods.com/morrowind/mods/45096\"}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    },
+    {
+      "id": "nexus:morrowind:45096:20261125:publishing_locations",
+      "entity_id": "nexus:morrowind:45096",
+      "source_id": "morrowind-nexus-indexed",
+      "source_url": "https://www.nexusmods.com/morrowind/mods/45096",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://www.nexusmods.com/morrowind/mods/45096\",\"release_index_url\":\"https://www.nexusmods.com/morrowind/mods/45096?tab=files\",\"summary\":\"Game-of-the-Year unofficial bugfix patch; exact current file identity and per-engine minimum unknown.\",\"download_mode\":\"Explicit selection via official provider; no download, automatic install or redistribution.\",\"file_coverage\":\"direct page denied, indexed headline facts only\",\"reported_issue_count\":null}",
+      "observed_unix": 1795627440,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "morrowind-official-engine-evidence-2026-11-25"
+    }
+  ]
+}
