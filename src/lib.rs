@@ -381,3 +381,7 @@ mod tests {
 }
 
 pub mod health;
+
+pub mod manager;
+
+pub mod visual;
