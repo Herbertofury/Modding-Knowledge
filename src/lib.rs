@@ -22,6 +22,13 @@ pub struct Observation {
     pub completeness: String,
     pub policy_revision: String,
 }
+/// Exclusive last-seen key in descending timestamp, ascending ID order.
+#[derive(Clone, Copy, Debug)]
+pub struct ObservationAnchor<'a> {
+    pub observed_unix: i64,
+    pub id: &'a str,
+}
+
 fn observation_from_row(r: &rusqlite::Row<'_>) -> rusqlite::Result<Observation> {
     Ok(Observation {
         id: r.get(0)?,
@@ -163,6 +170,54 @@ impl Store {
         }
         self.read_observations_page(entity, offset, Some(predicate))
     }
+    /// Traverse an entity's public evidence without offset shifts from a newer write.
+    ///
+    /// Use the last row as the exclusive anchor for the next page. Keep the same
+    /// entity and predicate throughout. Each query rechecks current publication
+    /// policy; this is live traversal, not a pinned snapshot. New evidence after
+    /// the anchor may appear; new evidence before it requires restarting at the top.
+    pub fn observations_after(
+        &self,
+        entity: &str,
+        predicate: Option<&str>,
+        anchor: Option<ObservationAnchor<'_>>,
+    ) -> Result<Vec<Observation>> {
+        if predicate.is_some_and(|p| p.trim().is_empty() || p.len() > 128) {
+            return Err("Expected an exact predicate of 1 to 128 bytes".into());
+        }
+        let Some(anchor) = anchor else {
+            return self.read_observations_page(entity, 0, predicate);
+        };
+        if anchor.observed_unix < 0 || anchor.id.is_empty() {
+            return Err("Expected a nonnegative timestamp and nonempty observation ID".into());
+        }
+        // Both disjoint branches can seek on the existing entity/time/ID index.
+        // A single statement sees one policy view while merging their ordered results.
+        macro_rules! segment {
+            ($range:literal) => {
+                concat!(
+                    "SELECT o.id AS observation_id,o.entity_id,o.source_id,o.source_url,o.predicate,o.value,",
+                    "o.observed_unix AS observation_time,o.applicable_build,o.mod_version,o.completeness,o.policy_revision ",
+                    "FROM observations o JOIN sources s ON s.id=o.source_id ",
+                    "WHERE o.entity_id=?1 AND s.can_retain=1 AND s.can_publish=1 ",
+                    "AND o.policy_revision=s.policy_revision AND (?4 IS NULL OR o.predicate=?4) ",
+                    $range
+                )
+            };
+        }
+        let mut statement = self.db.prepare(concat!(
+            segment!("AND o.observed_unix=?2 AND o.id>?3"),
+            " UNION ALL ",
+            segment!("AND o.observed_unix<?2"),
+            " ORDER BY observation_time DESC,observation_id LIMIT 1000"
+        ))?;
+        let rows = statement.query_map(
+            params![entity, anchor.observed_unix, anchor.id, predicate],
+            observation_from_row,
+        )?;
+        Ok(rows.collect::<rusqlite::Result<Vec<_>>>()?)
+    }
+
     fn read_observations_page(
         &self,
         entity: &str,
