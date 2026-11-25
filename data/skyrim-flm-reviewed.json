@@ -1,0 +1,194 @@
+{
+  "schema": 1,
+  "games": {
+    "skyrim-se": "Skyrim Special Edition (including desktop AE)",
+    "skyrim-vr": "Skyrim VR"
+  },
+  "sources": {
+    "flm-creator-source": "https://github.com/MaskedRPGFan/FormList-Manipulator",
+    "flm-nexus-public": "https://www.nexusmods.com/skyrimspecialedition/mods/74037",
+    "flm-community-public": "https://www.nexusmods.com/skyrimspecialedition/mods/189947",
+    "flm-ng-public": "https://www.nexusmods.com/skyrimspecialedition/mods/193349"
+  },
+  "source_policy_revisions": {
+    "flm-creator-source": "skyrim-flm-public-scope-2026-11-25",
+    "flm-nexus-public": "skyrim-flm-public-scope-2026-11-25",
+    "flm-community-public": "skyrim-flm-public-scope-2026-11-25",
+    "flm-ng-public": "skyrim-flm-public-scope-2026-11-25"
+  },
+  "entities": [
+    {
+      "id": "nexus:skyrim-se:project:74037",
+      "name": "FormList Manipulator · original Nexus listing",
+      "game_id": "skyrim-se",
+      "kind": "mod"
+    },
+    {
+      "id": "nexus:skyrim-se:project:189947",
+      "name": "FormList Manipulator · drLemis community patch",
+      "game_id": "skyrim-se",
+      "kind": "mod"
+    },
+    {
+      "id": "nexus:skyrim-se:project:193349",
+      "name": "FormList Manipulator NG · abcd99",
+      "game_id": "skyrim-se",
+      "kind": "mod"
+    },
+    {
+      "id": "github:MaskedRPGFan/FormList-Manipulator",
+      "name": "FormList Manipulator · pinned MaskedRPGFan source",
+      "game_id": "skyrim-se",
+      "kind": "mod"
+    },
+    {
+      "id": "nexus:skyrim-se:project:32444",
+      "name": "Address Library for SKSE Plugins",
+      "game_id": "skyrim-se",
+      "kind": "mod"
+    },
+    {
+      "id": "nexus:skyrim-se:project:58101",
+      "name": "VR Address Library for SKSEVR",
+      "game_id": "skyrim-vr",
+      "kind": "mod"
+    },
+    {
+      "id": "nexus:creator:MaskedRPGFan",
+      "name": "MaskedRPGFan",
+      "game_id": "skyrim-se",
+      "kind": "creator"
+    },
+    {
+      "id": "nexus:creator:drLemis",
+      "name": "drLemis",
+      "game_id": "skyrim-se",
+      "kind": "creator"
+    },
+    {
+      "id": "nexus:creator:abcd99",
+      "name": "abcd99",
+      "game_id": "skyrim-se",
+      "kind": "creator"
+    }
+  ],
+  "observations": [
+    {
+      "id": "github:MaskedRPGFan/FormList-Manipulator:20261125:source_build_identity_v1",
+      "entity_id": "github:MaskedRPGFan/FormList-Manipulator",
+      "source_id": "flm-creator-source",
+      "source_url": "https://github.com/MaskedRPGFan/FormList-Manipulator/blob/82a694e5d33194ae223f23846b1f180ee394cdee/CMakeLists.txt",
+      "predicate": "source_build_identity_v1",
+      "value": "{\"commit\":\"82a694e5d33194ae223f23846b1f180ee394cdee\",\"git_blob\":\"b46a72241ebf17e34797f1c9913ca0d17ee54c92\",\"source_version\":\"1.7.0.0\",\"creator\":\"MaskedRPGFan\",\"original_project\":\"nexus:skyrim-se:project:74037\",\"artifact_equivalence\":\"unknown; source version is not the Nexus project display version\",\"runtime_tested_by_catalog\":false,\"exact_nexus_file_verified\":false,\"automatic_install_authorized\":false}",
+      "observed_unix": 1795645800,
+      "applicable_build": "unverified",
+      "mod_version": "source-1.7.0.0",
+      "completeness": "partial",
+      "policy_revision": "skyrim-flm-public-scope-2026-11-25"
+    },
+    {
+      "id": "github:MaskedRPGFan/FormList-Manipulator:20261125:source_license_scope_v1",
+      "entity_id": "github:MaskedRPGFan/FormList-Manipulator",
+      "source_id": "flm-creator-source",
+      "source_url": "https://github.com/MaskedRPGFan/FormList-Manipulator/blob/82a694e5d33194ae223f23846b1f180ee394cdee/LICENSE",
+      "predicate": "source_license_scope_v1",
+      "value": "{\"commit\":\"82a694e5d33194ae223f23846b1f180ee394cdee\",\"git_blob\":\"f226e0094cf9a4e16cb5d055b98509f61daeca86\",\"license_spdx\":\"MIT\",\"scope\":\"pinned GitHub source only\",\"nexus_binary_redistribution\":\"unknown\",\"runtime_tested_by_catalog\":false,\"exact_nexus_file_verified\":false,\"automatic_install_authorized\":false}",
+      "observed_unix": 1795645800,
+      "applicable_build": "unverified",
+      "mod_version": "source-1.7.0.0",
+      "completeness": "partial",
+      "policy_revision": "skyrim-flm-public-scope-2026-11-25"
+    },
+    {
+      "id": "github:MaskedRPGFan/FormList-Manipulator:20261125:source_overlay_rules_v1",
+      "entity_id": "github:MaskedRPGFan/FormList-Manipulator",
+      "source_id": "flm-creator-source",
+      "source_url": "https://github.com/MaskedRPGFan/FormList-Manipulator/blob/82a694e5d33194ae223f23846b1f180ee394cdee/README.md",
+      "predicate": "source_overlay_rules_v1",
+      "value": "{\"commit\":\"82a694e5d33194ae223f23846b1f180ee394cdee\",\"git_blob\":\"da145233546398a2e4cad10e380992f1489be241\",\"suffix\":\"_FLM.ini\",\"precedence\":[\"Data\",\"Data/FLM\"],\"alphabetical_within_location\":true,\"shared_names\":[\"aliases\",\"filters\",\"groups\"],\"semantics\":[\"source describes add at startup\",\"source describes Mod Events and collections\"],\"scope\":\"pinned README; does not validate a real installed modlist\",\"runtime_tested_by_catalog\":false,\"exact_nexus_file_verified\":false,\"automatic_install_authorized\":false}",
+      "observed_unix": 1795645800,
+      "applicable_build": "unverified",
+      "mod_version": "source-1.7.0.0",
+      "completeness": "partial",
+      "policy_revision": "skyrim-flm-public-scope-2026-11-25"
+    },
+    {
+      "id": "github:MaskedRPGFan/FormList-Manipulator:20261125:source_edition_requirements_v1",
+      "entity_id": "github:MaskedRPGFan/FormList-Manipulator",
+      "source_id": "flm-creator-source",
+      "source_url": "https://github.com/MaskedRPGFan/FormList-Manipulator/blob/82a694e5d33194ae223f23846b1f180ee394cdee/README.md",
+      "predicate": "source_edition_requirements_v1",
+      "value": "{\"requirements\":[{\"edition\":\"desktop-SE/AE\",\"target\":\"nexus:skyrim-se:project:32444\"},{\"edition\":\"VR\",\"target\":\"nexus:skyrim-se:project:58101\"}],\"distinct\":true,\"exhaustive\":false,\"runtime_tested_by_catalog\":false,\"exact_nexus_file_verified\":false,\"automatic_install_authorized\":false}",
+      "observed_unix": 1795645800,
+      "applicable_build": "unverified",
+      "mod_version": "source-1.7.0.0",
+      "completeness": "partial",
+      "policy_revision": "skyrim-flm-public-scope-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:74037:20261125:publisher_project_identity_v1",
+      "entity_id": "nexus:skyrim-se:project:74037",
+      "source_id": "flm-nexus-public",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/74037",
+      "predicate": "publisher_project_identity_v1",
+      "value": "{\"creator\":\"MaskedRPGFan\",\"project_display_version\":\"1.8.1\",\"exact_file_id\":null,\"source_commit_correspondence\":\"publisher labels linked source outdated\",\"runtime_tested_by_catalog\":false,\"exact_nexus_file_verified\":false,\"automatic_install_authorized\":false}",
+      "observed_unix": 1795645800,
+      "applicable_build": "unverified",
+      "mod_version": "project-display-1.8.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-flm-public-scope-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:74037:20261125:publisher_requirement_context_v1",
+      "entity_id": "nexus:skyrim-se:project:74037",
+      "source_id": "flm-nexus-public",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/74037",
+      "predicate": "publisher_requirement_context_v1",
+      "value": "{\"desktop\":[\"Address Library for SKSE Plugins\",\"powerofthree’s Tweaks with Load Editor IDs on\"],\"vr\":[\"VR Address Library for SKSEVR (publisher notes 0.43.0 or newer)\",\"powerofthree’s Tweaks VR with Load Editor IDs on\"],\"optional\":[\"MergeMapper\"],\"offsite\":[\"Microsoft Visual C++ Redistributable\"],\"scope\":\"publisher description, not file-resolved or installed verification\",\"runtime_tested_by_catalog\":false,\"exact_nexus_file_verified\":false,\"automatic_install_authorized\":false}",
+      "observed_unix": 1795645800,
+      "applicable_build": "unverified",
+      "mod_version": "project-display-1.8.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-flm-public-scope-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:74037:20261125:publisher_optional_integration_v1",
+      "entity_id": "nexus:skyrim-se:project:74037",
+      "source_id": "flm-nexus-public",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/74037",
+      "predicate": "publisher_optional_integration_v1",
+      "value": "{\"target_label\":\"Keyword Item Distributor (KID)\",\"relation\":\"works_with\",\"ordered_if_both_present\":true,\"not_a_hard_dependency_claim\":true,\"first_described_in\":\"1.7.0 changelog\",\"scope\":\"publisher describes FLM waiting until KID completes keyword changes\",\"runtime_tested_by_catalog\":false,\"exact_nexus_file_verified\":false,\"automatic_install_authorized\":false}",
+      "observed_unix": 1795645800,
+      "applicable_build": "unverified",
+      "mod_version": "project-display-1.8.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-flm-public-scope-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:189947:20261125:publisher_alternative_v1",
+      "entity_id": "nexus:skyrim-se:project:189947",
+      "source_id": "flm-community-public",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/189947",
+      "predicate": "publisher_alternative_v1",
+      "value": "{\"creator\":\"drLemis\",\"original_project\":\"nexus:skyrim-se:project:74037\",\"relationship\":\"claims_replacement_not_equivalence\",\"publisher_display_version\":\"1.8.1.1\",\"publisher_last_updated\":\"2026-11-23\",\"publisher_runtime_text\":\"1.7.104+\",\"claimed_replacement_path\":\"Data/SKSE/Plugins/FormListManipulator.dll\",\"recommended_action\":\"review alternative; never install alongside original from this evidence\",\"exact_file_id\":null,\"runtime_tested_by_catalog\":false,\"exact_nexus_file_verified\":false,\"automatic_install_authorized\":false}",
+      "observed_unix": 1795645800,
+      "applicable_build": "unverified",
+      "mod_version": "project-display-1.8.1.1",
+      "completeness": "partial",
+      "policy_revision": "skyrim-flm-public-scope-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:193349:20261125:publisher_alternative_v1",
+      "entity_id": "nexus:skyrim-se:project:193349",
+      "source_id": "flm-ng-public",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/193349",
+      "predicate": "publisher_alternative_v1",
+      "value": "{\"creator\":\"abcd99\",\"original_project\":\"nexus:skyrim-se:project:74037\",\"relationship\":\"claims_replacement_not_equivalence\",\"publisher_display_version\":\"1.8.2\",\"publisher_last_updated\":\"2026-09-30\",\"publisher_runtime_text\":\"1.7.x\",\"publisher_license_label\":\"GPLv3\",\"exact_file_id\":null,\"runtime_tested_by_catalog\":false,\"exact_nexus_file_verified\":false,\"automatic_install_authorized\":false}",
+      "observed_unix": 1795645800,
+      "applicable_build": "unverified",
+      "mod_version": "project-display-1.8.2",
+      "completeness": "partial",
+      "policy_revision": "skyrim-flm-public-scope-2026-11-25"
+    }
+  ]
+}
