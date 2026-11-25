@@ -1,5 +1,6 @@
 """Exercise an extracted portable manager using only a disposable exact public-row fixture."""
 import argparse
+from contextlib import closing
 import hashlib
 import json
 from pathlib import Path
@@ -23,7 +24,7 @@ def main(package):
             exe.write_bytes(archive.read(binary[0]))
             exe.chmod(0o700)
         db = cwd / "Exact Skyrim file facts.sqlite"
-        with sqlite3.connect(db) as con:
+        with closing(sqlite3.connect(db)) as con, con:
             con.executescript((ROOT / "src/schema.sql").read_text(encoding="utf-8"))
             e = case["entity"]
             row = case["observations"][0]
