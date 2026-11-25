@@ -50,7 +50,26 @@ python tools/validate_snapshot.py new-snapshot.sqlite
 cargo run --locked --example query -- new-snapshot.sqlite modrinth:project:AANobbMI
 ```
 
-Or decompress the supplied `.sqlite.gz`, verify its SHA256 against `validation.json` for the original dated artifact or `artifacts/latest-validation.json` for the latest artifact, and query SQLite. Rust consumers can use the library API described in [Storage/API](docs/storage-api.md). The Rust package retains its original `athena-mod-knowledge` name for continuity. There is no hosted HTTP API yet.
+To check the latest downloaded artifact before using it, take the archive, receipt
+and reviewed manifest from the same trusted repository revision. Run this from
+the repository root with Python:
+
+```sh
+python tools/verify_packaged_snapshot.py artifacts/modding-knowledge-latest.sqlite.gz artifacts/latest-validation.json data/reviewed-bundle.json
+```
+
+It verifies both archive hashes, the source manifest digest, the actual SQLite
+schema and rows, integrity, and reported counts using disposable local copies.
+The command does not extract a persistent database or modify the three inputs.
+Bounds: 64 KiB receipt, 64 MiB compressed archive or manifest, 512 MiB unpacked
+snapshot. An equal receipt is a consistency check, not publisher authentication,
+a freshness guarantee, or tested mod compatibility. The original dated archive
+has a different receipt: decompress it and check its SHA256 against
+`validation.json`.
+
+Rust consumers can use the library API described in [Storage/API](docs/storage-api.md).
+The Rust package retains its original `athena-mod-knowledge` name for continuity.
+There is no hosted HTTP API yet.
 
 ```sql
 SELECT e.name,o.predicate,o.value,o.source_url,o.observed_unix,
