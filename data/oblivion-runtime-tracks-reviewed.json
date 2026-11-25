@@ -1,0 +1,499 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Separate classic and Remastered engine / storefront evidence, reviewed November 25, 2026. No local runtime or automatic compatibility proof.",
+  "games": {
+    "oblivion": "The Elder Scrolls IV: Oblivion",
+    "oblivion-remastered": "The Elder Scrolls IV: Oblivion Remastered"
+  },
+  "sources": {
+    "oblivion-github": "https://github.com",
+    "oblivion-nexus": "https://www.nexusmods.com",
+    "oblivion-afkmods": "https://www.afkmods.com",
+    "oblivion-bethesda": "https://bethesda.net"
+  },
+  "source_policy_revisions": {
+    "oblivion-github": "oblivion-editions-official-runtime-2026-11-25",
+    "oblivion-nexus": "oblivion-editions-official-runtime-2026-11-25",
+    "oblivion-afkmods": "oblivion-editions-official-runtime-2026-11-25",
+    "oblivion-bethesda": "oblivion-editions-official-runtime-2026-11-25"
+  },
+  "entities": [
+    {
+      "id": "github:loot/loot:oblivion",
+      "game_id": "oblivion",
+      "kind": "tool",
+      "name": "LOOT"
+    },
+    {
+      "id": "github:loot/loot:oblivion-remastered",
+      "game_id": "oblivion-remastered",
+      "kind": "tool",
+      "name": "LOOT"
+    },
+    {
+      "id": "nexus:oblivionremastered:4475",
+      "game_id": "oblivion-remastered",
+      "kind": "tool",
+      "name": "Address Library for OBSE Plugins"
+    },
+    {
+      "id": "nexus:oblivionremastered:477",
+      "game_id": "oblivion-remastered",
+      "kind": "mod",
+      "name": "Unofficial Oblivion Remastered Patch (UORP)"
+    },
+    {
+      "id": "oblivion-remastered:project:obse64",
+      "game_id": "oblivion-remastered",
+      "kind": "tool",
+      "name": "OBSE64"
+    },
+    {
+      "id": "oblivion-remastered:publisher:ianpatt",
+      "game_id": "oblivion-remastered",
+      "kind": "creator",
+      "name": "Ian Patterson (ianpatt)"
+    },
+    {
+      "id": "oblivion-remastered:publisher:meh321",
+      "game_id": "oblivion-remastered",
+      "kind": "creator",
+      "name": "meh321"
+    },
+    {
+      "id": "oblivion-remastered:guide:pc-update-label",
+      "game_id": "oblivion-remastered",
+      "kind": "guide",
+      "name": "Bethesda update label vs storefront runtime"
+    },
+    {
+      "id": "oblivion-remastered:publisher:uorp-team",
+      "game_id": "oblivion-remastered",
+      "kind": "creator",
+      "name": "The Unofficial Patch Project Team"
+    },
+    {
+      "id": "oblivion:project:xobse",
+      "game_id": "oblivion",
+      "kind": "tool",
+      "name": "xOBSE"
+    },
+    {
+      "id": "oblivion:publisher:loot",
+      "game_id": "oblivion",
+      "kind": "creator",
+      "name": "LOOT project"
+    },
+    {
+      "id": "oblivion:publisher:xobse",
+      "game_id": "oblivion",
+      "kind": "creator",
+      "name": "llde and shadeMe"
+    }
+  ],
+  "observations": [
+    {
+      "id": "github:loot/loot:oblivion-remastered:20261125:creator",
+      "entity_id": "github:loot/loot:oblivion-remastered",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/loot/loot",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"oblivion:publisher:loot\",\"project_url\":\"https://github.com/loot/loot\",\"role\":\"Publisher or named maintainers, not an exhaustive roster.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "github:loot/loot:oblivion-remastered:20261125:maintainer_notice_v1:ms-store",
+      "entity_id": "github:loot/loot:oblivion-remastered",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/loot/loot/blob/0.29.2/src/gui/state/game/detection/microsoft_store.cpp",
+      "predicate": "maintainer_notice_v1",
+      "value": "{\"source_blob_sha\":\"2a7d8935307ac35382fef8b7df362056c84b9031\",\"scope\":\"LOOT's MS Store detection source only\",\"summary\":\"LOOT includes Remastered Microsoft Store detection. It does not imply that OBSE64 or that any native mods support that store.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "0.29.2",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "github:loot/loot:oblivion-remastered:20261125:maintainer_notice_v1:rules-default",
+      "entity_id": "github:loot/loot:oblivion-remastered",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/loot/oblivion-remastered",
+      "predicate": "maintainer_notice_v1",
+      "value": "{\"scope\":\"repository-description evidence only\",\"summary\":\"This public repository's description says it is unused by LOOT. Do not infer a current default rules input from the repo name; no masterlist was applied.\",\"active_masterlist_verified\":false}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "github:loot/loot:oblivion-remastered:20261125:maintainer_notice_v1:steam-id",
+      "entity_id": "github:loot/loot:oblivion-remastered",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/loot/loot/blob/0.29.2/src/gui/state/game/detection/steam.cpp",
+      "predicate": "maintainer_notice_v1",
+      "value": "{\"source_blob_sha\":\"e92cec56772068cfa0102cff4accffa769bd2f24\",\"scope\":\"game detection, not runtime tested\",\"steam_app_id\":2623190,\"summary\":\"LOOT 0.29.2 names an explicit Remastered Steam entry, separately from classic Oblivion. Both editions may use the same master filename; check full game identity.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "0.29.2",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "github:loot/loot:oblivion-remastered:20261125:project_release_evidence_v1:310699248",
+      "entity_id": "github:loot/loot:oblivion-remastered",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/loot/loot/releases/tag/0.29.1",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"loot/loot\",\"release_id\":310699248,\"tag\":\"0.29.1\",\"channel\":\"published-stable-label\",\"provider_prerelease_flag\":false,\"published_at\":\"2026-04-18T13:08:30Z\",\"game_target_verified\":false,\"install_authorized\":false,\"files\":[{\"github_id\":399344608,\"name\":\"loot_0.29.1-win64.7z\",\"size_bytes\":17575888,\"sha256\":\"699dbb1157e26cbd8b8758632b8370bbb372759c9a00ffd9a4300a05f3409837\",\"role\":\"publisher-archive\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-04-18T12:38:44Z\",\"publisher_updated_at\":\"2026-04-18T12:38:45Z\",\"official_download_url\":\"https://github.com/loot/loot/releases/download/0.29.1/loot_0.29.1-win64.7z\",\"metadata_url\":\"https://api.github.com/repos/loot/loot/releases/assets/399344608\"},{\"github_id\":399344614,\"name\":\"loot_0.29.1-win64.exe\",\"size_bytes\":20466071,\"sha256\":\"d7c363efed15f377bd6fd426572cbe7fb43c68338442fe5b9ac64aa7fd50e251\",\"role\":\"windows-installer\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-04-18T12:38:46Z\",\"publisher_updated_at\":\"2026-04-18T12:38:47Z\",\"official_download_url\":\"https://github.com/loot/loot/releases/download/0.29.1/loot_0.29.1-win64.exe\",\"metadata_url\":\"https://api.github.com/repos/loot/loot/releases/assets/399344614\"}]}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "0.29.1",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "github:loot/loot:oblivion-remastered:20261125:project_release_evidence_v1:371287178",
+      "entity_id": "github:loot/loot:oblivion-remastered",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/loot/loot/releases/tag/0.29.2",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"loot/loot\",\"release_id\":371287178,\"tag\":\"0.29.2\",\"channel\":\"published-stable-label\",\"provider_prerelease_flag\":false,\"published_at\":\"2026-08-16T11:43:41Z\",\"game_target_verified\":false,\"install_authorized\":false,\"files\":[{\"github_id\":516672048,\"name\":\"loot_0.29.2-win64.7z\",\"size_bytes\":17720978,\"sha256\":\"10685b03a43a77a7644b5c417eb757f6b405425f3c4d9abeaab4faaa967fb6e0\",\"role\":\"publisher-archive\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-08-16T09:53:00Z\",\"publisher_updated_at\":\"2026-08-16T09:53:01Z\",\"official_download_url\":\"https://github.com/loot/loot/releases/download/0.29.2/loot_0.29.2-win64.7z\",\"metadata_url\":\"https://api.github.com/repos/loot/loot/releases/assets/516672048\"},{\"github_id\":516672071,\"name\":\"loot_0.29.2-win64.exe\",\"size_bytes\":20624334,\"sha256\":\"f81d6e8b61f8d61a797f4cb6f48e8481aa6bce1b066b10790e2f259c7e7f3ff3\",\"role\":\"windows-installer\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-08-16T09:53:03Z\",\"publisher_updated_at\":\"2026-08-16T09:53:04Z\",\"official_download_url\":\"https://github.com/loot/loot/releases/download/0.29.2/loot_0.29.2-win64.exe\",\"metadata_url\":\"https://api.github.com/repos/loot/loot/releases/assets/516672071\"}]}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "0.29.2",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "github:loot/loot:oblivion-remastered:20261125:publishing_locations",
+      "entity_id": "github:loot/loot:oblivion-remastered",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/loot/loot",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://github.com/loot/loot\",\"release_index_url\":\"https://github.com/loot/loot/releases\",\"download_mode\":\"Explicit reviewed official selection; no install, scraping or automatic download.\",\"summary\":\"Remastered-specific game context and official utility packages. Does not confer script extender support.\",\"reported_issue_count\":null}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "github:loot/loot:oblivion:20261125:creator",
+      "entity_id": "github:loot/loot:oblivion",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/loot/loot",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"oblivion:publisher:loot\",\"project_url\":\"https://github.com/loot/loot\",\"role\":\"Publisher or named maintainers, not an exhaustive roster.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "github:loot/loot:oblivion:20261125:publishing_locations",
+      "entity_id": "github:loot/loot:oblivion",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/loot/loot",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://github.com/loot/loot\",\"release_index_url\":\"https://github.com/loot/loot/releases\",\"download_mode\":\"Explicit reviewed official selection; no install, scraping or automatic download.\",\"summary\":\"Classic game context. Binary assets are cataloged once under the Remastered context; not a cross-edition mod compatibility claim.\",\"reported_issue_count\":null}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "nexus:oblivionremastered:4475:20261125:creator",
+      "entity_id": "nexus:oblivionremastered:4475",
+      "source_id": "oblivion-nexus",
+      "source_url": "https://www.nexusmods.com/oblivionremastered/mods/4475",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"oblivion-remastered:publisher:meh321\",\"project_url\":\"https://www.nexusmods.com/oblivionremastered/mods/4475\",\"role\":\"Publisher or named maintainers, not an exhaustive roster.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "nexus:oblivionremastered:4475:20261125:project_release_evidence_v1:nexus",
+      "entity_id": "nexus:oblivionremastered:4475",
+      "source_id": "oblivion-nexus",
+      "source_url": "https://www.nexusmods.com/oblivionremastered/mods/4475",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"storefront\":\"Steam\",\"project_header_version\":\"1\",\"file_offers\":[{\"label\":\"All in one - v2 (1.512.105.0) Address Library\",\"role\":\"player-data\",\"version\":\"2\",\"date\":\"2025-07-17\"},{\"label\":\"Offsets - v2 (1.512.105.0)\",\"role\":\"developer-reference\",\"version\":\"2\",\"date\":\"2025-07-17\"}],\"archived_player_package\":\"All in one - v1 (1.511.102.0) Address Library\",\"files\":null,\"game_target_verified\":false,\"install_authorized\":false,\"coverage\":\"Author file labels only, not exact asset IDs or hashes. Do not recommend the developer offset table in place of player data.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "1.512.105.0",
+      "mod_version": "2",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "nexus:oblivionremastered:4475:20261125:publishing_locations",
+      "entity_id": "nexus:oblivionremastered:4475",
+      "source_id": "oblivion-nexus",
+      "source_url": "https://www.nexusmods.com/oblivionremastered/mods/4475",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://www.nexusmods.com/oblivionremastered/mods/4475\",\"release_index_url\":\"https://www.nexusmods.com/oblivionremastered/mods/4475?tab=files\",\"download_mode\":\"Explicit reviewed official selection; no install, scraping or automatic download.\",\"summary\":\"Remastered address data: player All-in-One and developer Offsets serve different roles. No third-party game compatibility assumption.\",\"reported_issue_count\":null}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "nexus:oblivionremastered:477:20261125:creator",
+      "entity_id": "nexus:oblivionremastered:477",
+      "source_id": "oblivion-nexus",
+      "source_url": "https://www.nexusmods.com/oblivionremastered/mods/477",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"oblivion-remastered:publisher:uorp-team\",\"project_url\":\"https://www.nexusmods.com/oblivionremastered/mods/477\",\"role\":\"Project team credited; Arthmoor listed as uploader, not sole author.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "nexus:oblivionremastered:477:20261125:maintainer_notice_v1:afk-build",
+      "entity_id": "nexus:oblivionremastered:477",
+      "source_id": "oblivion-afkmods",
+      "source_url": "https://www.afkmods.com/Unofficial%20Oblivion%20Remastered%20Patch%20Version%20History.html",
+      "predicate": "maintainer_notice_v1",
+      "value": "{\"scope\":\"version history lookup\",\"author_game_build_label\":\"235906\",\"author_patch_version\":\"1.0.9\",\"inferred_storefront_version\":null,\"summary\":\"The author labels this initial target with a game build number. No equality with a Steam executable version or Bethesda patch label established.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "publisher-build:235906",
+      "mod_version": "1.0.9",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "nexus:oblivionremastered:477:20261125:project_release_evidence_v1:nexus",
+      "entity_id": "nexus:oblivionremastered:477",
+      "source_id": "oblivion-nexus",
+      "source_url": "https://www.nexusmods.com/oblivionremastered/mods/477",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"package_rows\":[{\"label\":\"Unofficial Oblivion Remastered Patch\",\"version\":\"1.0.9\",\"class\":\"base\",\"published_date\":\"2025-06-11\"},{\"label\":\"Unofficial Oblivion Remastered Patch - Deluxe\",\"version\":\"1.0.2\",\"class\":\"deluxe-addon\",\"published_date\":\"2025-05-26\",\"requires_base_package\":true}],\"files\":null,\"game_target_verified\":false,\"install_authorized\":false,\"coverage\":\"Publisher listing, not verified exact files. Deluxe is separate and requires base; do not use it as a standalone or substitute patch.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "1.0.9",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "nexus:oblivionremastered:477:20261125:publishing_locations",
+      "entity_id": "nexus:oblivionremastered:477",
+      "source_id": "oblivion-nexus",
+      "source_url": "https://www.nexusmods.com/oblivionremastered/mods/477",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://www.nexusmods.com/oblivionremastered/mods/477\",\"release_index_url\":\"https://www.nexusmods.com/oblivionremastered/mods/477?tab=files\",\"download_mode\":\"Explicit reviewed official selection; no install, scraping or automatic download.\",\"summary\":\"Remastered base-game patch and separate Deluxe companion file. Publisher's old title version label is not a newest-build claim.\",\"reported_issue_count\":null}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion-remastered:project:obse64:20261125:creator",
+      "entity_id": "oblivion-remastered:project:obse64",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/ianpatt/obse64",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"oblivion-remastered:publisher:ianpatt\",\"project_url\":\"https://github.com/ianpatt/obse64\",\"role\":\"Publisher or named maintainers, not an exhaustive roster.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion-remastered:project:obse64:20261125:maintainer_notice_v1:source-store",
+      "entity_id": "oblivion-remastered:project:obse64",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/ianpatt/obse64/blob/master/README.md",
+      "predicate": "maintainer_notice_v1",
+      "value": "{\"scope\":\"publisher source documentation\",\"source_blob_sha\":\"1fb753325a1412e9f543966aec8a5eef93d71e12\",\"store_claim\":\"Steam\",\"explicit_unsupported\":[\"Microsoft Store\",\"Game Pass\"],\"runtime_version_in_this_document\":null,\"boundary\":\"Do not force loader compatibility or use another storefront's executable.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion-remastered:project:obse64:20261125:project_release_evidence_v1:nexus",
+      "entity_id": "oblivion-remastered:project:obse64",
+      "source_id": "oblivion-nexus",
+      "source_url": "https://www.nexusmods.com/oblivionremastered/mods/282",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"channel\":\"alpha\",\"source_release_label\":\"0.2.2\",\"publisher_update_date\":\"2025-07-16\",\"storefront\":\"Steam\",\"claimed_runtime\":\"1.512.105.0\",\"explicit_unsupported\":[\"Xbox Game Pass\",\"Microsoft Store\",\"Epic Games Store\"],\"files\":null,\"bytes_verified\":false,\"game_target_verified\":false,\"install_authorized\":false,\"coverage\":\"Publisher page projection. No exact Nexus file ID or digest verified. This is not a current all-storefront compatibility statement.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "1.512.105.0",
+      "mod_version": "0.2.2",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion-remastered:project:obse64:20261125:publishing_locations",
+      "entity_id": "oblivion-remastered:project:obse64",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/ianpatt/obse64",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://github.com/ianpatt/obse64\",\"release_index_url\":\"https://www.nexusmods.com/oblivionremastered/mods/282?tab=files\",\"download_mode\":\"Explicit reviewed official selection; no install, scraping or automatic download.\",\"summary\":\"Remastered script extender. The source repo publishes no GitHub release assets in the reviewed response. Select the author's Nexus file after checking its runtime.\",\"reported_issue_count\":null}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion-remastered:publisher:ianpatt:20261125:publishing_locations",
+      "entity_id": "oblivion-remastered:publisher:ianpatt",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/ianpatt/obse64",
+      "predicate": "publishing_locations",
+      "value": "{\"profile_url\":\"https://github.com/ianpatt/obse64\",\"scope\":\"Reviewed original public attribution, not a complete or verified legal identity.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion-remastered:publisher:meh321:20261125:publishing_locations",
+      "entity_id": "oblivion-remastered:publisher:meh321",
+      "source_id": "oblivion-nexus",
+      "source_url": "https://www.nexusmods.com/oblivionremastered/mods/4475",
+      "predicate": "publishing_locations",
+      "value": "{\"profile_url\":\"https://www.nexusmods.com/oblivionremastered/mods/4475\",\"scope\":\"Reviewed original public attribution, not a complete or verified legal identity.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion-remastered:guide:pc-update-label:20261125:maintainer_notice_v1:patch-label",
+      "entity_id": "oblivion-remastered:guide:pc-update-label",
+      "source_id": "oblivion-bethesda",
+      "source_url": "https://bethesda.net/en-US/news/the-elder-scrolls-iv-oblivion-remastered-update-1-2",
+      "predicate": "maintainer_notice_v1",
+      "value": "{\"publisher_label\":\"Update 1.2\",\"published_date\":\"2025-07-16\",\"summary\":\"Publisher announcement covers a platform-level game update. This label is not an executable version, an extender compatibility promise or a map from AFKMods build numbers.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion-remastered:publisher:uorp-team:20261125:publishing_locations",
+      "entity_id": "oblivion-remastered:publisher:uorp-team",
+      "source_id": "oblivion-nexus",
+      "source_url": "https://www.nexusmods.com/oblivionremastered/mods/477",
+      "predicate": "publishing_locations",
+      "value": "{\"profile_url\":\"https://www.nexusmods.com/oblivionremastered/mods/477\",\"scope\":\"Reviewed original public attribution, not a complete or verified legal identity.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion:project:xobse:20261125:creator",
+      "entity_id": "oblivion:project:xobse",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/llde/xOBSE",
+      "predicate": "creator",
+      "value": "{\"creator_id\":\"oblivion:publisher:xobse\",\"project_url\":\"https://github.com/llde/xOBSE\",\"role\":\"Publisher or named maintainers, not an exhaustive roster.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion:project:xobse:20261125:maintainer_notice_v1:classic",
+      "entity_id": "oblivion:project:xobse",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/llde/xOBSE/blob/master/README.md",
+      "predicate": "maintainer_notice_v1",
+      "value": "{\"scope\":\"classic original engine only\",\"claimed_executable_build\":\"1.2.0.416\",\"summary\":\"Documentation identifies the English original game patched executable. Localization and storefront builds need their own compatibility evidence. No inference from the 22.x extender tag or reuse in the remaster.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "1.2.0.416",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion:project:xobse:20261125:project_release_evidence_v1:423734575",
+      "entity_id": "oblivion:project:xobse",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/llde/xOBSE/releases/tag/22.14",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"llde/xOBSE\",\"release_id\":423734575,\"tag\":\"22.14\",\"channel\":\"published-stable-label\",\"provider_prerelease_flag\":false,\"published_at\":\"2026-10-25T23:48:12Z\",\"game_target_verified\":false,\"install_authorized\":false,\"files\":[{\"github_id\":676449073,\"name\":\"xOBSE-22.14.zip\",\"size_bytes\":5547777,\"sha256\":\"8f731153daa6cffeaf041ce3d310476f2a4dda957341bcf6f8fee3e76627c3c9\",\"role\":\"publisher-archive\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-10-25T23:48:13Z\",\"publisher_updated_at\":\"2026-10-25T23:48:13Z\",\"official_download_url\":\"https://github.com/llde/xOBSE/releases/download/22.14/xOBSE-22.14.zip\",\"metadata_url\":\"https://api.github.com/repos/llde/xOBSE/releases/assets/676449073\"}]}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "22.14",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion:project:xobse:20261125:project_release_evidence_v1:437739600",
+      "entity_id": "oblivion:project:xobse",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/llde/xOBSE/releases/tag/22.15",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"llde/xOBSE\",\"release_id\":437739600,\"tag\":\"22.15\",\"channel\":\"published-stable-label\",\"provider_prerelease_flag\":false,\"published_at\":\"2026-11-07T17:51:00Z\",\"game_target_verified\":false,\"install_authorized\":false,\"files\":[{\"github_id\":721460429,\"name\":\"xOBSE-22.15.zip\",\"size_bytes\":5553922,\"sha256\":\"310377484e38050a5867cec99680efa051e73454a339f4dd67b9c438453b0603\",\"role\":\"publisher-archive\",\"bytes_verified\":false,\"publisher_created_at\":\"2026-11-07T17:51:00Z\",\"publisher_updated_at\":\"2026-11-07T17:51:01Z\",\"official_download_url\":\"https://github.com/llde/xOBSE/releases/download/22.15/xOBSE-22.15.zip\",\"metadata_url\":\"https://api.github.com/repos/llde/xOBSE/releases/assets/721460429\"}]}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "22.15",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion:project:xobse:20261125:publishing_locations",
+      "entity_id": "oblivion:project:xobse",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/llde/xOBSE",
+      "predicate": "publishing_locations",
+      "value": "{\"project_url\":\"https://github.com/llde/xOBSE\",\"release_index_url\":\"https://github.com/llde/xOBSE/releases\",\"download_mode\":\"Explicit reviewed official selection; no install, scraping or automatic download.\",\"summary\":\"Community-maintained classic Oblivion script extender. Not OBSE64 or a Remastered plugin.\",\"reported_issue_count\":null}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion:publisher:loot:20261125:publishing_locations",
+      "entity_id": "oblivion:publisher:loot",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/loot",
+      "predicate": "publishing_locations",
+      "value": "{\"profile_url\":\"https://github.com/loot\",\"scope\":\"Reviewed original public attribution, not a complete or verified legal identity.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    },
+    {
+      "id": "oblivion:publisher:xobse:20261125:publishing_locations",
+      "entity_id": "oblivion:publisher:xobse",
+      "source_id": "oblivion-github",
+      "source_url": "https://github.com/llde/xOBSE",
+      "predicate": "publishing_locations",
+      "value": "{\"profile_url\":\"https://github.com/llde/xOBSE\",\"scope\":\"Reviewed original public attribution, not a complete or verified legal identity.\"}",
+      "observed_unix": 1795629240,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "oblivion-editions-official-runtime-2026-11-25"
+    }
+  ]
+}

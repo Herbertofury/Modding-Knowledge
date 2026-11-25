@@ -10,9 +10,11 @@ fn main() -> Result<()> {
             path,
             include_str!("../data/morrowind-engine-tracks-reviewed.json"),
         ),
-        _ => {
-            return Err("Expected optional --morrowind-engine-tracks and a new SQLite path".into());
-        }
+        [flag, path] if flag == "--oblivion-runtime-tracks" => (
+            path,
+            include_str!("../data/oblivion-runtime-tracks-reviewed.json"),
+        ),
+        _ => return Err("Expected optional reviewed-pack flag and a new SQLite path".into()),
     };
     if std::path::Path::new(path).exists() {
         return Err("Refusing overwrite".into());

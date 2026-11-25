@@ -45,3 +45,12 @@ jobs:
           name: morrowind-engine-tracks-${{ matrix.os }}
           path: morrowind-engine-tracks.sqlite
           if-no-files-found: error
+      - name: Verify the optional Oblivion and Remastered sidecar
+        run: cargo run --locked --example seed_reviewed_bundle -- --oblivion-runtime-tracks oblivion-runtime-tracks.sqlite
+      - name: Inspect reviewed Oblivion Remastered source observations
+        run: cargo run --locked --example query -- oblivion-runtime-tracks.sqlite oblivion-remastered:project:obse64
+      - uses: actions/upload-artifact@v4
+        with:
+          name: oblivion-runtime-tracks-${{ matrix.os }}
+          path: oblivion-runtime-tracks.sqlite
+          if-no-files-found: error
