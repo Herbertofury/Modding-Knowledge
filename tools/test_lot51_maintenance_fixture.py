@@ -1,5 +1,6 @@
 """Prove advisory read/export leaves unrelated save, sidecar, and CC bytes alone."""
 import argparse
+from contextlib import closing
 import hashlib
 import json
 from pathlib import Path
@@ -40,7 +41,7 @@ def check(database, output):
         assert digest(copy)==expected_db
         assert {x.relative_to(profile).as_posix():x.read_bytes()
                 for x in profile.rglob("*") if x.is_file()}==example
-        with sqlite3.connect(copy) as db:
+        with closing(sqlite3.connect(copy)) as db, db:
             predicate="maintenance_kitchen_presets_v1"
             value=json.loads(db.execute("SELECT value FROM observations WHERE predicate=?",(predicate,)).fetchone()[0])
             value["preserve"][0]["scope"]="game_save"

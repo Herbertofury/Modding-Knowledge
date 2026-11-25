@@ -1,5 +1,6 @@
 """Verify the exact optional Lot 51 pack and render its offline evidence, no network."""
 import argparse
+from contextlib import closing
 import html
 import json
 from pathlib import Path
@@ -33,7 +34,7 @@ def require(condition, reason):
 def verify(database):
     expected = json.loads((ROOT/"data/sims4-lot51-reviewed.json").read_text(encoding="utf-8"))
     p = Path(database).resolve(strict=True)
-    with sqlite3.connect(p.as_uri() + "?mode=ro&immutable=1", uri=True) as db:
+    with closing(sqlite3.connect(p.as_uri() + "?mode=ro&immutable=1", uri=True)) as db:
         db.row_factory = sqlite3.Row
         require(db.execute("PRAGMA quick_check").fetchone()[0] == "ok", "SQLite integrity")
         require(not list(db.execute("PRAGMA foreign_key_check")), "SQLite foreign keys")
@@ -144,7 +145,7 @@ def render(out,entities,source):
 <label for="find">Filter projects, versions, requirements or maintenance notes</label><br><input type="search" id="find" autocomplete="off"><p id="shown" aria-live="polite">6 projects</p>
 <div class="table" tabindex="0" role="region" aria-label="Reviewed projects"><table><thead><tr><th scope="col">Project</th><th scope="col">Exact CurseForge file</th><th scope="col">Provider tag</th><th scope="col">Creator game status</th><th scope="col">Relationships</th><th scope="col">Before changing mods</th></tr></thead><tbody>ROWS</tbody></table></div>
 <script>const box=document.querySelector('#find'),out=document.querySelector('#shown'),rows=[...document.querySelectorAll('tbody tr')];const text=rows.map(row=>row.textContent.toLocaleLowerCase());box.addEventListener('input',()=>{let n=0;const q=box.value.trim().toLocaleLowerCase();rows.forEach((r,i)=>{r.hidden=!text[i].includes(q);if(!r.hidden)n++;});out.textContent=n+' of '+rows.length+' projects';});</script></html>"""
-    with Path(out).open("x",encoding="utf-8") as file: file.write(page.replace("ROWS","".join(rows)))
+    with Path(out).open("x",encoding="utf-8",newline="\n") as file: file.write(page.replace("ROWS","".join(rows)))
 
 
 def main():
