@@ -1,0 +1,2 @@
+# The public snapshot receipt hashes the exact reviewed JSON bytes.
+data/reviewed-bundle.json -text
