@@ -1,0 +1,24 @@
+{
+  "subject": {
+    "project": { "provider": "nexus", "game": "skyrimspecialedition", "id": "155656" },
+    "id": "667812"
+  },
+  "compatibility": { "status": "unknown" },
+  "relationships": [
+    {
+      "target": { "provider": "nexus", "game": "skyrimspecialedition", "id": "57339" },
+      "role": "requires",
+      "constraint": { "type": "unspecified" },
+      "evidence": {
+        "subject": {
+          "project": { "provider": "nexus", "game": "skyrimspecialedition", "id": "155656" },
+          "id": "667812"
+        },
+        "source_id": "nexus-public-sse-155656-667812",
+        "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/155656?show_file=667812&tab=files",
+        "locator": "Optional SMP shawl file 667812 description",
+        "basis": "author_statement"
+      }
+    }
+  ]
+}
