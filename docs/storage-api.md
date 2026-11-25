@@ -9,7 +9,7 @@ A clean-room Rust library for public, attributed multi-game knowledge. This is a
 - Import accepts only a current policy revision explicitly permitting BOTH retention and public publication. Policy registration is reviewed trusted input, not a conclusion inferred from public visibility. Fetch permission is separate and not implemented here.
 - Changing/revoking source policy immediately hides historical observations from public reads. Historical rows are retained internally; a policy requiring erasure needs a separately authorized retention workflow before deployment. Do not distribute the raw database when it contains withdrawn or non-public rows; an export projection is NOT implemented yet.
 - Observation IDs are immutable. Replays must match all fields; an ID collision rolls back the entire bounded import. Failed refresh attempts never erase last-good observations.
-- Read pages contain up to 1000 rows, deterministic timestamp/ID order. Offset pagination is for stable snapshots; concurrent live ingestion requires a future cursor/snapshot API.
+- Read pages contain up to 1000 rows, deterministic timestamp/ID order. Offset pagination is for stable snapshots. Live consumers can continue with the last observed timestamp and ID instead.
 - HTTPS source references reject userinfo, query and fragments to reduce accidental secret ingestion. This deliberately excludes some legitimate provider URLs; source adapters must supply reviewed canonical references. This validation is not an SSRF transport guard, since no fetching occurs.
 - Caller must review public text: arbitrary observation values are not automatically anonymized or licensed by this library.
 
@@ -67,6 +67,26 @@ parse descriptions, join names or IDs, evaluate LOOT conditions, infer reverse
 links or turn author evidence into tested compatibility. The
 `conditional_plugin_metadata` predicate is the existing LOOT evidence type; its
 payload and game-family scope stay unchanged.
+
+### Resume live evidence browsing without offset shifts
+
+```sh
+cargo run --locked --example query_cursor -- FILE EXACT_ENTITY_ID --predicate EXACT_PREDICATE
+cargo run --locked --example query_cursor -- FILE EXACT_ENTITY_ID --predicate EXACT_PREDICATE --after LAST_UNIX LAST_ID
+```
+
+The example opens the database read-only and uses `Store::observations_after`.
+Continue with the supplied `next_cursor` and the same entity and optional
+predicate. A full page supplies a cursor even if the next read returns no
+rows. The older `query` JSON contract remains unchanged.
+
+The timestamp and ID are an exclusive boundary, including when many
+observations share the timestamp or when the last row's source is no longer
+visible. Source policy and predicate are rechecked on every page. This is
+live traversal, not a pinned snapshot: newer inserts before the boundary
+require revisiting the first page, and later eligible observations may
+appear on the next page. No database writes, extra indexes, schema
+migration, network access or compatibility assertions are introduced.
 
 ### Offline provider relationship research
 
