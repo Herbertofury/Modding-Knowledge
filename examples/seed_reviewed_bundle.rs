@@ -17,6 +17,10 @@ fn main() -> Result<()> {
             path,
             include_str!("../data/cyberpunk2077-core-reviewed.json"),
         ),
+        [flag, path] if flag == "--hytale-file-channels" => (
+            path,
+            include_str!("../data/hytale-file-channels-reviewed.json"),
+        ),
         _ => {
             return Err("Expected optional reviewed-pack flag and a NEW-SQLITE-PATH".into());
         }

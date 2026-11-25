@@ -51,3 +51,9 @@ jobs:
           python -m unittest discover -s tests -p test_cyberpunk2077_sidecar.py -v
         env:
           CYBERPUNK2077_SQLITE: cyberpunk2077-core.sqlite
+      - name: Build and verify the independent Hytale file-channel sidecar
+        run: |
+          cargo run --locked --example seed_reviewed_bundle -- --hytale-file-channels hytale-file-channels.sqlite
+          python -m unittest discover -s tests -p test_hytale_file_channels.py -v
+        env:
+          HYTALE_CHANNEL_SQLITE: hytale-file-channels.sqlite
