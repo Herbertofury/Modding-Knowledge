@@ -117,3 +117,66 @@ fn real_cli_filters_game_and_kind_before_pagination_and_leaves_foreign_rows_out(
     assert_eq!(before, fs::read(&db).unwrap());
     fs::remove_dir_all(dir).unwrap();
 }
+
+#[test]
+fn evidence_command_uses_the_public_policy_and_preserves_the_original_file() {
+    use athena_mod_knowledge::Observation;
+    let dir =
+        std::env::temp_dir().join(format!("knowledge-manager-evidence-{}", std::process::id()));
+    fs::create_dir(&dir).unwrap();
+    let db = dir.join("existing catalog.sqlite");
+    let mut store = Store::open(&db).unwrap();
+    store.register_game("game", "Game").unwrap();
+    store
+        .register_entity("fixture:item", "game", "mod", "Item")
+        .unwrap();
+    store
+        .set_source_policy("public", "https://example.org/legal", true, true, "1")
+        .unwrap();
+    store
+        .set_source_policy("withdrawn", "https://example.org/legal", true, true, "1")
+        .unwrap();
+    for source_id in ["public", "withdrawn"] {
+        store
+            .import(&[Observation {
+                id: source_id.into(),
+                entity_id: "fixture:item".into(),
+                source_id: source_id.into(),
+                predicate: "catalog.name".into(),
+                value: source_id.into(),
+                source_url: "https://example.org/item".into(),
+                observed_unix: 5,
+                applicable_build: "unknown".into(),
+                mod_version: "unknown".into(),
+                completeness: "partial".into(),
+                policy_revision: "1".into(),
+            }])
+            .unwrap();
+    }
+    store
+        .set_source_policy("withdrawn", "https://example.org/legal", true, false, "1")
+        .unwrap();
+    drop(store);
+    let before = fs::read(&db).unwrap();
+    let execute = |args: &[&str]| {
+        Command::new(env!("CARGO_BIN_EXE_knowledge-manager"))
+            .arg(&db)
+            .arg("evidence")
+            .args(args)
+            .output()
+            .unwrap()
+    };
+    let result = execute(&["fixture:item", "--predicate", "catalog.name"]);
+    assert!(result.status.success());
+    let report: serde_json::Value = serde_json::from_slice(&result.stdout).unwrap();
+    assert_eq!(report["count"], 1);
+    assert_eq!(report["observations"][0]["id"], "public");
+    let result = execute(&["fixture:item", "--mod-relations-v2"]);
+    assert!(result.status.success());
+    let report: serde_json::Value = serde_json::from_slice(&result.stdout).unwrap();
+    assert_eq!(report["count"], 0);
+    assert_eq!(report["mod_relationships"]["coverage"], "unknown");
+    assert!(!execute(&[]).status.success());
+    assert_eq!(before, fs::read(&db).unwrap());
+    fs::remove_dir_all(dir).unwrap();
+}

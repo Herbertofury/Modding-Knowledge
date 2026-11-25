@@ -43,8 +43,20 @@ unknown evidence is not a negative compatibility verdict. The legacy
 Browse and duplicate hints recheck source publication policy. Same-name groups
 are restricted to the same game and kind, capped at 100 with an explicit
 truncation flag, and **never automatically merged**. Name matches cannot prove
-identity. Open the existing observation query to inspect exact provenance:
-`cargo run --locked --example query -- catalog.sqlite ENTITY_ID`.
+identity. Inspect source evidence directly in the portable manager by passing the exact
+ID returned by a browse command:
+
+```sh
+knowledge-manager catalog.sqlite evidence adeepindigo:project:dental-care --mod-relations-v2
+knowledge-manager catalog.sqlite evidence modrinth:project:YL57xq9U --predicate provider_claim.source_url
+```
+
+The same report still powers `cargo run --locked --example query -- catalog.sqlite ENTITY_ID`.
+The manager can use the same offset and flags, including the pinned Oblivion and
+Fallout 4 LOOT modes. The v2 relationships report keeps requirements, optional
+integrations, compatible connections, conflicts, alternatives and unknowns in
+separate columns. Linked claims retain source, scope and exact conditions; an
+empty column on a page does not establish absence or evaluate compatibility.
 
 Status includes withheld row counts but not their content. Allocated/reclaimable
 page-byte metrics are not compressed file size, WAL size, measured query speed

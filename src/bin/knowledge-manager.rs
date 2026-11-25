@@ -1,10 +1,10 @@
 //! Native read-only catalog manager. JSON reports or standalone visual HTML output.
-use athena_mod_knowledge::{Result, Store};
+use athena_mod_knowledge::{Result, Store, evidence_report};
 
-const USAGE: &str = "Usage: knowledge-manager DATABASE status|check|duplicates|browse|visual [QUERY [AFTER_ID [LIMIT]]]\n       knowledge-manager DATABASE browse-in|visual-in GAME KIND [QUERY [AFTER_ID [LIMIT]]]\nGAME and KIND are exact catalog IDs, or * for either dimension. Quote '*' in a shell.";
+const USAGE: &str = "Usage: knowledge-manager DATABASE status|check|duplicates|browse|visual [QUERY [AFTER_ID [LIMIT]]]\n       knowledge-manager DATABASE browse-in|visual-in GAME KIND [QUERY [AFTER_ID [LIMIT]]]\n       knowledge-manager DATABASE evidence ENTITY_ID [OFFSET] [--predicate EXACT_PREDICATE | --mod-relations | --mod-relations-v2 | --loot-relations | --loot-fallout4-relations]\nGAME and KIND are exact catalog IDs, or * for either dimension. Quote '*' in a shell.";
 
 fn main() -> Result<()> {
-    let args: Vec<String> = std::env::args().skip(1).collect();
+    let mut args: Vec<String> = std::env::args().skip(1).collect();
     if args == ["--help"] || args == ["-h"] {
         println!("{USAGE}");
         return Ok(());
@@ -12,6 +12,15 @@ fn main() -> Result<()> {
     let Some(command) = args.get(1).map(String::as_str) else {
         return Err(USAGE.into());
     };
+    if command == "evidence" {
+        if args.len() < 3 {
+            return Err(USAGE.into());
+        }
+        args.remove(1);
+        let report = evidence_report::report(&args)?;
+        println!("{}", serde_json::to_string_pretty(&report)?);
+        return Ok(());
+    }
     let scoped = matches!(command, "browse-in" | "visual-in");
     let browsing = matches!(command, "browse" | "browse-in" | "visual" | "visual-in");
     if !(match command {

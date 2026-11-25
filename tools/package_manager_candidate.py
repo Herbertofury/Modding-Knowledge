@@ -54,13 +54,21 @@ def smoke(folder, executable, entity_count, observed_count, expected_database):
     scoped = parse_native(run(db, 'browse-in', 'minecraft-java', 'mod', 'Iris'))
     if [entry['id'] for entry in scoped['entities']] != ['modrinth:project:YL57xq9U']:
         raise ValueError('Expected exact Minecraft Iris project from the reviewed catalog')
+    relations = parse_native(run(db, 'evidence', 'adeepindigo:project:dental-care', '--mod-relations-v2'))
+    result = relations['mod_relationships']
+    if result['schema'] != 2 or result['coverage'] != 'unknown':
+        raise ValueError('Relationship report does not preserve the original uncertainty')
+    required = [item['target_id'] for row in result['observations'] for col in row['columns']
+                if col['role'] == 'required' for item in col['evidence']]
+    if 'lumpinou:project:the-mood-pack-mod' not in required:
+        raise ValueError('Source-specific Dental Care dependency was not retained')
     view = run(db, 'visual-in', 'minecraft-java', 'mod', 'Iris').stdout
     if b'Iris Shaders' not in view or b'Vampirism' in view:
         raise ValueError('Visual export did not retain scoped selection')
     if sha(read_regular(db)) != expected_database or any(
             (folder / (db.name + s)).exists() for s in ('-wal', '-shm', '-journal')):
         raise ValueError('Read-only commands altered the catalog or created sidecars')
-    return (['help', 'status', 'integrity', 'scoped lookup', 'scoped visual', 'unchanged database'], view)
+    return (['help', 'status', 'integrity', 'scoped lookup', 'evidence and relationships', 'scoped visual', 'unchanged database'], view)
 
 
 def package(binary, snapshot, output, commit):
@@ -84,6 +92,7 @@ Read-only examples (works with the included reviewed database):
   ./{exe} catalog.sqlite status
   ./{exe} catalog.sqlite check
   ./{exe} catalog.sqlite browse-in minecraft-java mod Iris
+  ./{exe} catalog.sqlite evidence adeepindigo:project:dental-care --mod-relations-v2
 
 Open the included iris-catalog.html for a bounded, offline example. A source media
 link only loads after you select it. The database and executable stay right
