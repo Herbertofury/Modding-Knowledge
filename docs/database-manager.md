@@ -188,3 +188,15 @@ project pages; Frankk's site route is scoped to the exact source record.
 Unknown or ambiguous identities keep their evidence links without guessing
 an author profile. No mod acquisition, live catalogue write, or install is
 performed when creating the report.
+
+The separately reviewed Skyrim runtime pack can also be queried directly:
+
+```sh
+knowledge-manager skyrim-native-runtime.sqlite runtime-in skyrim-se Steam 1.7.104.0
+knowledge-manager skyrim-native-runtime.sqlite runtime-in skyrim-se GOG 1.6.1179
+```
+
+Supply the storefront and exact game executable version. A missing match is
+unknown; it is not a reason to fall back to another store or install a nearby
+version. The command returns reviewed source links and does not detect,
+download or install files.
