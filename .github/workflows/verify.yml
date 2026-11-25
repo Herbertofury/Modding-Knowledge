@@ -72,3 +72,12 @@ jobs:
           name: classic-tes-reviewed-${{ matrix.os }}
           path: classic-tes-reviewed.sqlite
           if-no-files-found: error
+      - name: Verify the Sims 4 Lot 51 optional catalog
+        run: cargo run --locked --example seed_reviewed_bundle -- --sims4-lot51 sims4-lot51-reviewed.sqlite
+      - name: Verify exact publisher file IDs and Suite Life's venue choices
+        run: python tools/verify_lot51_snapshot.py sims4-lot51-reviewed.sqlite
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sims4-lot51-reviewed-${{ matrix.os }}
+          path: sims4-lot51-reviewed.sqlite
+          if-no-files-found: error

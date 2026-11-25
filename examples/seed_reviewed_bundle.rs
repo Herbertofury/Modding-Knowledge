@@ -32,6 +32,10 @@ fn main() -> Result<()> {
             )),
         ),
         [flag, path] if flag == "--classic-tes-reviewed" => (path, None),
+        [flag, path] if flag == "--sims4-lot51" => (
+            path,
+            Some(include_str!("../data/sims4-lot51-reviewed.json")),
+        ),
         _ => return Err("Expected optional reviewed-pack flag and a new SQLite path".into()),
     };
     if std::path::Path::new(path).exists() {
