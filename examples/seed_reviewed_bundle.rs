@@ -36,6 +36,9 @@ fn main() -> Result<()> {
             path,
             include_str!("../data/skyrim-fsmp-mcm-history-reviewed.json"),
         ),
+        [flag, path] if flag == "--skyrim-flm" => {
+            (path, include_str!("../data/skyrim-flm-reviewed.json"))
+        }
         _ => {
             return Err("Expected optional reviewed-pack flag and a NEW-SQLITE-PATH".into());
         }

@@ -106,3 +106,18 @@ jobs:
         with:
           name: skyrim-distributor-releases-${{ matrix.os }}
           path: skyrim-distributor-releases.sqlite
+      - name: Keep FLM original, community and NG evidence separate in native SQLite
+        run: |
+          cargo run --locked --example seed_reviewed_bundle -- --skyrim-flm skyrim-flm.sqlite
+          python tools/build_skyrim_flm_review.py skyrim-flm.html
+          python -m unittest discover -s tests -p test_skyrim_flm_evidence.py -v
+        env:
+          SKYRIM_FLM_SQLITE: skyrim-flm.sqlite
+          SKYRIM_FLM_HTML: skyrim-flm.html
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: skyrim-flm-reviewed-${{ matrix.os }}
+          path: |
+            skyrim-flm.sqlite
+            skyrim-flm.html
+          if-no-files-found: error
