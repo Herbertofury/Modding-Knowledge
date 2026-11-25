@@ -1,0 +1,17 @@
+{
+  "data": {
+    "id": 222,
+    "modId": 111,
+    "gameId": 99,
+    "isAvailable": true,
+    "dependencies": [
+      {"modId": 601, "relationType": 1},
+      {"modId": 602, "relationType": 2},
+      {"modId": 603, "relationType": 3},
+      {"modId": 604, "relationType": 4},
+      {"modId": 605, "relationType": 5},
+      {"modId": 606, "relationType": 6},
+      {"modId": 606, "relationType": 8}
+    ]
+  }
+}
