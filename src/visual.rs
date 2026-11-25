@@ -53,6 +53,79 @@ fn presentation_rows(observations: &[Observation]) -> Value {
     json!({"claims":claims,"media":media,"observations_page_limit":1000,"possibly_truncated":observations.len()==1000})
 }
 
+// Reviewed sidecars attach project routes separately from exact file and report
+// evidence. Only the admitted source-specific project row may label the name.
+fn sidecar_project_url(entity_id: &str, row: &Observation) -> Option<String> {
+    if row.predicate != "publishing_locations" || public_url(&row.source_url).is_err() {
+        return None;
+    }
+    let value: Value = serde_json::from_str(&row.value).ok()?;
+    let project = value["project_url"].as_str()?;
+    let slug = |s: &str| {
+        !s.is_empty()
+            && s.bytes()
+                .all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b == b'-')
+    };
+    // The direct Frankk route has a fragment by design. It is allowed only for
+    // a matching exact public site record; general public_url rules stay intact.
+    if row.source_id == "frankk_prod"
+        && row.policy_revision == "sims4-creator-factual-links-2026-11-25"
+    {
+        let key = entity_id.strip_prefix("frankk:project:")?;
+        return (slug(key) && project == format!("https://frankkmods.com/#/mods/{key}")
+            && row.source_url == format!("https://github.com/frankkulak/mods-web-data/blob/958853a50847ca18d353c222a6d8dc4af9f9503f/build/mods/{key}.json")).then(|| project.to_owned());
+    }
+    if project != row.source_url {
+        return None;
+    }
+    match row.source_id.as_str() {
+        "hytale-curseforge"
+            if row.policy_revision == "hytale-exact-public-file-pages-2026-11-25" =>
+        {
+            let subject = entity_id.strip_prefix("curseforge:hytale:project:")?;
+            let id = subject.parse::<u64>().ok()?;
+            let path = row
+                .source_url
+                .strip_prefix("https://www.curseforge.com/hytale/mods/")?;
+            (id > 0
+                && id.to_string() == subject
+                && value["provider_project_id"].as_u64() == Some(id)
+                && slug(path))
+            .then(|| row.source_url.clone())
+        }
+        "cyberpunk-github-official"
+            if row.policy_revision == "cyberpunk2077-official-projects-2026-11-25" =>
+        {
+            let subject = entity_id.strip_prefix("cyberpunk:project:")?;
+            let (owner, repo) = row
+                .source_url
+                .strip_prefix("https://github.com/")?
+                .split_once('/')?;
+            let component = |s: &str| {
+                !s.is_empty()
+                    && !matches!(s, "." | "..")
+                    && s.bytes()
+                        .all(|b| b.is_ascii_alphanumeric() || matches!(b, b'-' | b'_' | b'.'))
+            };
+            (!subject.is_empty() && component(owner) && component(repo))
+                .then(|| row.source_url.clone())
+        }
+        "simsonian" if row.policy_revision == "sims4-creator-factual-links-2026-11-25" => {
+            let key = entity_id.strip_prefix("simsonian:project:")?;
+            (slug(key) && project == format!("https://simsonianlibrary.com/{key}/index.html"))
+                .then(|| project.to_owned())
+        }
+        "sims4-scumbumbo-official"
+            if row.policy_revision == "sims4-public-factual-links-2026-11-25" =>
+        {
+            let key = entity_id.strip_prefix("scumbumbo:project:")?;
+            (slug(key) && project == format!("https://scumbumbomods.com/{key}/"))
+                .then(|| project.to_owned())
+        }
+        _ => None,
+    }
+}
+
 fn catalog_links<'a>(
     entity_id: &str,
     kind: &str,
@@ -63,6 +136,11 @@ fn catalog_links<'a>(
     for row in rows {
         if public_url(&row.source_url).is_ok() {
             sources.insert(row.source_url.as_str());
+        }
+        if matches!(kind, "mod" | "tool")
+            && let Some(url) = sidecar_project_url(entity_id, row)
+        {
+            direct.insert(url);
         }
         if kind != "creator"
             && let Some(id) = entity_id.strip_prefix("modrinth:project:")
@@ -223,6 +301,66 @@ mod tests {
     #[test]
     fn escapes_untrusted_markup() {
         assert_eq!(escape("<script>\"&'"), "&lt;script&gt;&quot;&amp;&#39;");
+    }
+    #[test]
+    fn reviewed_project_url_must_match_source_provider_namespace_and_project_identity() {
+        let mut r = Observation {
+            id: "fixture".into(),
+            entity_id: "curseforge:hytale:project:1439809".into(),
+            source_id: "hytale-curseforge".into(),
+            source_url: "https://www.curseforge.com/hytale/mods/portal-world".into(),
+            predicate: "publishing_locations".into(),
+            value: String::new(),
+            observed_unix: 0,
+            applicable_build: "unverified".into(),
+            mod_version: "unverified".into(),
+            completeness: "partial".into(),
+            policy_revision: "hytale-exact-public-file-pages-2026-11-25".into(),
+        };
+        r.value = json!({"project_url": r.source_url, "provider_project_id": 1439809}).to_string();
+        assert_eq!(
+            sidecar_project_url(&r.entity_id, &r).as_deref(),
+            Some(r.source_url.as_str())
+        );
+        assert_eq!(
+            sidecar_project_url("curseforge:hytale:project:10", &r),
+            None
+        );
+        assert_eq!(
+            sidecar_project_url("curseforge:minecraft:project:1439809", &r),
+            None
+        );
+        r.policy_revision = "unknown-policy".into();
+        assert_eq!(sidecar_project_url(&r.entity_id, &r), None);
+        r.policy_revision = "hytale-exact-public-file-pages-2026-11-25".into();
+        r.source_url += "/files/9343033";
+        r.value = json!({"project_url": r.source_url, "provider_project_id": 1439809}).to_string();
+        assert_eq!(sidecar_project_url(&r.entity_id, &r), None);
+        r.entity_id = "cyberpunk:project:let-there-be-flight".into();
+        r.source_id = "cyberpunk-github-official".into();
+        r.policy_revision = "cyberpunk2077-official-projects-2026-11-25".into();
+        r.source_url = "https://github.com/jackhumbert/let_there_be_flight".into();
+        r.value = json!({"project_url": r.source_url}).to_string();
+        assert_eq!(
+            sidecar_project_url(&r.entity_id, &r).as_deref(),
+            Some(r.source_url.as_str())
+        );
+        r.source_url = "https://github.com/jackhumbert/let_there_be_flight/releases".into();
+        r.value = json!({"project_url": r.source_url}).to_string();
+        assert_eq!(sidecar_project_url(&r.entity_id, &r), None);
+        r.entity_id = "frankk:project:online-homework".into();
+        r.source_id = "frankk_prod".into();
+        r.policy_revision = "sims4-creator-factual-links-2026-11-25".into();
+        r.source_url = "https://github.com/frankkulak/mods-web-data/blob/958853a50847ca18d353c222a6d8dc4af9f9503f/build/mods/online-homework.json".into();
+        let frank = "https://frankkmods.com/#/mods/online-homework";
+        r.value = json!({"project_url": frank}).to_string();
+        assert_eq!(
+            sidecar_project_url(&r.entity_id, &r).as_deref(),
+            Some(frank)
+        );
+        assert!(public_url(frank).is_err());
+        r.value = json!({"project_url": "https://frankkmods.com/#/mods/another"}).to_string();
+        assert_eq!(sidecar_project_url(&r.entity_id, &r), None);
     }
     #[test]
     fn empty_catalog_is_honest() {

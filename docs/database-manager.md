@@ -169,3 +169,22 @@ Default visual design is OLED black with neutral panels, readable high-contrast
 text and blue links/feedback, not dominant purple or green. A theme selector
 provides neutral slate and light alternatives; changing it does not reload data
 or media. Theme selection is local to the open export and is not persisted yet.
+
+### Open a separately reviewed data pack
+
+Pass an extracted sidecar SQLite file as the database argument; do not
+replace the main catalog. The visual report uses the same read-only manager:
+
+```sh
+knowledge-manager hytale-file-channels.sqlite visual-in hytale mod "Portal World" > hytale-view.html
+knowledge-manager cyberpunk2077-core.sqlite visual-in cyberpunk2077 mod "Let There Be Flight" > cyberpunk-view.html
+```
+
+The project heading links directly only when the reviewed source policy and
+project identity support a canonical route. Hytale and Cyberpunk file or
+release pages remain evidence links, not project-name destinations. The
+Sims 4 policies support the vetted Frankk, Simsonian Library, and Scumbumbo
+project pages; Frankk's site route is scoped to the exact source record.
+Unknown or ambiguous identities keep their evidence links without guessing
+an author profile. No mod acquisition, live catalogue write, or install is
+performed when creating the report.
