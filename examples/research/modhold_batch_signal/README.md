@@ -14,9 +14,8 @@ the source records would exceed the 2 MiB input limit. Output reports only
 project IDs and signal statuses.
 
 ```sh
-cd examples/research/modhold_batch_signal
-python3 -m unittest test_classify
-python3 classify.py < local-reviewed-batch.json
+python3 -m unittest discover -s tests -p test_modhold_batch_signal.py
+python3 examples/research/modhold_batch_signal/classify.py < local-reviewed-batch.json
 ```
 
 A missing or invalid row is not a removal, ban, or confirmation of unchanged

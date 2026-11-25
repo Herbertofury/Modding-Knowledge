@@ -1,10 +1,14 @@
-import json
+import importlib.util
 from pathlib import Path
 import subprocess
 import sys
 import unittest
 
-from classify import compare
+EXAMPLE = Path(__file__).resolve().parents[1] / "examples" / "research" / "modhold_batch_signal" / "classify.py"
+SPEC = importlib.util.spec_from_file_location("modhold_batch_signal_example", EXAMPLE)
+MODULE = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(MODULE)
+compare = MODULE.compare
 
 def row(ident=12, version='1.0', files=None, **extra):
     return {'id': ident, 'version': version, 'updated': '2026-11-20 12:15:06',
@@ -41,7 +45,7 @@ class Contract(unittest.TestCase):
             with self.subTest(), self.assertRaises(ValueError): compare(p, r)
 
     def test_cli_refuses_duplicate_json_keys(self):
-        result = subprocess.run([sys.executable, str(Path(__file__).with_name('classify.py'))],
+        result = subprocess.run([sys.executable, str(EXAMPLE)],
                                 text=True, input='{"previous":[],"stats":{"mods":{},"mods":{}}}', capture_output=True)
         self.assertEqual(result.returncode, 2)
         self.assertFalse(result.stdout)
