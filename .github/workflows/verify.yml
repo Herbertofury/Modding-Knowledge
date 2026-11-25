@@ -45,3 +45,9 @@ jobs:
         run: cargo run --locked --example seed_reviewed_bundle -- --scumbumbo-sims4 scumbumbo-sims4.sqlite
       - name: Verify exact SQLite rows, source paths and archive status scope
         run: python -m unittest discover -s tests -p test_scumbumbo_seed.py -v
+      - name: Build and verify the independent Cyberpunk 2077 release sidecar
+        run: |
+          cargo run --locked --example seed_reviewed_bundle -- --cyberpunk2077-core cyberpunk2077-core.sqlite
+          python -m unittest discover -s tests -p test_cyberpunk2077_sidecar.py -v
+        env:
+          CYBERPUNK2077_SQLITE: cyberpunk2077-core.sqlite

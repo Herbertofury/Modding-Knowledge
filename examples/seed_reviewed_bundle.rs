@@ -13,11 +13,12 @@ fn main() -> Result<()> {
             path,
             include_str!("../data/sims4-frankk-simsonian-reviewed.json"),
         ),
+        [flag, path] if flag == "--cyberpunk2077-core" => (
+            path,
+            include_str!("../data/cyberpunk2077-core-reviewed.json"),
+        ),
         _ => {
-            return Err(
-                "Expected [--scumbumbo-sims4 | --sims4-creator-relationships] NEW-SQLITE-PATH"
-                    .into(),
-            );
+            return Err("Expected optional reviewed-pack flag and a NEW-SQLITE-PATH".into());
         }
     };
     if std::path::Path::new(path).exists() {
