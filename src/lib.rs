@@ -3,6 +3,7 @@
 use rusqlite::{Connection, OptionalExtension, TransactionBehavior, params};
 use std::{error::Error, path::Path, time::Duration};
 pub mod loot;
+pub mod maintenance;
 
 pub type Result<T> = std::result::Result<T, Box<dyn Error>>;
 pub struct Store {

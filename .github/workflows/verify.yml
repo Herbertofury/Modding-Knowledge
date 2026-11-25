@@ -76,10 +76,13 @@ jobs:
         run: cargo run --locked --example seed_reviewed_bundle -- --sims4-lot51 sims4-lot51-reviewed.sqlite
       - name: Verify exact file links and isolated author maintenance notes
         run: python tools/test_lot51_maintenance_fixture.py sims4-lot51-reviewed.sqlite sims4-lot51-reviewed.html
+      - name: Query real catalog maintenance advisories by exact version and action
+        run: python tools/test_lot51_maintenance_cli.py sims4-lot51-reviewed.sqlite sims4-lot51-maintenance-receipt.json
       - uses: actions/upload-artifact@v4
         with:
           name: sims4-lot51-reviewed-${{ matrix.os }}
           path: |
             sims4-lot51-reviewed.sqlite
             sims4-lot51-reviewed.html
+            sims4-lot51-maintenance-receipt.json
           if-no-files-found: error
