@@ -9,7 +9,16 @@ fn main() -> Result<()> {
         [flag, path] if flag == "--scumbumbo-sims4" => {
             (path, include_str!("../data/scumbumbo-sims4-reviewed.json"))
         }
-        _ => return Err("Expected [--scumbumbo-sims4] NEW-SQLITE-PATH".into()),
+        [flag, path] if flag == "--sims4-creator-relationships" => (
+            path,
+            include_str!("../data/sims4-frankk-simsonian-reviewed.json"),
+        ),
+        _ => {
+            return Err(
+                "Expected [--scumbumbo-sims4 | --sims4-creator-relationships] NEW-SQLITE-PATH"
+                    .into(),
+            );
+        }
     };
     if std::path::Path::new(path).exists() {
         return Err("Refusing overwrite".into());

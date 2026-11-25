@@ -30,6 +30,10 @@ jobs:
       - run: python tools/build_reviewed_bundle.py
       - run: git diff --exit-code -- data/reviewed-bundle.json
       - run: cargo run --locked --example seed_reviewed_bundle -- verified.sqlite
+      - run: cargo run --locked --example seed_reviewed_bundle -- --sims4-creator-relationships sims4-creator.sqlite
+      - run: python -m unittest discover -s tests -p test_sims4_creator_sidecar.py -v
+        env:
+          SIMS4_CREATOR_SQLITE: sims4-creator.sqlite
       - run: python tools/validate_snapshot.py verified.sqlite
       - run: cargo run --locked --example query -- verified.sqlite modrinth:project:AANobbMI
       - uses: actions/upload-artifact@v4
