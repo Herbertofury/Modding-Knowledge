@@ -52,6 +52,8 @@ def verify(database):
     venue_edges = fact(SUITE,"mod.relationships.v1")["relationships"]
     require(venues["min_selected"] == venues["max_selected"] == 1, "Venue alternatives not exactly-one")
     require({x["target_id"] for x in venue_edges if x["relation"] == "required"} == {CORE}, "Alternative promoted to unconditional")
+    require({x["target_id"] for x in venue_edges if x["relation"] == "alternative"} ==
+            {x["target_id"] for x in venues["options"]}, "Typed alternative column and choice rule disagree")
     for world,want in {"ordinary_world":{"basemental:project:universal-venue-list","zerbu:project:venue-changes"},
                        "vacation_world":{"zerbu:project:venue-changes"},"not-known":set()}.items():
         require({x["target_id"] for x in venues["options"] if world in x["allowed_for"]} == want, "Venue-world mismatch")

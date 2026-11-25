@@ -22,9 +22,9 @@ max-version requirements, byte equivalence across hosts, or an independent game 
 allows [Universal Venue List](https://basementalcc.com/mods/universal-venue-list/)
 or [Venue Changes](https://zerbu.tumblr.com/post/160347810775/the-sims-4-mod-venue-changes);
 use Venue Changes only for a Vacation World. The underlying
-`mod.requirement_choice.v1` row retains that rule. Generic relationship views
-do not treat either list as an unconditional requirement or install either
-one. Sunrise’s optional Home Hub integration and Simzlink’s integration
+`mod.requirement_choice.v1` row retains that rule. The manager’s v2 Relationships view lists these
+in **Alternative**, not **Required**. The legacy view leaves new roles
+unclassified. Nothing is installed. Sunrise’s optional Home Hub integration and Simzlink’s integration
 with [SNB – Bills](https://www.simrealist.com/snb-bills) are not hard dependencies.
 
 No file bytes, hashes, current bug counts, unattended downloads, install
