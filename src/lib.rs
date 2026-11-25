@@ -387,4 +387,5 @@ pub mod manager;
 
 pub mod visual;
 
+pub mod release_files;
 pub mod runtime_evidence;

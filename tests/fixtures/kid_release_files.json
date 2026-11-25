@@ -1,0 +1,37 @@
+{
+  "scope": "Two exact, public KID observations from reviewed draft #66 used only to test the reader. The database remains the authoritative catalog.",
+  "entity": {
+    "id": "github:powerof3/Keyword-Item-Distributor",
+    "game_id": "skyrim-se",
+    "kind": "mod",
+    "name": "Keyword Item Distributor"
+  },
+  "observations": [
+    {
+      "id": "github:powerof3/Keyword-Item-Distributor:20261125:distributor:project_release_evidence_v1:376081743",
+      "entity_id": "github:powerof3/Keyword-Item-Distributor",
+      "source_id": "skyrim-distributor-authors",
+      "source_url": "https://github.com/powerof3/Keyword-Item-Distributor/releases/tag/v4.1.0",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"powerof3/Keyword-Item-Distributor\",\"tag\":\"v4.1.0\",\"provider_release_id\":376081743,\"provider_prerelease_flag\":false,\"release_type\":\"not marked prerelease\",\"published_at\":\"2026-08-25T00:57:25Z\",\"files\":[{\"provider_asset_id\":528411221,\"name\":\"Keyword.Item.Distributor.FOMOD.Installer.7z\",\"size\":10919998,\"provider_sha256\":\"f36b79a459d115634dd3abf2cb86bdca8f41e81a0c155945348de0a156a8003f\",\"official_download_url\":\"https://github.com/powerof3/Keyword-Item-Distributor/releases/download/v4.1.0/Keyword.Item.Distributor.FOMOD.Installer.7z\",\"archive_bytes_verified\":false,\"role\":\"publisher archive; selected binary unverified\"}],\"install_authorized\":false,\"runtime_tested_by_catalog\":false}",
+      "observed_unix": 1795616071,
+      "applicable_build": "unverified",
+      "mod_version": "v4.1.0",
+      "completeness": "partial",
+      "policy_revision": "skyrim-distributor-release-evidence-2026-11-25"
+    },
+    {
+      "id": "github:powerof3/Keyword-Item-Distributor:20261125:distributor:project_release_evidence_v1:346875099",
+      "entity_id": "github:powerof3/Keyword-Item-Distributor",
+      "source_id": "skyrim-distributor-authors",
+      "source_url": "https://github.com/powerof3/Keyword-Item-Distributor/releases/tag/v4.0.6",
+      "predicate": "project_release_evidence_v1",
+      "value": "{\"repository\":\"powerof3/Keyword-Item-Distributor\",\"tag\":\"v4.0.6\",\"provider_release_id\":346875099,\"provider_prerelease_flag\":false,\"release_type\":\"not marked prerelease\",\"published_at\":\"2026-06-30T14:01:02Z\",\"files\":[{\"provider_asset_id\":462208143,\"name\":\"Keyword.Item.Distributor.FOMOD.Installer.7z\",\"size\":10513558,\"provider_sha256\":\"e6020b5c3a0496e1920c705c801ec9a55afab22dd5f7c0ea7b114dc258b27b80\",\"official_download_url\":\"https://github.com/powerof3/Keyword-Item-Distributor/releases/download/v4.0.6/Keyword.Item.Distributor.FOMOD.Installer.7z\",\"archive_bytes_verified\":false,\"role\":\"publisher archive; selected binary unverified\"}],\"install_authorized\":false,\"runtime_tested_by_catalog\":false}",
+      "observed_unix": 1795616071,
+      "applicable_build": "unverified",
+      "mod_version": "v4.0.6",
+      "completeness": "partial",
+      "policy_revision": "skyrim-distributor-release-evidence-2026-11-25"
+    }
+  ]
+}
