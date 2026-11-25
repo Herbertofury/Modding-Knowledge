@@ -29,6 +29,10 @@ fn main() -> Result<()> {
             path,
             include_str!("../data/skyrim-distributor-release-reviewed.json"),
         ),
+        [flag, path] if flag == "--skyrim-nasuno-smp" => (
+            path,
+            include_str!("../data/skyrim-nasuno-smp-reviewed.json"),
+        ),
         _ => {
             return Err("Expected optional reviewed-pack flag and a NEW-SQLITE-PATH".into());
         }

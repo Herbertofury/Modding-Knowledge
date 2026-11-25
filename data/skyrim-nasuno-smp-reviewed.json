@@ -1,0 +1,529 @@
+{
+  "schema": 1,
+  "scope": "Selected first-party creator posts and conditional variant evidence. No archive bytes, file IDs, game tests, or license redistribution inferences.",
+  "games": {
+    "skyrim-se": "Skyrim Special Edition (including desktop AE)"
+  },
+  "sources": {
+    "nasuno-authored-blog-facts": "https://nasunosakuragawa.blogspot.com/"
+  },
+  "source_policy_revisions": {
+    "nasuno-authored-blog-facts": "nasuno-skyrim-smp-metadata-2026-11-25"
+  },
+  "entities": [
+    {
+      "id": "blogger:creator:nasunosakuragawa",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "桜川なすの (Nasuno)"
+    },
+    {
+      "id": "nexus:skyrim-se:project:57339",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "FSMP - Faster HDT-SMP"
+    },
+    {
+      "id": "nexus:skyrim-se:project:1988",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "XP32 Maximum Skeleton Special Extended"
+    },
+    {
+      "id": "nexus:skyrim-se:project:30174",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "CBBE 3BA"
+    },
+    {
+      "id": "nexus:skyrim-se:project:31126",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "BHUNP"
+    },
+    {
+      "id": "nexus:skyrim-se:project:201",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "BodySlide and Outfit Studio"
+    },
+    {
+      "id": "nexus:skyrim-se:project:86492",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Community Shaders"
+    },
+    {
+      "id": "nexus:skyrim-se:project:120946",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "PGPatcher"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:osare-culort",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Osare Culort Outfit SMP"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:vanilla-nocturnal",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Vanilla Nocturnal SMP"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:backsteppo-french-maid",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Backsteppo French Maid SMP"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:mages-daily",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Mage’s Daily Outfit SMP Patch"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:kanrax2-sleeveless",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Kanrax2 Sleeveless Dress SMP"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:vanilla-warlock",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Vanilla Warlock Robes SMP"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:dc-sorceress",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "DC Sorceress SMP"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:salahairs",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "saLaHairs SE SMP"
+    }
+  ],
+  "observations": [
+    {
+      "id": "blogger:creator:nasunosakuragawa:20261125:reviewed.creator_identity",
+      "entity_id": "blogger:creator:nasunosakuragawa",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profiles\":[{\"url\":\"https://nasunosakuragawa.blogspot.com/\",\"status\":\"provider-qualified account URL\"},{\"url\":\"https://x.com/nasuno04\",\"status\":\"provider-qualified account URL\"}],\"aliases\":[\"nasuno04\",\"桜川なすの\"],\"proof\":\"Creator blog explicitly identifies the Twitter/X handle in its header; no legal identity inferred.\",\"follow_sources\":[\"https://nasunosakuragawa.blogspot.com/\",\"https://x.com/nasuno04\"],\"tracking_active\":false}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:57339:20261125:project_profile_v1",
+      "entity_id": "nexus:skyrim-se:project:57339",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/57339",
+      "predicate": "project_profile_v1",
+      "value": "{\"canonical_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/57339\",\"scope\":\"Official provider project identity, not a version or independent test.\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:1988:20261125:project_profile_v1",
+      "entity_id": "nexus:skyrim-se:project:1988",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/1988",
+      "predicate": "project_profile_v1",
+      "value": "{\"canonical_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/1988\",\"scope\":\"Official provider project identity, not a version or independent test.\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:30174:20261125:project_profile_v1",
+      "entity_id": "nexus:skyrim-se:project:30174",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/30174",
+      "predicate": "project_profile_v1",
+      "value": "{\"canonical_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/30174\",\"scope\":\"Official provider project identity, not a version or independent test.\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:31126:20261125:project_profile_v1",
+      "entity_id": "nexus:skyrim-se:project:31126",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/31126",
+      "predicate": "project_profile_v1",
+      "value": "{\"canonical_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/31126\",\"scope\":\"Official provider project identity, not a version or independent test.\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:201:20261125:project_profile_v1",
+      "entity_id": "nexus:skyrim-se:project:201",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/201",
+      "predicate": "project_profile_v1",
+      "value": "{\"canonical_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/201\",\"scope\":\"Official provider project identity, not a version or independent test.\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:86492:20261125:project_profile_v1",
+      "entity_id": "nexus:skyrim-se:project:86492",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/86492",
+      "predicate": "project_profile_v1",
+      "value": "{\"canonical_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/86492\",\"scope\":\"Official provider project identity, not a version or independent test.\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "nexus:skyrim-se:project:120946:20261125:project_profile_v1",
+      "entity_id": "nexus:skyrim-se:project:120946",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/120946",
+      "predicate": "project_profile_v1",
+      "value": "{\"canonical_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/120946\",\"scope\":\"Official provider project identity, not a version or independent test.\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:osare-culort:20261125:reviewed.project_attribution",
+      "entity_id": "blogger:nasunosakuragawa:project:osare-culort",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2026/07/osare-culort-outfit-smp.html",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"blogger:creator:nasunosakuragawa\",\"project\":{\"name\":\"Osare Culort Outfit SMP\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://nasunosakuragawa.blogspot.com/2026/07/osare-culort-outfit-smp.html\",\"article_date\":\"2026-07-30\",\"latest_global_version_verified\":false,\"attribution\":\"publisher/coauthor evidence; not sole authorship\"},\"credits\":\"anano original resource\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:osare-culort:20261125:publisher_variants_v1",
+      "entity_id": "blogger:nasunosakuragawa:project:osare-culort",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2026/07/osare-culort-outfit-smp.html",
+      "predicate": "publisher_variants_v1",
+      "value": "{\"article_date\":\"2026-07-30\",\"variants\":[{\"label\":\"CS PBR\",\"version\":\"0-1\",\"renderer\":\"Community Shaders PBR\",\"body\":\"not declared\",\"channel\":\"current listed\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false},{\"label\":\"Vanilla/ENB\",\"version\":\"0-1\",\"renderer\":\"Vanilla/ENB\",\"body\":\"not declared\",\"channel\":\"current listed\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false}],\"scope\":\"Creator credits anano’s original UNP resource; licence scope of original model not verified.\",\"download_route\":{\"action\":\"open creator article\",\"url\":\"https://nasunosakuragawa.blogspot.com/2026/07/osare-culort-outfit-smp.html\",\"automation\":\"manual unless authorised route independently verified\",\"provider_project_url\":null},\"runtime_tested_by_catalog\":false,\"rights_verified\":false}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:osare-culort:20261125:mod.relationships.v1",
+      "entity_id": "blogger:nasunosakuragawa:project:osare-culort",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2026/07/osare-culort-outfit-smp.html",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"partial\",\"optional\":\"partial\",\"works_with\":\"unknown\",\"incompatible\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"nexus:skyrim-se:project:57339\",\"label\":\"FSMP - Faster HDT-SMP\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:1988\",\"label\":\"XP32 Maximum Skeleton Special Extended\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4.71+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:30174\",\"label\":\"CBBE 3BA\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Listed as optional by author.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:201\",\"label\":\"BodySlide and Outfit Studio\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Marked optional in the author post.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:86492\",\"label\":\"Community Shaders\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Only for the author-labelled Community Shaders PBR archive.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:120946\",\"label\":\"PGPatcher\",\"relation\":\"incompatible\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Author says do not run PGPatcher on the already prepared CS/PBR variant. No claim for the Vanilla/ENB variant.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}}]}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:vanilla-nocturnal:20261125:reviewed.project_attribution",
+      "entity_id": "blogger:nasunosakuragawa:project:vanilla-nocturnal",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2024/07/vanilla-nocturnal-smp-0-2-3ba-bhunpv4.html",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"blogger:creator:nasunosakuragawa\",\"project\":{\"name\":\"Vanilla Nocturnal SMP\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://nasunosakuragawa.blogspot.com/2024/07/vanilla-nocturnal-smp-0-2-3ba-bhunpv4.html\",\"article_date\":\"2024-07-02\",\"latest_global_version_verified\":false,\"attribution\":\"publisher/coauthor evidence; not sole authorship\"},\"credits\":null}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-3",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:vanilla-nocturnal:20261125:publisher_variants_v1",
+      "entity_id": "blogger:nasunosakuragawa:project:vanilla-nocturnal",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2024/07/vanilla-nocturnal-smp-0-2-3ba-bhunpv4.html",
+      "predicate": "publisher_variants_v1",
+      "value": "{\"article_date\":\"2024-07-02\",\"variants\":[{\"label\":\"Vanilla/ENB\",\"version\":\"0-3\",\"renderer\":\"Vanilla/ENB\",\"body\":\"3BA\",\"channel\":\"current listed\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false},{\"label\":\"CS PBR\",\"version\":\"0-3\",\"renderer\":\"Community Shaders PBR\",\"body\":\"3BA\",\"channel\":\"current listed\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false},{\"label\":\"Historical 3BA/BHUNP\",\"version\":\"0-2\",\"renderer\":\"not declared\",\"body\":\"3BA/BHUNP\",\"channel\":\"legacy\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false}],\"scope\":\"0-3 adds the PBR variant. BHUNP is explicitly labelled old 0-2, not a current 0-3 claim.\",\"download_route\":{\"action\":\"open creator article\",\"url\":\"https://nasunosakuragawa.blogspot.com/2024/07/vanilla-nocturnal-smp-0-2-3ba-bhunpv4.html\",\"automation\":\"manual unless authorised route independently verified\",\"provider_project_url\":null},\"runtime_tested_by_catalog\":false,\"rights_verified\":false}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-3",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:vanilla-nocturnal:20261125:mod.relationships.v1",
+      "entity_id": "blogger:nasunosakuragawa:project:vanilla-nocturnal",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2024/07/vanilla-nocturnal-smp-0-2-3ba-bhunpv4.html",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"partial\",\"optional\":\"partial\",\"works_with\":\"unknown\",\"incompatible\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"nexus:skyrim-se:project:57339\",\"label\":\"FSMP - Faster HDT-SMP\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:1988\",\"label\":\"XP32 Maximum Skeleton Special Extended\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4.71+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:30174\",\"label\":\"CBBE 3BA\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Required in current release instructions; do not infer a BHUNP version of 0-3.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:201\",\"label\":\"BodySlide and Outfit Studio\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Marked optional in the author post.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:86492\",\"label\":\"Community Shaders\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Only for the author-labelled Community Shaders PBR archive.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:120946\",\"label\":\"PGPatcher\",\"relation\":\"incompatible\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Author says do not run PGPatcher on the already prepared CS/PBR variant. No claim for the Vanilla/ENB variant.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}}]}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-3",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:backsteppo-french-maid:20261125:reviewed.project_attribution",
+      "entity_id": "blogger:nasunosakuragawa:project:backsteppo-french-maid",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2025/10/backsteppo-french-maid-smp-3ba-2-0.html",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"blogger:creator:nasunosakuragawa\",\"project\":{\"name\":\"Backsteppo French Maid SMP\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://nasunosakuragawa.blogspot.com/2025/10/backsteppo-french-maid-smp-3ba-2-0.html\",\"article_date\":\"2025-10-23\",\"latest_global_version_verified\":false,\"attribution\":\"publisher/coauthor evidence; not sole authorship\"},\"credits\":\"Backsteppo original as named in project title\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "2-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:backsteppo-french-maid:20261125:publisher_variants_v1",
+      "entity_id": "blogger:nasunosakuragawa:project:backsteppo-french-maid",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2025/10/backsteppo-french-maid-smp-3ba-2-0.html",
+      "predicate": "publisher_variants_v1",
+      "value": "{\"article_date\":\"2025-10-23\",\"variants\":[{\"label\":\"3BA Vanilla/ENB\",\"version\":\"2-1\",\"renderer\":\"Vanilla/ENB\",\"body\":\"3BA\",\"channel\":\"current listed\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false},{\"label\":\"3BA CS PBR\",\"version\":\"2-1\",\"renderer\":\"Community Shaders PBR\",\"body\":\"3BA\",\"channel\":\"current listed\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false},{\"label\":\"BHUNP old\",\"version\":\"1-2\",\"renderer\":\"not declared\",\"body\":\"BHUNP\",\"channel\":\"legacy\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false},{\"label\":\"COCOv6 old\",\"version\":\"1-2\",\"renderer\":\"not declared\",\"body\":\"COCOv6\",\"channel\":\"legacy\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false}],\"scope\":\"Keep both listed legacy body variants separate from 2-1.\",\"download_route\":{\"action\":\"open creator article\",\"url\":\"https://nasunosakuragawa.blogspot.com/2025/10/backsteppo-french-maid-smp-3ba-2-0.html\",\"automation\":\"manual unless authorised route independently verified\",\"provider_project_url\":null},\"runtime_tested_by_catalog\":false,\"rights_verified\":false}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "2-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:backsteppo-french-maid:20261125:mod.relationships.v1",
+      "entity_id": "blogger:nasunosakuragawa:project:backsteppo-french-maid",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2025/10/backsteppo-french-maid-smp-3ba-2-0.html",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"partial\",\"optional\":\"partial\",\"works_with\":\"unknown\",\"incompatible\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"nexus:skyrim-se:project:57339\",\"label\":\"FSMP - Faster HDT-SMP\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:1988\",\"label\":\"XP32 Maximum Skeleton Special Extended\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4.71+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:30174\",\"label\":\"CBBE 3BA\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Author lists 3BA as optional in requirements. 2-1 archives themselves are labelled 3BA.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:201\",\"label\":\"BodySlide and Outfit Studio\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Marked optional in the author post.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:86492\",\"label\":\"Community Shaders\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Only for the author-labelled Community Shaders PBR archive.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:120946\",\"label\":\"PGPatcher\",\"relation\":\"incompatible\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Author says do not run PGPatcher on the already prepared CS/PBR variant. No claim for the Vanilla/ENB variant.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}}]}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "2-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:mages-daily:20261125:reviewed.project_attribution",
+      "entity_id": "blogger:nasunosakuragawa:project:mages-daily",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2025/09/mages-daily-outfit-smp-patch.html",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"blogger:creator:nasunosakuragawa\",\"project\":{\"name\":\"Mage’s Daily Outfit SMP Patch\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://nasunosakuragawa.blogspot.com/2025/09/mages-daily-outfit-smp-patch.html\",\"article_date\":\"2025-09-24\",\"latest_global_version_verified\":false,\"attribution\":\"publisher/coauthor evidence; not sole authorship\"},\"credits\":\"Suna203 and nasuno04\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:mages-daily:20261125:publisher_variants_v1",
+      "entity_id": "blogger:nasunosakuragawa:project:mages-daily",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2025/09/mages-daily-outfit-smp-patch.html",
+      "predicate": "publisher_variants_v1",
+      "value": "{\"article_date\":\"2025-09-24\",\"variants\":[{\"label\":\"Coauthored patch\",\"version\":\"0-1\",\"host\":\"Nexus Mods (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false}],\"scope\":\"Author page credits Suna203 and nasuno04, requires the main file. No archived file is guessed.\",\"download_route\":{\"action\":\"open creator article\",\"url\":\"https://nasunosakuragawa.blogspot.com/2025/09/mages-daily-outfit-smp-patch.html\",\"automation\":\"manual unless authorised route independently verified\",\"provider_project_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/155656\"},\"runtime_tested_by_catalog\":false,\"rights_verified\":false}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:mages-daily:20261125:mod.relationships.v1",
+      "entity_id": "blogger:nasunosakuragawa:project:mages-daily",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2025/09/mages-daily-outfit-smp-patch.html",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"partial\",\"optional\":\"partial\",\"works_with\":\"unknown\",\"incompatible\":\"unknown\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Mage’s Daily Outfit main file\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Creator lists Main File as mandatory. Exact archive ID unverified.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:57339\",\"label\":\"FSMP - Faster HDT-SMP\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:1988\",\"label\":\"XP32 Maximum Skeleton Special Extended\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4.71+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:30174\",\"label\":\"CBBE 3BA\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:201\",\"label\":\"BodySlide and Outfit Studio\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Marked optional in the author post.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}}]}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:kanrax2-sleeveless:20261125:reviewed.project_attribution",
+      "entity_id": "blogger:nasunosakuragawa:project:kanrax2-sleeveless",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2024/11/kanrax2-sleeveless-dress-smp-0-1-3ba.html",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"blogger:creator:nasunosakuragawa\",\"project\":{\"name\":\"Kanrax2 Sleeveless Dress SMP\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://nasunosakuragawa.blogspot.com/2024/11/kanrax2-sleeveless-dress-smp-0-1-3ba.html\",\"article_date\":\"2024-11-03\",\"latest_global_version_verified\":false,\"attribution\":\"publisher/coauthor evidence; not sole authorship\"},\"credits\":\"KANRAx2 AntiqueDressSet v2 is the credited Oblivion original\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-4",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:kanrax2-sleeveless:20261125:publisher_variants_v1",
+      "entity_id": "blogger:nasunosakuragawa:project:kanrax2-sleeveless",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2024/11/kanrax2-sleeveless-dress-smp-0-1-3ba.html",
+      "predicate": "publisher_variants_v1",
+      "value": "{\"article_date\":\"2024-11-03\",\"variants\":[{\"label\":\"3BA/BHUNP v4\",\"version\":\"0-4\",\"renderer\":\"not declared\",\"body\":\"3BA or BHUNP v4\",\"channel\":\"current listed\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false}],\"scope\":\"Creator says SE/AE. For VR the author tentatively mentions removing the ESL flag, not a confirmed runtime test; LE unsupported.\",\"download_route\":{\"action\":\"open creator article\",\"url\":\"https://nasunosakuragawa.blogspot.com/2024/11/kanrax2-sleeveless-dress-smp-0-1-3ba.html\",\"automation\":\"manual unless authorised route independently verified\",\"provider_project_url\":null},\"runtime_tested_by_catalog\":false,\"rights_verified\":false}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-4",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:kanrax2-sleeveless:20261125:mod.relationships.v1",
+      "entity_id": "blogger:nasunosakuragawa:project:kanrax2-sleeveless",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2024/11/kanrax2-sleeveless-dress-smp-0-1-3ba.html",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"partial\",\"optional\":\"partial\",\"works_with\":\"unknown\",\"incompatible\":\"unknown\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"nexus:skyrim-se:project:57339\",\"label\":\"FSMP - Faster HDT-SMP\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:1988\",\"label\":\"XP32 Maximum Skeleton Special Extended\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4.71+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:30174\",\"label\":\"CBBE 3BA\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Body options: 3BA or BHUNP v4.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:31126\",\"label\":\"BHUNP\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Body options: BHUNP v4 or 3BA.\",\"version_constraint\":\"v4\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:201\",\"label\":\"BodySlide and Outfit Studio\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Marked optional in the author post.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}}]}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-4",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:vanilla-warlock:20261125:reviewed.project_attribution",
+      "entity_id": "blogger:nasunosakuragawa:project:vanilla-warlock",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2024/11/vanilla-warlock-robes-smp-3ba-bhunpv4.html",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"blogger:creator:nasunosakuragawa\",\"project\":{\"name\":\"Vanilla Warlock Robes SMP\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://nasunosakuragawa.blogspot.com/2024/11/vanilla-warlock-robes-smp-3ba-bhunpv4.html\",\"article_date\":\"2024-11-16\",\"latest_global_version_verified\":false,\"attribution\":\"publisher/coauthor evidence; not sole authorship\"},\"credits\":null}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:vanilla-warlock:20261125:publisher_variants_v1",
+      "entity_id": "blogger:nasunosakuragawa:project:vanilla-warlock",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2024/11/vanilla-warlock-robes-smp-3ba-bhunpv4.html",
+      "predicate": "publisher_variants_v1",
+      "value": "{\"article_date\":\"2024-11-16\",\"variants\":[{\"label\":\"3BA/BHUNPv4/HIMBO\",\"version\":\"0-1\",\"renderer\":\"not declared\",\"body\":\"3BA or BHUNP v4; HIMBO listed\",\"channel\":\"current listed\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false}],\"scope\":\"Creator claims the robe replacer works on SE/AE/VR. No exact runtime, independent test or LE support inferred.\",\"download_route\":{\"action\":\"open creator article\",\"url\":\"https://nasunosakuragawa.blogspot.com/2024/11/vanilla-warlock-robes-smp-3ba-bhunpv4.html\",\"automation\":\"manual unless authorised route independently verified\",\"provider_project_url\":null},\"runtime_tested_by_catalog\":false,\"rights_verified\":false}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:vanilla-warlock:20261125:mod.relationships.v1",
+      "entity_id": "blogger:nasunosakuragawa:project:vanilla-warlock",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2024/11/vanilla-warlock-robes-smp-3ba-bhunpv4.html",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"partial\",\"optional\":\"partial\",\"works_with\":\"unknown\",\"incompatible\":\"unknown\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"nexus:skyrim-se:project:57339\",\"label\":\"FSMP - Faster HDT-SMP\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:1988\",\"label\":\"XP32 Maximum Skeleton Special Extended\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4.71+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:30174\",\"label\":\"CBBE 3BA\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"3BA/BHUNP v4 alternate body choices per site.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:31126\",\"label\":\"BHUNP\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"3BA/BHUNP v4 alternate body choices per site.\",\"version_constraint\":\"v4\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:201\",\"label\":\"BodySlide and Outfit Studio\",\"relation\":\"optional\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Marked optional in the author post.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}}]}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "0-1",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:dc-sorceress:20261125:reviewed.project_attribution",
+      "entity_id": "blogger:nasunosakuragawa:project:dc-sorceress",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2023/09/dc-sorceress-smp-1-0.html",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"blogger:creator:nasunosakuragawa\",\"project\":{\"name\":\"DC Sorceress SMP\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://nasunosakuragawa.blogspot.com/2023/09/dc-sorceress-smp-1-0.html\",\"article_date\":\"2023-09-18\",\"latest_global_version_verified\":false,\"attribution\":\"publisher/coauthor evidence; not sole authorship\"},\"credits\":\"Backsteppo original Dragons Crown Sorceress Outfit for UNP\"}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "1-0",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:dc-sorceress:20261125:publisher_variants_v1",
+      "entity_id": "blogger:nasunosakuragawa:project:dc-sorceress",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2023/09/dc-sorceress-smp-1-0.html",
+      "predicate": "publisher_variants_v1",
+      "value": "{\"article_date\":\"2023-09-18\",\"variants\":[{\"label\":\"3BA or BHUNP v4+\",\"version\":\"1-0\",\"renderer\":\"not declared\",\"body\":\"3BA or BHUNP v4+\",\"channel\":\"current listed\",\"host\":\"Google Drive (linked by creator)\",\"exact_file_id\":null,\"access_verified\":false}],\"scope\":\"Original outfit is credited to Backsteppo. Keep the source title, publisher and original attribution distinct.\",\"download_route\":{\"action\":\"open creator article\",\"url\":\"https://nasunosakuragawa.blogspot.com/2023/09/dc-sorceress-smp-1-0.html\",\"automation\":\"manual unless authorised route independently verified\",\"provider_project_url\":null},\"runtime_tested_by_catalog\":false,\"rights_verified\":false}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "1-0",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:dc-sorceress:20261125:mod.relationships.v1",
+      "entity_id": "blogger:nasunosakuragawa:project:dc-sorceress",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2023/09/dc-sorceress-smp-1-0.html",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"partial\",\"optional\":\"partial\",\"works_with\":\"unknown\",\"incompatible\":\"unknown\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"nexus:skyrim-se:project:57339\",\"label\":\"FSMP - Faster HDT-SMP\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:1988\",\"label\":\"XP32 Maximum Skeleton Special Extended\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4.71+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:201\",\"label\":\"BodySlide and Outfit Studio\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":\"Listed as required by the specific 1-0 post.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":null,\"label\":\"CBBE 3BA or BHUNP v4+\",\"relation\":\"required\",\"raw_relation\":\"one-of\",\"condition\":\"One alternative required, not both.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:30174\",\"label\":\"CBBE 3BA\",\"relation\":\"related\",\"raw_relation\":\"alternative member\",\"condition\":\"Alternate provider in the one-of body requirement.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:31126\",\"label\":\"BHUNP\",\"relation\":\"related\",\"raw_relation\":\"alternative member\",\"condition\":\"Alternate provider in the one-of body requirement.\",\"version_constraint\":\"v4+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}}]}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "1-0",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:salahairs:20261125:reviewed.project_attribution",
+      "entity_id": "blogger:nasunosakuragawa:project:salahairs",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2023/04/salahairs-se-smp-1-3.html",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"blogger:creator:nasunosakuragawa\",\"project\":{\"name\":\"saLaHairs SE SMP\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://nasunosakuragawa.blogspot.com/2023/04/salahairs-se-smp-1-3.html\",\"article_date\":\"2023-04-15\",\"latest_global_version_verified\":false,\"attribution\":\"publisher/coauthor evidence; not sole authorship\"},\"credits\":null}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "1-3",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:salahairs:20261125:publisher_variants_v1",
+      "entity_id": "blogger:nasunosakuragawa:project:salahairs",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2023/04/salahairs-se-smp-1-3.html",
+      "predicate": "publisher_variants_v1",
+      "value": "{\"article_date\":\"2023-04-15\",\"variants\":[{\"label\":\"Author-listed SMP version\",\"version\":\"1-3\",\"host\":\"See author article\",\"exact_file_id\":null,\"access_verified\":false}],\"scope\":\"Original post requires Skyrim SE 1.5.97+ and explicitly excludes LE and VR; this does not prove later executable or DLL compatibility.\",\"download_route\":{\"action\":\"open creator article\",\"url\":\"https://nasunosakuragawa.blogspot.com/2023/04/salahairs-se-smp-1-3.html\",\"automation\":\"manual unless authorised route independently verified\",\"provider_project_url\":null},\"runtime_tested_by_catalog\":false,\"rights_verified\":false}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "1-3",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    },
+    {
+      "id": "blogger:nasunosakuragawa:project:salahairs:20261125:mod.relationships.v1",
+      "entity_id": "blogger:nasunosakuragawa:project:salahairs",
+      "source_id": "nasuno-authored-blog-facts",
+      "source_url": "https://nasunosakuragawa.blogspot.com/2023/04/salahairs-se-smp-1-3.html",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"candidate\",\"coverage\":{\"required\":\"partial\",\"optional\":\"partial\",\"works_with\":\"unknown\",\"incompatible\":\"unknown\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"nexus:skyrim-se:project:57339\",\"label\":\"FSMP - Faster HDT-SMP\",\"relation\":\"related\",\"raw_relation\":\"alternative member\",\"condition\":\"One alternative to original HDT-SMP 2.11+.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":\"nexus:skyrim-se:project:1988\",\"label\":\"XP32 Maximum Skeleton Special Extended\",\"relation\":\"required\",\"raw_relation\":\"creator requirements and variant notes\",\"condition\":null,\"version_constraint\":\"4.71+\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}},{\"target_id\":null,\"label\":\"HDT-SMP 2.11+ or Faster HDT-SMP\",\"relation\":\"required\",\"raw_relation\":\"one-of\",\"condition\":\"One supported physics alternative required, not both.\",\"version_constraint\":null,\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Required and variant notes\",\"location\":\"Creator article\",\"quote\":null}}]}",
+      "observed_unix": 1795617300,
+      "applicable_build": "unverified",
+      "mod_version": "1-3",
+      "completeness": "partial",
+      "policy_revision": "nasuno-skyrim-smp-metadata-2026-11-25"
+    }
+  ]
+}

@@ -73,3 +73,13 @@ jobs:
         with:
           name: skyrim-distributor-releases-${{ matrix.os }}
           path: skyrim-distributor-releases.sqlite
+      - name: Verify authored Nasuno SMP body, renderer and dependency lanes
+        run: |
+          cargo run --locked --example seed_reviewed_bundle -- --skyrim-nasuno-smp skyrim-nasuno-smp.sqlite
+          python -m unittest discover -s tests -p test_skyrim_nasuno.py -v
+        env:
+          SKYRIM_NASUNO_SQLITE: skyrim-nasuno-smp.sqlite
+      - uses: actions/upload-artifact@v4
+        with:
+          name: skyrim-nasuno-smp-${{ matrix.os }}
+          path: skyrim-nasuno-smp.sqlite
