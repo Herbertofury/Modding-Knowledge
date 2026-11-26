@@ -21,8 +21,8 @@ class KeywordItemReview(unittest.TestCase):
                 "[named]\nKeyword = 0x112~NamedOnly.esm|Armor|0x7~Hidden.esm\n", encoding="utf-8",
             )
             (p / "Present.esp").write_bytes(b"synthetic only")
-            (p / "Ignore_KID.INI").write_text("Keyword=Anything|Armor", encoding="utf-8")
-            (p / "Ignore_kid.ini").write_text("Keyword=Anything|Armor", encoding="utf-8")
+            (p / "UpperExtension_KID.INI").write_text("Keyword=Anything|Armor", encoding="utf-8")
+            (p / "LowerMarker_kid.ini").write_text("Keyword=Anything|Armor", encoding="utf-8")
             (p / "Child").mkdir()
             (p / "Child/Ignore_KID.ini").write_text("Keyword=Hidden|Armor", encoding="utf-8")
             data = review(p)
