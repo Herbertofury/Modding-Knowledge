@@ -1,0 +1,18 @@
+# Skyrim Sound Record Distributor and Music Type Distributor staging review
+
+Choose an ordinary, disposable **Data** staging folder that no installer or game is writing to. The review never starts Skyrim, edits a config, loads plugins, reads audio, or obtains mods.
+
+```text
+python -B tools/review_skyrim_audio_layout.py /path/to/staged/Data
+python -B tools/review_skyrim_audio_layout.py /path/to/staged/Data --counts-only
+```
+
+## Which distributor is which?
+
+- [Sound Record Distributor (SRD)](https://www.nexusmods.com/skyrimspecialedition/mods/77815) handles sound records and ambient region sound. The [pinned SRD source](https://github.com/doodlum/skyrim-srd/blob/7d674959b20bbaa1887e8a3a07f112452c1cfa63/src/DataStorage.cpp) scans one level of Data for the exact suffixes `_SRD.json`, `_SRD.jsonc`, and `_SRD.yaml`, not `.yml`. It initially routes stems containing the case-sensitive substring `.es` to its plugin-matching pass. That is a name heuristic, not proof the config matches a loaded plugin. This tool reports only SRD name candidates; it does not parse those files, merge them, or decide runtime precedence.
+- [Music Type Distributor (MTD)](https://www.nexusmods.com/skyrimspecialedition/mods/119571?tab=description) adds tracks to music types and applies music types to locations or regions; [Kussie's Various Music Type Distributor Conversions](https://www.nexusmods.com/skyrimspecialedition/mods/119585) is a conversion collection, not SRD or the MTD engine. The [reviewed compatibility port parser](https://github.com/DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update/blob/4e26d5496c605266afa0734f8cc96c5155552190/src/Parser.cpp) discovers exact top-level `_MUS.ini` names and treats General, Location and Region as different namespaces. It aggregates track tokens by unstripped key, but later strips `!` to resolve the music type and stores the resulting track list against that form. The [distributor](https://github.com/DeadOnKeyboard1/MusicTypeDistributor_Skyrim_1.7.104.0-Update/blob/4e26d5496c605266afa0734f8cc96c5155552190/src/Distributor.cpp) clears the existing track list only when the selected proposal has the clear flag. A mix of `MUSExample` and `MUSExample!` is worth reviewing before enabling both packages; this tool does not predict a winner.
+- Location and Region mappings point to a music type EditorID, not a music track FormID. Different suggestions for the same exact key in the same section are reported; only the same spelling is compared, and the same word in Location and Region is not a conflict. Equal mappings and append-only lists are not flagged as competing declarations. Exact winning forms, ordering, lookup behavior, and provider-specific runtime support still need installed game evidence.
+
+The INI review deliberately accepts only ordinary single-line UTF-8 assignments. Plugin names from a documented track form token are candidate references, not declared dependencies. Presence checks compare names at the staging root only; they do not know which plugin is enabled, whether it is an actual plugin, or whether it owns the referenced track. Quoting, multiline values, richer syntax and unrecognized text are not interpreted as confirmed records. The tool stops scanning a file at an unsupported multiline boundary rather than treating payload lines as rules.
+
+Counts-only omits names, paths and line numbers. The named report stays on your device unless you share it. Matching links/reparse points, special files, excessive scan sizes, and changed file identity are refused using the shared staging reader. No downloaded binary was matched to these source commits. A conversion still needs verified exact source masters, a records and asset inventory, and a real-game check.
