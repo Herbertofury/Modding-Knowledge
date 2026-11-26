@@ -34,6 +34,10 @@ jobs:
         run: |
           cargo run --locked --example seed_reviewed_bundle -- --minecraft-sinytra sinytra.sqlite
           python tests/test_sinytra_reviewed.py sinytra.sqlite
+      - name: Verify distinct Sims 4 CAS attachments and appearance-scoped relationships
+        run: |
+          cargo run --locked --example seed_reviewed_bundle -- --sims4-cas-cc sims4-cas-review.sqlite
+          python tests/test_sims4_cas_reviewed.py sims4-cas-review.sqlite
       - run: cargo run --locked --example seed_reviewed_bundle -- --sims4-creator-relationships sims4-creator.sqlite
       - run: python -m unittest discover -s tests -p test_sims4_creator_sidecar.py -v
         env:
