@@ -283,7 +283,9 @@ fn mod_relationships(row: &Observation, mode: ModProjection) -> Value {
                     || relationships.iter().all(|value| {
                         value.is_object()
                             && ["target_scope", "evidence"].iter().all(|&field| {
-                                value.get(field).is_none_or(|v| v.is_null() || v.is_object())
+                                value
+                                    .get(field)
+                                    .is_none_or(|v| v.is_null() || v.is_object())
                             })
                     })
             })
