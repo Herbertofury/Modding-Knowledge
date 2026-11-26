@@ -195,6 +195,21 @@ struct RecordedRoleV2 {
     _version_constraint: Option<String>,
     #[serde(rename = "target_scope")]
     _target_scope: Option<RecordedScope>,
+    #[serde(rename = "raw_relation")]
+    _raw_relation: Option<String>,
+    #[serde(rename = "label")]
+    _label: Option<String>,
+    #[serde(rename = "evidence")]
+    _evidence: Option<RecordedEvidence>,
+}
+#[derive(serde_derive::Deserialize)]
+struct RecordedEvidence {
+    #[serde(rename = "section")]
+    _section: Option<String>,
+    #[serde(rename = "quote")]
+    _quote: Option<String>,
+    #[serde(rename = "location")]
+    _location: Option<String>,
 }
 #[derive(serde_derive::Deserialize)]
 struct RecordedScope {
@@ -263,6 +278,15 @@ fn mod_relationships(row: &Observation, mode: ModProjection) -> Value {
         && let Some(relationships) = payload
             .get_mut("relationships")
             .and_then(Value::as_array_mut)
+            .filter(|relationships| {
+                matches!(mode, ModProjection::Legacy)
+                    || relationships.iter().all(|value| {
+                        value.is_object()
+                            && ["target_scope", "evidence"].iter().all(|&field| {
+                                value.get(field).is_none_or(|v| v.is_null() || v.is_object())
+                            })
+                    })
+            })
     {
         status = "recorded_evidence";
         for (relationship, recorded) in std::mem::take(relationships).into_iter().zip(roles) {
@@ -409,6 +433,62 @@ mod tests {
         let legacy = project(value);
         assert_eq!(legacy["columns"][3]["role"], "unknown");
         assert_eq!(legacy["columns"][3]["evidence"], expected["relationships"]);
+    }
+
+    #[test]
+    fn v2_refuses_ambiguous_display_label_and_source_evidence() {
+        for raw in [
+            r#"{"version":1,"review":"reviewed","coverage":{},"relationships":[{"relation":"required","basis":"explicit","label":"A","label":"B"}]}"#,
+            r#"{"version":1,"review":"reviewed","coverage":{},"relationships":[{"relation":"required","basis":"explicit","raw_relation":"one-of","raw_relation":"required"}]}"#,
+            r#"{"version":1,"review":"reviewed","coverage":{},"relationships":[{"relation":"incompatible","basis":"explicit","evidence":{"location":"A"},"evidence":null}]}"#,
+            r#"{"version":1,"review":"reviewed","coverage":{},"relationships":[{"relation":"incompatible","basis":"explicit","evidence":{"quote":"conditional","quote":"always","location":"A"}}]}"#,
+            r#"{"version":1,"review":"reviewed","coverage":{},"relationships":[{"relation":"incompatible","basis":"explicit","evidence":{"location":"A","location":"B"}}]}"#,
+            r#"{"version":1,"review":"reviewed","coverage":{},"relationships":[{"relation":"incompatible","basis":"explicit","evidence":["requirements","conditional","A"]}]}"#,
+            r#"{"version":1,"review":"reviewed","coverage":{},"relationships":[{"relation":"incompatible","basis":"explicit","target_scope":["skyrim-se",null,null,null]}]}"#,
+        ] {
+            let r = project_mode(raw, ModProjection::V2);
+            assert_eq!(r["status"], "unrecognized_payload");
+            assert_eq!(r["source_url"], "https://example.org/source");
+            assert!(
+                r["columns"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .all(|column| column["evidence"].as_array().unwrap().is_empty())
+            );
+            assert_eq!(project(raw)["status"], "recorded_evidence");
+        }
+    }
+
+    #[test]
+    fn v2_retains_complete_source_fields_from_actual_reviewed_packs() {
+        let mut checked = 0;
+        for pack in [
+            include_str!("../data/skyrim-se-distributors-reviewed.json"),
+            include_str!("../data/sims4-utility-relationships-reviewed.json"),
+        ] {
+            let bundle: Value = serde_json::from_str(pack).unwrap();
+            for row in bundle["observations"].as_array().unwrap() {
+                if row["predicate"] != MOD_RELATIONSHIP_PREDICATE {
+                    continue;
+                }
+                let raw = row["value"].as_str().unwrap();
+                let expected: Value = serde_json::from_str(raw).unwrap();
+                let actual = project_mode(raw, ModProjection::V2);
+                assert_eq!(actual["status"], "recorded_evidence");
+                let projected: Vec<&Value> = actual["columns"]
+                    .as_array()
+                    .unwrap()
+                    .iter()
+                    .flat_map(|c| c["evidence"].as_array().unwrap())
+                    .collect();
+                let expected = expected["relationships"].as_array().unwrap();
+                assert_eq!(projected.len(), expected.len());
+                assert!(expected.iter().all(|claim| projected.contains(&claim)));
+                checked += 1;
+            }
+        }
+        assert!(checked >= 20, "expected both source packs, found {checked}");
     }
 
     #[test]
