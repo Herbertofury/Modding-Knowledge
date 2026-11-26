@@ -1,0 +1,16 @@
+{
+  "schema": "athena-fsmp-overlay-review-v1",
+  "game_id": "skyrimse",
+  "reviewed_utc": "2026-11-26",
+  "project": {"id": "nexus:skyrimse:179975", "creator": "tonycubed2", "description_url": "https://www.nexusmods.com/skyrimspecialedition/mods/179975?tab=description", "listed_version": "4.2"},
+  "upstream": {"id": "nexus:skyrimse:57339", "version": "4.1.1", "commit": "2215ec3ba09adf0843a3291ed0437a6ca6d385e2", "url": "https://github.com/DaymareOn/hdtSMP64/commit/2215ec3ba09adf0843a3291ed0437a6ca6d385e2"},
+  "requirements_table": {"displayed": "V3.04", "status": "disagrees_with_v4.2_notes", "usable_as_base": false},
+  "patch_source": {"commit": "0daf53ac6653e8f1fb1dd815b74dcff75e621be7", "url": "https://github.com/Tonycubed2/Fast-HDT-SMP-Variant-Patch/blob/0daf53ac6653e8f1fb1dd815b74dcff75e621be7/patches/README.md", "patch_blob": "321532452228b947f522f8bd79c3987a1af3c5a7", "verified_hunks": 16, "fuzz": 0, "offsets": 0, "compiled": false},
+  "relations": [
+    {"kind": "required", "target_id": "nexus:skyrimse:57339", "target_version": "4.1.1", "overlay_version": "4.2", "basis": "publisher_release_notes_and_verified_pinned_source_patch"},
+    {"kind": "overrides", "target_id": "nexus:skyrimse:57339", "target_path": "SKSE/Plugins/hdtsmp64.dll", "overlay_version": "4.2", "basis": "publisher_installation_instructions"}
+  ],
+  "choices": {"minimum": 1, "maximum": 1, "variants": [{"id": "nonavx", "requires": null, "file_id": null}, {"id": "avx2", "requires": "avx2", "file_id": null}]},
+  "sample": {"name": "smpExemptions.ini", "blob": "bcc9f16e932608bfbd95f3246ae51018f349f91b", "verified_source_active_substrings": ["zombie", "rumiirua"], "published_archive_matches_source": null},
+  "qualifications": {"nexus_archives_verified": false, "runtime_verified": false, "legacy_mcm_effect": "unknown_separate_component", "allow_auto_selection": false, "allow_auto_install": false}
+}
