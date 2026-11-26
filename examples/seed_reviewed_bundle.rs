@@ -43,6 +43,9 @@ fn main() -> Result<()> {
             path,
             include_str!("../data/minecraft-sinytra-reviewed.json"),
         ),
+        [flag, path] if flag == "--sims4-cas-cc" => {
+            (path, include_str!("../data/sims4-cas-cc-reviewed.json"))
+        }
         _ => {
             return Err("Expected optional reviewed-pack flag and a NEW-SQLITE-PATH".into());
         }
