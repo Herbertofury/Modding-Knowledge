@@ -1,0 +1,184 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Partial documentation evidence. No binary downloaded, installed or verified; no claim that external file permissions or tested game compatibility transfer.",
+  "games": {
+    "skyrim-se": "Skyrim Special Edition"
+  },
+  "sources": {
+    "skyrim-se-model-swapper-reviewed-github-facts": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service"
+  },
+  "source_policy_revisions": {
+    "skyrim-se-model-swapper-reviewed-github-facts": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+  },
+  "entities": [
+    {
+      "id": "github:Thiago099/Model-Swapper",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Model Swapper"
+    },
+    {
+      "id": "github:creator:Thiago099",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "Thiago099"
+    },
+    {
+      "id": "github:DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Model Swapper - Skyrim 1.7.104.0 Compatibility Port"
+    },
+    {
+      "id": "github:creator:DeadOnKeyboard1",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "DeadOnKeyboard1"
+    }
+  ],
+  "observations": [
+    {
+      "id": "github:Thiago099/Model-Swapper:20261126:reviewed.project_attribution",
+      "entity_id": "github:Thiago099/Model-Swapper",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/Thiago099/Model-Swapper/blob/33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7/README.md",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:Thiago099\",\"project\":{\"name\":\"Model Swapper\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/Thiago099/Model-Swapper\",\"attribution\":\"GitHub repository owner account; not sole authorship\",\"summary\":\"Original source repository for a Skyrim SKSE model replacement plug-in. Review the associated original Nexus entry for distribution.\",\"release_date\":null,\"updated_at\":null,\"version\":null},\"evidence\":{\"url\":\"https://github.com/Thiago099/Model-Swapper/blob/33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7/README.md\",\"repository_id\":\"904215646\",\"commit\":\"33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7\",\"blob\":\"b4dc1638401eec9b4badcfd89be5735f4d156c90\",\"kind\":\"author-readme\"},\"scope\":\"Partial documentation evidence. No binary downloaded, installed or verified; no claim that external file permissions or tested game compatibility transfer.\"}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    },
+    {
+      "id": "github:creator:Thiago099:20261126:reviewed.creator_identity",
+      "entity_id": "github:creator:Thiago099",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/Thiago099/Model-Swapper/blob/33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7/README.md",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"github_account_id\":\"66787043\",\"aliases\":[],\"profiles\":[{\"url\":\"https://github.com/Thiago099\",\"status\":\"provider-qualified account URL\"}],\"evidence\":{\"url\":\"https://github.com/Thiago099/Model-Swapper/blob/33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7/README.md\",\"repository_id\":\"904215646\",\"commit\":\"33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7\",\"blob\":\"b4dc1638401eec9b4badcfd89be5735f4d156c90\",\"kind\":\"github-repository-owner\"},\"gaps\":[\"No legal identity or unrelated accounts inferred.\"]}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    },
+    {
+      "id": "github:creator:Thiago099:20261126:reviewed.project_link",
+      "entity_id": "github:creator:Thiago099",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/Thiago099/Model-Swapper/blob/33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7/README.md",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:Thiago099/Model-Swapper\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/Thiago099/Model-Swapper/blob/33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7/README.md\",\"repository_id\":\"904215646\",\"commit\":\"33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7\",\"blob\":\"b4dc1638401eec9b4badcfd89be5735f4d156c90\",\"kind\":\"author-readme\"}}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    },
+    {
+      "id": "github:DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update:20261126:reviewed.project_attribution",
+      "entity_id": "github:DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update/blob/a85f1f42acfbd1861fc5d345a3b283fb8bf925c5/README.md",
+      "predicate": "reviewed.project_attribution",
+      "value": "{\"creator_id\":\"github:creator:DeadOnKeyboard1\",\"project\":{\"name\":\"Model Swapper - Skyrim 1.7.104.0 Compatibility Port\",\"game\":\"Skyrim Special Edition\",\"url\":\"https://github.com/DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update\",\"attribution\":\"GitHub repository owner account; not sole authorship\",\"summary\":\"Distinct source port of the original Model Swapper plug-in. Maintainer documents multiple runtime build lanes and states the original INIs/definitions must be retained.\",\"release_date\":null,\"updated_at\":null,\"version\":null},\"evidence\":{\"url\":\"https://github.com/DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update/blob/a85f1f42acfbd1861fc5d345a3b283fb8bf925c5/README.md\",\"repository_id\":\"1423689423\",\"commit\":\"a85f1f42acfbd1861fc5d345a3b283fb8bf925c5\",\"blob\":\"7330089efb101ff8d7a678170174dcc47ab756a3\",\"kind\":\"author-readme\"},\"scope\":\"Partial documentation evidence. No binary downloaded, installed or verified; no claim that external file permissions or tested game compatibility transfer.\"}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    },
+    {
+      "id": "github:creator:DeadOnKeyboard1:20261126:reviewed.creator_identity",
+      "entity_id": "github:creator:DeadOnKeyboard1",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update/blob/a85f1f42acfbd1861fc5d345a3b283fb8bf925c5/README.md",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"github_account_id\":\"229149466\",\"aliases\":[],\"profiles\":[{\"url\":\"https://github.com/DeadOnKeyboard1\",\"status\":\"provider-qualified account URL\"}],\"evidence\":{\"url\":\"https://github.com/DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update/blob/a85f1f42acfbd1861fc5d345a3b283fb8bf925c5/README.md\",\"repository_id\":\"1423689423\",\"commit\":\"a85f1f42acfbd1861fc5d345a3b283fb8bf925c5\",\"blob\":\"7330089efb101ff8d7a678170174dcc47ab756a3\",\"kind\":\"github-repository-owner\"},\"gaps\":[\"No legal identity or unrelated accounts inferred.\"]}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    },
+    {
+      "id": "github:creator:DeadOnKeyboard1:20261126:reviewed.project_link",
+      "entity_id": "github:creator:DeadOnKeyboard1",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update/blob/a85f1f42acfbd1861fc5d345a3b283fb8bf925c5/README.md",
+      "predicate": "reviewed.project_link",
+      "value": "{\"project_id\":\"github:DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update\",\"relationship\":\"provider-declared repository owner association\",\"evidence\":{\"url\":\"https://github.com/DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update/blob/a85f1f42acfbd1861fc5d345a3b283fb8bf925c5/README.md\",\"repository_id\":\"1423689423\",\"commit\":\"a85f1f42acfbd1861fc5d345a3b283fb8bf925c5\",\"blob\":\"7330089efb101ff8d7a678170174dcc47ab756a3\",\"kind\":\"author-readme\"}}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    },
+    {
+      "id": "github:Thiago099/Model-Swapper:20261126:reviewed.github_release_source",
+      "entity_id": "github:Thiago099/Model-Swapper",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/Thiago099/Model-Swapper/releases/tag/1.3",
+      "predicate": "reviewed.github_release_source",
+      "value": "{\"release_id\":\"191963781\",\"tag\":\"1.3\",\"published_at\":\"2024-12-21T09:26:10Z\",\"tag_commit\":\"82ba10532ea8c588edea427a5df5ae81d6d94d6b\",\"attached_asset_count\":0,\"distribution\":{\"strategy\":\"manual-original-provider-page\",\"url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/136461\",\"evidence\":\"Port maintainer credits/link plus public Nexus listing metadata; file listing not verified.\",\"automatic_binary_download\":false,\"source_archive_is_installable\":false},\"source_license\":{\"spdx\":\"MIT\",\"evidence\":{\"url\":\"https://github.com/Thiago099/Model-Swapper/blob/33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7/LICENSE\",\"repository_id\":\"904215646\",\"commit\":\"33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7\",\"blob\":\"da09ef1e393fd359df6a1de1252462857f27a2b0\",\"kind\":\"source-license\"}},\"scope\":\"Partial documentation evidence. No binary downloaded, installed or verified; no claim that external file permissions or tested game compatibility transfer.\"}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    },
+    {
+      "id": "github:DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update:20261126:reviewed.github_release_source",
+      "entity_id": "github:DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update/blob/a85f1f42acfbd1861fc5d345a3b283fb8bf925c5/README.md",
+      "predicate": "reviewed.github_release_source",
+      "value": "{\"release_id\":null,\"tag\":null,\"published_at\":null,\"attached_asset_count\":null,\"github_releases_observed\":0,\"distribution\":{\"strategy\":\"source-reference-only; no published GitHub release found\",\"author_owns_runtime_claim\":true,\"automatic_binary_download\":false},\"source_license\":{\"author_statement\":\"GPL-3.0-or-later with documented exceptions\",\"evidence\":{\"url\":\"https://github.com/DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update/blob/a85f1f42acfbd1861fc5d345a3b283fb8bf925c5/EXCEPTIONS.md\",\"repository_id\":\"1423689423\",\"commit\":\"a85f1f42acfbd1861fc5d345a3b283fb8bf925c5\",\"blob\":\"9f751f7bc49c0cf6e7fd3e148f4b57458b3f9b8a\",\"kind\":\"source-license-exceptions\"}},\"author_runtime_lanes\":[\"1.5.97.0\",\"1.6.1170.0\",\"1.7.104.0\",\"VR 1.4.15.0\"],\"scope\":\"Partial documentation evidence. No binary downloaded, installed or verified; no claim that external file permissions or tested game compatibility transfer.\"}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    },
+    {
+      "id": "github:Thiago099/Model-Swapper:20261126:mod.relationships.v1",
+      "entity_id": "github:Thiago099/Model-Swapper",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/Thiago099/Model-Swapper/blob/33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7/src/Plugin.cpp",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":null,\"label\":\"Skyrim Script Extender (SKSE)\",\"relation\":\"required\",\"raw_relation\":\"required\",\"version_constraint\":null,\"condition\":null,\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Native entry point\",\"location\":\"src/Plugin.cpp, SKSEPluginLoad\"}}]}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    },
+    {
+      "id": "github:DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update:20261126:mod.relationships.v1",
+      "entity_id": "github:DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/DeadOnKeyboard1/ModelSwapper_1.3_Skyrim_1.7.104.0-update/blob/a85f1f42acfbd1861fc5d345a3b283fb8bf925c5/README.md",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"github:Thiago099/Model-Swapper\",\"label\":\"Original Model Swapper configuration and model definitions\",\"relation\":\"required\",\"raw_relation\":\"requires-original-assets\",\"version_constraint\":null,\"condition\":\"Preserve original INIs and swap definitions; the port supplies the replacement native DLL, not a requirement to install both DLLs.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements & Assets\",\"location\":\"README, Requirements & Assets\"}},{\"target_id\":null,\"label\":\"Matching Skyrim Script Extender\",\"relation\":\"required\",\"raw_relation\":\"required\",\"version_constraint\":null,\"condition\":\"Desktop SKSE64 or SKSEVR must match the game runtime; SKSE 2.3.1 is named for the 1.7.104.0 target.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements & Assets\",\"location\":\"README, Requirements & Assets\"}},{\"target_id\":null,\"label\":\"Address Library for SKSE Plugins\",\"relation\":\"required\",\"raw_relation\":\"required\",\"version_constraint\":null,\"condition\":\"Select variant matching the installed runtime as stated by the port maintainer.\",\"target_scope\":{\"game_id\":null,\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements & Assets\",\"location\":\"README, Requirements & Assets\"}}]}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    },
+    {
+      "id": "github:Thiago099/Model-Swapper:20261126:reviewed.config_surface",
+      "entity_id": "github:Thiago099/Model-Swapper",
+      "source_id": "skyrim-se-model-swapper-reviewed-github-facts",
+      "source_url": "https://github.com/Thiago099/Model-Swapper/blob/33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7/include/Ini.h",
+      "predicate": "reviewed.config_surface",
+      "value": "{\"directory\":\"Data/SKSE/Plugins\",\"encoding\":\"upstream wrapper enables Unicode\",\"byte_content_not_retained\":true,\"scope\":\"Documents helper input directory only. Patch filename, swap grammar, read order and game winner remain unverified.\",\"evidence\":{\"url\":\"https://github.com/Thiago099/Model-Swapper/blob/33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7/include/Ini.h\",\"repository_id\":\"904215646\",\"commit\":\"33fdc9923e3a7a68bb7d1260b2b97adf53a3c2e7\",\"blob\":\"1afd7dfa81c699c9d3e75a0c70d8b3d7b601e34f\",\"kind\":\"author-source\"}}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "skyrim-se-model-swapper-reviewed-github-facts-2026-11-26"
+    }
+  ]
+}
