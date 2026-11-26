@@ -7,21 +7,13 @@ import json
 import os
 import re
 import stat
+from skyrim_staged_io import reparse, safe_dir, read_checked
 
 SOURCE_PIN = '82a694e5d33194ae223f23846b1f180ee394cdee'
 BASE = 'https://github.com/MaskedRPGFan/FormList-Manipulator/blob/' + SOURCE_PIN
 ALIAS = re.compile(r'(?i:alias)[ \t]*=[ \t]*([^|]+)\|(.+)\Z')
 MAX_CHILDREN, MAX_FILES, MAX_ALIASES = 4096, 256, 20_000
 MAX_FILE, MAX_BYTES = 128 * 1024, 2 * 1024 * 1024
-
-
-def reparse(s):
-    return getattr(s, 'st_file_attributes', 0) & getattr(stat, 'FILE_ATTRIBUTE_REPARSE_POINT', 0)
-
-
-def safe_dir(p):
-    s = p.lstat()
-    return not p.is_symlink() and not reparse(s) and stat.S_ISDIR(s.st_mode)
 
 
 def staged_files(data):
@@ -71,14 +63,7 @@ def report(data, counts_only=False):
                 row['status'] = 'byte-budget'
             else:
                 try:
-                    flags = os.O_RDONLY | getattr(os, 'O_BINARY', 0) | getattr(os, 'O_NOFOLLOW', 0) | getattr(os, 'O_NONBLOCK', 0)
-                    with os.fdopen(os.open(file, flags), 'rb') as handle:
-                        now = os.fstat(handle.fileno())
-                        if (now.st_dev, now.st_ino) != (initial.st_dev, initial.st_ino) or not stat.S_ISREG(now.st_mode) or reparse(now):
-                            raise ValueError('Changed while opening')
-                        raw = handle.read(min(MAX_FILE, MAX_BYTES - used) + 1)
-                        if len(raw) > MAX_FILE or used + len(raw) > MAX_BYTES:
-                            raise ValueError('Changed beyond budget')
+                    raw = read_checked(file, initial, min(MAX_FILE, MAX_BYTES - used))
                     used += len(raw)
                     if b'\0' in raw:
                         raise UnicodeError('NUL is not supported')
