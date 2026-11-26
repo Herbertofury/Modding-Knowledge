@@ -6,10 +6,9 @@ fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().collect();
     let (path, bundle) = match args.as_slice() {
         [_, path] => (path, include_str!("../data/reviewed-bundle.json")),
-        [_, flag, path] if flag == "--sims4-mccc" => (
-            path,
-            include_str!("../data/sims4-mccc-reviewed.json"),
-        ),
+        [_, flag, path] if flag == "--sims4-mccc" => {
+            (path, include_str!("../data/sims4-mccc-reviewed.json"))
+        }
         _ => return Err("Expected optional --sims4-mccc and a new SQLite output path".into()),
     };
     if std::path::Path::new(path).exists() {
