@@ -108,6 +108,8 @@ jobs:
           path: skyrim-distributor-releases.sqlite
       - name: Review a staged FLM directory without assuming runtime order or writing files
         run: python -m unittest discover -s tests -p test_skyrim_flm_layout.py -v
+      - name: Review KID staging discovery and filter evidence without resolving the game
+        run: python -m unittest discover -s tests -p test_skyrim_kid_layout.py -v
       - name: Keep FLM original, community and NG evidence separate in native SQLite
         run: |
           cargo run --locked --example seed_reviewed_bundle -- --skyrim-flm skyrim-flm.sqlite
