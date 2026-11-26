@@ -36,3 +36,12 @@ jobs:
         with:
           name: knowledge-${{ matrix.os }}
           path: verified.sqlite
+      - name: Seed optional Sims 4 MCCC release and relationship evidence
+        run: cargo run --locked --example seed_reviewed_bundle -- --sims4-mccc sims4-mccc-reviewed.sqlite
+      - name: Verify exact MCCC release pairs and source-scoped conflicts
+        run: python tools/verify_mccc_snapshot.py sims4-mccc-reviewed.sqlite
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sims4-mccc-reviewed-${{ matrix.os }}
+          path: sims4-mccc-reviewed.sqlite
+          if-no-files-found: error
