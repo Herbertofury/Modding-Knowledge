@@ -463,6 +463,57 @@ mod tests {
     }
 
     #[test]
+    fn v2_projects_verified_modhold_optional_and_conditional_relationships() {
+        let pack: Value = serde_json::from_str(include_str!(
+            "../data/skyrim-se-modhold-seth-relationships-reviewed.json"
+        ))
+        .unwrap();
+        let observations = pack["observations"].as_array().unwrap();
+        let recorded = |id: &str, predicate: &str| {
+            observations
+                .iter()
+                .find(|row| row["entity_id"] == id && row["predicate"] == predicate)
+                .unwrap()["value"]
+                .as_str()
+                .unwrap()
+        };
+        let oskar = project_mode(
+            recorded("modhold:mod:13", MOD_RELATIONSHIP_PREDICATE),
+            ModProjection::V2,
+        );
+        assert_eq!(oskar["status"], "recorded_evidence");
+        assert_eq!(oskar["columns"][0]["role"], "required");
+        let required = oskar["columns"][0]["evidence"].as_array().unwrap();
+        assert_eq!(required.len(), 2);
+        assert_eq!(required[0]["evidence"]["nexus_mod_id"], 63772);
+        assert_eq!(required[1]["target_scope"]["runtime"], "<1.6.1130");
+        assert!(required[1]["version_constraint"].is_null());
+        let compatible = oskar["columns"][2]["evidence"].as_array().unwrap();
+        assert_eq!(compatible.len(), 2);
+        assert_eq!(compatible[0]["target_id"], "modhold:mod:11");
+        assert_eq!(compatible[1]["target_id"], "modhold:mod:6");
+        assert_eq!(compatible[1]["version_constraint"], ">=1.2.7");
+        assert_eq!(compatible[1]["evidence"]["provider_required"], false);
+        assert!(compatible[1]["target_scope"]["runtime"].is_null());
+        let warband = project_mode(
+            recorded("modhold:mod:6", MOD_RELATIONSHIP_PREDICATE),
+            ModProjection::V2,
+        );
+        assert_eq!(warband["columns"][0]["coverage"], "unknown");
+        assert_eq!(warband["columns"][3]["coverage"], "unknown");
+        let alternatives = warband["columns"][4]["evidence"].as_array().unwrap();
+        assert_eq!(alternatives.len(), 2);
+        assert_eq!(alternatives[1]["version_constraint"], ">=1.6");
+        let files_source = recorded("modhold:mod:6", "reviewed.modhold.file_metadata");
+        let files: Value = serde_json::from_str(files_source).unwrap();
+        assert_eq!(files["files"][0]["file_id"], 2937);
+        assert_eq!(files["files"][0]["kind"], "main");
+        assert_eq!(files["files"][1]["file_id"], 560);
+        assert_eq!(files["files"][1]["kind"], "optional");
+        assert_eq!(files["files"][1]["verified_archive_bytes"], false);
+    }
+
+    #[test]
     fn v2_retains_complete_source_fields_from_actual_reviewed_packs() {
         let mut checked = 0;
         for pack in [

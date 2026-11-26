@@ -1,0 +1,100 @@
+{
+  "schema": "athena-reviewed-observations-v1",
+  "scope": "Selected provider flags, authored feature conditions and exact file metadata. No download, runtime test, or published catalog admission.",
+  "games": {
+    "skyrim-se": "Skyrim Special Edition"
+  },
+  "sources": {
+    "modhold-skyrim-se-seth-relationships-2026-11-26": "https://modholdmods.com/developers"
+  },
+  "source_policy_revisions": {
+    "modhold-skyrim-se-seth-relationships-2026-11-26": "modhold-skyrim-se-seth-relationships-2026-11-26"
+  },
+  "entities": [
+    {
+      "id": "modhold:mod:13",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Oskar - Over 3.4K Voiced Lines - Skilled Blacksmith Follower or Worker - (Followers-Companions-Quest-EoS)"
+    },
+    {
+      "id": "modhold:mod:6",
+      "game_id": "skyrim-se",
+      "kind": "mod",
+      "name": "Warband - Follower Framework - Party Manager - All-In-One (Followers-Companions-Immersive-Roleplay-Guild)"
+    },
+    {
+      "id": "modhold:creator:SethSaidThat",
+      "game_id": "skyrim-se",
+      "kind": "creator",
+      "name": "SethSaidThat"
+    }
+  ],
+  "observations": [
+    {
+      "id": "modhold:mod:13:20261126:reviewed.modhold.file_metadata",
+      "entity_id": "modhold:mod:13",
+      "source_id": "modhold-skyrim-se-seth-relationships-2026-11-26",
+      "source_url": "https://modholdmods.com/api/v1/mods/13",
+      "predicate": "reviewed.modhold.file_metadata",
+      "value": "{\"raw_response_sha256\":\"8e4ac1505e3972eec6ce960e5894b3d7b9f9cc508efb6b3088b7c98f0d605670\",\"project_url\":\"https://modholdmods.com/g/skyrim-se/mods/13/oskar-over-3-4k-voiced-lines-skilled-blacksmith-follower-or-\",\"version\":\"1.0.9\",\"provider_author_handle\":\"SethSaidThat\",\"requirements_reported_count\":9,\"conflicts_reported_count\":0,\"load_after_reported_count\":0,\"empty_arrays_are_not_proof_of_compatibility\":true,\"files\":[{\"file_id\":1157,\"version\":\"1.0.9\",\"kind\":\"main\",\"bytes\":137326122,\"provider_reported_sha256\":\"b3800a174566786c86cc1737ce936650c30529ea3d182da350f9b717f9067c1b\",\"verified_archive_bytes\":false}]}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "1.0.9",
+      "completeness": "partial",
+      "policy_revision": "modhold-skyrim-se-seth-relationships-2026-11-26"
+    },
+    {
+      "id": "modhold:mod:13:20261126:mod.relationships.v1",
+      "entity_id": "modhold:mod:13",
+      "source_id": "modhold-skyrim-se-seth-relationships-2026-11-26",
+      "source_url": "https://modholdmods.com/g/skyrim-se/mods/13/oskar-over-3-4k-voiced-lines-skilled-blacksmith-follower-or-",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"required\":\"partial\",\"works_with\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"modhold:mod:11\",\"label\":\"Estates of Skyrim - Immersive Settlement and Survival Overhaul (Player Homes-Hire Workers-Economy)\",\"relation\":\"works_with\",\"raw_relation\":\"optional-feature\",\"version_constraint\":null,\"condition\":\"Estate hiring; not needed for standalone use.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements and authored feature notes\",\"location\":\"https://modholdmods.com/api/v1/mods/13 (requirement_list); https://modholdmods.com/g/skyrim-se/mods/13/oskar-over-3-4k-voiced-lines-skilled-blacksmith-follower-or-\",\"provider_required\":false,\"target_url\":\"https://modholdmods.com/m/11\",\"modhold_id\":11,\"nexus_mod_id\":null}},{\"target_id\":\"modhold:mod:6\",\"label\":\"Warband - Follower Framework - Party Manager - All-In-One (Followers-Companions-Immersive-Roleplay-Guild)\",\"relation\":\"works_with\",\"raw_relation\":\"optional-feature\",\"version_constraint\":\">=1.2.7\",\"condition\":\"Minimum applies only to Oskar’s skilled blacksmith post in Warband; standalone Oskar does not need Warband.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements and authored feature notes\",\"location\":\"https://modholdmods.com/api/v1/mods/13 (requirement_list); https://modholdmods.com/g/skyrim-se/mods/13/oskar-over-3-4k-voiced-lines-skilled-blacksmith-follower-or-\",\"provider_required\":false,\"target_url\":\"https://modholdmods.com/m/6\",\"modhold_id\":6,\"nexus_mod_id\":null}},{\"target_id\":\"nexus:skyrimspecialedition:mod:63772\",\"label\":\"Northern God Armor SE\",\"relation\":\"required\",\"raw_relation\":\"provider-required\",\"version_constraint\":null,\"condition\":\"Northern God Armor files are not included.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements and authored feature notes\",\"location\":\"https://modholdmods.com/api/v1/mods/13 (requirement_list); https://modholdmods.com/g/skyrim-se/mods/13/oskar-over-3-4k-voiced-lines-skilled-blacksmith-follower-or-\",\"provider_required\":true,\"target_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/63772\",\"modhold_id\":null,\"nexus_mod_id\":63772}},{\"target_id\":\"nexus:skyrimspecialedition:mod:106441\",\"label\":\"Backported Extended ESL Support\",\"relation\":\"required\",\"raw_relation\":\"conditional-requirement\",\"version_constraint\":null,\"condition\":\"Required only on Skyrim runtimes older than 1.6.1130.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":\"<1.6.1130\"},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements and authored feature notes\",\"location\":\"https://modholdmods.com/api/v1/mods/13 (requirement_list); https://modholdmods.com/g/skyrim-se/mods/13/oskar-over-3-4k-voiced-lines-skilled-blacksmith-follower-or-\",\"provider_required\":true,\"target_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/106441\",\"modhold_id\":null,\"nexus_mod_id\":106441}}]}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "1.0.9",
+      "completeness": "partial",
+      "policy_revision": "modhold-skyrim-se-seth-relationships-2026-11-26"
+    },
+    {
+      "id": "modhold:mod:6:20261126:reviewed.modhold.file_metadata",
+      "entity_id": "modhold:mod:6",
+      "source_id": "modhold-skyrim-se-seth-relationships-2026-11-26",
+      "source_url": "https://modholdmods.com/api/v1/mods/6",
+      "predicate": "reviewed.modhold.file_metadata",
+      "value": "{\"raw_response_sha256\":\"6f6ce072e7d4dcbeebc4caf8ba207180043e8cb9176bc9234b4a44c3e48485a1\",\"project_url\":\"https://modholdmods.com/g/skyrim-se/mods/6/warband-follower-framework-party-manager-all-in-one-follower\",\"version\":\"1.2.35\",\"provider_author_handle\":\"SethSaidThat\",\"requirements_reported_count\":10,\"conflicts_reported_count\":0,\"load_after_reported_count\":0,\"empty_arrays_are_not_proof_of_compatibility\":true,\"files\":[{\"file_id\":2937,\"version\":\"1.2.35\",\"kind\":\"main\",\"bytes\":81156196,\"provider_reported_sha256\":\"a430b8e04d720c39dee19a0b48ce5a49dc91d2695655836fae6852c751ff9cab\",\"verified_archive_bytes\":false},{\"file_id\":560,\"version\":\"1.0.1\",\"kind\":\"optional\",\"bytes\":11350,\"provider_reported_sha256\":\"ee22917e43b83d6e6ae64cb5aef4e7c03dfe1a619fa6ba781b8b45b2555855a3\",\"verified_archive_bytes\":false}]}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "1.2.35",
+      "completeness": "partial",
+      "policy_revision": "modhold-skyrim-se-seth-relationships-2026-11-26"
+    },
+    {
+      "id": "modhold:mod:6:20261126:mod.relationships.v1",
+      "entity_id": "modhold:mod:6",
+      "source_id": "modhold-skyrim-se-seth-relationships-2026-11-26",
+      "source_url": "https://modholdmods.com/g/skyrim-se/mods/6/warband-follower-framework-party-manager-all-in-one-follower",
+      "predicate": "mod.relationships.v1",
+      "value": "{\"version\":1,\"review\":\"reviewed\",\"coverage\":{\"works_with\":\"partial\",\"alternative\":\"partial\"},\"none_evidence\":{},\"relationships\":[{\"target_id\":\"modhold:mod:537\",\"label\":\"Prisma UI - Next-Gen Web UI Framework\",\"relation\":\"alternative\",\"raw_relation\":\"optional-feature\",\"version_constraint\":null,\"condition\":\"Optional renderer for selected screens. Magelight is an alternative; plain lists remain available.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements and authored feature notes\",\"location\":\"https://modholdmods.com/api/v1/mods/6 (requirement_list); https://modholdmods.com/g/skyrim-se/mods/6/warband-follower-framework-party-manager-all-in-one-follower\",\"provider_required\":false,\"target_url\":\"https://modholdmods.com/m/537\",\"modhold_id\":537,\"nexus_mod_id\":148718}},{\"target_id\":\"nexus:skyrimspecialedition:mod:193303\",\"label\":\"Magelight UI\",\"relation\":\"alternative\",\"raw_relation\":\"optional-feature\",\"version_constraint\":\">=1.6\",\"condition\":\"Optional renderer for selected screens. The version applies to Magelight, not Skyrim. Prisma is an alternative; plain lists remain available.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements and authored feature notes\",\"location\":\"https://modholdmods.com/api/v1/mods/6 (requirement_list); https://modholdmods.com/g/skyrim-se/mods/6/warband-follower-framework-party-manager-all-in-one-follower\",\"provider_required\":false,\"target_url\":\"https://www.nexusmods.com/skyrimspecialedition/mods/193303\",\"modhold_id\":null,\"nexus_mod_id\":193303}},{\"target_id\":\"modhold:mod:11\",\"label\":\"Estates of Skyrim - Immersive Settlement and Survival Overhaul (Player Homes-Hire Workers-Economy)\",\"relation\":\"works_with\",\"raw_relation\":\"optional-feature\",\"version_constraint\":null,\"condition\":\"Optional Estates integration; do not treat the optional Bridge as the main file.\",\"target_scope\":{\"game_id\":\"skyrim-se\",\"mod_version\":null,\"file_id\":null,\"runtime\":null},\"basis\":\"explicit\",\"evidence\":{\"section\":\"Requirements and authored feature notes\",\"location\":\"https://modholdmods.com/api/v1/mods/6 (requirement_list); https://modholdmods.com/g/skyrim-se/mods/6/warband-follower-framework-party-manager-all-in-one-follower\",\"provider_required\":false,\"target_url\":\"https://modholdmods.com/m/11\",\"modhold_id\":11,\"nexus_mod_id\":null}}]}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "1.2.35",
+      "completeness": "partial",
+      "policy_revision": "modhold-skyrim-se-seth-relationships-2026-11-26"
+    },
+    {
+      "id": "modhold:creator:SethSaidThat:20261126:reviewed.creator_identity",
+      "entity_id": "modhold:creator:SethSaidThat",
+      "source_id": "modhold-skyrim-se-seth-relationships-2026-11-26",
+      "source_url": "https://modholdmods.com/u/SethSaidThat",
+      "predicate": "reviewed.creator_identity",
+      "value": "{\"profiles\":[{\"url\":\"https://modholdmods.com/u/SethSaidThat\",\"status\":\"provider-qualified author handle\"}],\"project_ids\":[\"modhold:mod:13\",\"modhold:mod:6\"],\"aliases\":[],\"scope\":\"Provider account attribution only; no claim about other hosts or any reason for relocation.\"}",
+      "observed_unix": 1795651200,
+      "applicable_build": "unverified",
+      "mod_version": "unverified",
+      "completeness": "partial",
+      "policy_revision": "modhold-skyrim-se-seth-relationships-2026-11-26"
+    }
+  ]
+}
