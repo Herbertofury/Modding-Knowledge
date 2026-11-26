@@ -18,7 +18,7 @@ archives, account information or inferred file permissions are included.
   individual files carry current asset IDs, dates and digests. An unrelated
   historical 2.0.0 archive has no publisher digest in the reviewed endpoint.
 - The indexed publisher [Tamriel Rebuilt release page](https://www.tamriel-rebuilt.org/downloads/main-release)
-  says 26.08.23 requires [Tamriel_Data](https://www.tamriel-rebuilt.org/downloads/resources)
+  describes August’s 26.08.23 release, which requires [Tamriel_Data](https://www.tamriel-rebuilt.org/downloads/resources)
   26.08 or later and offers a choice of original executable plus Code Patch
   or OpenMW. These are **alternative engine paths**, not a request to
   install both. Direct Nexus/publisher text retrieval returned 403; indexed
@@ -26,6 +26,20 @@ archives, account information or inferred file permissions are included.
   assets promoted. Same rule for [MGE XE](https://www.nexusmods.com/morrowind/mods/41102),
   [Morrowind Code Patch](https://www.nexusmods.com/morrowind/mods/19510) and
   [Patch for Purists](https://www.nexusmods.com/morrowind/mods/45096).
+- The team’s [Nexus main file listing](https://www.nexusmods.com/morrowind/mods/42145?tab=files)
+  lists **Poison Song Patch 3 (26.11.19)**. The publisher lists saves from
+  26.08 onward as compatible; pre-26.08 saves need a fresh game. This is
+  publisher guidance, not a tested save migration. Older Nexus entries
+  26.11.01 and 26.09.27 are recorded separately. The August site entry
+  remains historical, not proof of a current GOG bundle or mirror version.
+- The [Patch 3 README](https://www.nexusmods.com/morrowind/mods/42145?tab=docs)
+  lists Tamriel_Data 26.08 or later and both expansions. It requires Code
+  Patch for the original executable and strongly recommends MGE XE and MWSE. The [Tamriel_Data file list](https://www.nexusmods.com/morrowind/mods/44537?tab=files)
+  shows SD 26.08 as main and a specific HD 25.05 archive as old and below
+  the minimum. This does not invalidate other HD releases. The separately
+  distributed optional soundtrack's engine advice does not set the base
+  mod's OpenMW requirement. Exact Nexus file IDs and archives are unverified;
+  these rows do not authorize an installation or a download.
 - GitHub asset SHA-256 values are publisher metadata, **not matched bytes**.
   Exact engine/platform compatibility, archives, current per-project issue
   counts, and licenses/redistribution terms for individual assets were not
