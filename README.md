@@ -29,6 +29,8 @@ The latest snapshot now includes all **4,745 plugin metadata rows** from the rev
 
 ## Reviewed Skyrim SE and Sims 4 distributor records
 
+For staged Skyrim audio configs, use the [read-only SRD/MTD layout and overlap review](docs/skyrim-audio-staging.md).
+
 The canonical seed includes two bounded, independently reviewed source packs:
 [Skyrim SE distributor projects](docs/research/skyrim-se-distributors-2026-11-24.md) and
 [Sims 4 utility relationships](docs/research/sims4-utility-relationships-2026-11-24.md).
