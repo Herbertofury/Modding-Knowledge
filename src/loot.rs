@@ -349,7 +349,7 @@ fn parse_fields(r: &Observation, pin: Pin) -> Option<SourceFields> {
             return None;
         }
     }
-    let mut value: Value = serde_json::from_str(&r.value).ok()?;
+    let mut value = serde_json::from_str::<UnambiguousValue>(&r.value).ok()?.0;
     if value["source_commit_sha"] != pin.commit
         || value["source_blob_sha"] != pin.blob
         || value["condition_evaluation"] != "not_evaluated"
@@ -367,6 +367,74 @@ fn parse_fields(r: &Observation, pin: Pin) -> Option<SourceFields> {
         incompatibilities: SourceFileSet::from_source(plugin.remove("inc")),
         load_after_if_present: SourceFileSet::from_source(plugin.remove("after")),
     })
+}
+
+// Deserialize once, preserving the ordinary Value tree while refusing any
+// duplicate decoded object key. A malformed observation stays available in
+// original storage, but cannot supply a falsely definitive relationship.
+struct UnambiguousValue(Value);
+
+impl<'de> serde::Deserialize<'de> for UnambiguousValue {
+    fn deserialize<D: serde::Deserializer<'de>>(d: D) -> std::result::Result<Self, D::Error> {
+        use serde::de::{Error, MapAccess, SeqAccess, Visitor};
+        use serde_json::map::Entry;
+        struct UniqueVisitor;
+        impl<'de> Visitor<'de> for UniqueVisitor {
+            type Value = UnambiguousValue;
+            fn expecting(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                f.write_str("JSON without ambiguous object keys")
+            }
+            fn visit_unit<E: Error>(self) -> std::result::Result<Self::Value, E> {
+                Ok(UnambiguousValue(Value::Null))
+            }
+            fn visit_bool<E: Error>(self, v: bool) -> std::result::Result<Self::Value, E> {
+                Ok(UnambiguousValue(Value::Bool(v)))
+            }
+            fn visit_i64<E: Error>(self, v: i64) -> std::result::Result<Self::Value, E> {
+                Ok(UnambiguousValue(Value::from(v)))
+            }
+            fn visit_u64<E: Error>(self, v: u64) -> std::result::Result<Self::Value, E> {
+                Ok(UnambiguousValue(Value::from(v)))
+            }
+            fn visit_f64<E: Error>(self, v: f64) -> std::result::Result<Self::Value, E> {
+                serde_json::Number::from_f64(v)
+                    .map(|n| UnambiguousValue(Value::Number(n)))
+                    .ok_or_else(|| E::custom("Non-finite JSON number"))
+            }
+            fn visit_str<E: Error>(self, v: &str) -> std::result::Result<Self::Value, E> {
+                self.visit_string(v.to_owned())
+            }
+            fn visit_string<E: Error>(self, v: String) -> std::result::Result<Self::Value, E> {
+                Ok(UnambiguousValue(Value::String(v)))
+            }
+            fn visit_seq<A: SeqAccess<'de>>(
+                self,
+                mut a: A,
+            ) -> std::result::Result<Self::Value, A::Error> {
+                let mut values = Vec::new();
+                while let Some(UnambiguousValue(value)) = a.next_element()? {
+                    values.push(value);
+                }
+                Ok(UnambiguousValue(Value::Array(values)))
+            }
+            fn visit_map<A: MapAccess<'de>>(
+                self,
+                mut a: A,
+            ) -> std::result::Result<Self::Value, A::Error> {
+                let mut values = serde_json::Map::new();
+                while let Some(key) = a.next_key::<String>()? {
+                    match values.entry(key) {
+                        Entry::Occupied(_) => return Err(A::Error::custom("Duplicate JSON key")),
+                        Entry::Vacant(entry) => {
+                            entry.insert(a.next_value::<UnambiguousValue>()?.0);
+                        }
+                    }
+                }
+                Ok(UnambiguousValue(Value::Object(values)))
+            }
+        }
+        d.deserialize_any(UniqueVisitor)
+    }
 }
 
 // Shape validation only. Nothing here checks existence or evaluates a LOOT expression.
