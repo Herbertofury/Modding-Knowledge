@@ -656,3 +656,70 @@ fn fallout4_browse_keeps_pinned_role_namespace_and_policy_before_paging() {
     assert!(withdrawn.matches.is_empty());
     assert!(withdrawn.next.is_none());
 }
+
+#[test]
+fn duplicate_decoded_keys_cannot_assert_a_definitive_relationship() {
+    let mut row = evidence(json!({"name":"Owner.esp","req":["Good.esp"]}));
+    let unambiguous = row.value.clone();
+    let cases = [
+        unambiguous.replace(
+            r#""req":["Good.esp"]"#,
+            r#""req":["Ignored.esp"],"req":["Good.esp"]"#,
+        ),
+        unambiguous.replace(
+            r#""req":["Good.esp"]"#,
+            r#""req":[],"\u0072eq":["Good.esp"]"#,
+        ),
+        unambiguous.replace(
+            r#""Good.esp""#,
+            r#"{"name":"Ignored.esp","name":"Good.esp"}"#,
+        ),
+        unambiguous.replace(
+            r#""plugin_metadata":"#,
+            r#""plugin_metadata":null,"plugin_metadata":"#,
+        ),
+    ];
+    for ambiguous in cases {
+        assert_ne!(ambiguous, unambiguous);
+        row.value = ambiguous.clone();
+        let result = loot::project(&row);
+        assert!(result.fields().is_none());
+        assert_eq!(result.to_json()["status"], "malformed_or_unsupported");
+        assert_eq!(result.observation().value, ambiguous);
+    }
+    row.value = unambiguous;
+    assert!(loot::project(&row).fields().is_some());
+}
+
+#[test]
+fn browse_keeps_raw_ambiguous_observation_but_only_matches_the_older_valid_one() {
+    let mut store = Store::open(":memory:").unwrap();
+    store
+        .register_game("oblivion-family", "Oblivion family")
+        .unwrap();
+    store
+        .register_entity(ENTITY, "oblivion-family", "guide", "Fixture")
+        .unwrap();
+    store
+        .set_source_policy("loot-oblivion", SOURCE, true, true, "fixture-v1")
+        .unwrap();
+    let valid = evidence(json!({"name":"Owner.esp","req":["Good.esp"]}));
+    let mut newer = evidence(json!({"name":"Owner.esp","req":["Good.esp"]}));
+    newer.value = newer
+        .value
+        .replace(r#""req":["Good.esp"]"#, r#""req":[],"req":["Good.esp"]"#);
+    newer.id = "ambiguous".into();
+    newer.observed_unix = valid.observed_unix + 1;
+    store.import(&[valid, newer]).unwrap();
+    let page = store
+        .browse_loot(loot::SourceRole::Requires, Some("Good.esp"), None)
+        .unwrap();
+    assert_eq!(page.scanned, 2);
+    assert_eq!(page.matches.len(), 1);
+    assert_eq!(page.matches[0].observation.id, "fixture-evidence");
+    let raw = store
+        .observations_page_for_predicate(ENTITY, loot::OBSERVATION_PREDICATE, 0)
+        .unwrap();
+    assert_eq!(raw[0].id, "ambiguous");
+    assert!(raw[0].value.contains(r#""req":[],"req":["Good.esp"]"#));
+}
